@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="login.css">
+
+<!-- font graffiti -->
+<link href="http://fonts.cdnfonts.com/css/a-attack-graffiti" rel="stylesheet">
+<!-- Font awesome link -->
+<script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+
+
+    <title>Login</title>
+</head>
+<body>
+    
+    <div  id="main-container">
+        <div id="popup" class="popup-background"></div>
+        <div class="background-picture">
+            <img class="background" src="../images/splash-background.png">
+        </div>
+        
+        <div class="login-details">
+            
+                <div class="login-container">
+                    <div class="font-icon">
+                        <i class="fas fa-minus icon"></i>
+                    </div>
+                    
+                            <form>
+            <h1 class="text-center login-font" >LOGIN</h1>
+            <label for="username">Username</label>
+            <div class="input">
+                <input type="username" name="username" class="username" placeholder="Enter Username">
+            </div>
+            
+
+            <label for="password">Password</label>
+            <div class="input">
+                <input type="password" name="password" class="password" placeholder="Enter Password">
+            </div>
+            
+            <p id="forgot" onclick="forgotpass();" class="forgot">Forgot Password?</p>
+            <input class="btn" type="button" value="LOGIN">
+            <div class="account-signup">
+                <p class="account" >Don't have an account?</p>
+                <h5><a href="../signup/signup.html">Sign Up</a></h5>    
+            </div>
+            
+            
+                </form>        
+                </div>
+        
+        </div>
+            </div>
+        </div>
+    
+        <div id="resetpass">
+            <div class="resetpass-container">
+                <i onclick="closeit();" id="cross" class="fas fa-times"></i>
+                <h1 class="text-center login-font" >FORGOTPASSWORD</h1>
+            <label for="email">Email Address</label>
+            <div class="input">
+                <input type="email" name="email" class="email" placeholder="Enter Registered Email Address">
+                <input class="btn" type="button" value="RESETPASSWORD">
+            </div>
+            </div>
+            
+    <!-- js -->
+<script src="forgot.js"></script>
+</body>
+</html>

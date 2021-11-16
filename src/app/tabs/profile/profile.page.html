@@ -1,0 +1,114 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/home" color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center title" color="primary">Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="background-picture">
+
+        <div class="login-details text-center pr-4 pl-4 custom-textarea">
+            <div>
+                <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="">
+
+                <ion-input clearInput type="username" name="username" class="username" placeholder="Username"></ion-input>
+                <ion-input clearInput type="username" name="email" class="username" placeholder="Email"></ion-input>
+                <ion-input clearInput type="username" name="username" class="username" placeholder="Contact"></ion-input>
+                <ion-input clearInput type="username" name="username" class="username" placeholder="Bio"></ion-input>
+                <ion-textarea rows="3" cols="5" placeholder="Location"></ion-textarea>
+                <ion-input clearInput type="username" name="username" class="username" placeholder="Link"></ion-input>
+
+                <ion-button expand="full" class="btn1" color="primary">Save</ion-button>
+            </div>
+        </div>
+
+        <!-- <div class="login-details pr-4 pl-4 custom-textarea">
+            <div>
+
+                <div class="d-flex ion-justify-content-end ion-align-items-center">
+                    <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="">
+                    <img src="../../../assets/images/Icon awesome-edit.png" (click)="toggle()" class="h-25-px w-25-px ml-5" alt="">
+                </div>
+
+                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p class="heading-color">Username</p>
+                    <p class="heading-color-1">johndoe01
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p class="heading-color">Email</p>
+                    <p class="heading-color-1">john@chatter.com</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p class="heading-color">Contact</p>
+                    <p class="heading-color-1">+12345678901</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p class="heading-color">Bio</p>
+                    <p class="heading-color-1">About Me
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p class="heading-color">Location</p>
+                    <p class="heading-color-1">H # 192 St.2 NY, <br> United States
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p class="heading-color">Link</p>
+                    <p class="heading-color-1">www.chatter.com</p>
+                </div>
+
+            </div>
+        </div> -->
+
+    </div>
+
+    <ion-tabs>
+        <ion-tab-bar slot="bottom" selectedTab="profile" color="primary">
+
+            <!-- <a routerLink="/tabs/home"> -->
+            <ion-tab-button routerLink="/tabs/home">
+                <ion-icon name="home-outline"></ion-icon>
+                <!-- <ion-label>Schedule</ion-label>
+        <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/post"> -->
+            <ion-tab-button routerLink="/tabs/post">
+                <ion-icon name="person-circle"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/video"> -->
+            <ion-tab-button routerLink="/tabs/video">
+                <ion-icon name="map"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/chat"> -->
+            <ion-tab-button routerLink="/tabs/chat">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/profile"> -->
+            <ion-tab-button tab="profile">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+        </ion-tab-bar>
+    </ion-tabs>
+
+</ion-content>

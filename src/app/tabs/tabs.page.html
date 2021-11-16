@@ -1,0 +1,135 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/home" color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-icon color="primary" class="icon-font" name="notifications-outline"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center title" color="primary">Tabs</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <div id="container">
+        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <button type="primary">dasdasassa</button>
+        <ion-list>
+            <ion-item class="pisca">
+                <ion-label position="floating">Floating Label</ion-label>
+                <ion-input clearInput type="text" placeholder="pisca"></ion-input>
+            </ion-item>
+        </ion-list>
+
+    </div>
+
+    <!-- <ion-tabs>
+        <ion-tab-bar slot="bottom" selectedTab="home">
+            <ion-tab-button tab="home">
+                <ion-icon name="home-outline"></ion-icon>
+                <ion-label>Schedule</ion-label>
+              <ion-badge>6</ion-badge>
+            </ion-tab-button>
+
+            <ion-tab-button tab="speakers">
+                <ion-icon name="person-circle"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="map">
+                <ion-icon name="map"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="about">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="about">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs> -->
+
+    <!-- <ion-tabs>
+        <ion-tab-bar slot="bottom" selectedTab="home">
+            <ion-tab-button tab="home" href="/tabs/home">
+                <ion-icon name="home-outline"></ion-icon>
+                <ion-label>Schedule</ion-label>
+          <ion-badge>6</ion-badge>
+            </ion-tab-button>
+
+            <ion-tab-button tab="post" href="/tabs/post">
+                <ion-icon name="person-circle"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="video" href="/tabs/video">
+                <ion-icon name="map"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="chat" href="/tabs/chat">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="profile" href="/tabs/profile">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs> -->
+
+    <ion-tabs>
+        <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
+            <ion-tab-button tab="home">
+                <ion-icon name="home-outline"></ion-icon>
+                <!-- <ion-label>Schedule</ion-label>
+                <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="post">
+                <ion-icon name="person-circle"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="video">
+                <ion-icon name="map"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="chat">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+
+            <ion-tab-button tab="profile">
+                <ion-icon name="information-circle"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+
+
+    <!-- <ion-tabs>
+      <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="schedule">
+              <ion-icon name="appname-customicon1" src="../../assets/images/appname-customicon1.svg"></ion-icon>
+              <ion-icon name="appname-customicon1" src="../../assets/images/appname-customicon1.svg"></ion-icon>
+              <img src="../../assets/images/appname-customicon1.svg" alt="">
+          </ion-tab-button>
+
+          <ion-tab-button tab="speakers">
+              <ion-icon src="../../assets/images/appname-customicon2.svg"></ion-icon>
+          </ion-tab-button>
+
+          <ion-tab-button tab="map">
+              <ion-icon src="../../assets/images/appname-customicon3.svg"></ion-icon>
+          </ion-tab-button>
+
+          <ion-tab-button tab="map">
+              <ion-icon src="../../assets/images/appname-customicon4.svg"></ion-icon>
+          </ion-tab-button>
+
+          <ion-tab-button tab="about">
+              <ion-icon src="../../assets/images/appname-customicon5.svg"></ion-icon>
+          </ion-tab-button>
+      </ion-tab-bar>
+  </ion-tabs> -->
+
+</ion-content>

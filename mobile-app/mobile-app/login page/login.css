@@ -1,0 +1,415 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
+/* black overlay when forgot password pressed */
+.popup-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 5000;
+    display: none;
+    transition: 5000ms ease-in;
+}
+body{
+    overflow: hidden;
+}
+/*  */
+.background-picture{
+    position: relative;
+    
+}
+.background{
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+}
+.login-details{
+
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 30px;
+    top: 23%;
+    left: 6%;
+    width: 90%;
+    height: 27rem;
+}
+.login-container{
+    padding-left: 20px;
+}
+/* utilities */
+.text-center{
+    text-align: center;
+}
+.login-font{
+    font-family: 'a Attack Graffiti', sans-serif;
+}
+label{
+    display: block;
+    font-family: 'calibri', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+h1{
+    font-size: 3rem;
+    color: #f43a03;
+    
+}
+.font-icon{
+    display: grid;
+    place-items: center;
+}
+.icon{
+    display: grid;
+    place-items: center;
+    font-size: 2.2em;
+    color: lightgray;
+    opacity: 1;
+}
+
+.input{
+    
+    max-width: 70rem;
+    
+}
+.input:focus{
+    max-width: 70rem;
+}
+input{
+    font-family: 'calibri', sans-serif;
+    font-size: 1rem;
+    width: 90%;
+    height: 2.7rem;
+    border: 1px solid #80808052;
+    margin-bottom: 11px;
+    padding-left: 10px;
+}
+input:focus{
+    font-family: 'calibri', sans-serif;
+    font-size: 1rem;
+    width: 90%;
+    height: 2.7rem;
+    border: 1px solid #80808052;
+    margin-bottom: 11px;
+    padding-left: 10px;
+}
+p{
+    font-family: 'calibri', sans-serif;
+    font-size: 1.1rem;
+    
+}
+.forgot{
+    
+    font-weight: 700;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    float: right;
+    padding-right: 0.8rem;
+}
+.btn {
+     font-family: 'a Attack Graffiti', sans-serif;
+     background-color: #f43a03;
+     color: #ffffff;
+     font-size: 2.2rem;
+     height: 3.4rem;
+     margin-top: 5px;
+    }
+.account-signup{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.account{
+    
+    font-weight: 700;
+}
+h5 a{
+    font-family: 'calibri', sans-serif;
+    color: #000;
+    margin-left: 2px;
+    font-size: 1.2rem;
+}
+/* reset password  */
+#resetpass{
+    position: absolute;
+    top: 25%;
+    left: 7%;
+    background-color: #ffffff;
+    z-index: 5000;
+    max-width: 20rem;
+    height: 20rem;
+    border-radius: 21px;
+    display: none;
+    transition: 200ms ease-in;
+}
+.resetpass-container{
+    max-width: 100%;
+    padding-left: 1rem;
+}
+#resetpass h1{
+    font-size: 1.7rem;
+}
+#resetpass h1, #resetpass input{
+    margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+#resetpass .btn{
+    font-size: 1.8rem;
+}
+/* close the forgot pass window */
+#cross{
+    display: none;
+    font-weight: 900;
+    font-size: 1.7em;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    opacity: 0.7;
+} 
+
+/* end */
+
+
+/* Media Queries  starts here */
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+    .login-details{
+        top: 01%;
+        height: 49rem;
+    }
+    input, input:focus{
+        width: 69rem;
+        font-size: 2.1rem;
+        height: 6rem;
+        margin-top: 1rem;
+    }
+    h1 {
+        font-size: 6rem;
+        padding-top: 2rem;
+    }
+    label{
+        font-size: 2rem;
+        margin-top: 0rem;
+    }
+    .btn{
+        font-size: 4rem;
+        height: 7rem;
+    }
+    .forgot{
+        margin: 0rem;
+    }
+    p{
+        font-size: 2rem;
+    }
+    h5 a{
+        font-size: 2rem;
+        padding-left: 20px;
+    }
+    .account-signup{
+        margin-top: 2rem;
+    }
+    /* for reset pass */
+    #resetpass{
+        max-width: 81rem;
+        height: 49rem;
+        top: 1%;
+        left: 4%;
+    }
+    #cross{
+        font-size: 2.8rem;
+        padding: 1rem;
+    }
+    #resetpass h1, #resetpass input {
+        margin-top: 3.2rem;
+        margin-bottom: 5.5rem;
+        max-width: 97%;
+    }
+    #resetpass h1 {
+        font-size: 3.7rem;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .login-details{
+        top: 30%;
+        height: 56rem;
+    }
+    input, input:focus{
+        width: 54rem;
+        font-size: 2.1rem;
+        height: 6rem;
+        margin-top: 1rem;
+    }
+    h1 {
+        font-size: 6rem;
+        padding-top: 2rem;
+    }
+    label{
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+    .btn{
+        font-size: 4rem;
+        height: 7rem;
+    }
+    .forgot{
+        margin: 2rem;
+    }
+    p{
+        font-size: 2rem;
+    }
+    h5 a{
+        font-size: 2rem;
+        padding-left: 20px;
+    }
+    .account-signup{
+        margin-top: 2rem;}
+    /* for reset pass */
+    #resetpass{
+        max-width: 56rem;
+        height: 49rem;
+    }
+    #cross{
+        font-size: 2.8rem;
+    }
+    #resetpass h1, #resetpass input {
+        margin-top: 3.2rem;
+        margin-bottom: 5.5rem;
+        max-width: 97%;
+    }
+    #resetpass h1 {
+        font-size: 3.7rem;
+    }
+}
+@media only screen and (min-width: 541px) and (max-width: 768px) {
+    .login-details{
+        top: 23%;
+        height: 42rem;
+    }
+    input, input:focus{
+        width: 41rem;
+        font-size: 2.1rem;
+        height: 4.7rem;
+        margin-top: 1rem;
+    }
+    h1 {
+        font-size: 5rem;
+    }
+    label{
+        font-size: 1.7rem;
+        margin-top: 10px;
+    }
+    .btn{
+        font-size: 3rem;
+        height: 5.4rem;
+    }
+    .forgot{
+        margin: 10px;
+    }
+
+    p{
+        font-size: 1.7rem;
+    }
+    .account-signup{
+        margin-top: 0;
+    }
+    h5 a{
+        font-size: 2rem;
+        padding-left: 10px;
+    }
+    /* for reset pass */
+    #resetpass{
+        max-width: 45rem;
+        height: 49rem;
+        top: 20%;
+        left: 4%;
+    }
+    #cross{
+        font-size: 2.8rem;
+        padding: 1rem;
+    }
+    #resetpass h1, #resetpass input {
+        margin-top: 3.2rem;
+        margin-bottom: 5.5rem;
+        max-width: 97%;
+    }
+    #resetpass h1 {
+        font-size: 3.7rem;
+    }
+}
+@media only screen and (min-width: 415px) and (max-width: 540px) {
+    .login-details{
+        top: 30%;
+    }
+    input{
+        width: 28rem;
+    }
+    /* for reset pass */
+    #resetpass{
+        max-width: 30rem;
+        height: 30rem;
+        top: 20%;
+        left: 4%;
+    }
+    #cross{
+        font-size: 2rem;
+        
+    }
+    #resetpass h1, #resetpass input {
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        
+    }
+    #resetpass h1 {
+        font-size: 2rem;
+    }
+}
+@media only screen and (max-width: 414px) {
+    input{
+        max-width: 20rem;
+    }
+}
+@media only screen and (max-width: 375px) {
+    input{
+        width: 18rem;
+    }
+}
+@media only screen and (max-width: 361px) {
+    input{
+        width: 18rem;
+    }
+}
+@media only screen and (max-width: 321px) {
+    .login-details{
+        height: 24rem;
+    }
+    input{
+        width: 16rem;
+    }
+}
+@media only screen and (max-width: 281px) {
+    input {
+        width: 14rem;
+    }
+    p{
+        font-size: 1rem;
+    }
+    /* reset pass */
+    #resetpass{
+        left: 5%;
+        max-width: 16rem;
+    }
+    #resetpass h1 {
+        font-size: 1.5rem;
+    }
+    #resetpass .btn {
+        font-size: 1.4rem;
+    }
+}

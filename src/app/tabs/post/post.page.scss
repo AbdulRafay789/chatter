@@ -1,0 +1,8 @@
+.title {
+    --ion-font-family: AppFont;
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: var(--ion-safe-area-top, 0);
+    --ion-font-family: AppFont;
+}

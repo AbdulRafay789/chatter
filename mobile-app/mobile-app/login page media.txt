@@ -1,0 +1,27 @@
+/* Media Queries  starts here */
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+    
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    
+}
+@media only screen and (min-width: 541px) and (max-width: 768px) {
+    .
+}
+@media only screen and (min-width: 415px) and (max-width: 540px) {
+    
+}
+@media only screen and (max-width: 414px) {
+   
+}
+@media only screen and (max-width: 375px) {
+    
+@media only screen and (max-width: 361px) {
+    
+}
+@media only screen and (max-width: 321px) {
+    
+}
+@media only screen and (max-width: 281px) {
+    
+}

@@ -1,0 +1,54 @@
+ion-menu-button {
+    color: var(--ion-color-primary);
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: var(--ion-safe-area-top, 0);
+    --ion-font-family: AppFont;
+}
+
+.background-picture {
+    background-image: url(../../assets/images/01_Login-1.png);
+    height: 100%;
+    background-size: cover;
+    background-repeat: round;
+    width: 100%;
+}
+
+.login-details {
+    background-color: var(--ion-color-primary-contrast);
+    position: absolute;
+    border-radius: 20px;
+    top: 3%;
+    left: 4%;
+    width: 92%;
+    // height: 27rem;
+    /* box-shadow: 0px -10px 10px 0px #cbcbcb6b; */
+    height: 94%;
+    overflow: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.w-15-px {
+    width: 15px;
+}
+
+.color {
+    color: #2B2B2B;
+}
+
+.btn {
+    background-color: #EEEBEB !important;
+    --border-radius: 0 !important;
+    border: 0 !important;
+    --color: #373737 !important;
+    --border-color: #707070 !important;
+    /* width: 135px; */
+    height: 40px;
+    font-size: 14px;
+}

@@ -1,0 +1,51 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title>login</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <div class="background-picture">
+        <!-- <ion-img src="../../../assets/images/splash-background.png"></ion-img> -->
+        <!-- <img src="../../../assets/images/splash-background.png" alt=""> -->
+
+        <div class="login-details">
+
+            <div class="login-container">
+                <div class="font-icon">
+                    <!-- <i class="fas fa-minus icon"></i> -->
+                    <ion-icon name="remove-outline" class="icon"></ion-icon>
+                </div>
+
+                <h1 class="ion-text-center login-font">LOGIN</h1>
+                <label for="username" class="ml-8">Username</label>
+                <div class="input">
+                    <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
+                    <ion-input clearInput type="username" name="username" class="username" placeholder="Enter Username"></ion-input>
+                </div>
+
+
+                <label for="password" class="ml-8">Password</label>
+                <div class="input">
+                    <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
+                    <ion-input clearInput type="password" name="password" class="password" placeholder="Enter Password"></ion-input>
+                </div>
+
+                <p id="forgot" (click)="presentModal()" class="forgot">Forgot Password?</p>
+                <ion-button (click)="home()" expand="full" class="btn1" color="primary">LOGIN</ion-button>
+                <div class="account-signup">
+                    <p>Don't have an account?</p>
+                    <h5 class="mt-0 mr-0 mb-0 ml-5" (click)="signup()">
+                        <span>Sign Up</span>
+                    </h5>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- asdasas
+    <button type="primary" (click)="pisca()">dasdasassa</button> -->
+</ion-content>
