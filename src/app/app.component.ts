@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,18 +15,30 @@ export class AppComponent {
     { title: 'Profile', url: '/folder/Trash', icon: 'trash' },
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(public router: Router) { }
+  constructor(public router: Router, public menu: MenuController, public nav: NavController) { }
 
   home() {
-    this.router.navigate(['/tabs']);
+    // this.router.navigate(['/tabs']);
+    this.nav.navigateRoot('/tabs');
+    setTimeout(() => {
+      this.menu.close();
+    }, 1000);
   }
 
   chat() {
-    this.router.navigate(['/tabs/chat']);
+    // this.router.navigate(['/tabs/chat']);
+    this.nav.navigateRoot('/tabs/chat');
+    setTimeout(() => {
+      this.menu.close();
+    }, 1000);
   }
 
   profile() {
-    this.router.navigate(['/tabs/profile']);
+    // this.router.navigate(['/tabs/profile']);
+    this.nav.navigateRoot('/tabs/profile');
+    setTimeout(() => {
+      this.menu.close();
+    }, 1000);
   }
 
 }

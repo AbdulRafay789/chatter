@@ -24,7 +24,8 @@ ion-header ion-toolbar:first-of-type {
     width: 92%;
     // height: 27rem;
     /* box-shadow: 0px -10px 10px 0px #cbcbcb6b; */
-    height: 86%;
+    // height: 86%;
+    height: 95%;
     overflow: auto;
     padding-bottom: 20px;
     padding-top: 20px;
@@ -50,7 +51,7 @@ ion-header ion-toolbar:first-of-type {
     // margin: 10px 0;
     margin: auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: inherit;
     align-items: center;
     flex-direction: row-reverse;
     padding: 0px 15px;

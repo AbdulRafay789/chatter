@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar color="secondary">
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs/home" color="primary"></ion-back-button>
+            <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
         </ion-buttons>
         <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
@@ -25,7 +25,7 @@
                 <ion-input clearInput type="username" name="email" class="username" placeholder="Email"></ion-input>
                 <ion-input clearInput type="username" name="username" class="username" placeholder="Contact"></ion-input>
                 <ion-input clearInput type="username" name="username" class="username" placeholder="Bio"></ion-input>
-                <ion-textarea rows="3" cols="5" placeholder="Location"></ion-textarea>
+                <ion-textarea rows="2" cols="5" placeholder="Location"></ion-textarea>
                 <ion-input clearInput type="username" name="username" class="username" placeholder="Link"></ion-input>
 
                 <ion-button expand="full" class="btn1" color="primary">Save</ion-button>
@@ -72,43 +72,5 @@
         </div> -->
 
     </div>
-
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="profile" color="primary">
-
-            <!-- <a routerLink="/tabs/home"> -->
-            <ion-tab-button routerLink="/tabs/home">
-                <ion-icon name="home-outline"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
-        <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
-            <!-- </a> -->
-
-            <!-- <a routerLink="/tabs/post"> -->
-            <ion-tab-button routerLink="/tabs/post">
-                <ion-icon name="person-circle"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
-
-            <!-- <a routerLink="/tabs/video"> -->
-            <ion-tab-button routerLink="/tabs/video">
-                <ion-icon name="map"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
-
-            <!-- <a routerLink="/tabs/chat"> -->
-            <ion-tab-button routerLink="/tabs/chat">
-                <ion-icon name="information-circle"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
-
-            <!-- <a routerLink="/tabs/profile"> -->
-            <ion-tab-button tab="profile">
-                <ion-icon name="information-circle"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
-
-        </ion-tab-bar>
-    </ion-tabs>
 
 </ion-content>

@@ -23,7 +23,7 @@
                     </div>
                     <!-- </ion-list-header> -->
 
-                    <ion-item routerLink="/tabs">
+                    <ion-item (click)="home()">
                         <ion-img class="w-26" src="../assets/images/menu-icon-1.png">
                         </ion-img>
                         <h5 class="ml-40">Home</h5>
@@ -41,13 +41,13 @@
                         <h5 class="ml-40">Video</h5>
                     </ion-item>
 
-                    <ion-item routerLink="/tabs/chat">
+                    <ion-item (click)="chat()">
                         <ion-img class="w-26" src="../assets/images/menu-icon-4.png">
                         </ion-img>
                         <h5 class="ml-40">Chat</h5>
                     </ion-item>
 
-                    <ion-item routerLink="/tabs/profile">
+                    <ion-item (click)="profile()">
                         <ion-img class="w-26" src="../assets/images/menu-icon-5.png">
                         </ion-img>
                         <h5 class="ml-40">Profile</h5>

@@ -7,7 +7,7 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    component: TabsPage,
     // redirectTo: 'home',
     // pathMatch: 'full'
   },
@@ -31,26 +31,26 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
-  {
-    path: 'tabs/post/home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'tabs/post/post',
-    loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
-  },
-  {
-    path: 'tabs/post/video',
-    loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
-  },
-  {
-    path: 'tabs/post/chat',
-    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
-  },
-  {
-    path: 'tabs/post/profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  }
+  // {
+  //   path: 'tabs/post/home',
+  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  // },
+  // {
+  //   path: 'tabs/post/post',
+  //   loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
+  // },
+  // {
+  //   path: 'tabs/post/video',
+  //   loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
+  // },
+  // {
+  //   path: 'tabs/post/chat',
+  //   loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  // },
+  // {
+  //   path: 'tabs/post/profile',
+  //   loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  // }
 ];
 
 // const routes: Routes = [
