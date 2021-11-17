@@ -1,87 +1,133 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="secondary">
-        <!-- <ion-buttons slot="start">
+  <ion-toolbar color="secondary">
+    <!-- <ion-buttons slot="start">
             <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
         </ion-buttons> -->
-        <ion-buttons slot="end">
-            <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Home</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-icon
+        color="primary"
+        class="icon-font"
+        name="notifications-outline"
+        (click)="notifications()"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center title" color="primary">Home</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div class="background-picture">
+    <div class="login-details custom-searchbar">
+      <ion-searchbar
+        showCancelButton="focus"
+        mode="ios"
+        placeholder="Search Here"
+      ></ion-searchbar>
+      <ion-scroll scrollY="true">
+        <h4>Today</h4>
 
-    <div class="background-picture">
-
-        <div class="login-details custom-searchbar">
-            <ion-searchbar showCancelButton="focus" mode="ios" placeholder="Search Here"></ion-searchbar>
-            <h4>Today</h4>
-
-            <div class="custom-div" (click)="detail()">
-                <video width="320" height="240" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
-          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-          <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
-          Your browser does not support the video tag.
-        </video>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <div class="d-flex ion-justify-content-between ion-align-items-center pr-3 pl-3">
-                    <small>Today 9:24 am</small>
-                    <div class="d-flex ion-align-items-center">
-                        <ion-icon name="eye-outline"></ion-icon> <small class="pl-2">20 views</small>
-                    </div>
-                </div>
+        <div class="custom-div" (click)="detail()">
+          <video
+            width="320"
+            height="240"
+            controls
+            poster="../../../assets/images/Icon ionic-ios-play-circle.png"
+          >
+            <source
+              src="https://www.w3schools.com/html/movie.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://www.w3schools.com/html/movie.ogg"
+              type="video/ogg"
+            />
+            Your browser does not support the video tag.
+          </video>
+          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+          <div
+            class="
+              d-flex
+              ion-justify-content-between ion-align-items-center
+              pr-3
+              pl-3
+            "
+          >
+            <small>Today 9:24 am</small>
+            <div class="d-flex ion-align-items-center">
+              <ion-icon name="eye-outline"></ion-icon>
+              <small class="pl-2">20 views</small>
             </div>
-
-            <div class="custom-div">
-                <video width="320" height="240" autoplay controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
-          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-          <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
-          Your browser does not support the video tag.
-        </video>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <div class="d-flex ion-justify-content-between ion-align-items-center pr-3 pl-3">
-                    <small>Today 9:24 am</small>
-                    <div class="d-flex ion-align-items-center">
-                        <ion-icon name="eye-outline"></ion-icon> <small class="pl-2">20 views</small>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
+
+        <div class="custom-div">
+          <video
+            width="320"
+            height="240"
+            autoplay
+            controls
+            poster="../../../assets/images/Icon ionic-ios-play-circle.png"
+          >
+            <source
+              src="https://www.w3schools.com/html/movie.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://www.w3schools.com/html/movie.ogg"
+              type="video/ogg"
+            />
+            Your browser does not support the video tag.
+          </video>
+          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+          <div
+            class="
+              d-flex
+              ion-justify-content-between ion-align-items-center
+              pr-3
+              pl-3
+            "
+          >
+            <small>Today 9:24 am</small>
+            <div class="d-flex ion-align-items-center">
+              <ion-icon name="eye-outline"></ion-icon>
+              <small class="pl-2">20 views</small>
+            </div>
+          </div>
+        </div>
+      </ion-scroll>
     </div>
+  </div>
 
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
-            <ion-tab-button tab="home">
-                <ion-icon name="home-outline"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        <!-- <ion-label>Schedule</ion-label>
                 <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
+      </ion-tab-button>
 
-            <ion-tab-button tab="post">
-                <ion-icon name="person-circle"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="post">
+        <ion-icon name="person-circle"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="video">
-                <ion-icon name="map"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="video">
+        <ion-icon name="map"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="chat">
-                <ion-icon name="information-circle"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="chat">
+        <ion-icon name="information-circle"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="profile">
-                <ion-icon name="information-circle"></ion-icon>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
+      <ion-tab-button tab="profile">
+        <ion-icon name="information-circle"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
-
-    <!-- <ion-tabs>
+  <!-- <ion-tabs>
     <ion-tab-bar slot="bottom">
         <ion-tab-button tab="schedule">
             <ion-icon name="appname-customicon1" src="../../assets/images/appname-customicon1.svg"></ion-icon>
@@ -106,5 +152,4 @@
         </ion-tab-button>
     </ion-tab-bar>
 </ion-tabs> -->
-
 </ion-content>

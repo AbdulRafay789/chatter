@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "com.chatterapp.chatter",
 	"appName": "Chatter",
 	"webDir": "www",
 	"bundledWebRuntime": false

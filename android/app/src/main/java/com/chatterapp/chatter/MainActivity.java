@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.chatterapp.chatter;
 
 import com.getcapacitor.BridgeActivity;
 
