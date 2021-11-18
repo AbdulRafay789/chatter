@@ -41,4 +41,20 @@ export class AppComponent {
     }, 1000);
   }
 
+  verifyid() {
+    // this.router.navigate(['/tabs/profile']);
+    this.nav.navigateRoot('/verify-id');
+    setTimeout(() => {
+      this.menu.close();
+    }, 1000);
+  }
+
+  connections() {
+    // this.router.navigate(['/tabs/profile']);
+    this.nav.navigateRoot('/followers');
+    setTimeout(() => {
+      this.menu.close();
+    }, 1000);
+  }
+
 }

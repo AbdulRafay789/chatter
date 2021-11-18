@@ -9,50 +9,37 @@
         <ion-buttons slot="end">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Video</ion-title>
+        <ion-title class="ion-text-center title" color="primary">Upload Video</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+    <div class="background-picture">
 
+        <div class="login-details pr-0 pl-0">
 
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="video" color="primary">
+            <ion-input clearInput type="username" name="username" class="username" placeholder="Video Title"></ion-input>
 
-            <!-- <a routerLink="/tabs/home"> -->
-            <ion-tab-button routerLink="/tabs">
-                <ion-icon name="home-outline"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
-        <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
-            <!-- </a> -->
+            <ion-input clearInput type="username" name="username" class="username" placeholder="Video Description">
+            </ion-input>
 
-            <!-- <a routerLink="/tabs/post"> -->
-            <ion-tab-button routerLink="/tabs/post">
-                <ion-icon name="person-circle"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+            <ion-card>
+                <!-- <ion-card-header>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header> -->
 
-            <!-- <a routerLink="/tabs/video"> -->
-            <ion-tab-button tab="video">
-                <ion-icon name="map"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+                <ion-card-content>
+                    <img src="../../assets/images/Group 8262.png" alt="">
+                </ion-card-content>
+            </ion-card>
 
-            <!-- <a routerLink="/tabs/chat"> -->
-            <ion-tab-button routerLink="/tabs/chat">
-                <ion-icon name="information-circle"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+            <p class="text-center">Upload ID to get verified</p>
 
-            <!-- <a routerLink="/tabs/profile"> -->
-            <ion-tab-button routerLink="/tabs/profile">
-                <ion-icon name="information-circle"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+            <ion-button expand="full" class="btn1" color="primary">Upload</ion-button>
 
-        </ion-tab-bar>
-    </ion-tabs>
+        </div>
+    </div>
 
 </ion-content>
