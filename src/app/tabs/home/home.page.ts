@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   numTimesLeft = 5;
 
   constructor(private router: Router, private httpConfigService: HttpConfigService) {
-    this.addMoreItems()
+    this.addMoreItems();
   }
 
   loadData(event) {

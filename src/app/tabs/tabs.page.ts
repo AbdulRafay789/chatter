@@ -14,7 +14,7 @@ export class TabsPage implements OnInit {
   numTimesLeft = 5;
 
   constructor(private router: Router, private httpConfigService: HttpConfigService) {
-    this.addMoreItems()
+    this.addMoreItems();
   }
 
   loadData(event) {
@@ -42,13 +42,13 @@ export class TabsPage implements OnInit {
   pisca() {
     this.httpConfigService.getListItems(this.items).subscribe(response => {
       console.log(response);
-      this.items1 = response
-    }, error => { console.log(error) });
-    console.log(this.items1)
+      this.items1 = response;
+    }, error => { console.log(error); });
+    console.log(this.items1);
   }
 
   ngOnInit() {
-    this.pisca()
+    this.pisca();
   }
 
 }
