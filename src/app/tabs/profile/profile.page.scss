@@ -33,6 +33,7 @@ ion-menu-button {
     overflow: auto;
     padding-bottom: 20px;
     padding-top: 20px;
+    pointer-events: all;
 }
 
 ion-input {
@@ -103,7 +104,7 @@ ion-icon {
         background: white;
     }
     &[class*="appname-customicon2"] {
-        mask-image: url(../../../assets/images/Group-8324.svg);
+        mask-image: url(../../../assets/images/Group-6853-1.svg);
         background: white;
     }
     &[class*="appname-customicon3"] {

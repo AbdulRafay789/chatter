@@ -7,18 +7,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  // view: boolean;
-  constructor(private router: Router) { }
+  view: boolean;
+  constructor(private router: Router) {
 
-  // toggle() {
-  //   this.view = !this.view;
-  // }
-
-  notifications() {
-    this.router.navigate(['/notifications']);
   }
 
+  toggle() {
+    if (this.view === true) {
+      this.view = false;
+    }
+    else {
+      this.view = true;
+    }
+    console.log(this.view);
+  }
+
+  // notifications() {
+  //   this.router.navigate(['/notifications']);
+  // }
+
   ngOnInit() {
+    this.view = true;
   }
 
 }

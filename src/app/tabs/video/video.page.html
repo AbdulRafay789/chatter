@@ -3,9 +3,9 @@
         <ion-buttons slot="start">
             <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
         </ion-buttons>
-        <ion-buttons slot="end">
+        <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
-        </ion-buttons>
+        </ion-buttons> -->
         <ion-buttons slot="end">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -41,5 +41,43 @@
 
         </div>
     </div>
+
+    <ion-tabs>
+        <ion-tab-bar slot="bottom" selectedTab="video" color="primary">
+
+            <!-- <a routerLink="/tabs/home"> -->
+            <ion-tab-button routerLink="/tabs">
+                <ion-icon class="appname-customicon1"></ion-icon>
+                <!-- <ion-label>Schedule</ion-label>
+      <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/post"> -->
+            <ion-tab-button routerLink="/tabs/post">
+                <ion-icon class="appname-customicon2"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/video"> -->
+            <ion-tab-button tab="video">
+                <ion-icon class="appname-customicon3"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/chat"> -->
+            <ion-tab-button routerLink="/tabs/chat">
+                <ion-icon class="appname-customicon4"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+            <!-- <a routerLink="/tabs/profile"> -->
+            <ion-tab-button routerLink="/tabs/profile">
+                <ion-icon class="appname-customicon5"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+
+        </ion-tab-bar>
+    </ion-tabs>
 
 </ion-content>

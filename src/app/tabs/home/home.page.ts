@@ -29,9 +29,9 @@ export class HomePage implements OnInit {
     }
   }
 
-  notifications() {
-    this.router.navigate(['/notifications']);
-  }
+  // notifications() {
+  //   this.router.navigate(['/notifications']);
+  // }
 
   detail() {
     this.router.navigate(['/tabs/home/detail']);

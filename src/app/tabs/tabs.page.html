@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
     <ion-toolbar color="secondary">
-        <ion-buttons slot="end">
+        <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
-        </ion-buttons>
+        </ion-buttons> -->
         <ion-buttons slot="end">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="custom-div">
+            <div class="custom-div" (click)="detail()">
                 <video width="320" height="240" autoplay controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
         <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
         <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />

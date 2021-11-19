@@ -10,9 +10,9 @@ export class MessagesPage implements OnInit {
 
   constructor(private router: Router) { }
 
-  notifications() {
-    this.router.navigate(['/notifications']);
-  }
+  // notifications() {
+  //   this.router.navigate(['/notifications']);
+  // }
 
   ngOnInit() {
   }

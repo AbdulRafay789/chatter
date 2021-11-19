@@ -13,9 +13,9 @@ export class ChatPage implements OnInit {
   messages() {
     this.router.navigate(['/tabs/chat/messages']);
   }
-  notifications() {
-    this.router.navigate(['/notifications']);
-  }
+  // notifications() {
+  //   this.router.navigate(['/notifications']);
+  // }
 
   ngOnInit() {
   }
