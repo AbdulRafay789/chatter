@@ -28,7 +28,47 @@
             <!-- <ion-scroll scrollY="true"> -->
             <h4>Today</h4>
 
-            <div class="custom-div" (click)="detail()">
+            <div class="custom-div">
+                <video width="320" height="240" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
+          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+          <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />
+          Your browser does not support the video tag.
+        </video>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <div class="
+                d-flex
+                ion-justify-content-between ion-align-items-center
+                pr-3
+                pl-3
+              ">
+                    <small>Today 9:24 am</small>
+                    <div class="d-flex ion-align-items-center">
+                        <ion-icon name="eye-outline"></ion-icon>
+                        <small class="pl-2">20 views</small>
+                    </div>
+
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+
+                    <ion-chip (click)="detail()" color="primary" outline="true">
+                        <ion-icon name="thumbs-up-outline" color="primary"></ion-icon>
+                        <ion-label>Like</ion-label>
+                    </ion-chip>
+
+                    <ion-chip (click)="detail()" color="primary" outline="true">
+                        <ion-icon name="chatbubble-ellipses-outline" color="primary"></ion-icon>
+                        <ion-label>Comment</ion-label>
+                    </ion-chip>
+
+                    <!-- <ion-chip (click)="detail()" color="primary" outline="true">
+                        <ion-icon name="share-social-outline" color="primary"></ion-icon>
+                        <ion-label>Share</ion-label>
+                    </ion-chip> -->
+
+                </div>
+            </div>
+
+            <div class="custom-div">
                 <video width="320" height="240" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
         <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
         <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />
@@ -36,37 +76,35 @@
       </video>
                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
                 <div class="
-                d-flex
-                ion-justify-content-between ion-align-items-center
-                pr-3
-                pl-3
-              ">
+              d-flex
+              ion-justify-content-between ion-align-items-center
+              pr-3
+              pl-3
+            ">
                     <small>Today 9:24 am</small>
                     <div class="d-flex ion-align-items-center">
                         <ion-icon name="eye-outline"></ion-icon>
                         <small class="pl-2">20 views</small>
                     </div>
-                </div>
-            </div>
 
-            <div class="custom-div" (click)="detail()">
-                <video width="320" height="240" autoplay controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
-        <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
-        <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />
-        Your browser does not support the video tag.
-      </video>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <div class="
-                d-flex
-                ion-justify-content-between ion-align-items-center
-                pr-3
-                pl-3
-              ">
-                    <small>Today 9:24 am</small>
-                    <div class="d-flex ion-align-items-center">
-                        <ion-icon name="eye-outline"></ion-icon>
-                        <small class="pl-2">20 views</small>
-                    </div>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+
+                    <ion-chip (click)="detail()" color="primary" outline="true">
+                        <ion-icon name="thumbs-up-outline" color="primary"></ion-icon>
+                        <ion-label>Like</ion-label>
+                    </ion-chip>
+
+                    <ion-chip (click)="detail()" color="primary" outline="true">
+                        <ion-icon name="chatbubble-ellipses-outline" color="primary"></ion-icon>
+                        <ion-label>Comment</ion-label>
+                    </ion-chip>
+
+                    <!-- <ion-chip (click)="detail()" color="primary" outline="true">
+                      <ion-icon name="share-social-outline" color="primary"></ion-icon>
+                      <ion-label>Share</ion-label>
+                  </ion-chip> -->
+
                 </div>
             </div>
             <!-- </ion-scroll> -->

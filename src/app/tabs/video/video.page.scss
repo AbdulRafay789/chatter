@@ -29,6 +29,7 @@ ion-header ion-toolbar:first-of-type {
     overflow: auto;
     padding-bottom: 20px;
     padding-top: 20px;
+    z-index: 999;
 }
 
 ion-menu-button {

@@ -1,0 +1,601 @@
+{
+	"info": {
+		"_postman_id": "0c6e5d16-0c59-41bd-acc4-bebbb83e07eb",
+		"name": "Chatter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"abdulrafay\",\n    \"fname\":\"abdul\",\n    \"lname\":\"rafay\",\n    \"mobile\":\"09098989099\",\n    \"email\":\"abdulrafay@gmail.com\",\n    \"age\":\"1992-05-26\",\n    \"password\":\"1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/users/signup",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"abdulrafay@gmail.com\",\n    \"password\":\"1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/users/login",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"abdulrafay@gmail.com\",\n    \"password\":\"1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/users",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadImages",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": [
+								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login.png"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/users/me/images",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"me",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products Save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"test\",\n    \"description\":\"test description\",\n    \"price\":20,\n    \"discount_price\":15,\n    \"owner\":\"61991d1ff8137517607d1d13\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Post Save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTlhMmQxYmVkZjk0MTA2NDQxZTMzNTgiLCJpYXQiOjE2Mzc0OTQxMTR9.K4yYr-vfp_qWBNZH-P3mRteVFi8pLYQl4S7aW1YZmhw",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "testing video",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testing description",
+							"type": "text"
+						},
+						{
+							"key": "uploadedImages",
+							"type": "file",
+							"src": [
+								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login_Reset.png",
+								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/videos",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"videos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Post Update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"testing video u\",\n    \"description\":\"testing description u\"   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/videos/619947e4442376227310a7e1",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Post Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "testing video",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testing description",
+							"type": "text"
+						},
+						{
+							"key": "uploadedImages",
+							"type": "file",
+							"src": [
+								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login_Reset.png",
+								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/videos/6199498a442376227310a7ec/6199498a442376227310a7f0",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"6199498a442376227310a7ec",
+						"6199498a442376227310a7f0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Post Video Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "testing video",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testing description",
+							"type": "text"
+						},
+						{
+							"key": "uploadedImages",
+							"type": "file",
+							"src": [
+								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login_Reset.png",
+								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/videos/6199475378e51e224e2aee96",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"6199475378e51e224e2aee96"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products Images",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "images",
+							"type": "file",
+							"src": [
+								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login.png",
+								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products/619931469f94861b16377a6f/images",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"619931469f94861b16377a6f",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products Images Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "uploadedImages",
+							"type": "file",
+							"src": [
+								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login.png",
+								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products/619931469f94861b16377a6f/uploadImages",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"619931469f94861b16377a6f",
+						"uploadImages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"abdulrafay@gmail.com\",\n    \"password\":\"1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/check",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"check"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -57,4 +57,12 @@ export class AppComponent {
     }, 1000);
   }
 
+  createvideo() {
+    // this.router.navigate(['/tabs/profile']);
+    this.nav.navigateRoot('/tabs/video');
+    setTimeout(() => {
+      this.menu.close();
+    }, 1000);
+  }
+
 }

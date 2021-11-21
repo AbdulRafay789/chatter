@@ -16,10 +16,9 @@ export class ProfilePage implements OnInit {
     if (this.view === true) {
       this.view = false;
     }
-    else {
-      this.view = true;
-    }
-    console.log(this.view);
+    // else {
+    //   this.view = true;
+    // }
   }
 
   // notifications() {

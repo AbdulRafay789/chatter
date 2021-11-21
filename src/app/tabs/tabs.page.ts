@@ -12,7 +12,6 @@ export class TabsPage implements OnInit {
   items = [];
   items1 = {};
   numTimesLeft = 5;
-
   constructor(private router: Router, private httpConfigService: HttpConfigService) {
     this.addMoreItems();
   }
