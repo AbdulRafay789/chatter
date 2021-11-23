@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://35.239.44.221:3000/'
+  // baseUrl: 'http://35.239.44.221:3000/users/login'
+  // baseUrl: 'https://jsonplaceholder.typicode.com/posts'
+  baseUrl: 'https://jsonplaceholder.typicode.com/'
+  // baseUrl: 'http://162.215.217.147:3000/'
 };
 
 /*

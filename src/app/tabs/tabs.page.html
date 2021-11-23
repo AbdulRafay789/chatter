@@ -23,7 +23,7 @@
               </ion-infinite-scroll-content>
           </ion-infinite-scroll> -->
 
-            <ion-searchbar showCancelButton="focus" mode="ios" placeholder="Search Here"></ion-searchbar>
+            <ion-searchbar showCancelButton="focus" (click)="search()" mode="ios" placeholder="Search Here"></ion-searchbar>
 
             <!-- <ion-scroll scrollY="true"> -->
             <h4>Today</h4>
@@ -70,10 +70,10 @@
 
             <div class="custom-div">
                 <video width="320" height="240" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
-        <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
-        <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />
-        Your browser does not support the video tag.
-      </video>
+          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+          <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg" />
+          Your browser does not support the video tag.
+        </video>
                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
                 <div class="
               d-flex

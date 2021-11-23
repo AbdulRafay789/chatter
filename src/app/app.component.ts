@@ -22,7 +22,7 @@ export class AppComponent {
     this.nav.navigateRoot('/tabs');
     setTimeout(() => {
       this.menu.close();
-    }, 1000);
+    }, 100);
   }
 
   chat() {
@@ -30,7 +30,7 @@ export class AppComponent {
     this.nav.navigateRoot('/tabs/chat');
     setTimeout(() => {
       this.menu.close();
-    }, 1000);
+    }, 100);
   }
 
   profile() {
@@ -38,7 +38,7 @@ export class AppComponent {
     this.nav.navigateRoot('/tabs/profile');
     setTimeout(() => {
       this.menu.close();
-    }, 1000);
+    }, 100);
   }
 
   verifyid() {
@@ -46,7 +46,7 @@ export class AppComponent {
     this.nav.navigateRoot('/verify-id');
     setTimeout(() => {
       this.menu.close();
-    }, 1000);
+    }, 100);
   }
 
   connections() {
@@ -54,7 +54,7 @@ export class AppComponent {
     this.nav.navigateRoot('/followers');
     setTimeout(() => {
       this.menu.close();
-    }, 1000);
+    }, 100);
   }
 
   createvideo() {
@@ -62,7 +62,7 @@ export class AppComponent {
     this.nav.navigateRoot('/tabs/video');
     setTimeout(() => {
       this.menu.close();
-    }, 1000);
+    }, 100);
   }
 
 }

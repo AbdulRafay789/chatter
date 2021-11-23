@@ -38,16 +38,21 @@ export class TabsPage implements OnInit {
     this.router.navigate(['/tabs/home/detail']);
   }
 
-  pisca() {
-    this.httpConfigService.getListItems(this.items).subscribe(response => {
-      console.log(response);
-      this.items1 = response;
-    }, error => { console.log(error); });
-    console.log(this.items1);
+  search() {
+    this.router.navigate(['/search-results']);
   }
 
+  // pisca() {
+  //   this.httpConfigService.getListItems(this.items).subscribe(response => {
+  //     console.log(response);
+  //     this.items1 = response;
+  //   }, error => { console.log(error); });
+  //   console.log(this.items1);
+  // }
+
+
   ngOnInit() {
-    this.pisca();
+    // this.pisca();
   }
 
 }

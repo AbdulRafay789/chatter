@@ -9,7 +9,8 @@
         <ion-buttons slot="end">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Connected</ion-title>
+        <ion-title class="ion-text-center title" color="primary" *ngIf="this.view === true">Connect</ion-title>
+        <ion-title class="ion-text-center title" color="primary" *ngIf="this.view === false">Connected</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -17,7 +18,7 @@
 
     <div class="background-picture">
 
-        <!-- <div class="login-details pr-1 pl-1 custom-textarea">
+        <div class="login-details pr-1 pl-1 custom-textarea" *ngIf="this.view === false">
             <ion-item class="mb-2 p-custom" lines="none">
                 <img src="../../../assets/images/Rectangle 26.png" class="w-25">
                 <ion-label>
@@ -89,9 +90,9 @@
                     <p class="ml-3 f-s-12">Stacy Doe</p>
                 </ion-label>
             </ion-item>
-        </div> -->
+        </div>
 
-        <div class="login-details pr-1 pl-1 custom-textarea">
+        <div class="login-details pr-1 pl-1 custom-textarea" *ngIf="this.view === true">
             <ion-item class="mb-2 p-custom" lines="none">
                 <img src="../../../assets/images/Rectangle 26.png" class="w-25">
                 <ion-label>
@@ -100,7 +101,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -117,7 +118,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -134,7 +135,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -151,7 +152,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -167,7 +168,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -183,7 +184,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -199,7 +200,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>
@@ -215,7 +216,7 @@
                             <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
                             <p class="ml-3 f-s-12">Stacy Doe</p>
                         </div>
-                        <ion-chip class="bg-primary">
+                        <ion-chip class="bg-primary img-click" (click)="toggle()">
                             <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
                             <ion-label>Connect</ion-label>
                         </ion-chip>

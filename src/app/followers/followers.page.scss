@@ -67,6 +67,7 @@ ion-icon {
     // custom icons
     &[class*="appname-customicon1"] {
         mask-image: url(../../assets/images/Icon-feather-home-1.svg);
+        background: white;
     }
     &[class*="appname-customicon2"] {
         mask-image: url(../../assets/images/Group-6853-1.svg);

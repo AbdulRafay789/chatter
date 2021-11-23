@@ -6,13 +6,16 @@
 	},
 	"item": [
 		{
-			"name": "Signup",
+			"name": "check",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"abdulrafay\",\n    \"fname\":\"abdul\",\n    \"lname\":\"rafay\",\n    \"mobile\":\"09098989099\",\n    \"email\":\"abdulrafay@gmail.com\",\n    \"age\":\"1992-05-26\",\n    \"password\":\"1234567\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,12 +23,111 @@
 					}
 				},
 				"url": {
-					"raw": "35.239.44.221:3000/users/signup",
+					"raw": "35.239.44.221:3000/check",
 					"host": [
 						"35",
 						"239",
 						"44",
 						"221"
+					],
+					"port": "3000",
+					"path": [
+						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"ChatterOfficial\",\n    \"fname\":\"Chatter\",\n    \"lname\":\"Official\",\n    \"mobile\":\"09098989099\",\n    \"email\":\"blessedbyaloha@gmail.com\",\n    \"age\":\"1992-05-26\",\n    \"password\":\"Paiwa808\",\n    \"bio\":\"Chatter\",\n    \"location\":\"US\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/signup",
+					"host": [
+						"localhost"
 					],
 					"port": "3000",
 					"path": [
@@ -51,12 +153,9 @@
 					}
 				},
 				"url": {
-					"raw": "35.239.44.221:3000/users/login",
+					"raw": "localhost:3000/users/login",
 					"host": [
-						"35",
-						"239",
-						"44",
-						"221"
+						"localhost"
 					],
 					"port": "3000",
 					"path": [
@@ -68,51 +167,18 @@
 			"response": []
 		},
 		{
-			"name": "Users",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\":\"abdulrafay@gmail.com\",\n    \"password\":\"1234567\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "35.239.44.221:3000/users",
-					"host": [
-						"35",
-						"239",
-						"44",
-						"221"
-					],
-					"port": "3000",
-					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "UploadImages",
+			"name": "User Save Image",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWMxZGY4MTM3NTE3NjA3ZDFkMDkiLCJpYXQiOjE2Mzc1ODA5NTR9.cZLt5i15_wv6H_9gfKSszqIxISpvLKll_EHHxlr3v5A",
 						"type": "text"
 					},
 					{
-						"key": "Content-Type",
-						"value": "multipart/form-data",
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
 						"type": "text",
 						"disabled": true
 					}
@@ -121,12 +187,19 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "avatar",
+							"key": "title",
+							"value": "Profile",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Profile description",
+							"type": "text"
+						},
+						{
+							"key": "uploadedImages",
 							"type": "file",
-							"src": [
-								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
-								"/Users/hafizharis/Downloads/Chatter/01_Login.png"
-							]
+							"src": "/Users/hafizharis/Projects/Apps/chatter/src/assets/images/Icon material-send.png"
 						}
 					],
 					"options": {
@@ -136,27 +209,272 @@
 					}
 				},
 				"url": {
-					"raw": "35.239.44.221:3000/users/me/images",
+					"raw": "localhost:3000/users/image",
 					"host": [
-						"35",
-						"239",
-						"44",
-						"221"
+						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"users",
-						"me",
-						"images"
+						"image"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Products Save",
+			"name": "Update Profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"abdulrafay@gmail.com\",\n    \"username\":\"SiddiquiBeta\",\n    \"fname\":\"Siddiqi\",  \n    \"lname\":\"Beta\",  \n    \"bio\":\"Freelance\",  \n    \"mobile\":\"8909090989\",  \n    \"location\":\"R77\",  \n    \"dob\":\"1992-05-26\",  \n    \"password\":\"1234567\"  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/me",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Connect Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTljYjUyMTYwMzhjYzcxYjlkN2NjMTgiLCJpYXQiOjE2Mzc2NTk5Mzd9.nnA4In3s7QuL2mr3QE28ijnorPXejRql84C6D2ToWpI",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/getconnectusers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"getconnectusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Connected Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWMxZGY4MTM3NTE3NjA3ZDFkMDkiLCJpYXQiOjE2Mzc1ODA5NTR9.cZLt5i15_wv6H_9gfKSszqIxISpvLKll_EHHxlr3v5A",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/getconnectedusers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"getconnectedusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connect User",
 			"request": {
 				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWMxZGY4MTM3NTE3NjA3ZDFkMDkiLCJpYXQiOjE2Mzc1ODA5NTR9.cZLt5i15_wv6H_9gfKSszqIxISpvLKll_EHHxlr3v5A",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/connect/619cb5216038cc71b9d7cc18",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"connect",
+						"619cb5216038cc71b9d7cc18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnConnect User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTljYjUyMTYwMzhjYzcxYjlkN2NjMTgiLCJpYXQiOjE2Mzc2NTk5Mzd9.nnA4In3s7QuL2mr3QE28ijnorPXejRql84C6D2ToWpI",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/unconnect/61991d1ff8137517607d1d13",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"unconnect",
+						"61991d1ff8137517607d1d13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like Video",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/like",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unlike Video",
+			"request": {
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
@@ -166,12 +484,13 @@
 					{
 						"key": "owner",
 						"value": "61991d1ff8137517607d1d13",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\":\"test\",\n    \"description\":\"test description\",\n    \"price\":20,\n    \"discount_price\":15,\n    \"owner\":\"61991d1ff8137517607d1d13\"\n}",
+					"mode": "formdata",
+					"formdata": [],
 					"options": {
 						"raw": {
 							"language": "json"
@@ -179,26 +498,236 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/products",
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/619a5b658cfec32faf0d9a6c/unlike",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"products"
+						"videos",
+						"619947e4442376227310a7e1",
+						"619a5b658cfec32faf0d9a6c",
+						"unlike"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Videos Post Save",
+			"name": "Report Video",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTlhMmQxYmVkZjk0MTA2NDQxZTMzNTgiLCJpYXQiOjE2Mzc0OTQxMTR9.K4yYr-vfp_qWBNZH-P3mRteVFi8pLYQl4S7aW1YZmhw",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/report",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnReport Video",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/619a5b348cfec32faf0d9a5e/unreport",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1",
+						"619a5b348cfec32faf0d9a5e",
+						"unreport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Video",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/view",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Video",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\":\"tight video :P again m\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/comment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Uncomment Video",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/videos/619947e4442376227310a7e1/619a5c23736f562fea5dd181/uncomment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"619947e4442376227310a7e1",
+						"619a5c23736f562fea5dd181",
+						"uncomment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTljYTUyOWJlNTNhNDIyY2QxZDY0MDUiLCJpYXQiOjE2Mzc2NTU4OTR9.zxZpgHFPmPznfrAclKFNqtjjnzSzTmeZTXeStGEAfwA",
 						"type": "text"
 					},
 					{
@@ -226,7 +755,7 @@
 							"type": "file",
 							"src": [
 								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
-								"/Users/hafizharis/Downloads/Chatter/01_Login_Reset.png",
+								"/Users/hafizharis/Downloads/Chatter/01_Login.png",
 								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
 							]
 						}
@@ -238,7 +767,50 @@
 					}
 				},
 				"url": {
-					"raw": "35.239.44.221:3000/videos",
+					"raw": "http://162.215.217.147:3000/videos",
+					"protocol": "http",
+					"host": [
+						"162",
+						"215",
+						"217",
+						"147"
+					],
+					"port": "3000",
+					"path": [
+						"videos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/videos/6199475378e51e224e2aee96",
 					"host": [
 						"35",
 						"239",
@@ -247,7 +819,52 @@
 					],
 					"port": "3000",
 					"path": [
-						"videos"
+						"videos",
+						"6199475378e51e224e2aee96"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Videos Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.239.44.221:3000/videos/6199498a442376227310a7ec/6199498a442376227310a7f0",
+					"host": [
+						"35",
+						"239",
+						"44",
+						"221"
+					],
+					"port": "3000",
+					"path": [
+						"videos",
+						"6199498a442376227310a7ec",
+						"6199498a442376227310a7f0"
 					]
 				}
 			},
@@ -297,134 +914,7 @@
 			"response": []
 		},
 		{
-			"name": "Videos Post Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
-						"type": "text"
-					},
-					{
-						"key": "owner",
-						"value": "61991d1ff8137517607d1d13",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "testing video",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "testing description",
-							"type": "text"
-						},
-						{
-							"key": "uploadedImages",
-							"type": "file",
-							"src": [
-								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
-								"/Users/hafizharis/Downloads/Chatter/01_Login_Reset.png",
-								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
-							]
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "35.239.44.221:3000/videos/6199498a442376227310a7ec/6199498a442376227310a7f0",
-					"host": [
-						"35",
-						"239",
-						"44",
-						"221"
-					],
-					"port": "3000",
-					"path": [
-						"videos",
-						"6199498a442376227310a7ec",
-						"6199498a442376227310a7f0"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Videos Post Video Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
-						"type": "text"
-					},
-					{
-						"key": "owner",
-						"value": "61991d1ff8137517607d1d13",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "testing video",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "testing description",
-							"type": "text"
-						},
-						{
-							"key": "uploadedImages",
-							"type": "file",
-							"src": [
-								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
-								"/Users/hafizharis/Downloads/Chatter/01_Login_Reset.png",
-								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
-							]
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "35.239.44.221:3000/videos/6199475378e51e224e2aee96",
-					"host": [
-						"35",
-						"239",
-						"44",
-						"221"
-					],
-					"port": "3000",
-					"path": [
-						"videos",
-						"6199475378e51e224e2aee96"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Products Get",
+			"name": "get chats",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -433,13 +923,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
 						"type": "text"
 					},
 					{
 						"key": "owner",
 						"value": "61991d1ff8137517607d1d13",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -452,129 +943,38 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/products",
+					"raw": "localhost:3000/getchats",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"products"
+						"getchats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Products Images",
+			"name": "Create Chat",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
 						"type": "text"
 					},
 					{
 						"key": "owner",
 						"value": "61991d1ff8137517607d1d13",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "images",
-							"type": "file",
-							"src": [
-								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
-								"/Users/hafizharis/Downloads/Chatter/01_Login.png",
-								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
-							]
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/products/619931469f94861b16377a6f/images",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"products",
-						"619931469f94861b16377a6f",
-						"images"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Products Images Copy",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
-						"type": "text"
-					},
-					{
-						"key": "owner",
-						"value": "61991d1ff8137517607d1d13",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "uploadedImages",
-							"type": "file",
-							"src": [
-								"/Users/hafizharis/Downloads/Chatter/00_Splash.png",
-								"/Users/hafizharis/Downloads/Chatter/01_Login.png",
-								"/Users/hafizharis/Downloads/Chatter/02_SignUp.png"
-							]
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/products/619931469f94861b16377a6f/uploadImages",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"products",
-						"619931469f94861b16377a6f",
-						"uploadImages"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "check",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\":\"abdulrafay@gmail.com\",\n    \"password\":\"1234567\"\n}",
+					"raw": "{\n    \"userto_id\":\"61991c1df8137517607d1d09\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -582,16 +982,137 @@
 					}
 				},
 				"url": {
-					"raw": "35.239.44.221:3000/check",
+					"raw": "localhost:3000/chats/create",
 					"host": [
-						"35",
-						"239",
-						"44",
-						"221"
+						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"check"
+						"chats",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Msg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc1MDE3MzV9.BQ_BFkVXAmqa2pgl_b3Eu9i7kjF1HhD0M-RozpJNKwc",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\":\"619b639e158379387bcce597\",\n    \"userto_id\":\"61991c1df8137517607d1d09\",\n    \"msg\":\"kesy ho\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/chats/send",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"chats",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/chats/delete/619b778ee737f56c51a6c56b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"chats",
+						"delete",
+						"619b778ee737f56c51a6c56b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat Msg Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MWQxZmY4MTM3NTE3NjA3ZDFkMTMiLCJpYXQiOjE2Mzc0MjQ3NzJ9.lOiWRE4wDqZKo3PRx-u_Ld5kF4vRi14tXdni_pE4jXg",
+						"type": "text"
+					},
+					{
+						"key": "owner",
+						"value": "61991d1ff8137517607d1d13",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/chats/delete/619b639e158379387bcce597/619b661869424a39935f3dd9",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"chats",
+						"delete",
+						"619b639e158379387bcce597",
+						"619b661869424a39935f3dd9"
 					]
 				}
 			},

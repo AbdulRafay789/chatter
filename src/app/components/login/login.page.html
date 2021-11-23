@@ -21,18 +21,20 @@
                 <label for="username" class="ml-8">Username</label>
                 <div class="input">
                     <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
-                    <ion-input clearInput type="username" name="username" class="username" placeholder="Enter Username"></ion-input>
+                    <ion-input autofocus="true" [(ngModel)]="email" required="true" clearInput type="username" name="username" class="username" placeholder="Enter Username"></ion-input>
                 </div>
 
 
                 <label for="password" class="ml-8">Password</label>
                 <div class="input">
                     <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
-                    <ion-input clearInput type="password" name="password" class="password" placeholder="Enter Password"></ion-input>
+                    <ion-input [(ngModel)]="password" required="true" clearInput type="password" name="password" class="password" placeholder="Enter Password"></ion-input>
                 </div>
 
                 <p id="forgot" (click)="presentModal()" class="forgot">Forgot Password?</p>
-                <ion-button (click)="home()" expand="full" class="btn1" color="primary">LOGIN</ion-button>
+                <ion-button (click)="initializeDepartmentListt()" expand="full" class="btn1" color="primary">LOGIN</ion-button>
+                <p>{{data.username}}</p>
+                <p>{{data.password}}</p>
                 <div class="account-signup">
                     <p>Don't have an account?</p>
                     <h5 class="mt-0 mr-0 mb-0 ml-5" (click)="signup()">
