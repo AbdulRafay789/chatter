@@ -68,6 +68,39 @@
                     <p class="heading-color-1">www.chatter.com</p>
                 </div>
 
+                <ion-segment [(ngModel)]="segment" color="primary" scrollable mode="ios">
+                    <ion-segment-button value="Posts" layout="icon-top">
+                        <p class="mb-0">11</p>
+                        <ion-label>Posts</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Like" layout="icon-top">
+                        <p class="mb-0">22</p>
+                        <ion-label>Like</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Connect" layout="icon-top">
+                        <p class="mb-0">33</p>
+                        <ion-label>Connect</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Connected" layout="icon-top">
+                        <p class="mb-0">33</p>
+                        <ion-label>Connected</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+
+                <div [ngSwitch]="segment" class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                    <p *ngSwitchCase="'Posts'">11</p>
+                    <p *ngSwitchCase="'Like'">22</p>
+                    <p *ngSwitchCase="'Connect'">33</p>
+                    <p *ngSwitchCase="'Connected'">44</p>
+                </div>
+
+                <!-- <div class="d-flex ion-justify-content-between ion-align-items-center ml-4 mr-4">
+                    <p class="mb-0">11</p>
+                    <p class="mb-0">22</p>
+                    <p class="mb-0">33</p>
+                    <p class="mb-0">44</p>
+                </div> -->
+
             </div>
         </div>
 

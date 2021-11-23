@@ -120,3 +120,12 @@ ion-icon {
         mask-image: url(../../../assets/images/user-1.svg);
     }
 }
+
+ion-segment {
+    background-color: transparent;
+}
+
+ion-segment-button {
+    color: #a07ebb;
+    --indicator-box-shadow: 0 0 5px rgb(244 58 3);
+}

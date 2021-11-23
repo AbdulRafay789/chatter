@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
   view: boolean;
+  value: 'Posts';
+  segment: any;
   constructor(private router: Router) {
-
+    this.segment = 'Posts';
   }
 
   toggle() {
@@ -24,6 +26,11 @@ export class ProfilePage implements OnInit {
   // notifications() {
   //   this.router.navigate(['/notifications']);
   // }
+
+  segmentChanged(ev: any) {
+    this.value = 'Posts';
+    this.value = ev.detail.value;
+  }
 
   ngOnInit() {
     this.view = true;

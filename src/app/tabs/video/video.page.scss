@@ -42,10 +42,11 @@ ion-card {
 }
 
 ion-card-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // padding: 50px;
+    padding: 50px 30px 50px 20px;
 }
 
 .btn1 {
@@ -123,4 +124,8 @@ ion-icon {
         mask-image: url(../../../assets/images/user-1.svg);
         background: white;
     }
+}
+
+.primary {
+    color: var(--ion-color-primary);
 }
