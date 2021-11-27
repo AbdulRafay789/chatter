@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { GeneralService } from '../services/general.service';
 import { HttpConfigService } from '../services/http-config.service';
 
 @Component({
@@ -8,11 +10,16 @@ import { HttpConfigService } from '../services/http-config.service';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-
+  videos = [];
   items = [];
   items1 = {};
   numTimesLeft = 5;
-  constructor(private router: Router, private httpConfigService: HttpConfigService) {
+  detailedsource: any;
+  videoLike: any;
+  videoLikeData: any;
+  showdetails: any;
+  constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService,
+    private loadingController: LoadingController) {
     this.addMoreItems();
   }
 
@@ -34,8 +41,8 @@ export class TabsPage implements OnInit {
   //   this.router.navigate(['/notifications']);
   // }
 
-  detail() {
-    this.router.navigate(['/tabs/home/detail']);
+  detail(param) {
+    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
   }
 
   search() {
@@ -50,9 +57,133 @@ export class TabsPage implements OnInit {
   //   console.log(this.items1);
   // }
 
+  async getVideos() {
+    const data1: any = await this.service.getApi('videos', {});
+    if (data1.status && data1.data) {
+      this.videos = data1.data;
+      // eslint-disable-next-line no-underscore-dangle
+      this.videoLike = data1.data._id;
+      // this.detailedsource = data1.data[0].videos;
+      // let fieldValues
+      // this.detailedsource = data1.data.videos.Object.keys(fieldValues).map(key => fieldValues[key]);
+    }
+    else {
+      if (data1.status === false) {
+        this.generalService.generalErrorMessage('No Record Found');
+      }
+      this.generalService.generalErrorMessage(data1.msg);
+      console.log(data1.msg);
+    }
+
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
+
+  async patchVideos() {
+    const data1: any = await this.service.postAttachmentApi('videos', {});
+    if (data1.status && data1.data) {
+      this.videos = data1.data;
+    }
+    else {
+      this.generalService.generalErrorMessage(data1.msg);
+      console.log(data1.msg);
+    }
+
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: null,
+      duration: 5000,
+      message: 'Click the backdrop to dismiss early...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading',
+      backdropDismiss: true
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed with role:', role);
+  }
+
+  async likeVideo(param, indx) {
+    // this.videoLike = this.videos._id
+    param.islike = true;
+    if (param.islike) {
+      const url = 'videos/' + param['_id'] + '/unlike';
+      const data1: any = await this.service.deleteApi(url, {});
+      if (data1.status) {
+        debugger;
+        this.videos[indx]["total_likes"] = this.videos[indx]["total_likes"] - 1;
+        // this.router.navigate(['/tabs']);
+      }
+      else {
+        this.generalService.generalErrorMessage(data1.msg);
+        console.log(data1.msg);
+      }
+
+    }
+    else {
+      const url = 'videos/' + param['_id'] + '/like';
+      const data1: any = await this.service.postApi(url, {});
+      if (data1.status && data1.data) {
+        this.videoLikeData = data1;
+        debugger;
+        this.videos.splice(indx, 1, data1.data);
+        this.generalService.generalToast('Logged In SuccessFully', 2000);
+        // this.router.navigate(['/tabs']);
+      }
+      else {
+        this.generalService.generalErrorMessage(data1.msg);
+        console.log(data1.msg);
+      }
+    }
+
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
+
+  async unlikeVideo(param, indx) {
+    // this.videoLike = this.videos._id
+    const url = 'videos/' + param['_id'] + '/like';
+    const data1: any = await this.service.deleteApi(url, {});
+    if (data1.status) {
+      debugger;
+      this.videos[indx]["total_likes"] = this.videos[indx]["total_likes"] - 1;
+      // this.router.navigate(['/tabs']);
+    }
+    else {
+      this.generalService.generalErrorMessage(data1.msg);
+      console.log(data1.msg);
+    }
+
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
+
+  async viewVideo(param, indx) {
+    // this.videoLike = this.videos._id
+    const url = 'videos/' + param['_id'] + '/view';
+    const data1: any = await this.service.postApi(url, {});
+    if (data1.status) {
+      debugger;
+      // this.showdetails = data1.data;
+      this.videos[indx]["total_views"] = this.videos[indx]["total_views"] + 1;
+    }
+    else {
+      this.generalService.generalErrorMessage(data1.msg);
+      console.log(data1.msg);
+    }
+    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
+
 
   ngOnInit() {
-    // this.pisca();
+    this.getVideos();
   }
 
 }

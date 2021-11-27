@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController, NavController } from '@ionic/angular';
+import { StatusBar } from '@capacitor/status-bar';
+import { MenuController, NavController, Platform } from '@ionic/angular';
+import { LoginPage } from './components/login/login.page';
+import { globalConfig } from './services/global.config';
+import { TabsPage } from './tabs/tabs.page';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  rootPage: any = LoginPage;
   public appPages = [
     { title: 'Home', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Create Post', url: '/folder/Outbox', icon: 'paper-plane' },
@@ -15,7 +20,15 @@ export class AppComponent {
     { title: 'Profile', url: '/folder/Trash', icon: 'trash' },
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(public router: Router, public menu: MenuController, public nav: NavController) { }
+  constructor(public router: Router, public menu: MenuController, public nav: NavController, private injector: Injector,
+    public platform: Platform,) {
+    globalConfig.injector = injector;
+    this.initializeApp();
+    const token = localStorage.getItem('token');
+    if (token && token.indexOf('bearer ') > -1) {
+      this.rootPage = TabsPage;
+    }
+  }
 
   home() {
     // this.router.navigate(['/tabs']);
@@ -63,6 +76,13 @@ export class AppComponent {
     setTimeout(() => {
       this.menu.close();
     }, 100);
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // this.statusBar.styleDefault();
+      // this.splashScreen.hide();
+    });
   }
 
 }

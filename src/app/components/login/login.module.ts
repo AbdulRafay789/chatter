@@ -9,6 +9,8 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { SignupPageRoutingModule } from './signup/signup-routing.module';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { UserService } from 'src/app/services/user.service';
+import { HttpHelper } from 'src/app/services/http.helper';
 
 @NgModule({
   declarations: [LoginPage,ForgotpasswordComponent],
@@ -19,6 +21,10 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     LoginPageRoutingModule,
     // SignupPageRoutingModule
   ],
+//   providers: [
+//     UserService,
+//     HttpHelper,
+// ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginPageModule { }

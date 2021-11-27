@@ -11,7 +11,7 @@ export class HomePage implements OnInit {
   items = [];
   numTimesLeft = 5;
 
-  constructor(private router: Router, private httpConfigService: HttpConfigService) {
+  constructor(private router: Router) {
     this.addMoreItems();
   }
 

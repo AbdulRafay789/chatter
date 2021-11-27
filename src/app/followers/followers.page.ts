@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class FollowersPage implements OnInit {
   view: boolean;
-  constructor(private router: Router) { }
+  constructor() { }
 
   // notifications() {
   //   this.router.navigate(['/notifications']);

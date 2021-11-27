@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { BaseService } from 'src/app/services/Base.Service';
+import { GeneralService } from 'src/app/services/general.service';
+import { globalConfig } from 'src/app/services/global.config';
 import { HttpConfigService } from 'src/app/services/http-config.service';
+import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 @Component({
@@ -12,19 +16,27 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email: any;
+  email = 'abdulrafay@gmail.com';
+  password = '1234567';
   signUp: Form;
-  password: any;
   data: any = {};
   isLoading = false;
   pisci: any;
-
+  isRemember = false;
   currentDisplayDepartment: number = null;
 
   constructor(
-    private router: Router,
-    public modalController: ModalController, private service: HttpConfigService
-  ) { }
+    public router: Router,
+    // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
+    public modalController: ModalController, public service: HttpConfigService,
+    public generalService: GeneralService
+  ) {
+    this.generalService.setCustomer('');
+    this.generalService.setUserLogin('');
+    this.generalService.setActuallUserLogin('');
+    this.generalService.clear();
+    // this.auth.clear();
+  }
 
   pisca() {
     this.router.navigate(['/folder/inbox']);
@@ -71,12 +83,25 @@ export class LoginPage implements OnInit {
     // }
   }
 
-  // async initializeDepartmentList(): Promise<void> {
-  //   const data: SearchChange = await this.service.getListItems(this.data).toPromise();
-  //   this.data = data;
-  //   this.username = data.userName
-  //   this.username = data.password
-  // }
+  async getLogin() {
+    this.data.email = this.email;
+    this.data.password = this.password;
+    const data1: any = await this.service.postApi('users/login', this.data);
+    if (data1.status && data1.data) {
+      this.service.settoken(data1.data.token);
+      this.service.setuser(data1.data);
+      this.data = data1;
+      this.generalService.generalToast('Logged In SuccessFully', 2000);
+      this.router.navigate(['/tabs']);
+    }
+    else {
+      this.generalService.generalErrorMessage(data1.msg);
+      console.log(data1.msg);
+    }
+
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
 
   isAuthorize() {
     // const msg = 'email';
@@ -135,14 +160,59 @@ export class LoginPage implements OnInit {
 
   }
 
-  async initializeDepartmentListt(): Promise<void> {
-    // if (this.isAuthorize()) {
-      this.data.username = this.email;
-    this.data.password = this.password;
-      const data = (await this.service.getListItems(this.data)).toPromise();
-      this.pisci = data;
-      this.router.navigate(['/tabs']);
-    // }
+  // async initializeDepartmentListt(): Promise<void> {
+  //   // if (this.isAuthorize()) {
+  //     this.data.username = this.email;
+  //   this.data.password = this.password;
+  //     const data = (await this.service.getListItems(this.data)).toPromise();
+  //     this.pisci = data;
+  //     this.router.navigate(['/tabs']);
+  //   // }
+  // }
+
+  // async loginA() {
+  //   this.isLoading = true;
+  //   const loginRes = await this.auth.login(
+  //     this.email,
+  //     this.password,
+  //   );
+  //   if (loginRes.isSuccessful) {
+  //     this.isLoading = false;
+  //     localStorage.setItem('token', ('bearer' + (loginRes).data.token));
+  //     localStorage.setItem('user', JSON.stringify((loginRes).data));
+  //     BaseService.fill('bearer' + (loginRes).data.token);
+  //     this.saveForm();
+  //     this.generalService.setActuallUserLogin((loginRes).data.loginObject.userLogin);
+  //     this.setACustomer(loginRes.data);
+  //   }
+  //   else {
+  //     this.isLoading = false;
+  //     this.generalService.generalErrorMessage(loginRes.errors);
+  //   }
+
+  // }
+
+  saveForm() {
+    if (this.isRemember === true) {
+      localStorage.setItem('email', this.email);
+      localStorage.setItem('password', this.password);
+    }
+    else {
+      localStorage.setItem('email', '');
+      localStorage.setItem('password', '');
+    }
+  }
+
+  setACustomer(data) {
+    if (data.loginObject) {
+      this.generalService.setUserLogin(data.loginObject.userLogin);
+      this.generalService.setActuallUserLogin(data.loginObject.userLogin);
+      this.generalService.setRole(data.loginObject.genRolesId);
+      if (data.loginObject.customer != null && data.loginObject.customer !== undefined) {
+        this.generalService.setCustomer(data.loginObject.customer.shortName);
+      }
+    }
+
   }
 
   ngOnInit() { }

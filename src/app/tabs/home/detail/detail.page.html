@@ -20,75 +20,40 @@
         <div class="login-details">
 
             <div class="custom-div">
-                <video width="320" height="240" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
-          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-          <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
-          Your browser does not support the video tag.
-        </video>
+                <ion-slides pager="true" mode="ios">
+                    <ion-slide *ngFor="let element of videoData.videos">
+                        <img *ngIf="!element.isvideo" [src]="element.path" style="height:240px;" alt="">
+                        <video *ngIf="element.isvideo" width="320" height="240" controls poster="../../../../assets/images/Icon ionic-ios-play-circle.png">
+              <source [src]="element.path" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+                    </ion-slide>
+                </ion-slides>
             </div>
-            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+            <h5>{{videoData.title}}</h5>
             <div class="d-flex ion-justify-content-between ion-align-items-center pr-4 pl-4">
-                <small>Today 9:24 am</small>
+                <small>{{videoData.createdAt |date}}</small>
                 <div class="d-flex ion-align-items-center">
-                    <ion-icon name="eye-outline"></ion-icon> <small class="pl-2">20 views</small>
+                    <ion-icon name="eye-outline"></ion-icon> <small class="pl-2">{{videoData.total_views}}</small>
                 </div>
             </div>
 
-            <h6 class="custom-class">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, in voluptatum neque quis explicabo saepe eligendi numquam ut unde architecto,</h6>
+            <h6 class="custom-class">{{videoData.description}}</h6>
 
-            <ion-item class="mb-2" lines="none">
+            <ion-item *ngFor="let comment of videoData.comments" class="mb-2" lines="none">
                 <!-- <ion-avatar slot="start"> -->
                 <img src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2">
                 <!-- </ion-avatar> -->
                 <ion-label>
                     <h2 class="ml-3 font-weight-bold">Rey</h2>
-                    <p class="ml-3">5 mins ago</p>
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2" lines="none">
-                <!-- <ion-avatar slot="start"> -->
-                <img src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2">
-                <!-- </ion-avatar> -->
-                <ion-label>
-                    <h2 class="ml-3 font-weight-bold">Rey</h2>
-                    <p class="ml-3">5 mins ago</p>
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2" lines="none">
-                <!-- <ion-avatar slot="start"> -->
-                <img src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2">
-                <!-- </ion-avatar> -->
-                <ion-label>
-                    <h2 class="ml-3 font-weight-bold">Rey</h2>
-                    <p class="ml-3">5 mins ago</p>
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2" lines="none">
-                <!-- <ion-avatar slot="start"> -->
-                <img src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2">
-                <!-- </ion-avatar> -->
-                <ion-label>
-                    <h2 class="ml-3 font-weight-bold">Rey</h2>
-                    <p class="ml-3">5 mins ago</p>
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2" lines="none">
-                <!-- <ion-avatar slot="start"> -->
-                <img src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2">
-                <!-- </ion-avatar> -->
-                <ion-label>
-                    <h2 class="ml-3 font-weight-bold">Rey</h2>
-                    <p class="ml-3">5 mins ago</p>
+                    <p class="ml-3">{{comment.message}}</p>
                 </ion-label>
             </ion-item>
 
             <div class="custom-icon">
-                <ion-input clearInput type="username" name="password" class="password" placeholder="Write Comment"></ion-input>
-                <img src="../../../../assets/images/Icon material-send.png" alt="">
+                <ion-input type="username" [(ngModel)]="message" name="password" class="password" placeholder="Write Comment">
+                </ion-input>
+                <img src="../../../../assets/images/Icon material-send.png" alt="" (click)="commentVideo(videoData , videoData.videos)">
                 <!-- <ion-icon src="../../../../assets/images/Icon material-send.png" slot="end" align-self-center></ion-icon> -->
                 <!-- <ion-icon name="person" src="../../../../assets/images/Icon material-send.png" slot="end" align-self-center></ion-icon> -->
             </div>

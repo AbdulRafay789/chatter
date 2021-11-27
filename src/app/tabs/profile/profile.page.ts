@@ -10,7 +10,7 @@ export class ProfilePage implements OnInit {
   view: boolean;
   value: 'Posts';
   segment: any;
-  constructor(private router: Router) {
+  constructor() {
     this.segment = 'Posts';
   }
 

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MessagesPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   // notifications() {
   //   this.router.navigate(['/notifications']);

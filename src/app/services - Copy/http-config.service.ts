@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router, UrlTree } from '@angular/router';
 
-let token = '';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +16,7 @@ export class HttpConfigService {
   url = 'users/login';
   // url = 'users/login';
   tree: UrlTree;
-  // token = '';
+  token = '';
   user: any = {};
   // url = 'posts';
   constructor(private http: HttpClient, private toastCtrl: ToastController, private loadingController:
@@ -89,7 +88,7 @@ export class HttpConfigService {
   }
 
   settoken(tok) {
-    token = tok;
+    this.token = tok;
   };
 
   setuser(usr) {
@@ -101,56 +100,15 @@ export class HttpConfigService {
   };
 
   async postApi(url, params, headerson?) {
-    const headerObj = {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': ''
-    };
-    if (token !== '') {
-      headerObj.Authorization = 'Bearer ' + token;
-    }
-    const obj = Object.assign({}, headerObj);
-    const httpHeaders = new HttpHeaders(obj);
-    const options = { headers: httpHeaders };
-
-    const result = this.http.post(environment.baseUrl + url, params, options).toPromise();
-    return result;
-  }
-
-  async getApi(url, params, headerson?) {
-    let headers = new HttpHeaders();
-
-    // headers = headers.append('Content-Type', 'application/json; charset=utf-8');
-    // headers = headers.append('Access-Control-Allow-Origin', '*');
-    // headers = headers.append('Access-Control-Allow-Credentials', 'true');
-    // if (token !== '') {
-    //   headers = headers.append('Authorization', 'Bearer ' + token);
-    // }
-    // headers.append('GET', 'POST');
-
-    const headerObj = {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': ''
-    };
-    if (token !== '') {
-      headerObj.Authorization = 'Bearer ' + token;
-    }
-    const obj = Object.assign({}, headerObj);
-    const httpHeaders = new HttpHeaders(obj);
-    const options = { headers: httpHeaders };
-    const result = this.http.get(environment.baseUrl + url, options).toPromise();
-    return result;
-  }
-
-  async postAttachmentApi(url, params, headerson?) {
     let headers = new HttpHeaders();
     // headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    headers = headers.append('Content-Type', 'multipart/form-data');
+    headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     // headers.append('Accept', 'application/json');
-    headers = headers.append('Access-Control-Allow-Origin', '*');
-    headers = headers.append('Access-Control-Allow-Credentials', 'true');
-    if (token !== '') {
-      headers = headers.append('Authorization', 'Bearer ' + token);
+    headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+    headers = new HttpHeaders().set('Access-Control-Allow-Credentials', 'true');
+    if (this.token !== '') {
+      headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
     }
     headers.append('GET', 'POST');
     // console.log(environment.baseUrl + params);
@@ -162,28 +120,24 @@ export class HttpConfigService {
     return result;
   }
 
-  async deleteApi(url, params, headerson?) {
-    // let headers = new HttpHeaders();
+  async getApi(url, params, headerson?) {
+    let headers = new HttpHeaders();
     // headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    // headers = headers.append('Content-Type', 'application/json; charset=utf-8');
-    // headers = headers.append('Access-Control-Allow-Origin', '*');
-    // headers = headers.append('Access-Control-Allow-Credentials', 'true');
-    // headers = headers.append('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // headers = headers.append('Accept', '*/*');
-
-    const headerObj = {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': ''
-    };
-    if (token !== '') {
-      headerObj.Authorization = 'Bearer ' + token;
+    headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    // headers.append('Accept', 'application/json');
+    headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+    headers = new HttpHeaders().set('Access-Control-Allow-Credentials', 'true');
+    if (this.token !== '') {
+      headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
     }
-    const obj = Object.assign({}, headerObj);
-    const httpHeaders = new HttpHeaders(obj);
-    const options = { headers: httpHeaders };
-
-    const result = this.http.delete(environment.baseUrl + url, options).toPromise();
+    headers.append('GET', 'POST');
+    // console.log(environment.baseUrl + params);
+    // this.tree = this.router.parseUrl(this.url);
+    // const result = this.http.post(environment.baseUrl + this.url, params);
+    // return result;
+    // return this.http.post(environment.baseUrl + this.url, params).toPromise();
+    const result = this.http.get(environment.baseUrl + url, params).toPromise();
     return result;
   }
 
