@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { GeneralService } from '../services/general.service';
@@ -9,7 +9,7 @@ import { HttpConfigService } from '../services/http-config.service';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPage implements OnInit, OnChanges {
   videos = [];
   items = [];
   items1 = {};
@@ -18,6 +18,7 @@ export class TabsPage implements OnInit {
   videoLike: any;
   videoLikeData: any;
   showdetails: any;
+  likeconnect: any;
   constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService,
     private loadingController: LoadingController) {
     this.addMoreItems();
@@ -60,9 +61,10 @@ export class TabsPage implements OnInit {
   async getVideos() {
     const data1: any = await this.service.getApi('videos', {});
     if (data1.status && data1.data) {
-      this.videos = data1.data;
-      // eslint-disable-next-line no-underscore-dangle
-      this.videoLike = data1.data._id;
+      // this.videos = data1.data;
+      this.service.setVideo(data1.data);
+      this.videos = this.service.getVideo();
+      // this.videoLike = data1.data._id;
       // this.detailedsource = data1.data[0].videos;
       // let fieldValues
       // this.detailedsource = data1.data.videos.Object.keys(fieldValues).map(key => fieldValues[key]);
@@ -110,8 +112,9 @@ export class TabsPage implements OnInit {
 
   async likeVideo(param, indx) {
     // this.videoLike = this.videos._id
-    param.islike = true;
+    // param.islike = true;
     if (param.islike) {
+      this.likeconnect = param.like;
       const url = 'videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
@@ -132,7 +135,7 @@ export class TabsPage implements OnInit {
         this.videoLikeData = data1;
         debugger;
         this.videos.splice(indx, 1, data1.data);
-        this.generalService.generalToast('Logged In SuccessFully', 2000);
+        // this.generalService.generalToast('Logged In SuccessFully', 2000);
         // this.router.navigate(['/tabs']);
       }
       else {
@@ -176,7 +179,7 @@ export class TabsPage implements OnInit {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
-    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
+    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param), index: indx }]);
     // this.email = data1.email;
     // this.password = data1.password;
   }
@@ -184,6 +187,10 @@ export class TabsPage implements OnInit {
 
   ngOnInit() {
     this.getVideos();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.videos = this.service.getVideo();
   }
 
 }

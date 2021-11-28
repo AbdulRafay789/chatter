@@ -18,35 +18,71 @@
                 </div>
 
                 <h1 class="ion-text-center login-font">Sign up</h1>
-                <label for="username" class="ml-8">Username</label>
+
+                <label for="username" class="ml-8">User Name</label>
                 <div class="input">
                     <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
-                    <ion-input clearInput type="username" name="username" class="username" placeholder="Enter Your Username">
+                    <ion-input clearInput [(ngModel)]="username" type="username" name="username" class="username" placeholder="Enter Your User Name">
                     </ion-input>
                 </div>
 
-                <label for="username" class="ml-8">Email Address</label>
+                <label for="username" class="ml-8">First Name</label>
                 <div class="input">
                     <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
-                    <ion-input clearInput type="username" name="username" class="username" placeholder="Enter Your Email Address">
+                    <ion-input clearInput [(ngModel)]="fname" type="username" name="username" class="username" placeholder="Enter Your First Name">
+                    </ion-input>
+                </div>
+
+                <label for="username" class="ml-8">Last Name</label>
+                <div class="input">
+                    <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
+                    <ion-input clearInput [(ngModel)]="lname" type="username" name="username" class="username" placeholder="Enter Your Last Name">
+                    </ion-input>
+                </div>
+
+                <label for="username" class="ml-8">Mobile #</label>
+                <div class="input">
+                    <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
+                    <ion-input clearInput [(ngModel)]="mobile" type="username" name="username" class="username" placeholder="Enter Your Mobile Number">
+                    </ion-input>
+                </div>
+
+                <label for="username" class="ml-8">Email</label>
+                <div class="input">
+                    <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
+                    <ion-input clearInput [(ngModel)]="email" type="username" name="username" class="username" placeholder="Enter Your Email">
+                    </ion-input>
+                </div>
+
+                <label for="username" class="ml-8">Age</label>
+                <div class="input">
+                    <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
+                    <ion-input clearInput [(ngModel)]="age" type="username" name="username" class="username" placeholder="Enter Your Age">
                     </ion-input>
                 </div>
 
                 <label for="password" class="ml-8">Password</label>
                 <div class="input">
                     <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
-                    <ion-input clearInput type="password" name="password" class="password" placeholder="Enter Your Password">
+                    <ion-input clearInput [(ngModel)]="password" type="password" name="password" class="password" placeholder="Enter Your Password">
                     </ion-input>
                 </div>
 
-                <label for="password" class="ml-8">Confirm Password</label>
+                <label for="password" class="ml-8">Bio</label>
                 <div class="input">
                     <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
-                    <ion-input clearInput type="password" name="password" class="password" placeholder="Confirm Your Password">
+                    <ion-input clearInput [(ngModel)]="bio" type="text" name="password" class="password" placeholder="Enter Your Bio">
                     </ion-input>
                 </div>
 
-                <ion-button expand="full" class="btn1" color="primary">Sign up</ion-button>
+                <label for="password" class="ml-8">Location</label>
+                <div class="input">
+                    <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
+                    <ion-input clearInput [(ngModel)]="location" type="text" name="password" class="password" placeholder="Enter Your Location">
+                    </ion-input>
+                </div>
+
+                <ion-button (click)="signup()" expand="full" class="btn1 img-click" color="primary">Sign up</ion-button>
                 <div class="account-signup">
                     <p>Or Sign up With?</p>
                 </div>

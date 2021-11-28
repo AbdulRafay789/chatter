@@ -20,6 +20,7 @@ export class HttpConfigService {
   // token = '';
   user: any = {};
   // url = 'posts';
+  videos = [];
   constructor(private http: HttpClient, private toastCtrl: ToastController, private loadingController:
     LoadingController, private router: Router) { }
 
@@ -98,6 +99,14 @@ export class HttpConfigService {
 
   getuser() {
     return this.user;
+  };
+
+  setVideo(vids) {
+    this.videos = vids;
+  };
+
+  getVideo() {
+    return this.videos;
   };
 
   async postApi(url, params, headerson?) {

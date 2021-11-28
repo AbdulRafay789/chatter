@@ -13,6 +13,7 @@ export class DetailPage implements OnInit {
   message = '';
   videos = [];
   showdetails: any;
+  index: any;
   constructor(private router: Router, private route: ActivatedRoute, public service: HttpConfigService,
     public generalService: GeneralService,) {
 
@@ -27,8 +28,10 @@ export class DetailPage implements OnInit {
     const data = { message: this.message };
     const data1: any = await this.service.postApi(url, data);
     if (data1.status) {
-      debugger;
       this.videoData = data1.data;
+      const videos: any = this.service.getVideo();
+      videos[this.index] = this.videoData;
+      this.service.setVideo(videos);
       // this.videoData[indx]["comment"] = this.videoData[indx]["comment"] + 1;
       // this.showdetails = await this.service.getApi('videos', {});
     }
@@ -44,7 +47,7 @@ export class DetailPage implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.videoData = JSON.parse(params.data);
-      debugger;
+      this.index = params.index;
       // this.id = params['id'];
     });
   }

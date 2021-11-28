@@ -58,7 +58,8 @@
 
                         <ion-chip (click)="likeVideo(video,i)" color="primary" outline="true">
                             <ion-icon name="thumbs-up-outline" color="primary"></ion-icon>
-                            <ion-label>Like {{video.total_likes}}</ion-label>
+                            <ion-label *ngIf="video.islike" class="font-weight-bold">Like {{video.total_likes}} </ion-label>
+                            <ion-label *ngIf="!video.islike">Like {{video.total_likes}} </ion-label>
                         </ion-chip>
 
                         <!-- <ion-chip (click)="detail(video)" color="primary" outline="true">
