@@ -16,8 +16,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = 'abdulrafay@gmail.com';
-  password = '1234567';
+  email = '';//abdulrafay@gmail.com
+  password = '';//1234567
   signUp: Form;
   data: any = {};
   isLoading = false;

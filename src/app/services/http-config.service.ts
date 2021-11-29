@@ -112,6 +112,10 @@ export class HttpConfigService {
   async postApi(url, params, headerson?) {
     const headerObj = {
       'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Access-Control-Allow-Credentials': 'true',
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       'Authorization': ''
     };
     if (token !== '') {
