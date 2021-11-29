@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
 import { MenuController, NavController, Platform } from '@ionic/angular';
 import { LoginPage } from './components/login/login.page';
+import { GeneralService } from './services/general.service';
 import { globalConfig } from './services/global.config';
+import { HttpConfigService } from './services/http-config.service';
 import { TabsPage } from './tabs/tabs.page';
 @Component({
   selector: 'app-root',
@@ -21,7 +23,7 @@ export class AppComponent {
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(public router: Router, public menu: MenuController, public nav: NavController, private injector: Injector,
-    public platform: Platform,) {
+    public platform: Platform, public service: HttpConfigService, public generalService: GeneralService,) {
     globalConfig.injector = injector;
     this.initializeApp();
     const token = localStorage.getItem('token');
@@ -76,6 +78,27 @@ export class AppComponent {
     setTimeout(() => {
       this.menu.close();
     }, 100);
+  }
+
+  async logout() {
+    const url = 'users/logoutAll';
+    const data1: any = await this.service.postApi(url, {});
+    if (data1.status && data1.data) {
+      // this.videos = data1.data;
+      this.service.setVideo(data1.data);
+      this.nav.navigateRoot('/login');
+      setTimeout(() => {
+        this.menu.close();
+      }, 100);
+      this.generalService.generalToast(data1.msg, 2000);
+    }
+    else {
+      if (data1.status === false) {
+        this.generalService.generalToast(data1.msg, 2000);
+      }
+      // this.generalService.generalToast(data1.msg);
+      // console.log(data1.msg);
+    }
   }
 
   initializeApp() {

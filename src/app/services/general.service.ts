@@ -10,12 +10,13 @@ import { Version, PlayStoreLink, AppStoreLink } from '../../../config';
 import { ConfigurationProvider } from './configuration';
 import { BaseService } from './Base.Service';
 import { AlertController, LoadingController, ModalController, Platform, ToastController } from '@ionic/angular';
+var dialogLoader;
 
 @Injectable()
 export class GeneralService {
   public disabled: boolean;
 
-  dialogLoader: any;
+  // dialogLoader: any;
   accessorialDelivery: any = [];
   accessorialPickup: any = [];
   freightClassType: any[] = [];
@@ -57,9 +58,7 @@ export class GeneralService {
     private platform: Platform,) {
     // super();
     // super('General');
-    this.dialogLoader = this.loadingCtrl.create({
-      message: 'Please wait...'
-    });
+
     // this.apiPath = conf.getServerUrl();
     // this.router = GlobalConfig.injector.get(Router);
 
@@ -459,37 +458,36 @@ export class GeneralService {
   //   return await this.get('GetPortsAndStatesbyCountryCode', params);
   // }
 
-  showLoader() {
-    this.dialogLoader.present();
-  }
-  stopLoader() {
-    setTimeout(() => {
-      this.dialogLoader.dismiss();
-    }, 200);
-  }
-  async presentLoading(fn) {
-
-    const dialogLoader = await this.loadingCtrl.create({
-      spinner: null,
-      duration: 5000,
-      message: 'Please wait...',
-      translucent: true,
-      cssClass: 'custom-class custom-loading',
-      backdropDismiss: true
+  async showLoader() {
+    dialogLoader = await this.loadingCtrl.create({
+      message: 'Please wait...'
     });
     await dialogLoader.present();
+  }
+  stopLoader() {
+    // setTimeout(() => {
+    dialogLoader.dismiss();
+    // }, 200);
+  }
+  async presentLoading(fn?) {
 
-    // let dialogLoader = this.loadingCtrl.create({
-    //   content: 'Please wait...'
+    // const dialogLoader = await this.loadingCtrl.create({
+    //   spinner: null,
+    //   mode: 'ios',
+    //   message: 'Please wait...',
+    //   translucent: true,
+    //   cssClass: 'custom-class custom-loading',
+    //   backdropDismiss: true
     // });
+    // await dialogLoader.present();
 
-    dialogLoader.present();
-    if (typeof fn == 'function') {
-      await fn();
-    }
-    setTimeout(() => {
-      dialogLoader.dismiss();
-    }, 400);
+    // dialogLoader.present();
+    // if (typeof fn == 'function') {
+    //   await fn();
+    // }
+    // setTimeout(() => {
+    //   dialogLoader.dismiss();
+    // }, 400);
   }
 
   // public async showErrorDialog(data) {

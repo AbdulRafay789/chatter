@@ -7,7 +7,8 @@ export const environment = {
   // baseUrl: 'http://35.239.44.221:3000/users/login'
   // baseUrl: 'https://jsonplaceholder.typicode.com/posts'
   // baseUrl: 'https://jsonplaceholder.typicode.com/'
-     baseUrl: 'https://162.215.217.147:3000/'
+    //  baseUrl: 'https://162.215.217.147:3000/'
+     baseUrl: 'https://mychatterapp.com:3000/'
 };
 
 /*

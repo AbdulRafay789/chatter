@@ -9,6 +9,7 @@ import { HttpConfigService } from '../services/http-config.service';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
+
 export class TabsPage implements OnInit, OnChanges {
   videos = [];
   items = [];
@@ -19,6 +20,7 @@ export class TabsPage implements OnInit, OnChanges {
   videoLikeData: any;
   showdetails: any;
   likeconnect: any;
+  interval: number;
   constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService,
     private loadingController: LoadingController) {
     this.addMoreItems();
@@ -59,11 +61,13 @@ export class TabsPage implements OnInit, OnChanges {
   // }
 
   async getVideos() {
+    this.generalService.showLoader();
     const data1: any = await this.service.getApi('videos', {});
     if (data1.status && data1.data) {
       // this.videos = data1.data;
       this.service.setVideo(data1.data);
       this.videos = this.service.getVideo();
+      this.generalService.stopLoader();
       // this.videoLike = data1.data._id;
       // this.detailedsource = data1.data[0].videos;
       // let fieldValues
@@ -114,12 +118,14 @@ export class TabsPage implements OnInit, OnChanges {
     // this.videoLike = this.videos._id
     // param.islike = true;
     if (param.islike) {
+      this.generalService.showLoader();
       this.likeconnect = param.like;
       const url = 'videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
         debugger;
         this.videos[indx]["total_likes"] = this.videos[indx]["total_likes"] - 1;
+        this.generalService.stopLoader();
         // this.router.navigate(['/tabs']);
       }
       else {
@@ -129,12 +135,14 @@ export class TabsPage implements OnInit, OnChanges {
 
     }
     else {
+      this.generalService.showLoader();
       const url = 'videos/' + param['_id'] + '/like';
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
         this.videoLikeData = data1;
         debugger;
         this.videos.splice(indx, 1, data1.data);
+        this.generalService.stopLoader();
         // this.generalService.generalToast('Logged In SuccessFully', 2000);
         // this.router.navigate(['/tabs']);
       }
@@ -168,12 +176,14 @@ export class TabsPage implements OnInit, OnChanges {
 
   async viewVideo(param, indx) {
     // this.videoLike = this.videos._id
+    this.generalService.showLoader();
     const url = 'videos/' + param['_id'] + '/view';
     const data1: any = await this.service.postApi(url, {});
     if (data1.status) {
       debugger;
       // this.showdetails = data1.data;
       this.videos[indx]["total_views"] = this.videos[indx]["total_views"] + 1;
+      this.generalService.stopLoader();
     }
     else {
       this.generalService.generalErrorMessage(data1.msg);
@@ -184,6 +194,11 @@ export class TabsPage implements OnInit, OnChanges {
     // this.password = data1.password;
   }
 
+  usersDetail(param, indx) {
+    // this.generalService.showLoader();
+    this.router.navigate(['/users-detail', { data: JSON.stringify(param), index: indx }]);
+    // this.generalService.stopLoader();
+  }
 
   ngOnInit() {
     this.getVideos();

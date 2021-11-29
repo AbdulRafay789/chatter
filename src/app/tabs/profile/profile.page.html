@@ -21,14 +21,19 @@
             <div>
                 <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="">
 
-                <ion-input clearInput type="username" name="username" class="username" placeholder="Username"></ion-input>
-                <ion-input clearInput type="username" name="email" class="username" placeholder="Email"></ion-input>
-                <ion-input clearInput type="username" name="username" class="username" placeholder="Contact"></ion-input>
-                <ion-input clearInput type="username" name="username" class="username" placeholder="Bio"></ion-input>
-                <ion-textarea rows="2" cols="5" placeholder="Location"></ion-textarea>
-                <ion-input clearInput type="username" name="username" class="username" placeholder="Link"></ion-input>
+                <ion-input [(ngModel)]="profileData.username" clearInput type="username" name="username" class="username" placeholder="Username"></ion-input>
+                <ion-input [(ngModel)]="profileData.fname" clearInput type="username" name="username" class="username" placeholder="First Name"></ion-input>
+                <ion-input [(ngModel)]="profileData.lname" clearInput type="username" name="username" class="username" placeholder="Last Name"></ion-input>
+                <ion-input [(ngModel)]="profileData.mobile" clearInput type="username" name="username" class="username" placeholder="Mobile #"></ion-input>
+                <ion-input [(ngModel)]="profileData.email" clearInput type="username" name="email" class="username" placeholder="Email">
+                </ion-input>
+                <ion-input [(ngModel)]="profileData.age" clearInput type="username" name="username" class="username" placeholder="Age">
+                </ion-input>
+                <ion-input [(ngModel)]="profileData.bio" clearInput type="username" name="username" class="username" placeholder="Bio">
+                </ion-input>
+                <ion-textarea [(ngModel)]="profileData.location" rows="2" cols="5" placeholder="Location"></ion-textarea>
 
-                <ion-button expand="full" class="btn1" color="primary">Save</ion-button>
+                <ion-button (click)="patchVideos()" expand="full" class="btn1" color="primary">Save</ion-button>
             </div>
         </div>
 
@@ -36,39 +41,19 @@
             <div>
 
                 <div class="d-flex ion-justify-content-end ion-align-items-center">
-                    <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="">
-                    <img src="../../../assets/images/Icon awesome-edit.png" (click)="toggle()" class="h-25-px w-25-px ml-5 img-click" alt="">
+                    <!-- <img *ngIf="profileData.user_dp.path" [src]="profileData.user_dp.path" class="w-50 mb-3" alt="" (click)="toggle()"> -->
+                    <!-- <img *ngIf="!profileData.user_dp.path" src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" (click)="toggle()"> -->
+                    <img src="../../assets/images/Oval.png" class="w-50 mb-3" alt="">
+                    <img src="../../../assets/images/Icon awesome-edit.png" class="h-25-px w-25-px ml-5 img-click" (click)="toggle()">
                 </div>
 
-                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
-                    <p class="heading-color">Username</p>
-                    <p class="heading-color-1">johndoe01
-                    </p>
-                </div>
-                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
-                    <p class="heading-color">Email</p>
-                    <p class="heading-color-1">john@chatter.com</p>
-                </div>
-                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
-                    <p class="heading-color">Contact</p>
-                    <p class="heading-color-1">+12345678901</p>
-                </div>
-                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
-                    <p class="heading-color">Bio</p>
-                    <p class="heading-color-1">About Me
-                    </p>
-                </div>
-                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
-                    <p class="heading-color">Location</p>
-                    <p class="heading-color-1">H # 192 St.2 NY, <br> United States
-                    </p>
-                </div>
-                <div class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
-                    <p class="heading-color">Link</p>
-                    <p class="heading-color-1">www.chatter.com</p>
-                </div>
+                <!-- <div class="d-flex ion-justify-content-end ion-align-items-center">
+          <img [src]="profileData.user_dp.path" class="w-50 mb-3" alt="">
+          <img src="../../../assets/images/Icon awesome-edit.png" (click)="toggle()"
+            class="h-25-px w-25-px ml-5 img-click" alt="">
+        </div> -->
 
-                <ion-segment [(ngModel)]="segment" color="primary" scrollable mode="ios">
+                <ion-segment [(ngModel)]="segment" color="primary" scrollable mode="ios" class="mb-2">
                     <ion-segment-button value="Posts" layout="icon-top">
                         <p class="mb-0">11</p>
                         <ion-label>Posts</ion-label>
@@ -87,11 +72,49 @@
                     </ion-segment-button>
                 </ion-segment>
 
-                <div [ngSwitch]="segment" class="d-flex ion-justify-content-between ion-align-items-center mr-4 ">
+                <!-- <div [ngSwitch]="segment" class="d-flex ion-justify-content-between ion-align-items-center">
                     <p *ngSwitchCase="'Posts'">11</p>
                     <p *ngSwitchCase="'Like'">22</p>
                     <p *ngSwitchCase="'Connect'">33</p>
                     <p *ngSwitchCase="'Connected'">44</p>
+                </div> -->
+
+
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Username</p>
+                    <p class="heading-color-1">{{profileData.username}}
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">First Name</p>
+                    <p class="heading-color-1">{{profileData.fname}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Last Name</p>
+                    <p class="heading-color-1">{{profileData.fname}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Mobile #</p>
+                    <p class="heading-color-1">{{profileData.mobile}}
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Email</p>
+                    <p class="heading-color-1">{{profileData.email}}
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Age</p>
+                    <p class="heading-color-1">{{profileData.dob}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Bio
+                    </p>
+                    <p class="heading-color-1">{{profileData.bio}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Location</p>
+                    <p class="heading-color-1">{{profileData.location}}</p>
                 </div>
 
                 <!-- <div class="d-flex ion-justify-content-between ion-align-items-center ml-4 mr-4">

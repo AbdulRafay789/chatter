@@ -24,6 +24,7 @@ export class DetailPage implements OnInit {
   // }
 
   async commentVideo(param, indx) {
+    this.generalService.showLoader();
     const url = 'videos/' + param['_id'] + '/comment';
     const data = { message: this.message };
     const data1: any = await this.service.postApi(url, data);
@@ -32,6 +33,8 @@ export class DetailPage implements OnInit {
       const videos: any = this.service.getVideo();
       videos[this.index] = this.videoData;
       this.service.setVideo(videos);
+      this.message = '';
+      this.generalService.stopLoader();
       // this.videoData[indx]["comment"] = this.videoData[indx]["comment"] + 1;
       // this.showdetails = await this.service.getApi('videos', {});
     }
