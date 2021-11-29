@@ -86,12 +86,14 @@ export class LoginPage implements OnInit {
   async getLogin() {
     this.data.email = this.email;
     this.data.password = this.password;
+    this.generalService.showLoader();
     const data1: any = await this.service.postApi('users/login', this.data);
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
       this.data = data1;
       this.generalService.generalToast('Logged In SuccessFully', 2000);
+      this.generalService.stopLoader();
       this.router.navigate(['/tabs']);
     }
     else {

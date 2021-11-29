@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="users-detail" color="primary"></ion-back-button>
+        </ion-buttons>
+        <!-- <ion-buttons slot="end">
+          <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
+      </ion-buttons> -->
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center title" color="primary">Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="background-picture">
+
+        <div class="login-details pr-4 pl-4 custom-textarea">
+            <div>
+
+                <div class="d-flex ion-justify-content-center ion-align-items-center">
+                    <img *ngIf="videoData.user_dp.path" [src]="videoData.user_dp.path" class="w-50 mb-3" alt="">
+                    <img *ngIf="!videoData.user_dp.path" src="../../assets/images/Oval.png" class="w-50 mb-3" alt="">
+                </div>
+
+                <div class="d-flex ion-justify-content-between ion-align-items-center mb-3">
+                    <ion-button color="secondary" size="small">Connected</ion-button>
+                    <ion-button color="primary" size="small">Report</ion-button>
+                </div>
+
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Username</p>
+                    <p class="heading-color-1">{{videoData.username}}
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">First Name</p>
+                    <p class="heading-color-1">{{videoData.fname}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Last Name</p>
+                    <p class="heading-color-1">{{videoData.fname}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Mobile #</p>
+                    <p class="heading-color-1">{{videoData.mobile}}
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Email</p>
+                    <p class="heading-color-1">{{videoData.email}}
+                    </p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Age</p>
+                    <p class="heading-color-1">{{videoData.dob}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Bio
+                    </p>
+                    <p class="heading-color-1">{{videoData.bio}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center ">
+                    <p class="heading-color">Location</p>
+                    <p class="heading-color-1">{{videoData.location}}</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</ion-content>

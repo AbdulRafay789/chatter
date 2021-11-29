@@ -25,9 +25,11 @@ export class ForgotpasswordComponent implements OnInit {
 
     const data1: any = await this.service.postApi('users/forget', this.data);
     if (data1.status) {
+      this.generalService.showLoader();
       // this.service.settoken(data1.data.token);
       // this.service.setuser(data1.user);
       this.generalService.generalToast(data1.msg);
+      this.generalService.stopLoader();
       this.dismiss();
     }
     else {

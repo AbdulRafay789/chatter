@@ -51,7 +51,7 @@
             </ion-item>
 
             <div class="custom-icon">
-                <ion-input type="username" [(ngModel)]="message" name="password" class="password" placeholder="Write Comment">
+                <ion-input type="username" clearOnEdit="true" [(ngModel)]="message" name="password" class="password" placeholder="Write Comment">
                 </ion-input>
                 <img src="../../../../assets/images/Icon material-send.png" alt="" (click)="commentVideo(videoData , videoData.videos)">
                 <!-- <ion-icon src="../../../../assets/images/Icon material-send.png" slot="end" align-self-center></ion-icon> -->

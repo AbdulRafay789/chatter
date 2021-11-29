@@ -125,6 +125,22 @@ export class HttpConfigService {
     return result;
   }
 
+  async patchApi(url, params, headerson?) {
+    const headerObj = {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Authorization': ''
+    };
+    if (token !== '') {
+      headerObj.Authorization = 'Bearer ' + token;
+    }
+    const obj = Object.assign({}, headerObj);
+    const httpHeaders = new HttpHeaders(obj);
+    const options = { headers: httpHeaders };
+
+    const result = this.http.patch(environment.baseUrl + url, params, options).toPromise();
+    return result;
+  }
+
   async getApi(url, params, headerson?) {
     let headers = new HttpHeaders();
 

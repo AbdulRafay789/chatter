@@ -29,6 +29,7 @@ export class SignupPage implements OnInit {
   }
 
   async signup() {
+    this.generalService.showLoader();
     this.data.username = this.username;
     this.data.fname = this.fname;
     this.data.lname = this.lname;
@@ -44,6 +45,7 @@ export class SignupPage implements OnInit {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.user);
       this.data = data1.user;
+      this.generalService.stopLoader();
       this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
       this.router.navigate(['/tabs']);
     }

@@ -41,6 +41,14 @@ const routes: Routes = [
     path: 'upload-video',
     loadChildren: () => import('./upload-video/upload-video.module').then( m => m.UploadVideoPageModule)
   },
+  {
+    path: 'users-detail',
+    loadChildren: () => import('./users-detail/users-detail.module').then( m => m.UsersDetailPageModule)
+  },  {
+    path: 'profileforusers',
+    loadChildren: () => import('./profileforusers/profileforusers.module').then( m => m.ProfileforusersPageModule)
+  },
+
 ];
 
 @NgModule({
