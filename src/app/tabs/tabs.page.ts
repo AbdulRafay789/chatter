@@ -67,7 +67,6 @@ export class TabsPage implements OnInit, OnChanges {
       // this.videos = data1.data;
       this.service.setVideo(data1.data);
       this.videos = this.service.getVideo();
-      this.generalService.stopLoader();
       // this.videoLike = data1.data._id;
       // this.detailedsource = data1.data[0].videos;
       // let fieldValues
@@ -80,7 +79,7 @@ export class TabsPage implements OnInit, OnChanges {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
-
+    this.generalService.stopLoader();
     // this.email = data1.email;
     // this.password = data1.password;
   }
@@ -125,14 +124,13 @@ export class TabsPage implements OnInit, OnChanges {
       if (data1.status) {
         debugger;
         this.videos[indx]["total_likes"] = this.videos[indx]["total_likes"] - 1;
-        this.generalService.stopLoader();
         // this.router.navigate(['/tabs']);
       }
       else {
         this.generalService.generalErrorMessage(data1.msg);
         console.log(data1.msg);
       }
-
+      this.generalService.stopLoader();
     }
     else {
       this.generalService.showLoader();
@@ -142,7 +140,6 @@ export class TabsPage implements OnInit, OnChanges {
         this.videoLikeData = data1;
         debugger;
         this.videos.splice(indx, 1, data1.data);
-        this.generalService.stopLoader();
         // this.generalService.generalToast('Logged In SuccessFully', 2000);
         // this.router.navigate(['/tabs']);
       }
@@ -150,6 +147,7 @@ export class TabsPage implements OnInit, OnChanges {
         this.generalService.generalErrorMessage(data1.msg);
         console.log(data1.msg);
       }
+      this.generalService.stopLoader();
     }
 
     // this.email = data1.email;
@@ -183,12 +181,12 @@ export class TabsPage implements OnInit, OnChanges {
       debugger;
       // this.showdetails = data1.data;
       this.videos[indx]["total_views"] = this.videos[indx]["total_views"] + 1;
-      this.generalService.stopLoader();
     }
     else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    this.generalService.stopLoader();
     this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param), index: indx }]);
     // this.email = data1.email;
     // this.password = data1.password;
