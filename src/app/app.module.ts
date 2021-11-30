@@ -11,6 +11,7 @@ import { HttpHelper } from './services/http.helper';
 import { CoreModule } from './services/core.module';
 import { ConfigurationProvider } from './services/configuration';
 import { GeneralService } from './services/general.service';
+import { Camera } from '@ionic-native/camera/ngx';
 
 // @NgModule({
 //   declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { GeneralService } from './services/general.service';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CoreModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GeneralService],
+    GeneralService,Camera],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

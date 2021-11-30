@@ -23,15 +23,16 @@
 
                 <h6 class="text-center m-0 font-weight-bold">Today</h6>
 
-                <div class="container">
-                    <img src="../../../../assets/images/Rectangle 17449.png" alt="Avatar">
-                    <div class="d-block text-left ml-3">
-                        <p class="mb-0 messages-color">Hello. How are you today?</p>
-                        <p class="mb-0 messages-color f-s-12">Just now</p>
+                <div [ngClass]="user._id==msg.user_id ? 'container-right':'container'" *ngFor="let msg of messages;let i =index;">
+                    <img *ngIf="user._id==msg.user_id" class="right" src="{{msg.user.user_dp.path}}" alt="Avatar">
+                    <img *ngIf="user._id!=msg.user_id" src="{{msg.user.user_dp.path}}" alt="Avatar">
+                    <div class="d-block" [ngClass]="user._id==msg.user_id ? 'text-right mr-3':'text-left ml-3'">
+                        <p class="mb-0 messages-color">{{msg.message}}</p>
+                        <p class="mb-0 messages-color f-s-12">{{msg.created_at |date}}</p>
                     </div>
                 </div>
 
-                <div class="container-right ">
+                <!-- <div class="container-right ">
                     <img src="../../../../assets/images/Rectangle 28.png" alt="Avatar" class="right">
                     <div class="d-block text-right mr-3">
                         <p class="mb-0 messages-color">Hello. How are you today?</p>
@@ -53,15 +54,12 @@
                         <p class="mb-0 messages-color">Hello. How are you today?</p>
                         <p class="mb-0 messages-color f-s-12">Just now</p>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="custom-icon">
-                    <ion-input clearInput type="username" name="password" clearInput="true" clearOnEdit="true" class="password" placeholder="Write Message"></ion-input>
-                    <img src="../../../../assets/images/Icon material-send.png" alt="">
-                    <!-- <ion-icon src="../../../../assets/images/Icon material-send.png" slot="end" align-self-center></ion-icon> -->
-                    <!-- <ion-icon name="person" src="../../../../assets/images/Icon material-send.png" slot="end" align-self-center></ion-icon> -->
+                    <ion-input clearInput [(ngModel)]="msg"  type="username" name="password" clearInput="true" clearOnEdit="true" class="password" placeholder="Write Message"></ion-input>
+                    <img (click)="sendMsg()" src="../../../../assets/images/Icon material-send.png" alt="">
                 </div>
-
 
             </div>
 

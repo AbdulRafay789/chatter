@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router, UrlTree } from '@angular/router';
 
-let token = '';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWEyNWE2NDUwNTYyODAzM2U1YTlkN2IiLCJpYXQiOjE2MzgyNzc1MTZ9.o68kFDEdFnjZbOcyOIeaGvcOdBDKB5WLZNP79xxFoKg';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,7 @@ export class HttpConfigService {
   // url = 'users/login';
   tree: UrlTree;
   // token = '';
-  user: any = {};
+  user: any = {"user":{"user_dp":{"created_at":"2021-11-30T11:47:53.562Z","name":"uploadedImages-1638274333160.png","size":3913,"originalname":"facebook.png","mimetype":"image/png","path":"https://mychatterapp.com:3000/getfile/uploadedImages-1638274333160.png"},"active":true,"active_status":true,"app_token":"","bio":"Freelance1","location":"PK1","country":"","created_at":"2021-11-27T16:12:19.355Z","dark_mode":false,"deleted":false,"device_token":"","email_verified":false,"eula_agree":false,"gender":"","login_type":"","messenger_color":"","remember_token":false,"updated_at":"2021-11-27T16:12:19.355Z","verification_code":"","verification_time":"2021-11-27T16:12:19.355Z","dob":"1990-05-25","_id":"61a25a64505628033e5a9d7b","username":"mharisferoz1","fname":"haris1","lname":"feroz","mobile":"89090909891","email":"mharisferoz@gmail.com","connect":[{"created_at":"2021-11-29T20:50:25.560Z","_id":"61a53d86c03bb1117cc2a03e","user_id":"619ca529be53a422cd1d6405"},{"created_at":"2021-11-30T12:43:26.623Z","_id":"61a62b1c35b97e50f8a69e02","user_id":"619cb1211a5e6c2e3da6b48a"}],"connected":[{"created_at":"2021-11-29T20:45:38.215Z","_id":"61a53bf6f20fee0fc1fc1171","user_id":"619ca529be53a422cd1d6405"}],"createdAt":"2021-11-27T16:18:44.816Z","updatedAt":"2021-11-30T14:09:59.522Z","__v":50},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWEyNWE2NDUwNTYyODAzM2U1YTlkN2IiLCJpYXQiOjE2MzgyODEzOTl9.Y_Hs7qgnW2pjwTEhWyBrfob7TviVpNLY3tpdMskTzo4"};//{}
   // url = 'posts';
   videos = [];
   constructor(private http: HttpClient, private toastCtrl: ToastController, private loadingController:

@@ -9,6 +9,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
+  filterTerm: string;
   chatCreation: any = [];
   users: any = [];
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -28,9 +29,7 @@ export class ChatPage implements OnInit {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const data1: any = await this.service.postApi(url, { userto_id: this.userto_id });
     if (data1.status && data1.data) {
-      this.chatCreation = data1.data;
-      this.router.navigate(['/tabs/chat/messages']);
-      // this.service.setVideo(data1.data);
+      this.router.navigate(['/tabs/chat/messages',{ data: JSON.stringify(data1.data) }]);
       this.generalService.stopLoader();
     }
     else {
@@ -43,7 +42,7 @@ export class ChatPage implements OnInit {
   }
 
   async getUsers() {
-    const url = 'users';
+    const url = 'users/connectUsers';
     this.generalService.showLoader();
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
@@ -62,6 +61,9 @@ export class ChatPage implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+  }
+  Search(){
+    debugger;
   }
 
 }

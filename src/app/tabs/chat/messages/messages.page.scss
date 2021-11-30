@@ -37,6 +37,7 @@ ion-header ion-toolbar:first-of-type {
     // border-radius: 5px;
     // padding: 10px;
     // margin: 10px 0;
+    margin-top: 10px !important;
     margin: auto;
     display: flex;
     justify-content: flex-start;
@@ -49,6 +50,7 @@ ion-header ion-toolbar:first-of-type {
     // border-radius: 5px;
     // padding: 10px;
     // margin: 10px 0;
+    margin-top: 10px !important;
     margin: auto;
     display: flex;
     justify-content: inherit;
@@ -128,4 +130,7 @@ ion-input:focus {
     right: 20px;
     z-index: 999;
     width: 20px;
+}
+[type=button]:not(:disabled) {
+    visibility: hidden !important;
 }
