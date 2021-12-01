@@ -16,8 +16,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = '';//mharisferoz@gmail.com
-  password = '';//m6zfbtfk
+  email = 'mharisferoz@gmail.com'; //mharisferoz@gmail.com
+  password = 'm6zfbtfk'; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
@@ -28,7 +28,8 @@ export class LoginPage implements OnInit {
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
-    public modalController: ModalController, public service: HttpConfigService,
+    public modalController: ModalController,
+    public service: HttpConfigService,
     public generalService: GeneralService
   ) {
     this.generalService.setCustomer('');
@@ -68,7 +69,6 @@ export class LoginPage implements OnInit {
     // this.service.LoginObj.password = this.password;
     // this.data.username = this.email;
     // this.data.password = this.password;
-
     // this.service.obj.username = this.username;
     // this.service.obj.username = this.password;
     // let loginRes = await this.service.getListItems(this.data);
@@ -94,9 +94,8 @@ export class LoginPage implements OnInit {
       this.data = data1;
       this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
-    }
-    else {
-      this.generalService.generalErrorMessage(data1.msg);
+    } else {
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
@@ -131,24 +130,20 @@ export class LoginPage implements OnInit {
   }
 
   async initializeDepartmentList() {
-
     // let result
     // await this.service.presentLoading(async () => {
     //   result = this.service.getListItems(this.data);
     // });
-
     // if (result.isSuccessful) {
     //   this.data = result.data;
     //   return true;
     // } else {
     //   return result.errors;
     // }
-
     // if (this.isAuthorize()) {
     //   this.isLoading = true;
     //   this.data.email = this.email;
     //   this.data.password = this.password;
-
     //    (await this.service.getListItems(this.data)).subscribe(
     //     async (data: DepartmentModel[]) => {
     //       this.pisci = data;
@@ -158,7 +153,6 @@ export class LoginPage implements OnInit {
     //   );
     //   this.isLoading = false;
     // }
-
   }
 
   // async initializeDepartmentListt(): Promise<void> {
@@ -197,8 +191,7 @@ export class LoginPage implements OnInit {
     if (this.isRemember === true) {
       localStorage.setItem('email', this.email);
       localStorage.setItem('password', this.password);
-    }
-    else {
+    } else {
       localStorage.setItem('email', '');
       localStorage.setItem('password', '');
     }
@@ -209,13 +202,14 @@ export class LoginPage implements OnInit {
       this.generalService.setUserLogin(data.loginObject.userLogin);
       this.generalService.setActuallUserLogin(data.loginObject.userLogin);
       this.generalService.setRole(data.loginObject.genRolesId);
-      if (data.loginObject.customer != null && data.loginObject.customer !== undefined) {
+      if (
+        data.loginObject.customer != null &&
+        data.loginObject.customer !== undefined
+      ) {
         this.generalService.setCustomer(data.loginObject.customer.shortName);
       }
     }
-
   }
 
-
-  ngOnInit() { }
+  ngOnInit() {}
 }
