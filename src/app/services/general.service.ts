@@ -471,7 +471,7 @@ export class GeneralService {
   }
   stopLoader() {
     // setTimeout(() => {
-    dialogLoader.onDidDismiss();
+    dialogLoader.dismiss();
     // }, 200);
   }
   async presentLoading(fn?) {
