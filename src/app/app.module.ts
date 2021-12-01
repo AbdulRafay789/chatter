@@ -26,23 +26,9 @@ import { Firebase } from '@ionic-native/firebase/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-<<<<<<< HEAD
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CoreModule,Firebase],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GeneralService],
-=======
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    CoreModule,
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GeneralService,
-  ],
->>>>>>> fc3b9d07523657ae6639ed6a191ef7518b9e6a25
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -29,14 +29,8 @@ export class LoginPage implements OnInit {
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
-<<<<<<< HEAD
     public modalController: ModalController, public service: HttpConfigService,
     public generalService: GeneralService,private firebase: Firebase
-=======
-    public modalController: ModalController,
-    public service: HttpConfigService,
-    public generalService: GeneralService
->>>>>>> fc3b9d07523657ae6639ed6a191ef7518b9e6a25
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
@@ -218,7 +212,6 @@ export class LoginPage implements OnInit {
     }
   }
 
-<<<<<<< HEAD
 
   ngOnInit() { 
     this.firebase.getToken()
@@ -234,7 +227,4 @@ export class LoginPage implements OnInit {
     this.firebase.onTokenRefresh()
       .subscribe((token: string) => console.log(`Got a new token ${token}`));
   }
-=======
-  ngOnInit() {}
->>>>>>> fc3b9d07523657ae6639ed6a191ef7518b9e6a25
 }
