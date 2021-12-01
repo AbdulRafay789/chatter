@@ -1,4 +1,4 @@
-package com.chatterapp.chatter;
+package com.app.chatter;
 
 import com.getcapacitor.BridgeActivity;
 

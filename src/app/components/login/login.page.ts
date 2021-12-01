@@ -8,6 +8,7 @@ import { globalConfig } from 'src/app/services/global.config';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { Firebase } from '@ionic-native/firebase/ngx';
 
 @Component({
   selector: 'app-login',
@@ -24,12 +25,12 @@ export class LoginPage implements OnInit {
   pisci: any;
   isRemember = false;
   currentDisplayDepartment: number = null;
-
+  devicetoken="";
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
     public modalController: ModalController, public service: HttpConfigService,
-    public generalService: GeneralService
+    public generalService: GeneralService,private firebase: Firebase
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
@@ -86,6 +87,7 @@ export class LoginPage implements OnInit {
   async getLogin() {
     this.data.email = this.email;
     this.data.password = this.password;
+    this.data.devicetoken = this.devicetoken;
     this.generalService.showLoader();
     const data1: any = await this.service.postApi('users/login', this.data);
     if (data1.status && data1.data) {
@@ -217,5 +219,18 @@ export class LoginPage implements OnInit {
   }
 
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.firebase.getToken()
+      .then(token => {
+        console.log(`The token is ${token}`);
+        this.devicetoken = token;
+      }) // save the token server-side and use it to push notifications to this device
+      .catch(error => console.error('Error getting token', error));
+
+    this.firebase.onNotificationOpen()
+      .subscribe(data => console.log(`User opened a notification ${data}`));
+
+    this.firebase.onTokenRefresh()
+      .subscribe((token: string) => console.log(`Got a new token ${token}`));
+  }
 }
