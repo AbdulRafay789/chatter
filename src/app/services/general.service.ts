@@ -464,6 +464,7 @@ export class GeneralService {
   // }
 
   async showLoader() {
+    debugger;
     dialogLoader = await this.loadingCtrl.create({
       message: 'Please wait...',
     });
@@ -471,7 +472,10 @@ export class GeneralService {
   }
   stopLoader() {
     // setTimeout(() => {
-    dialogLoader.onDidDismiss();
+      if(dialogLoader){
+        dialogLoader.onDidDismiss();
+      }
+    
     // }, 200);
   }
   async presentLoading(fn?) {
