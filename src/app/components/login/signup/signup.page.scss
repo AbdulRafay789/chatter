@@ -1,16 +1,17 @@
 .background-picture {
-    background-image: url(../../../../assets/images/01_Login-1.png);
+    background-image: url(../../../../assets/images/splash-background.png);
     height: 100%;
     background-size: cover;
     background-repeat: round;
     width: 100%;
-    margin-top: -40px;
+    // margin-top: -40px;
 }
 
 .background-picture-1 {
     background-image: url(../../../../assets/images/01_Login-1.png);
     // height: 30%;
-    height: calc(100vh - 75%);
+    // height: calc(100vh - 75%);
+    height: calc(100vh - 94%);
     background-size: cover;
     background-repeat: inherit;
     background-position: bottom;
@@ -24,7 +25,9 @@
     top: 20%;
     left: 4%;
     width: 92%;
-    height: 38rem;
+    // height: 38rem;
+    // height: 31rem;
+    height: calc(100vh - 22%);
     box-shadow: 0px -10px 10px 0px #cbcbcb6b;
     z-index: 999;
     overflow: auto;
@@ -185,4 +188,8 @@ h5 span {
 
 .w-25 {
     width: 25%;
+}
+
+ion-datetime {
+    padding: 10px 0px 10px 8px;
 }

@@ -14,6 +14,7 @@ import { TabsPage } from './tabs/tabs.page';
 })
 export class AppComponent {
   rootPage: any = LoginPage;
+  username: any;
   public appPages = [
     { title: 'Home', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Create Post', url: '/folder/Outbox', icon: 'paper-plane' },
@@ -25,6 +26,7 @@ export class AppComponent {
   constructor(public router: Router, public menu: MenuController, public nav: NavController, private injector: Injector,
     public platform: Platform, public service: HttpConfigService, public generalService: GeneralService,) {
     globalConfig.injector = injector;
+    this.getusername();
     this.initializeApp();
     const token = localStorage.getItem('token');
     if (token && token.indexOf('bearer ') > -1) {
@@ -99,6 +101,10 @@ export class AppComponent {
       // this.generalService.generalToast(data1.msg);
       // console.log(data1.msg);
     }
+  }
+
+  getusername() {
+    this.username = this.service.user.user;
   }
 
   initializeApp() {
