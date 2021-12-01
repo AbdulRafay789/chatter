@@ -117,7 +117,6 @@ export class LoginPage implements OnInit {
     this.data.password = this.password;
     this.data.device_token = this.devicetoken;
     this.generalService.showLoader();
-    debugger;
     const data1: any = await this.service.postApi('users/login', this.data);
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
@@ -126,8 +125,8 @@ export class LoginPage implements OnInit {
       this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
     } else {
-      // this.generalService.generalToast(data1.msg);
-      // console.log(data1.msg);
+      this.generalService.generalToast(data1.msg);
+      console.log(data1.msg);
     }
     this.generalService.stopLoader();
     // this.email = data1.email;

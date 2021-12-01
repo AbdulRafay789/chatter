@@ -59,7 +59,7 @@ export class GeneralService {
 
   constructor(
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
+    public loadingController: LoadingController,
     // private http: HttpClient, private file: File, private transfer: FileTransfer,
     private http: HttpClient,
     public modalCtrl: ModalController,
@@ -168,186 +168,10 @@ export class GeneralService {
     this.userLogin1 = userLogin;
   }
 
-  // LatestDocs = null;
-  // LatestDocsDate: Date = null;
-  // async setLatestDocs() {
-  //   this.LatestDocsDate = new Date();
-  //   const DtoData = await this.GetLatestDocumentsNote();
-  //   if (DtoData.isSuccessful) {
-  //     this.LatestDocs = DtoData.data;
-  //   }
-  //   else {
-  //     this.LatestDocs = null;
-  //     this.generalErrorMessage(DtoData.errors);
-  //   }
-  // }
-
-  // async GetGUIDInvoiceDocumentFile(JobNumber: string, InvoiceNo: string, JobType: string): Promise<DtoResult<any>> {
-  //   const params: any[] = [
-  //     {
-  //       name: 'JobNumber',
-  //       value: JobNumber
-  //     }, {
-  //       name: 'InvoiceNo',
-  //       value: InvoiceNo
-  //     },
-  //     {
-  //       name: 'JobType',
-  //       value: JobType
-  //     }
-
-  //   ];
-
-  //   const result = this.get('GetGUIDInvoiceDocumentFile', params);
-  //   // const result  = this.get('GetJobDocumentFile', params);
-
-  //   return result;
-  // }
-
-  // async GetAiData() {
-  //   const OpeningData = await this.GetAiOpeningInvoice();
-  //   const PaidData = await this.GetAiPaidInvoice();
-  //   const EPaymentData = await this.GetAiEpaymentInvoice();
-  //   if (OpeningData.isSuccessful) {
-  //     this.AiOpeningInvoice = OpeningData.data;
-  //   }
-  //   else if (typeof (OpeningData.errors) == typeof ('') && OpeningData.errors == 'Active Customer Not Set') {
-  //     this.clearActiveCustomer();
-  //   }
-  //   else {
-  //     this.AiOpeningInvoice = [];
-  //   }
-  //   if (PaidData.isSuccessful) {
-  //     this.AiPaidInvoice = OpeningData.data;
-  //   }
-  //   else if (typeof (PaidData.errors) == typeof ('') && PaidData.errors == 'Active Customer Not Set') {
-  //     this.clearActiveCustomer();
-  //   }
-  //   else {
-  //     this.AiPaidInvoice = [];
-  //   }
-
-  //   if (EPaymentData.isSuccessful) {
-  //     this.AiEPaymentInvoice = EPaymentData.data;
-  //   }
-  //   else if (typeof (EPaymentData.errors) == typeof ('') && EPaymentData.errors == 'Active Customer Not Set') {
-  //     this.clearActiveCustomer();
-  //   }
-  //   else {
-  //     this.AiEPaymentInvoice = [];
-  //   }
-  //   this.AiFinanceLoadedDate = new Date();
-  // }
-
   async saveSignUp(signupData) {
     // return this.post('SaveSignUpData', signupData);
   }
 
-  // async savePort(JobNo: string, PortType: string, data: any): Promise<DtoResult<any>> {
-  //   //1 for open 2 for paid
-  //   const params = [{
-  //     name: 'PortType',
-  //     value: PortType
-  //   },
-  //   {
-  //     name: 'JobNo',
-  //     value: JobNo
-  //   }];
-  //   return this.post('SavePorts', data, params);
-  // }
-  // SendDisputeDocumentFile(Dispute: {
-  //   guidId: string;
-  //   correctAmount: number;
-  //   remarks: string;
-  // }) {
-  //   return this.post('SendDisputeDocumentFile', Dispute);
-
-  // }
-
-  // async getCountry() {
-  //   return this.get('getCountries');
-  // }
-  // async IsCustomerActive(): Promise<DtoResult<any>> {
-  //   return this.get('IsCustomerActive');
-  // }
-  // async GetPendingData() {
-
-  //   const result = await this.get('GetPendingData');
-  //   return result;
-  // }
-
-  // async GetSEJobInfoByJobNo(JobNo: string) {
-  //   const params: any[] = [{
-  //     name: 'JobNo',
-  //     value: JobNo
-  //   }];
-  //   return await this.get('GetSEJobInfoByJobNo', params);
-  // }
-  // async GetGUIDBLPrintingFile(Id: number, ReportType: number) {
-  //   const params: any[] = [{
-  //     name: 'SIId',
-  //     value: Id
-  //   }, {
-  //     name: 'ReportType',
-  //     value: ReportType
-  //   }];
-  //   return await this.get('GetGUIDBLPrintingFile', params);
-  // }
-  // async GetTrackAndTracingListSI(MblNumber: string) {
-  //   const params: any[] = [{
-  //     name: 'sMBLNo',
-  //     value: MblNumber
-  //   }];
-  //   return await this.get('GetTrackAndTracingListSI', params);
-  // }
-
-  // async GetTrackAndTracingListAE(MblNumber: string) {
-  //   const params: any[] = [{
-  //     name: 'sMBLNo',
-  //     value: MblNumber
-  //   }];
-  //   return await this.get('GetTrackAndTracingListAE', params);
-  // }
-
-  // async GetTrackAndTracingListAI(MblNumber: string) {
-  //   const params: any[] = [{
-  //     name: 'sMBLNo',
-  //     value: MblNumber
-  //   }];
-  //   return await this.get('GetTrackAndTracingListAI', params);
-  // }
-
-  // async GetTrackAndTracingListSE(MblNumber: string) {
-  //   const params: any[] = [{
-  //     name: 'sMBLNo',
-  //     value: MblNumber
-  //   }];
-  //   return await this.get('GetTrackAndTracingListSE', params);
-  // }
-
-  // async GetTrackAndTracingListLTL(MblNumber: string) {
-  //   const params: any[] = [{
-  //     name: 'sJobNo',
-  //     value: MblNumber
-  //   }];
-  //   return await this.get('GetTrackAndTracingListTP', params);
-  // }
-
-  // async GetTrackAndTracingListFTL(MblNumber: string) {
-  //   const params: any[] = [{
-  //     name: 'sJobNo',
-  //     value: MblNumber
-  //   }];
-  //   return await this.get('GetTrackAndTracingListTPFTL', params);
-  // }
-
-  // async GetEmail(Email: string) {
-  //   const params: any[] = [{
-  //     name: 'Email',
-  //     value: Email
-  //   }];
-  //   return await this.get('GetEmail', params);
-  // }
 
   async getLogin(login: string) {
     const params: any[] = [
@@ -359,39 +183,6 @@ export class GeneralService {
     // return await this.get('GetUserLogin', params);
   }
 
-  // async UnSetCustomer(): Promise<DtoResult<any>> {
-
-  //   const result = this.get('UnSetCustomer');
-  //   return result;
-  // }
-
-  // async GetBRIDANDJOBNO(BookingNo: string) {
-  //   const params: any[] = [{
-  //     name: 'BookingNo',
-  //     value: BookingNo
-  //   }];
-  //   const result = await this.get('GetBRIDANDJOBNO', params);
-  //   return result;
-
-  // }
-
-  // async UpdateCustomerDocEmail(IsDisableNotification: boolean, DocEmail?: string) {
-  //   const params: any[] = [{
-  //     name: 'IsDisableNotification',
-  //     value: IsDisableNotification
-  //   }, {
-  //     name: 'DocEmail',
-  //     value: DocEmail
-  //   }];
-
-  //   const result = await this.get('UpdateCustomerDocEmail', params);
-  //   return result;
-  // }
-
-  // async getEmailConfiguration() {
-  //   const result = await this.get('GetEmailConfiguration');
-  //   return result;
-  // }
 
   async getCitiesbyCountryCode(countryCode: string, cityName: string) {
     const params: any[] = [
@@ -465,16 +256,15 @@ export class GeneralService {
 
   async showLoader() {
     // debugger;
-    // dialogLoader = await this.loadingCtrl.create({
-    //   message: 'Please wait...',
-    // });
-    // await dialogLoader.present();
+    dialogLoader = await this.loadingController.create({
+      message: 'Please wait...',
+    });
+    await dialogLoader.present();
   }
-  stopLoader() {
+  async stopLoader() {
     // setTimeout(() => {
-      // if(dialogLoader){
-      //   dialogLoader.onDidDismiss();
-      // }
+      await dialogLoader.dismiss();
+      
     
     // }, 200);
   }
