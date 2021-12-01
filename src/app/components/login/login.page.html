@@ -5,47 +5,66 @@
 </ion-header> -->
 
 <ion-content>
-    <div class="background-picture">
-        <!-- <ion-img src="../../../assets/images/splash-background.png"></ion-img> -->
-        <!-- <img src="../../../assets/images/splash-background.png" alt=""> -->
+  <div class="background-picture">
+    <!-- <ion-img src="../../../assets/images/splash-background.png"></ion-img> -->
+    <!-- <img src="../../../assets/images/splash-background.png" alt=""> -->
 
-        <div class="login-details">
-
-            <div class="login-container">
-                <div class="font-icon">
-                    <!-- <i class="fas fa-minus icon"></i> -->
-                    <ion-icon name="remove-outline" class="icon"></ion-icon>
-                </div>
-
-                <h1 class="ion-text-center login-font">LOGIN</h1>
-                <label for="username" class="ml-8">Username</label>
-                <div class="input">
-                    <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
-                    <ion-input autofocus="true" [(ngModel)]="email" required="true" clearInput type="username" name="username" class="username" placeholder="Enter Username"></ion-input>
-                </div>
-
-
-                <label for="password" class="ml-8">Password</label>
-                <div class="input">
-                    <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
-                    <ion-input [(ngModel)]="password" required="true" clearInput type="password" name="password" class="password" placeholder="Enter Password"></ion-input>
-                </div>
-
-                <p id="forgot" (click)="presentModal()" class="forgot mb-0">Forgot Password?</p>
-                <ion-button (click)="getLogin()" expand="full" class="btn1" color="primary">LOGIN</ion-button>
-                <!-- <p>{{data.username}}</p>
-                <p>{{data.password}}</p> -->
-                <div class="account-signup">
-                    <p class="mb-0">Don't have an account?</p>
-                    <h5 class="mt-0 mr-0 mb-0 ml-5" (click)="signup()">
-                        <span>Sign Up</span>
-                    </h5>
-                </div>
-
-
-            </div>
-
+    <div class="login-details">
+      <div class="login-container">
+        <div class="font-icon">
+          <!-- <i class="fas fa-minus icon"></i> -->
+          <ion-icon name="remove-outline" class="icon"></ion-icon>
         </div>
 
+        <h1 class="ion-text-center login-font">LOGIN</h1>
+        <label for="username" class="ml-8">Username</label>
+        <div class="input">
+          <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
+          <ion-input
+            autofocus="true"
+            [(ngModel)]="email"
+            required="true"
+            clearInput
+            type="username"
+            name="username"
+            class="username"
+            placeholder="Enter Username"
+          ></ion-input>
+        </div>
+
+        <label for="password" class="ml-8">Password</label>
+        <div class="input">
+          <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
+          <ion-input
+            [(ngModel)]="password"
+            required="true"
+            clearInput
+            type="password"
+            name="password"
+            class="password"
+            placeholder="Enter Password"
+          ></ion-input>
+        </div>
+
+        <p id="forgot" (click)="presentModal()" class="forgot mb-0">
+          Forgot Password?
+        </p>
+        <ion-button
+          (click)="getLogin()"
+          expand="full"
+          class="btn1"
+          color="primary"
+          >LOGIN</ion-button
+        >
+        <!-- <p>{{data.username}}</p>
+                <p>{{data.password}}</p> -->
+        <div class="account-signup">
+          <p class="mb-0">Don't have an account?</p>
+          <h5 class="mt-0 mr-0 mb-0 ml-5" (click)="signup()">
+            <span>Sign Up</span>
+          </h5>
+        </div>
+      </div>
     </div>
+  </div>
 </ion-content>
