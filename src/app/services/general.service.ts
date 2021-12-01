@@ -9,7 +9,13 @@ import { Subject } from 'rxjs';
 import { Version, PlayStoreLink, AppStoreLink } from '../../../config';
 import { ConfigurationProvider } from './configuration';
 import { BaseService } from './Base.Service';
-import { AlertController, LoadingController, ModalController, Platform, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  ModalController,
+  Platform,
+  ToastController,
+} from '@ionic/angular';
 var dialogLoader;
 
 @Injectable()
@@ -28,9 +34,9 @@ export class GeneralService {
   classType: any[] = [];
   // public disabled: Boolean;
   customerCreditInfo: {
-    'creditLimit': number;
-    'dueDays': number;
-    'expiryDate': null;
+    creditLimit: number;
+    dueDays: number;
+    expiryDate: null;
   };
   router: any;
   actuallUserLogin1: string;
@@ -51,17 +57,20 @@ export class GeneralService {
   private userLogin1: string;
   private role1: number;
 
-  constructor(private toastCtrl: ToastController, public loadingCtrl: LoadingController,
+  constructor(
+    private toastCtrl: ToastController,
+    public loadingCtrl: LoadingController,
     // private http: HttpClient, private file: File, private transfer: FileTransfer,
-    private http: HttpClient, public modalCtrl: ModalController, private alertCtrl: AlertController,
+    private http: HttpClient,
+    public modalCtrl: ModalController,
+    private alertCtrl: AlertController,
     // private platform: Platform, private events: Events, public conf: ConfigurationProvider) {
-    private platform: Platform,) {
+    private platform: Platform
+  ) {
     // super();
     // super('General');
-
     // this.apiPath = conf.getServerUrl();
     // this.router = GlobalConfig.injector.get(Router);
-
   }
 
   clear() {
@@ -73,7 +82,7 @@ export class GeneralService {
       pay: null,
       payment: null,
     };
-  };
+  }
 
   // fileTransfer: FileTransferObject = this.transfer.create();
 
@@ -87,7 +96,10 @@ export class GeneralService {
   }
 
   getActuallUserLogin(): string {
-    if (this.actuallUserLogin1 === undefined || this.actuallUserLogin1 === undefined) {
+    if (
+      this.actuallUserLogin1 === undefined ||
+      this.actuallUserLogin1 === undefined
+    ) {
       // this.actuallUserLogin1 = this.localStorage.get('actuallUserLogin');
     }
     return this.actuallUserLogin1;
@@ -100,10 +112,9 @@ export class GeneralService {
   }
   isActiveCustomer(): boolean {
     const cust = this.getCustomer();
-    return (cust && cust !== '');
+    return cust && cust !== '';
   }
   async getCustomerCreditinfo() {
-
     if (!this.customerCreditInfo) {
       // const dto = await this.get('GetCustomerCreditinfo');
       // if (dto.isSuccessful) {
@@ -111,7 +122,6 @@ export class GeneralService {
       // }
     }
     return this.customerCreditInfo;
-
   }
   getCustomer(): string {
     if (!this.customer1 || this.customer1 === '') {
@@ -158,7 +168,6 @@ export class GeneralService {
     this.userLogin1 = userLogin;
   }
 
-
   // LatestDocs = null;
   // LatestDocsDate: Date = null;
   // async setLatestDocs() {
@@ -172,7 +181,6 @@ export class GeneralService {
   //     this.generalErrorMessage(DtoData.errors);
   //   }
   // }
-
 
   // async GetGUIDInvoiceDocumentFile(JobNumber: string, InvoiceNo: string, JobType: string): Promise<DtoResult<any>> {
   //   const params: any[] = [
@@ -195,7 +203,6 @@ export class GeneralService {
 
   //   return result;
   // }
-
 
   // async GetAiData() {
   //   const OpeningData = await this.GetAiOpeningInvoice();
@@ -343,10 +350,12 @@ export class GeneralService {
   // }
 
   async getLogin(login: string) {
-    const params: any[] = [{
-      name: 'Login',
-      value: login
-    }];
+    const params: any[] = [
+      {
+        name: 'Login',
+        value: login,
+      },
+    ];
     // return await this.get('GetUserLogin', params);
   }
 
@@ -385,25 +394,23 @@ export class GeneralService {
   // }
 
   async getCitiesbyCountryCode(countryCode: string, cityName: string) {
-
     const params: any[] = [
       {
         name: 'CountryCode',
-        value: countryCode
+        value: countryCode,
       },
       {
         name: 'CityName',
-        value: cityName
+        value: cityName,
       },
     ];
     // return await this.get('GetCitiesbyCountryCode', params);
   }
   async getPortsAndStatesbyCountryCode(countryCode: string) {
-
     const params: any[] = [
       {
         name: 'CountryCode',
-        value: countryCode
+        value: countryCode,
       },
     ];
     // return await this.get('GetPortsAndStatesbyCountryCode', params);
@@ -418,7 +425,7 @@ export class GeneralService {
       message: msg,
       duration: duration ? duration : 10000,
       // showCloseButton: true,
-      position: 'bottom'
+      position: 'bottom',
     });
     await toast.present();
     await toast.onDidDismiss();
@@ -431,7 +438,7 @@ export class GeneralService {
       msg = messages;
     } else if (messages) {
       msg = '';
-      messages.forEach(error => {
+      messages.forEach((error) => {
         msg += error;
         msg += ' ';
       });
@@ -439,12 +446,10 @@ export class GeneralService {
     return msg;
   }
   generalErrorMessage(err: any) {
-
     this.generalToast(this.getMsgString(err));
   }
 
   generalCustomErrorMessage(err: any, err1: any, err2: any) {
-
     this.generalToast(this.getMsgString(err));
   }
 
@@ -460,17 +465,16 @@ export class GeneralService {
 
   async showLoader() {
     dialogLoader = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
     });
     await dialogLoader.present();
   }
   stopLoader() {
     // setTimeout(() => {
-    dialogLoader.dismiss();
+    dialogLoader.onDidDismiss();
     // }, 200);
   }
   async presentLoading(fn?) {
-
     // const dialogLoader = await this.loadingCtrl.create({
     //   spinner: null,
     //   mode: 'ios',
@@ -480,7 +484,6 @@ export class GeneralService {
     //   backdropDismiss: true
     // });
     // await dialogLoader.present();
-
     // dialogLoader.present();
     // if (typeof fn == 'function') {
     //   await fn();
@@ -515,7 +518,7 @@ export class GeneralService {
           text: 'No',
           handler: () => {
             console.log('No clicked');
-          }
+          },
         },
         {
           text: 'Yes',
@@ -524,9 +527,9 @@ export class GeneralService {
             if (fn) {
               await fn();
             }
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await confirm.present();
   }
@@ -543,9 +546,9 @@ export class GeneralService {
             if (fn) {
               fn();
             }
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await confirm.present();
   }
@@ -562,9 +565,9 @@ export class GeneralService {
             if (fn) {
               fn();
             }
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await confirm.present();
   }
@@ -578,7 +581,6 @@ export class GeneralService {
   // changeShowLoader(change: boolean) {
   //   this.ShowLoaderChange.next(change);
   // }
-
 
   // async setOpeningInvoice(): Promise<any> {
   //   const data = await this.setOpeningInvoice();
@@ -613,7 +615,6 @@ export class GeneralService {
       }
       flags[entry[property]] = true;
       return true;
-
     });
     return newList;
   }
@@ -622,11 +623,11 @@ export class GeneralService {
     const timeObj = {
       hour: 0,
       minute: 0,
-      second: 0
+      second: 0,
     };
-    if (dateStr && (dateStr.split('T').length > 1)) {
+    if (dateStr && dateStr.split('T').length > 1) {
       const timeStr = dateStr.split('T')[1];
-      if (timeStr && (timeStr.split(':').length > 2)) {
+      if (timeStr && timeStr.split(':').length > 2) {
         const hr = Number(timeStr.split(':')[0]);
         const min = Number(timeStr.split(':')[1]);
         const sec = Number(timeStr.split(':')[2]);
@@ -638,7 +639,6 @@ export class GeneralService {
 
     return timeObj;
   }
-
 
   // async getAppCriticalVersion() {
   //   const dtoData = await this.get('GetAppCriticalVersion');
@@ -677,24 +677,19 @@ export class GeneralService {
       if (this.platform.is('ios')) {
         // window.open("market://details?id=" + AppStoreLink);
         window.open(AppStoreLink);
-      }
-      else {
+      } else {
         window.open('market://details?id=' + PlayStoreLink);
         // window.open(PlayStoreLink);
       }
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e);
       this.toastCtrl.create({
-        message: 'Error ' + e.message
+        message: 'Error ' + e.message,
       });
-
-    }
-    finally {
+    } finally {
       // this.platform.exitApp();
       // ERROR
     }
-
   }
 
   getToken(): string {
@@ -703,7 +698,6 @@ export class GeneralService {
     // }
     return this.token;
   }
-
 
   // checkAppRights() {
   //   if (this.getToken()) {
@@ -745,7 +739,7 @@ export class GeneralService {
     const alert = await this.alertCtrl.create({
       header: title,
       subHeader: subTitle,
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     await alert.present();
   }
@@ -753,7 +747,7 @@ export class GeneralService {
   async practiceAlert(title: any) {
     const alert = await this.alertCtrl.create({
       header: title,
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     await alert.present();
   }
@@ -782,6 +776,4 @@ export class GeneralService {
   // async isCustomerAllowedToBook() {
   //   return await this.get('IsCustomerAllowedToBook');
   // }
-
-
 }
