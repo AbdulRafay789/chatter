@@ -11,6 +11,7 @@ import { HttpHelper } from './services/http.helper';
 import { CoreModule } from './services/core.module';
 import { ConfigurationProvider } from './services/configuration';
 import { GeneralService } from './services/general.service';
+// import { FCM } from '@ionic-native/fcm/ngx';
 
 // @NgModule({
 //   declarations: [AppComponent],
@@ -25,17 +26,9 @@ import { GeneralService } from './services/general.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    CoreModule,
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GeneralService,
-  ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CoreModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    GeneralService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

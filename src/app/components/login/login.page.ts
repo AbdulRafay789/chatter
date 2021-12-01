@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { isPlatform } from '@ionic/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { BaseService } from 'src/app/services/Base.Service';
 import { GeneralService } from 'src/app/services/general.service';
 import { globalConfig } from 'src/app/services/global.config';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+// import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
   selector: 'app-login',
@@ -24,19 +26,46 @@ export class LoginPage implements OnInit {
   pisci: any;
   isRemember = false;
   currentDisplayDepartment: number = null;
-
+  devicetoken="";
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
-    public modalController: ModalController,
-    public service: HttpConfigService,
-    public generalService: GeneralService
+    public modalController: ModalController, public service: HttpConfigService,
+    public generalService: GeneralService, public plt: Platform
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
     this.generalService.setActuallUserLogin('');
     this.generalService.clear();
     // this.auth.clear();
+    // this.plt.ready()
+    //   .then(() => {
+    //     this.fcm.onNotification().subscribe(data => {
+    //       if (data.wasTapped) {
+    //         console.log("Received in background");
+    //       } else {
+    //         console.log("Received in foreground");
+    //       };
+    //     });
+
+    //     this.fcm.onTokenRefresh().subscribe(token => {
+    //       debugger;
+    //       this.devicetoken = token;
+    //       // Register your new token in your back-end if you want
+    //       // backend.registerToken(token);
+    //     });
+    //   })
+  }
+  subscribeToTopic() {
+    // this.fcm.subscribeToTopic('enappd');
+  }
+  getToken() {
+    // this.fcm.getToken().then(token => {debugger;
+    //   this.devicetoken = token;
+    // });
+  }
+  unsubscribeFromTopic() {
+    // this.fcm.unsubscribeFromTopic('enappd');
   }
 
   pisca() {
@@ -86,6 +115,7 @@ export class LoginPage implements OnInit {
   async getLogin() {
     this.data.email = this.email;
     this.data.password = this.password;
+    this.data.device_token = this.devicetoken;
     this.generalService.showLoader();
     const data1: any = await this.service.postApi('users/login', this.data);
     if (data1.status && data1.data) {
@@ -211,5 +241,8 @@ export class LoginPage implements OnInit {
     }
   }
 
-  ngOnInit() {}
+
+  ngOnInit() { 
+    this.getToken();
+  }
 }

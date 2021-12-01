@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.chatterapp.chatter",
+  "applicationId": "com.app.chatter",
   "variantName": "release",
   "elements": [
     {

@@ -1,5 +1,5 @@
 {
-  "appId": "com.chatterapp.chatter",
+  "appId": "com.app.chatter",
   "appName": "Chatter",
   "webDir": "www",
   "bundledWebRuntime": false
