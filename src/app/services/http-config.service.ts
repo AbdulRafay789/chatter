@@ -137,17 +137,17 @@ export class HttpConfigService {
   // }
 
   async presentLoading(fn) {
-    const dialogLoader = this.loadingController.create({
-      message: 'Please wait...',
-    });
+    // const dialogLoader = this.loadingController.create({
+    //   message: 'Please wait...',
+    // });
 
-    (await dialogLoader).present();
-    if (typeof fn == 'function') {
-      await fn();
-    }
-    setTimeout(async () => {
-      (await dialogLoader).dismiss();
-    }, 400);
+    // (await dialogLoader).present();
+    // if (typeof fn == 'function') {
+    //   await fn();
+    // }
+    // setTimeout(async () => {
+    //   (await dialogLoader).dismiss();
+    // }, 400);
   }
 
   async presentToast(msg: string) {
@@ -201,13 +201,10 @@ export class HttpConfigService {
 
     await this.http.post(environment.baseUrl + url, params, options).toPromise()
     .then( async (resp:any) =>{ 
-      debugger;
       console.log(resp);
       result = await resp;
 
     } ).catch( (error) => {
-      debugger;
-
       console.log(error);
 
     } )
