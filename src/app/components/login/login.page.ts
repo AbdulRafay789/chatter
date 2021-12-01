@@ -93,14 +93,13 @@ export class LoginPage implements OnInit {
       this.service.setuser(data1.data);
       this.data = data1;
       this.generalService.generalToast('Logged In SuccessFully', 2000);
-      this.generalService.stopLoader();
       this.router.navigate(['/tabs']);
     }
     else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
-
+    this.generalService.stopLoader();
     // this.email = data1.email;
     // this.password = data1.password;
   }

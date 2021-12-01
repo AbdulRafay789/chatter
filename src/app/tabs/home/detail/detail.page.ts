@@ -34,7 +34,6 @@ export class DetailPage implements OnInit {
       videos[this.index] = this.videoData;
       this.service.setVideo(videos);
       this.message = '';
-      this.generalService.stopLoader();
       // this.videoData[indx]["comment"] = this.videoData[indx]["comment"] + 1;
       // this.showdetails = await this.service.getApi('videos', {});
     }
@@ -42,6 +41,7 @@ export class DetailPage implements OnInit {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    this.generalService.stopLoader();
     // this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
     // this.email = data1.email;
     // this.password = data1.password;
