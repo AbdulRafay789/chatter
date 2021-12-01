@@ -195,7 +195,23 @@ export class HttpConfigService {
     const httpHeaders = new HttpHeaders(obj);
     const options = { headers: httpHeaders };
 
-    const result = this.http.post(environment.baseUrl + url, params, options);
+    // const result = this.http.post(environment.baseUrl + url, params, options);
+    // return result;
+    let result:any;
+
+    await this.http.post(environment.baseUrl + url, params, options).toPromise()
+    .then( async (resp:any) =>{ 
+      debugger;
+      console.log(resp);
+      result = await resp;
+
+    } ).catch( (error) => {
+      debugger;
+
+      console.log(error);
+
+    } )
+
     return result;
   }
 

@@ -464,17 +464,17 @@ export class GeneralService {
   // }
 
   async showLoader() {
-    debugger;
-    dialogLoader = await this.loadingCtrl.create({
-      message: 'Please wait...',
-    });
-    await dialogLoader.present();
+    // debugger;
+    // dialogLoader = await this.loadingCtrl.create({
+    //   message: 'Please wait...',
+    // });
+    // await dialogLoader.present();
   }
   stopLoader() {
     // setTimeout(() => {
-      if(dialogLoader){
-        dialogLoader.onDidDismiss();
-      }
+      // if(dialogLoader){
+      //   dialogLoader.onDidDismiss();
+      // }
     
     // }, 200);
   }

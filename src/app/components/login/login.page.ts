@@ -117,6 +117,7 @@ export class LoginPage implements OnInit {
     this.data.password = this.password;
     this.data.device_token = this.devicetoken;
     this.generalService.showLoader();
+    debugger;
     const data1: any = await this.service.postApi('users/login', this.data);
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
