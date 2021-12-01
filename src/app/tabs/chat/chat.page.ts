@@ -14,8 +14,12 @@ export class ChatPage implements OnInit {
   users: any = [];
   // eslint-disable-next-line @typescript-eslint/naming-convention
   userto_id: any;
-  constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   messages() {
     this.router.navigate(['/tabs/chat/messages']);
@@ -23,15 +27,20 @@ export class ChatPage implements OnInit {
 
   async getVideos(param, index) {
     // eslint-disable-next-line no-underscore-dangle
+    debugger;
     this.userto_id = param._id;
     const url = 'chats/create';
     this.generalService.showLoader();
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const data1: any = await this.service.postApi(url, { userto_id: this.userto_id });
+    const data1: any = await this.service.postApi(url, {
+      userto_id: this.userto_id,
+    });
     if (data1.status && data1.data) {
-      this.router.navigate(['/tabs/chat/messages',{ data: JSON.stringify(data1.data) }]);
-    }
-    else {
+      this.router.navigate([
+        '/tabs/chat/messages',
+        { data: JSON.stringify(data1.data) },
+      ]);
+    } else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
@@ -45,8 +54,7 @@ export class ChatPage implements OnInit {
     if (data1.status && data1.data) {
       this.users = data1.data;
       // this.service.setVideo(data1.data);
-    }
-    else {
+    } else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
@@ -56,8 +64,7 @@ export class ChatPage implements OnInit {
   ngOnInit() {
     this.getUsers();
   }
-  Search(){
+  Search() {
     debugger;
   }
-
 }
