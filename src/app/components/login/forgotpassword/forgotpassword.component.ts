@@ -10,7 +10,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./forgotpassword.component.scss'],
 })
 export class ForgotpasswordComponent implements OnInit {
-  email = 'mharisferoz@gmail.com';
+  email = '';
   data: any = {};
   constructor(public modalController: ModalController, public service: HttpConfigService,
     public generalService: GeneralService, public router: Router,) { }

@@ -13,9 +13,9 @@ export class ProfilePage implements OnInit {
   fname = '';
   lname = '';
   mobile = '';
-  email = 'abdulrafay@gmail.com';
+  email = '';
   age = '';
-  password = '1234567';
+  password = '';
   bio = '';
   location = '';
   view: boolean;
