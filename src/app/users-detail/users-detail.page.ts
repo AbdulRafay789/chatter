@@ -81,12 +81,11 @@ export class UsersDetailPage implements OnInit {
     const url = 'users/details/' + param['_id'];
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
-      this.router.navigate(['/profileforusers', { data: JSON.stringify(data1.data[0]) }]);
-    }
-    else {
-      if (data1.status === false) {
-        this.generalService.generalErrorMessage('No Record Found');
-      }
+      this.router.navigate([
+        '/profileforusers',
+        { data: JSON.stringify(data1.data[0]) },
+      ]);
+    } else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
@@ -94,11 +93,11 @@ export class UsersDetailPage implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.videoData = JSON.parse(params.data);
+    this.route.params.subscribe((params) => {
+      this.likeusers = JSON.parse(params.data);
       this.index = params.index;
     });
-    this.getVideos(this.videoData);
+    this.getVideos(this.likeusers);
   }
 
 }
