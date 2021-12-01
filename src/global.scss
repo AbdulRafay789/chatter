@@ -48,7 +48,7 @@
 }
 
 .ml-5 {
-    margin-left: 5px;
+    margin-left: 5px !important;
 }
 
 .ml-8 {
@@ -66,7 +66,7 @@
     .modal-wrapper.sc-ion-modal-ios,
     .modal-shadow.sc-ion-modal-ios {
         width: 92%;
-        height: 35%;
+        height: 40%;
         left: 4%;
         position: absolute;
         border-radius: 20px;
