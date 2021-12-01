@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router, UrlTree } from '@angular/router';
 
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWEyNWE2NDUwNTYyODAzM2U1YTlkN2IiLCJpYXQiOjE2MzgyNzc1MTZ9.o68kFDEdFnjZbOcyOIeaGvcOdBDKB5WLZNP79xxFoKg';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTljYTUyOWJlNTNhNDIyY2QxZDY0MDUiLCJpYXQiOjE2MzgyODQxMTF9.s5Vh8b41DFC9RVzbq2CjGmLsAZnm0KfYiqBal8OXgaU';
 @Injectable({
   providedIn: 'root'
 })
@@ -131,7 +131,7 @@ export class HttpConfigService {
 
   async patchApi(url, params, headerson?) {
     const headerObj = {
-      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Type': 'application/json',
       'Authorization': ''
     };
     if (token !== '') {
@@ -140,7 +140,7 @@ export class HttpConfigService {
     const obj = Object.assign({}, headerObj);
     const httpHeaders = new HttpHeaders(obj);
     const options = { headers: httpHeaders };
-
+    debugger;
     const result = this.http.patch(environment.baseUrl + url, params, options).toPromise();
     return result;
   }

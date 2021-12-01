@@ -50,6 +50,9 @@ export class MessagesPage implements OnInit {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    if(flag){
+      this.generalService.stopLoader();
+    }
   }
   async sendMsg() {
     // eslint-disable-next-line no-underscore-dangle
@@ -64,7 +67,6 @@ export class MessagesPage implements OnInit {
     if (data1.status ) {
       this.messages = data1.data;
       // this.service.setVideo(data1.data);
-      this.generalService.stopLoader();
       this.getChats(true);  
       this.msg="";    
     }
@@ -76,6 +78,7 @@ export class MessagesPage implements OnInit {
       console.log(data1.msg);
       this.msg="";    
     }
+    this.generalService.stopLoader();
   }
 
   ngOnInit() {

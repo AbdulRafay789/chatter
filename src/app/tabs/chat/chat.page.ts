@@ -15,7 +15,7 @@ export class ChatPage implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   userto_id: any;
   constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router) { }
 
   messages() {
     this.router.navigate(['/tabs/chat/messages']);
@@ -30,15 +30,12 @@ export class ChatPage implements OnInit {
     const data1: any = await this.service.postApi(url, { userto_id: this.userto_id });
     if (data1.status && data1.data) {
       this.router.navigate(['/tabs/chat/messages',{ data: JSON.stringify(data1.data) }]);
-      this.generalService.stopLoader();
     }
     else {
-      if (data1.status === false) {
-        this.generalService.generalErrorMessage('No Record Found');
-      }
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    this.generalService.stopLoader();
   }
 
   async getUsers() {
@@ -48,15 +45,12 @@ export class ChatPage implements OnInit {
     if (data1.status && data1.data) {
       this.users = data1.data;
       // this.service.setVideo(data1.data);
-      this.generalService.stopLoader();
     }
     else {
-      if (data1.status === false) {
-        this.generalService.generalErrorMessage('No Record Found');
-      }
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    this.generalService.stopLoader();
   }
 
   ngOnInit() {

@@ -52,7 +52,6 @@ export class ProfilePage implements OnInit {
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.profileData = data1.data;
-      this.generalService.stopLoader();
       // this.router.navigate(['/profileforusers', { data: JSON.stringify(data1.data[0]) }]);
     }
     else {
@@ -62,6 +61,7 @@ export class ProfilePage implements OnInit {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    this.generalService.stopLoader();
   }
 
   async patchVideos() {
@@ -77,15 +77,15 @@ export class ProfilePage implements OnInit {
 
     this.generalService.showLoader();
     const url = 'users/me';
-    const data1: any = await this.service.patchApi(url, this.profileDataForPatch);
+    const data1: any = await this.service.postApi(url, this.profileDataForPatch);
     if (data1.status && data1.data) {
       this.profileData = data1.data;
-      this.generalService.stopLoader();
     }
     else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+    this.generalService.stopLoader();
 
     // this.email = data1.email;
     // this.password = data1.password;
