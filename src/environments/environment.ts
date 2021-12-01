@@ -7,8 +7,8 @@ export const environment = {
   // baseUrl: 'http://35.239.44.221:3000/users/login'
   // baseUrl: 'https://jsonplaceholder.typicode.com/posts'
   // baseUrl: 'https://jsonplaceholder.typicode.com/'
-    //  baseUrl: 'https://162.215.217.147:3000/'
-     baseUrl: 'https://mychatterapp.com:3000/'
+  //  baseUrl: 'https://162.215.217.147:3000/'
+  baseUrl: 'https://mychatterapp.com:3000/',
 };
 
 /*
@@ -18,4 +18,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
