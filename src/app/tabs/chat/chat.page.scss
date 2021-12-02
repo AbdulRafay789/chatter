@@ -69,3 +69,9 @@ ion-icon {
 ion-item[button] {
   pointer-events: all !important;
 }
+// ion-item[button] {
+//   pointer-events: initial !important;
+// }
+div.img-click{
+  pointer-events: all !important;
+}

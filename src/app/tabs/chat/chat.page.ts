@@ -27,7 +27,6 @@ export class ChatPage implements OnInit {
 
   async getVideos(param, index) {
     // eslint-disable-next-line no-underscore-dangle
-    debugger;
     this.userto_id = param._id;
     const url = 'chats/create';
     this.generalService.showLoader();

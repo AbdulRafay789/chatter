@@ -29,16 +29,18 @@
                 </ion-label>
             </ion-item> -->
       <!-- <ion-list lines="none" class="position-relative"> -->
+       
       <ion-item
         lines="none"
-        *ngFor="let user of users; let i = index;"
+        button
+        md="md"
         (click)="getVideos(user,i)"
-        class="img-click"
+        *ngFor="let user of users; let i = index;"
       >
         <ion-thumbnail slot="start">
           <img src="{{user.user_dp.path}}" />
         </ion-thumbnail>
-        <ion-label>
+        <ion-label >
           <h3>{{user.fname + " " +user.lname}}</h3>
           <p>{{user.username }}</p>
         </ion-label>
