@@ -1,95 +1,137 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="secondary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
-        </ion-buttons>
-        <!-- <ion-buttons slot="end">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
         </ion-buttons> -->
-        <ion-buttons slot="end">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Upload Video</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center title" color="primary"
+      >Upload Video</ion-title
+    >
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="background-picture">
+    <div class="login-details pr-0 pl-0">
+      <ion-input
+        clearInput
+        [(ngModel)]="title"
+        type="username"
+        name="username"
+        class="username"
+        placeholder="Video Title"
+      ></ion-input>
 
-    <div class="background-picture">
+      <ion-input
+        clearInput
+        [(ngModel)]="description"
+        type="username"
+        name="username"
+        class="username"
+        placeholder="Video Description"
+      >
+      </ion-input>
 
-        <div class="login-details pr-0 pl-0">
-
-            <ion-input clearInput [(ngModel)]="title" type="username" name="username" class="username" placeholder="Video Title"></ion-input>
-
-            <ion-input clearInput [(ngModel)]="description" type="username" name="username" class="username" placeholder="Video Description">
-            </ion-input>
-
-            <ion-card>
-                <!-- <ion-card-header>
+      <ion-card>
+        <!-- <ion-card-header>
       <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
       <ion-card-title>Card Title</ion-card-title>
     </ion-card-header> -->
 
-                <ion-card-content>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <img class="w-50 mr-2" src="../../../assets/images/Icon awesome-image.png" alt="" (click)="showActions()">
-                        <img class="w-50" src="../../../assets/images/Icon awesome-image.png" alt="" (click)="showActionsVideo()">>
-                    </div>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <p class="mb-0 ml-2 primary">Upload Image</p>
-                        <p class="mb-0 mr-2 primary">Upload Video</p>
-                    </div>
-                </ion-card-content>
-            </ion-card>
+        <ion-card-content>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <img
+              class="w-50 mr-2"
+              src="../../../assets/images/Icon awesome-image.png"
+              alt=""
+              (click)="showActions()"
+            />
+            <img
+              class="w-50"
+              src="../../../assets/images/Icon awesome-image.png"
+              alt=""
+              (click)="showActionsVideo()"
+            />>
+          </div>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <p class="mb-0 ml-2 primary">Upload Image</p>
+            <p class="mb-0 mr-2 primary">Upload Video</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
 
-            <!-- <p class="text-center">Upload ID to get verified</p> -->
+      <!-- <p class="text-center">Upload ID to get verified</p> -->
 
-            <ion-button expand="full" (click)="SavePost()" class="btn1" color="primary">Upload</ion-button>
-            <ion-slides pager="true" style="margin-top: 20px;height: 100px;" *ngIf="images.length > 0">
-                <ion-slide *ngFor="let slide of images">
-                  <img [src]="slide.url">
-                </ion-slide>
-              </ion-slides>
-
-        </div>
+      <ion-button
+        expand="full"
+        (click)="SavePost()"
+        class="btn1"
+        color="primary"
+        >Upload</ion-button
+      >
+      <ion-slides
+        pager="true"
+        style="margin-top: 20px; height: 100px"
+        *ngIf="images.length > 0"
+      >
+        <ion-slide *ngFor="let slide of images">
+          <img *ngIf="!slide.video" [src]="slide.url" />
+          <video
+            *ngIf="slide.video"
+            width="320"
+            height="240"
+            controls
+            poster="../../../assets/images/Icon ionic-ios-play-circle.png"
+          >
+            <source [src]="slide.url" type="video/mp4" />
+          </video>
+        </ion-slide>
+      </ion-slides>
     </div>
+  </div>
 
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="video" color="primary">
-
-            <!-- <a routerLink="/tabs/home"> -->
-            <ion-tab-button routerLink="/tabs">
-                <ion-icon class="appname-customicon1"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="video" color="primary">
+      <!-- <a routerLink="/tabs/home"> -->
+      <ion-tab-button routerLink="/tabs">
+        <ion-icon class="appname-customicon1"></ion-icon>
+        <!-- <ion-label>Schedule</ion-label>
       <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
-            <!-- </a> -->
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/post"> -->
-            <ion-tab-button routerLink="/tabs/post">
-                <ion-icon class="appname-customicon2"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+      <!-- <a routerLink="/tabs/post"> -->
+      <ion-tab-button routerLink="/tabs/post">
+        <ion-icon class="appname-customicon2"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/video"> -->
-            <ion-tab-button tab="video">
-                <ion-icon class="appname-customicon3"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+      <!-- <a routerLink="/tabs/video"> -->
+      <ion-tab-button tab="video">
+        <ion-icon class="appname-customicon3"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/chat"> -->
-            <ion-tab-button routerLink="/tabs/chat">
-                <ion-icon class="appname-customicon4"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+      <!-- <a routerLink="/tabs/chat"> -->
+      <ion-tab-button routerLink="/tabs/chat">
+        <ion-icon class="appname-customicon4"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/profile"> -->
-            <ion-tab-button routerLink="/tabs/profile">
-                <ion-icon class="appname-customicon5"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
-
-        </ion-tab-bar>
-    </ion-tabs>
-
+      <!-- <a routerLink="/tabs/profile"> -->
+      <ion-tab-button routerLink="/tabs/profile">
+        <ion-icon class="appname-customicon5"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
