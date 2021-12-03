@@ -279,14 +279,6 @@ export class HttpConfigService {
     const obj = Object.assign({}, headerObj);
     const httpHeaders = new HttpHeaders(obj);
     const options = { headers: httpHeaders };
-
-    // old
-    // const result = this.http
-    //   .post(environment.baseUrl + url, params)
-    //   .toPromise();
-    // return result;
-    // old
-    debugger;
     let result: any;
 
     await this.http

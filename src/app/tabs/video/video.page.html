@@ -32,8 +32,8 @@
 
                 <ion-card-content>
                     <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <img class="w-50 mr-2" src="../../../assets/images/Icon awesome-image.png" alt="" (click)="takePicture()">
-                        <img class="w-50" src="../../../assets/images/Icon awesome-image.png" alt="">
+                        <img class="w-50 mr-2" src="../../../assets/images/Icon awesome-image.png" alt="" (click)="showActions()">
+                        <img class="w-50" src="../../../assets/images/Icon awesome-image.png" alt="" (click)="showActionsVideo()">>
                     </div>
                     <div class="d-flex ion-justify-content-between ion-align-items-center">
                         <p class="mb-0 ml-2 primary">Upload Image</p>
@@ -45,9 +45,9 @@
             <!-- <p class="text-center">Upload ID to get verified</p> -->
 
             <ion-button expand="full" (click)="SavePost()" class="btn1" color="primary">Upload</ion-button>
-            <ion-slides pager="true" style="margin-top: 20px;height: 100px;">
+            <ion-slides pager="true" style="margin-top: 20px;height: 100px;" *ngIf="images.length > 0">
                 <ion-slide *ngFor="let slide of images">
-                  <img src="../../../assets/images/Icon awesome-image.png">
+                  <img [src]="slide.url">
                 </ion-slide>
               </ion-slides>
 
