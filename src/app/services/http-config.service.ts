@@ -140,7 +140,6 @@ export class HttpConfigService {
     // const dialogLoader = this.loadingController.create({
     //   message: 'Please wait...',
     // });
-
     // (await dialogLoader).present();
     // if (typeof fn == 'function') {
     //   await fn();
@@ -197,17 +196,18 @@ export class HttpConfigService {
 
     // const result = this.http.post(environment.baseUrl + url, params, options);
     // return result;
-    let result:any;
+    let result: any;
 
-    await this.http.post(environment.baseUrl + url, params, options).toPromise()
-    .then( async (resp:any) =>{ 
-      console.log(resp);
-      result = await resp;
-
-    } ).catch( (error) => {
-      console.log(error);
-
-    } )
+    await this.http
+      .post(environment.baseUrl + url, params, options)
+      .toPromise()
+      .then(async (resp: any) => {
+        console.log(resp);
+        result = await resp;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     return result;
   }
@@ -257,22 +257,15 @@ export class HttpConfigService {
     return result;
   }
 
-  async postAttachmentApi(url, params, headerson?) {
-    let headers = new HttpHeaders();
-    let formData = new FormData();
-    formData.append('title', params.title);
-    formData.append('description', params.description);
-    formData.append('uploadedImages', params.uploadedImages);
+  async postAttachmentApi(url, formData, headerson?) {
+    // let formData = new FormData();
+    // formData.append('title', params.title);
+    // formData.append('description', params.description);
+    // formData.append('uploadedImages[]', params.uploadedImages);
 
-    // headers = headers.append('Content-Type', 'multipart/form-data');
-    // headers = headers.append('Access-Control-Allow-Origin', '*');
-    // headers = headers.append('Access-Control-Allow-Credentials', 'true');
-    // if (token !== '') {
-    //   headers = headers.append('Authorization', 'Bearer ' + token);
-    // }
     const headerObj = {
-      'enctype': 'multipart/form-data;',
-      'Accept': 'plain/text',
+      enctype: 'multipart/form-data;',
+      Accept: 'plain/text',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
       'Access-Control-Allow-Credentials': 'true',
@@ -286,25 +279,18 @@ export class HttpConfigService {
     const obj = Object.assign({}, headerObj);
     const httpHeaders = new HttpHeaders(obj);
     const options = { headers: httpHeaders };
+    let result: any;
 
-    // old
-    // const result = this.http
-    //   .post(environment.baseUrl + url, params)
-    //   .toPromise();
-    // return result;
-    // old
-    debugger;
-    let result:any;
-
-    await this.http.post(environment.baseUrl + url, formData, options).toPromise()
-    .then( async (resp:any) =>{ 
-      console.log(resp);
-      result = await resp;
-
-    } ).catch( (error) => {
-      console.log(error);
-
-    } )
+    await this.http
+      .post(environment.baseUrl + url, formData, options)
+      .toPromise()
+      .then(async (resp: any) => {
+        console.log(resp);
+        result = await resp;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     return result;
   }

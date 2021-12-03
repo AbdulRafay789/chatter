@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { isPlatform,Platforms } from '@ionic/core';
+import { isPlatform, Platforms } from '@ionic/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, Platform } from '@ionic/angular';
@@ -18,20 +18,22 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = ''; //mharisferoz@gmail.com
-  password = ''; //m6zfbtfk
+  email = 'mharisferoz@gmail.com'; //mharisferoz@gmail.com
+  password = '1234567'; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
   pisci: any;
   isRemember = false;
   currentDisplayDepartment: number = null;
-  devicetoken="";
+  devicetoken = '';
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
-    public modalController: ModalController, public service: HttpConfigService,
-    public generalService: GeneralService, public plt: Platform
+    public modalController: ModalController,
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    public plt: Platform
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
@@ -122,8 +124,7 @@ export class LoginPage implements OnInit {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
       this.data = data1;
-      this.service.loginobj = data1;
-      this.generalService.generalToast('Logged In SuccessFully', 2000);
+      // this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
     } else {
       this.generalService.generalToast(data1.msg);
@@ -241,7 +242,6 @@ export class LoginPage implements OnInit {
       }
     }
   }
-
 
   ngOnInit() {
     this.getToken();
