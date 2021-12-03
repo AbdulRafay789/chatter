@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { isPlatform } from '@ionic/core';
+import { isPlatform,Platforms } from '@ionic/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, Platform } from '@ionic/angular';
@@ -18,8 +18,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = 'mharisferoz@gmail.com'; //mharisferoz@gmail.com
-  password = 'm6zfbtfk'; //m6zfbtfk
+  email = ''; //mharisferoz@gmail.com
+  password = ''; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;

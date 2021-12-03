@@ -259,24 +259,53 @@ export class HttpConfigService {
 
   async postAttachmentApi(url, params, headerson?) {
     let headers = new HttpHeaders();
-    // headers.set('Content-Type', 'application/json; charset=utf-8');
+    let formData = new FormData();
+    formData.append('title', params.title);
+    formData.append('description', params.description);
+    formData.append('uploadedImages', params.uploadedImages);
 
-    headers = headers.append('Content-Type', 'multipart/form-data');
-    // headers.append('Accept', 'application/json');
-    headers = headers.append('Access-Control-Allow-Origin', '*');
-    headers = headers.append('Access-Control-Allow-Credentials', 'true');
+    // headers = headers.append('Content-Type', 'multipart/form-data');
+    // headers = headers.append('Access-Control-Allow-Origin', '*');
+    // headers = headers.append('Access-Control-Allow-Credentials', 'true');
+    // if (token !== '') {
+    //   headers = headers.append('Authorization', 'Bearer ' + token);
+    // }
+    const headerObj = {
+      'enctype': 'multipart/form-data;',
+      'Accept': 'plain/text',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers':
+        'Origin, X-Requested-With, Content-Type, Accept',
+      Authorization: '',
+    };
     if (token !== '') {
-      headers = headers.append('Authorization', 'Bearer ' + token);
+      headerObj.Authorization = 'Bearer ' + token;
     }
-    headers.append('GET', 'POST');
-    // console.log(environment.baseUrl + params);
-    // this.tree = this.router.parseUrl(this.url);
-    // const result = this.http.post(environment.baseUrl + this.url, params);
+    const obj = Object.assign({}, headerObj);
+    const httpHeaders = new HttpHeaders(obj);
+    const options = { headers: httpHeaders };
+
+    // old
+    // const result = this.http
+    //   .post(environment.baseUrl + url, params)
+    //   .toPromise();
     // return result;
-    // return this.http.post(environment.baseUrl + this.url, params).toPromise();
-    const result = this.http
-      .post(environment.baseUrl + url, params)
-      .toPromise();
+    // old
+    debugger;
+    let result:any;
+
+    await this.http.post(environment.baseUrl + url, formData, options).toPromise()
+    .then( async (resp:any) =>{ 
+      console.log(resp);
+      result = await resp;
+
+    } ).catch( (error) => {
+      console.log(error);
+
+    } )
+
     return result;
   }
 

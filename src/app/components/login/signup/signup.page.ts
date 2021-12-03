@@ -35,7 +35,7 @@ export class SignupPage implements OnInit {
     this.data.lname = this.lname;
     this.data.mobile = this.mobile;
     this.data.email = this.email;
-    this.data.age = this.age;
+    this.data.dob = this.age;
     this.data.password = this.password;
     this.data.bio = this.bio;
     this.data.location = this.location;
