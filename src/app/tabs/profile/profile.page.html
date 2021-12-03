@@ -1,234 +1,158 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
-    </ion-buttons>
-    <!-- <ion-buttons slot="end">
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+        </ion-buttons>
+        <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
         </ion-buttons> -->
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <!-- checking commit -->
-    <ion-title class="ion-text-center title" color="primary">Profile</ion-title>
-  </ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <!-- checking commit -->
+        <ion-title class="ion-text-center title" color="primary">Profile</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="background-picture">
-    <div
-      class="login-details text-center pr-4 pl-4 custom-textarea"
-      *ngIf="this.view === false"
-    >
-      <div>
-        <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="" />
+    <div class="background-picture">
+        <div class="login-details text-center pr-4 pl-4 custom-textarea" *ngIf="this.view === false">
+            <div>
+                <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="" />
 
-        <ion-input
-          [(ngModel)]="username"
-          clearInput
-          type="username"
-          name="username"
-          class="username"
-          placeholder="Username"
-        ></ion-input>
-        <ion-input
-          [(ngModel)]="fname"
-          clearInput
-          type="username"
-          name="username"
-          class="username"
-          placeholder="First Name"
-        ></ion-input>
-        <ion-input
-          [(ngModel)]="lname"
-          clearInput
-          type="username"
-          name="username"
-          class="username"
-          placeholder="Last Name"
-        ></ion-input>
-        <ion-input
-          [(ngModel)]="mobile"
-          clearInput
-          type="username"
-          name="username"
-          class="username"
-          placeholder="Mobile #"
-        ></ion-input>
-        <ion-input
-          [(ngModel)]="email"
-          clearInput
-          type="username"
-          name="email"
-          class="username"
-          placeholder="Email"
-        >
-        </ion-input>
-        <ion-input
-          [(ngModel)]="age"
-          clearInput
-          type="username"
-          name="username"
-          class="username"
-          placeholder="Age"
-        >
-        </ion-input>
-        <ion-input
-          [(ngModel)]="bio"
-          clearInput
-          type="username"
-          name="username"
-          class="username"
-          placeholder="Bio"
-        >
-        </ion-input>
-        <ion-textarea
-          [(ngModel)]="location"
-          rows="2"
-          cols="5"
-          placeholder="Location"
-        ></ion-textarea>
+                <ion-input [(ngModel)]="username" clearInput type="username" name="username" class="username" placeholder="Username"></ion-input>
+                <ion-input [(ngModel)]="fname" clearInput type="username" name="username" class="username" placeholder="First Name"></ion-input>
+                <ion-input [(ngModel)]="lname" clearInput type="username" name="username" class="username" placeholder="Last Name"></ion-input>
+                <ion-input [(ngModel)]="mobile" clearInput type="username" name="username" class="username" placeholder="Mobile #"></ion-input>
+                <ion-input [(ngModel)]="email" clearInput type="username" name="email" class="username" placeholder="Email">
+                </ion-input>
+                <ion-input [(ngModel)]="age" clearInput type="username" name="username" class="username" placeholder="Age">
+                </ion-input>
+                <ion-input [(ngModel)]="bio" clearInput type="username" name="username" class="username" placeholder="Bio">
+                </ion-input>
+                <ion-textarea [(ngModel)]="location" rows="2" cols="5" placeholder="Location"></ion-textarea>
 
-        <ion-button
-          (click)="patchVideos()"
-          expand="full"
-          class="btn1"
-          color="primary"
-          >Save</ion-button
-        >
-      </div>
-    </div>
-
-    <div
-      class="login-details pr-4 pl-4 custom-textarea"
-      *ngIf="this.view === true"
-    >
-      <div>
-        <div class="d-flex ion-justify-content-end ion-align-items-center">
-          <!-- <img *ngIf="profileData.user_dp.path" [src]="profileData.user_dp.path" class="w-50 mb-3" alt="" (click)="toggle()"> -->
-          <!-- <img *ngIf="!profileData.user_dp.path" src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" (click)="toggle()"> -->
-          <img src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" />
-          <img
-            src="../../../assets/images/Icon awesome-edit.png"
-            class="h-25-px w-25-px ml-5 img-click"
-            (click)="toggle()"
-          />
+                <ion-button (click)="patchVideos()" expand="full" class="btn1" color="primary">Save</ion-button>
+            </div>
         </div>
 
-        <!-- <div class="d-flex ion-justify-content-end ion-align-items-center">
+        <div class="login-details pr-4 pl-4 custom-textarea" *ngIf="this.view === true">
+            <div>
+                <div class="d-flex ion-justify-content-center ion-align-items-center">
+                    <!-- <img *ngIf="profileData.user_dp.path" [src]="profileData.user_dp.path" class="w-50 mb-3" alt="" (click)="toggle()"> -->
+                    <!-- <img *ngIf="!profileData.user_dp.path" src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" (click)="toggle()"> -->
+                    <img src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" />
+                    <img src="../../../assets/images/Icon awesome-edit.png" class="h-25-px w-25-px ml-5 img-click" (click)="toggle()" />
+                </div>
+
+                <!-- <div class="d-flex ion-justify-content-end ion-align-items-center">
           <img [src]="profileData.user_dp.path" class="w-50 mb-3" alt="">
           <img src="../../../assets/images/Icon awesome-edit.png" (click)="toggle()"
             class="h-25-px w-25-px ml-5 img-click" alt="">
         </div> -->
 
-        <ion-segment
-          [(ngModel)]="segment"
-          color="primary"
-          scrollable
-          mode="ios"
-          class="mb-2"
-        >
-          <ion-segment-button value="Posts" layout="icon-top">
-            <p class="mb-0">11</p>
-            <ion-label>Posts</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="Like" layout="icon-top">
-            <p class="mb-0">22</p>
-            <ion-label>Like</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="Connect" layout="icon-top">
-            <p class="mb-0">33</p>
-            <ion-label>Connect</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="Connected" layout="icon-top">
-            <p class="mb-0">33</p>
-            <ion-label>Connected</ion-label>
-          </ion-segment-button>
-        </ion-segment>
+                <ion-segment [(ngModel)]="segment" color="primary" scrollable mode="ios" class="mb-2">
+                    <ion-segment-button value="Posts" layout="icon-top">
+                        <p class="mb-0">11</p>
+                        <ion-label>Posts</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Like" layout="icon-top">
+                        <p class="mb-0">22</p>
+                        <ion-label>Like</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Connect" layout="icon-top">
+                        <p class="mb-0">33</p>
+                        <ion-label>Connect</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Connected" layout="icon-top">
+                        <p class="mb-0">33</p>
+                        <ion-label>Connected</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
 
-        <!-- <div [ngSwitch]="segment" class="d-flex ion-justify-content-between ion-align-items-center">
+                <!-- <div [ngSwitch]="segment" class="d-flex ion-justify-content-between ion-align-items-center">
                     <p *ngSwitchCase="'Posts'">11</p>
                     <p *ngSwitchCase="'Like'">22</p>
                     <p *ngSwitchCase="'Connect'">33</p>
                     <p *ngSwitchCase="'Connected'">44</p>
                 </div> -->
 
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Username</p>
-          <p class="heading-color-1">{{profileData.username}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">First Name</p>
-          <p class="heading-color-1">{{profileData.fname}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Last Name</p>
-          <p class="heading-color-1">{{profileData.fname}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Mobile #</p>
-          <p class="heading-color-1">{{profileData.mobile}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Email</p>
-          <p class="heading-color-1">{{profileData.email}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Age</p>
-          <p class="heading-color-1">{{profileData.dob}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Bio</p>
-          <p class="heading-color-1">{{profileData.bio}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Location</p>
-          <p class="heading-color-1">{{profileData.location}}</p>
-        </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Username</p>
+                    <p class="heading-color-1">{{profileData.username}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">First Name</p>
+                    <p class="heading-color-1">{{profileData.fname}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Last Name</p>
+                    <p class="heading-color-1">{{profileData.fname}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Mobile #</p>
+                    <p class="heading-color-1">{{profileData.mobile}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Email</p>
+                    <p class="heading-color-1">{{profileData.email}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Age</p>
+                    <p class="heading-color-1">{{profileData.dob}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Bio</p>
+                    <p class="heading-color-1">{{profileData.bio}}</p>
+                </div>
+                <div class="d-flex ion-justify-content-between ion-align-items-center">
+                    <p class="heading-color">Location</p>
+                    <p class="heading-color-1">{{profileData.location}}</p>
+                </div>
 
-        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center ml-4 mr-4">
+                <!-- <div class="d-flex ion-justify-content-between ion-align-items-center ml-4 mr-4">
                     <p class="mb-0">11</p>
                     <p class="mb-0">22</p>
                     <p class="mb-0">33</p>
                     <p class="mb-0">44</p>
                 </div> -->
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <ion-tabs>
-    <ion-tab-bar slot="bottom" selectedTab="profile" color="primary">
-      <!-- <a routerLink="/tabs/home"> -->
-      <ion-tab-button routerLink="/tabs">
-        <ion-icon class="appname-customicon1"></ion-icon>
-        <!-- <ion-label>Schedule</ion-label>
+    <ion-tabs>
+        <ion-tab-bar slot="bottom" selectedTab="profile" color="primary">
+            <!-- <a routerLink="/tabs/home"> -->
+            <ion-tab-button routerLink="/tabs">
+                <ion-icon class="appname-customicon1"></ion-icon>
+                <!-- <ion-label>Schedule</ion-label>
         <ion-badge>6</ion-badge> -->
-      </ion-tab-button>
-      <!-- </a> -->
+            </ion-tab-button>
+            <!-- </a> -->
 
-      <!-- <a routerLink="/tabs/post"> -->
-      <ion-tab-button routerLink="/tabs/post">
-        <ion-icon class="appname-customicon2"></ion-icon>
-      </ion-tab-button>
-      <!-- </a> -->
+            <!-- <a routerLink="/tabs/post"> -->
+            <ion-tab-button routerLink="/tabs/post">
+                <ion-icon class="appname-customicon2"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
 
-      <!-- <a routerLink="/tabs/video"> -->
-      <ion-tab-button routerLink="/tabs/video">
-        <ion-icon class="appname-customicon3"></ion-icon>
-      </ion-tab-button>
-      <!-- </a> -->
+            <!-- <a routerLink="/tabs/video"> -->
+            <ion-tab-button routerLink="/tabs/video">
+                <ion-icon class="appname-customicon3"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
 
-      <!-- <a routerLink="/tabs/chat"> -->
-      <ion-tab-button routerLink="/tabs/chat">
-        <ion-icon class="appname-customicon4"></ion-icon>
-      </ion-tab-button>
-      <!-- </a> -->
+            <!-- <a routerLink="/tabs/chat"> -->
+            <ion-tab-button routerLink="/tabs/chat">
+                <ion-icon class="appname-customicon4"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
 
-      <!-- <a routerLink="/tabs/profile"> -->
-      <ion-tab-button tab="profile">
-        <ion-icon class="appname-customicon5"></ion-icon>
-      </ion-tab-button>
-      <!-- </a> -->
-    </ion-tab-bar>
-  </ion-tabs>
+            <!-- <a routerLink="/tabs/profile"> -->
+            <ion-tab-button tab="profile">
+                <ion-icon class="appname-customicon5"></ion-icon>
+            </ion-tab-button>
+            <!-- </a> -->
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>

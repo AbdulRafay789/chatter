@@ -122,6 +122,7 @@ export class LoginPage implements OnInit {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
       this.data = data1;
+      this.service.loginobj = data1;
       this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
     } else {
@@ -242,7 +243,7 @@ export class LoginPage implements OnInit {
   }
 
 
-  ngOnInit() { 
+  ngOnInit() {
     this.getToken();
   }
 }
