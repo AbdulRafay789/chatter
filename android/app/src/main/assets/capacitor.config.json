@@ -8,6 +8,16 @@
 			"resize": "none",
 			"style": "dark",
 			"resizeOnFullScreen": false
+		},
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
 		}
+	},
+	"server": {
+		"url": "http://192.168.8.100:8100"
 	}
 }
