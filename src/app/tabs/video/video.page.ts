@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Camera, CameraResultType, Photo } from '@capacitor/camera';
+import {
+  Camera,
+  CameraResultType,
+  CameraSource,
+  Photo,
+} from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Platform } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+
 import { Chooser } from '@ionic-native/chooser/ngx';
 
 @Component({
@@ -29,7 +35,7 @@ export class VideoPage implements OnInit {
   // }
 
   ngOnInit() {}
-  async showActions(){
+  async showActions() {
     const result = await ActionSheet.showActions({
       title: 'Photo Options',
       message: 'Select an option to perform',
@@ -46,16 +52,16 @@ export class VideoPage implements OnInit {
         },
       ],
     });
-    if(result.index == 0){
+    if (result.index == 0) {
       this.takePicture();
     }
-    if(result.index == 1){
+    if (result.index == 1) {
       this.getPicture();
     }
-  
+
     console.log('Action Sheet result:', result);
-  }; 
-  async showActionsVideo(){
+  }
+  async showActionsVideo() {
     const result = await ActionSheet.showActions({
       title: 'Video Options',
       message: 'Select an option to perform',
@@ -72,57 +78,52 @@ export class VideoPage implements OnInit {
         },
       ],
     });
-    if(result.index == 0){
+    if (result.index == 0) {
       this.takeVideo();
     }
-    if(result.index == 1){
+    if (result.index == 1) {
       this.getVideo();
     }
 
-  
     console.log('Action Sheet result:', result);
   }
   async takePicture() {
-    
-    const image = await Camera.getPhoto({
-      quality: 50,
-      allowEditing: true,
-      resultType: CameraResultType.Uri,
-      width: 1024,
-      height: 768,
-      webUseInput: true,
-    });
-    if(this.images.length == 10){
-      this.generalService.generalToast(
-        'Maximum 10 Photos are allowed',
-        2000
-      );
+    try {
+      const image = await Camera.getPhoto({
+        quality: 50,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        webUseInput: true,
+        source: CameraSource.Camera,
+        saveToGallery: false,
+      });
+      if (this.images.length == 10) {
+        this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
+      }
+
+      const contents: any = await this.readAsBase64(image);
+      // console.log(contents);
+      const response = await fetch(image.webPath);
+      const blob = await response.blob();
+      var imageUrl = blob;
+      var imagenew = image;
+      imagenew.path = new Date().getTime() + '.png';
+      // this.saveImage(image);
+      this.images.push({
+        url: (await this.convertBlobToBase64(blob)) as string,
+        imageUrl: imageUrl,
+        video: false,
+        name: imagenew.path.substring(
+          imagenew.path.lastIndexOf('/') + 1,
+          imagenew.path.length
+        ),
+      });
+      // console.log(imageUrl);
+    } catch (error) {
+      debugger;
     }
-    // image.webPath will contain a path that can be set as an image src.
-    // You can access the original file using image.path, which can be
-    // passed to the Filesystem API to read the raw data of the image,
-    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-    
-    const contents: any = await this.readAsBase64(image);
-    // console.log(contents);
-    const response = await fetch(image.webPath);
-    const blob = await response.blob();
-    var imageUrl = blob;
-    var imagenew = image;
-    imagenew.path = new Date().getTime()+".png";
-    // this.saveImage(image);
-    this.images.push({
-      url:(await this.convertBlobToBase64(blob)) as string,
-      imageUrl: imageUrl,
-      name: imagenew.path.substring(
-        imagenew.path.lastIndexOf('/') + 1,
-        imagenew.path.length
-      ),
-    });
-    // console.log(imageUrl);
   }
   async getPicture() {
-    
     // const image = await Camera.getPhoto({
     //   quality: 50,
     //   allowEditing: true,
@@ -135,7 +136,7 @@ export class VideoPage implements OnInit {
       quality: 50,
       width: 1024,
       height: 768,
-      limit:10
+      limit: 10,
     });
 
     // image.webPath will contain a path that can be set as an image src.
@@ -147,102 +148,69 @@ export class VideoPage implements OnInit {
     // });
     // const contents: any = await this.readAsBase64(image);
     // console.log(contents);
-    if(image.photos.length > 10){
-      this.generalService.generalToast(
-        'Maximum 10 Photos are allowed',
-        2000
-      );
+    if (image.photos.length > 10) {
+      this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
     }
-    image.photos.forEach( async element => {
+    image.photos.forEach(async (element) => {
       const response = await fetch(element.webPath);
       const blob = await response.blob();
       var imageUrl = blob;
       var imagenew = image;
-      imagenew["path"] = new Date().getTime()+".png";
+      imagenew['path'] = new Date().getTime() + '.png';
       // this.saveImage(image);
       this.images.push({
-        url:(await this.convertBlobToBase64(blob)) as string,
+        url: (await this.convertBlobToBase64(blob)) as string,
         imageUrl: imageUrl,
-        name: imagenew["path"].substring(
-          imagenew["path"].lastIndexOf('/') + 1,
-          imagenew["path"].length
+        video: false,
+        name: imagenew['path'].substring(
+          imagenew['path'].lastIndexOf('/') + 1,
+          imagenew['path'].length
         ),
       });
     });
-    
+
     // console.log(imageUrl);
   }
   async takeVideo() {
-    
-    const image = await Camera.getPhoto({
-      quality: 50,
-      allowEditing: true,
-      resultType: CameraResultType.Uri,
-      width: 1024,
-      height: 768,
-      webUseInput: true,
-    });
-    if(this.images.length == 10){
-      this.generalService.generalToast(
-        'Maximum 10 Videos are allowed',
-        2000
-      );
-    }
-    // image.webPath will contain a path that can be set as an image src.
-    // You can access the original file using image.path, which can be
-    // passed to the Filesystem API to read the raw data of the image,
-    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-    // const file = await Filesystem.readFile({
-    //   path: image.path,
-    // });
-    // const contents: any = await this.readAsBase64(image);
-    // console.log(contents);
-    const response = await fetch(image.webPath);
-    const blob = await response.blob();
-    var imageUrl = blob;
-    var imagenew = image;
-    imagenew.path = new Date().getTime()+".png";
-    // this.saveImage(image);
-    this.images.push({
-      imageUrl: imageUrl,
-      name: imagenew.path.substring(
-        imagenew.path.lastIndexOf('/') + 1,
-        imagenew.path.length
-      ),
-    });
-    // console.log(imageUrl);
+    // try {
+    //   const options: VideoCapturePlusOptions = {
+    //     limit: 10,
+    //     highquality: false,
+    //   };
+    //   const image = this.videoCapturePlus.captureVideo(options);
+    //   debugger;
+    //   if (this.images.length == 10) {
+    //     this.generalService.generalToast('Maximum 10 Videos are allowed', 2000);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   debugger;
+    // }
   }
   async getVideo() {
-    
-    this.chooser.getFile()
-    .then(file => {
-      debugger;
-      console.log(file ? file.name : 'canceled')
-    })
-    .catch((error: any) => console.error(error));
-
-    
-    // if(this.images.length > 10){
-    //   this.generalService.generalToast(
-    //     'Maximum 10 Videos are allowed',
-    //     2000
-    //   );
+    // if (this.images.length == 10) {
+    //   this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
     // }
-    // image.photos.forEach( async element => {
-    //   const response = await fetch(element.webPath);
+    // try {
+    //   const file = await this.chooser.getFile({ mime: 'video/mp4' });
+    //   const fileread = await Filesystem.readFile({
+    //     path: file,
+    //   });
+    //   var fileUrl = 'data:video/mp4;base64,' + fileread.data;
+    //   const response = await fetch(fileUrl);
     //   const blob = await response.blob();
     //   var imageUrl = blob;
-    //   var imagenew = image;
-    //   imagenew["path"] = new Date().getTime()+".png";
+    //   var imagenew = {};
+    //   imagenew['path'] = new Date().getTime() + '.mp4';
     //   this.images.push({
+    //     url: (await this.convertBlobToBase64(blob)) as string,
+    //     video: true,
     //     imageUrl: imageUrl,
-    //     name: imagenew["path"].substring(
-    //       imagenew["path"].lastIndexOf('/') + 1,
-    //       imagenew["path"].length
-    //     ),
+    //     name: imagenew['path'],
     //   });
-    // });
-    
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
   async SavePost() {
     this.generalService.showLoader();
@@ -260,7 +228,7 @@ export class VideoPage implements OnInit {
     const data1: any = await this.service.postAttachmentApi('videos', formData);
     if (data1.status && data1.data) {
       this.generalService.generalToast(
-        'Your Post In Uploaded SuccessFully',
+        'Your Post Is Uploaded SuccessFully',
         2000
       );
     } else {

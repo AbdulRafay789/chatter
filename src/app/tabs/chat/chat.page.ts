@@ -40,7 +40,7 @@ export class ChatPage implements OnInit {
         { data: JSON.stringify(data1.data) },
       ]);
     } else {
-      this.generalService.generalErrorMessage(data1.msg);
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
@@ -54,7 +54,7 @@ export class ChatPage implements OnInit {
       this.users = data1.data;
       // this.service.setVideo(data1.data);
     } else {
-      this.generalService.generalErrorMessage(data1.msg);
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();

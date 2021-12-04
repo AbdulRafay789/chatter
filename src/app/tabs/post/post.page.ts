@@ -9,55 +9,56 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./post.page.scss'],
 })
 export class PostPage implements OnInit {
-  notifications:any = [];
-  timeinterval:any;
-  constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
-    private router: Router) { }
+  notifications: any = [];
+  timeinterval: any;
+  constructor(
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getNotifications(true);
-    this.timeinterval = setInterval(() => { 
+    this.timeinterval = setInterval(() => {
       this.getNotifications(false); // Now the "this" still references the component
-   }, 8000);
+    }, 8000);
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     clearInterval(this.timeinterval);
   }
   async getNotifications(flag) {
     // eslint-disable-next-line no-underscore-dangle
     const url = 'notifications';
-    if(flag){
+    if (flag) {
       this.generalService.showLoader();
     }
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const data1: any = await this.service.getApi(url, { });
+    const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.notifications = data1.data;
-      if(flag){
+      if (flag) {
         this.generalService.stopLoader();
       }
-    }
-    else {
-      this.generalService.generalErrorMessage(data1.msg);
+    } else {
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
-    if(flag){
+    if (flag) {
       this.generalService.stopLoader();
     }
   }
-  async read(obj,indx){
-    const url = 'notifications/read/'+obj._id;
+  async read(obj, indx) {
+    const url = 'notifications/read/' + obj._id;
     this.generalService.showLoader();
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const data1: any = await this.service.getApi(url, { });
+    const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.notifications[indx]['read'] = true;
-    }
-    else {
-      this.generalService.generalErrorMessage(data1.msg);
+    } else {
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
   }
-
 }

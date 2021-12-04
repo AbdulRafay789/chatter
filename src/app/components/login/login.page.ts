@@ -115,6 +115,14 @@ export class LoginPage implements OnInit {
   }
 
   async getLogin() {
+    if (this.email == '') {
+      this.generalService.generalToast('Email Is Required', 2000);
+      return false;
+    }
+    if (this.password == '') {
+      this.generalService.generalToast('Password Is Required', 2000);
+      return false;
+    }
     this.data.email = this.email;
     this.data.password = this.password;
     this.data.device_token = this.devicetoken;

@@ -2,13 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
-
+import { Camera, CameraResultType, Photo } from '@capacitor/camera';
+import { Platform, AlertController } from '@ionic/angular';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  user_dp = { path: '../../../assets/images/Oval.png' };
+  // user_dp = {};
   username = '';
   fname = '';
   lname = '';
@@ -23,10 +27,15 @@ export class ProfilePage implements OnInit {
   segment: any;
   profileData: any = [];
   profileDataForPatch: any = [];
+  images = { imageUrl: null, name: '', url: '' };
+  title = 'test';
+  description = 'desc';
   constructor(
     public generalService: GeneralService,
     private router: Router,
-    public service: HttpConfigService
+    public service: HttpConfigService,
+    public plt: Platform,
+    private alertCtrl: AlertController
   ) {
     this.segment = 'Posts';
   }
@@ -61,14 +70,15 @@ export class ProfilePage implements OnInit {
       this.lname = this.profileData.lname;
       this.mobile = this.profileData.mobile;
       this.email = this.profileData.email;
-      this.age = this.profileData.age;
+      this.age = this.profileData.dob;
       this.bio = this.profileData.bio;
       this.location = this.profileData.location;
+      this.user_dp = data1.data.user_dp;
       this.generalService.stopLoader();
       // this.router.navigate(['/profileforusers', { data: JSON.stringify(data1.data[0]) }]);
     } else {
       if (data1.status === false) {
-        this.generalService.generalErrorMessage('No Record Found');
+        this.generalService.generalToast('No Record Found');
       }
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
@@ -76,18 +86,19 @@ export class ProfilePage implements OnInit {
   }
 
   async patchVideos() {
-    this.profileDataForPatch.username = this.username;
-    this.profileDataForPatch.fname = this.fname;
-    this.profileDataForPatch.lname = this.lname;
-    this.profileDataForPatch.mobile = this.mobile;
-    this.profileDataForPatch.email = this.email;
-    this.profileDataForPatch.age = this.age;
-    this.profileDataForPatch.bio = this.bio;
-    this.profileDataForPatch.location = this.location;
+    this.profileData = [];
+    this.profileData.username = this.username;
+    this.profileData.fname = this.fname;
+    this.profileData.lname = this.lname;
+    this.profileData.mobile = this.mobile;
+    this.profileData.email = this.email;
+    this.profileData.dob = this.age;
+    this.profileData.bio = this.bio;
+    this.profileData.location = this.location;
 
     this.generalService.showLoader();
     const url = 'users/me';
-    const data1: any = await this.service.postApi(url, this.profileDataForPatch);
+    const data1: any = await this.service.putApi(url, this.profileData);
     if (data1.status && data1.data) {
       this.profileData = data1.data;
       this.generalService.stopLoader();
@@ -100,9 +111,123 @@ export class ProfilePage implements OnInit {
     // this.password = data1.password;
   }
 
+  async takePicture() {
+    const image = await Camera.getPhoto({
+      quality: 50,
+      allowEditing: false,
+      resultType: CameraResultType.Uri,
+      width: 1024,
+      height: 768,
+      webUseInput: true,
+    });
+
+    const response = await fetch(image.webPath);
+    const blob = await response.blob();
+    var imageUrl = blob;
+    var imagenew = image;
+    imagenew.path = new Date().getTime() + '.png';
+    // this.saveImage(image);
+    this.images = {
+      url: (await this.convertBlobToBase64(blob)) as string,
+      imageUrl: imageUrl,
+      name: imagenew.path.substring(
+        imagenew.path.lastIndexOf('/') + 1,
+        imagenew.path.length
+      ),
+    };
+    // console.log(imageUrl);
+    this.presentAlertMultipleButtons();
+  }
+
+  async presentAlertMultipleButtons() {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Update Your Profile Picture?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Update',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            this.SavePost();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  private async readAsBase64(photo: Photo) {
+    if (this.plt.is('hybrid')) {
+      const file = await Filesystem.readFile({
+        path: photo.path,
+      });
+
+      return file.data;
+    } else {
+      // Fetch the photo, read as a blob, then convert to base64 format
+      const response = await fetch(photo.webPath);
+      const blob = await response.blob();
+
+      return (await this.convertBlobToBase64(blob)) as string;
+      // return blob;
+    }
+  }
+  convertBlobToBase64 = (blob: Blob) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(blob);
+    });
+
+  async SavePost() {
+    this.generalService.showLoader();
+    // const params = {
+    //   title: this.title,
+    //   description: this.description,
+    //   uploadedImages: this.images
+    // };
+    let formData = new FormData();
+    formData.append('title', this.title);
+    formData.append('description', this.description);
+    formData.append('uploadedImages', this.images.imageUrl, this.images.name);
+    const data1: any = await this.service.postAttachmentApi(
+      'users/image',
+      formData
+    );
+    if (data1.status && data1.data) {
+      debugger;
+      this.user_dp = data1.data.user_dp;
+      this.generalService.generalToast(
+        'Profile Picture Is Updated SuccessFully',
+        2000
+      );
+    } else {
+      this.generalService.generalToast(data1.msg);
+      console.log(data1.msg);
+    }
+    this.generalService.stopLoader();
+    // this.email = data1.email;
+    // this.password = data1.password;
+  }
+
   ngOnInit() {
     this.view = true;
     this.getUsers();
   }
-
 }

@@ -21,7 +21,24 @@
       *ngIf="this.view === false"
     >
       <div>
-        <img src="../../../assets/images/Oval.png" class="w-50 mb-3" alt="" />
+        <img
+          *ngIf="user_dp.path"
+          [src]="user_dp.path"
+          class="w-50 mb-3 custom-img"
+          alt=""
+        />
+        <img
+          *ngIf="!user_dp.path"
+          src="../../assets/images/Oval.png"
+          class="w-50 mb-3 custom-img"
+          alt=""
+        />
+        <!-- <img src="../../../assets/images/Icon awesome-edit.png" class="h-25-px w-25-px ml-5 img-click" (click)="takePicture()" /> -->
+        <ion-icon
+          class="h-25-px w-25-px ml-5 img-click"
+          (click)="takePicture()"
+          name="camera-outline"
+        ></ion-icon>
 
         <ion-input
           [(ngModel)]="username"
@@ -64,7 +81,12 @@
           placeholder="Email"
         >
         </ion-input>
-        <ion-input
+        <ion-datetime
+          placeholder="Age"
+          [(ngModel)]="age"
+          displayFormat="MM/DD/YYYY"
+        ></ion-datetime>
+        <!-- <ion-input
           [(ngModel)]="age"
           clearInput
           type="username"
@@ -72,7 +94,7 @@
           class="username"
           placeholder="Age"
         >
-        </ion-input>
+        </ion-input> -->
         <ion-input
           [(ngModel)]="bio"
           clearInput
@@ -104,10 +126,21 @@
       *ngIf="this.view === true"
     >
       <div>
-        <div class="d-flex ion-justify-content-end ion-align-items-center">
+        <div class="d-flex ion-justify-content-center ion-align-items-center">
           <!-- <img *ngIf="profileData.user_dp.path" [src]="profileData.user_dp.path" class="w-50 mb-3" alt="" (click)="toggle()"> -->
           <!-- <img *ngIf="!profileData.user_dp.path" src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" (click)="toggle()"> -->
-          <img src="../../assets/images/Oval.png" class="w-50 mb-3" alt="" />
+          <img
+            *ngIf="user_dp.path"
+            [src]="user_dp.path"
+            class="w-50 mb-3 custom-img"
+            alt=""
+          />
+          <img
+            *ngIf="!user_dp.path"
+            src="../../assets/images/Oval.png"
+            class="w-50 mb-3 custom-img"
+            alt=""
+          />
           <img
             src="../../../assets/images/Icon awesome-edit.png"
             class="h-25-px w-25-px ml-5 img-click"

@@ -21,14 +21,56 @@ export class SignupPage implements OnInit {
   bio = '';
   location = '';
   data: any = {};
-  constructor(private router: Router, public modalController: ModalController, public service: HttpConfigService,
-    public generalService: GeneralService, private navctrl: NavController, private loc: Location) { }
+  constructor(
+    private router: Router,
+    public modalController: ModalController,
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    private navctrl: NavController,
+    private loc: Location
+  ) {}
 
   backtologin() {
     this.router.navigate(['/login']);
   }
 
   async signup() {
+    if (this.username == '') {
+      this.generalService.generalToast('Username Is Required', 2000);
+      return false;
+    }
+    if (this.fname == '') {
+      this.generalService.generalToast('First Name Is Required', 2000);
+      return false;
+    }
+    if (this.lname == '') {
+      this.generalService.generalToast('Last Name Is Required', 2000);
+      return false;
+    }
+    if (this.mobile == '') {
+      this.generalService.generalToast('Mobile# Is Required', 2000);
+      return false;
+    }
+    if (this.email == '') {
+      this.generalService.generalToast('Email Is Required', 2000);
+      return false;
+    }
+    if (this.age == '') {
+      this.generalService.generalToast('Age Is Required', 2000);
+      return false;
+    }
+    if (this.password == '') {
+      this.generalService.generalToast('Password Is Required', 2000);
+      return false;
+    }
+    if (this.bio == '') {
+      this.generalService.generalToast('Bio Is Required', 2000);
+      return false;
+    }
+    if (this.location == '') {
+      this.generalService.generalToast('Location Is Required', 2000);
+      return false;
+    }
     this.generalService.showLoader();
     this.data.username = this.username;
     this.data.fname = this.fname;
@@ -48,8 +90,7 @@ export class SignupPage implements OnInit {
       this.generalService.stopLoader();
       this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
       this.router.navigate(['/tabs']);
-    }
-    else {
+    } else {
       // this.generalService.generalToast(data1.msg.message);
       console.log(data1.msg);
     }
@@ -69,8 +110,5 @@ export class SignupPage implements OnInit {
   //   return await modal.present();
   // }
 
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
