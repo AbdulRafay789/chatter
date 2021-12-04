@@ -112,4 +112,7 @@ export class SignupPage implements OnInit {
   
 
   ngOnInit() {}
+  showPassword(input: any): any {
+    input.type = input.type === 'password' ?  'text' : 'password';
+   }
 }

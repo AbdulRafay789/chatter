@@ -105,12 +105,14 @@
           <!-- <input type="password" name="password" class="password" placeholder="Enter Password"> -->
           <ion-input
             clearInput
+            #input
             [(ngModel)]="password"
             type="password"
             name="password"
             class="password"
             placeholder="Enter Your Password"
           >
+          <ion-icon name="eye" class="img-click" (click)="showPassword(input)" style="color: red;font-size: 23px;padding-left: 3px;"> </ion-icon>
           </ion-input>
         </div>
 
