@@ -147,7 +147,6 @@ export class HttpConfigService {
   }
 
   getuser() {
-    debugger;
     return this.user;
   }
 

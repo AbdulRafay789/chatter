@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IonContent } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 
@@ -9,6 +10,10 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./messages.page.scss'],
 })
 export class MessagesPage implements OnInit {
+  // @ViewChild('content') private content: any;
+  @ViewChild(IonContent, {
+    static: false
+ }) content: IonContent;
   toggled: boolean = false;
   emojitext: string;
   messages: any = [];
@@ -40,6 +45,9 @@ export class MessagesPage implements OnInit {
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.messages = data1.data;
+      setTimeout(function(){
+        this.content.scrollToBottom(1500);
+      },500);
       // this.service.setVideo(data1.data);
       if (flag) {
         this.generalService.stopLoader();
@@ -89,9 +97,9 @@ export class MessagesPage implements OnInit {
       this.usertoid = JSON.parse(params.data)['userto_id'];
     });
     this.getChats(true);
-    this.timeinterval = setInterval(() => {
-      this.getChats(false); // Now the "this" still references the component
-    }, 10000);
+    // this.timeinterval = setInterval(() => {
+    //   this.getChats(false); // Now the "this" still references the component
+    // }, 10000);
   }
   ngOnDestroy() {
     clearInterval(this.timeinterval);

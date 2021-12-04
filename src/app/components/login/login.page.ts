@@ -9,6 +9,13 @@ import { globalConfig } from 'src/app/services/global.config';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { Capacitor } from '@capacitor/core'
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
 // import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
@@ -18,7 +25,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = 'mharisferoz@gmail.com'; //mharisferoz@gmail.com
+  email = 'harisferoz@hotmail.com'; //mharisferoz@gmail.com
   password = '1234567'; //m6zfbtfk
   signUp: Form;
   data: any = {};
@@ -26,7 +33,7 @@ export class LoginPage implements OnInit {
   pisci: any;
   isRemember = false;
   currentDisplayDepartment: number = null;
-  devicetoken = ' 31 23 3123 3 23 2 131  2 2  21 3';
+  devicetoken = '';
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
@@ -62,6 +69,48 @@ export class LoginPage implements OnInit {
     // this.fcm.subscribeToTopic('enappd');
   }
   getToken() {
+    debugger;
+    let platform = Capacitor.getPlatform();
+    if (platform == "android" || platform == "ios") {
+      PushNotifications.requestPermissions().then(result => {
+        if (result.receive === 'granted') {
+          // Register with Apple / Google to receive push via APNS/FCM
+          PushNotifications.register();
+        } else {
+          // Show some error
+        }
+      });
+    
+      // On success, we should be able to receive notifications
+      PushNotifications.addListener('registration',
+        (token: Token) => {
+          alert('Push registration success, token: ' + token.value);
+          this.devicetoken = token.value;
+        }
+      );
+    
+      // Some issue with our setup and push will not work
+      PushNotifications.addListener('registrationError',
+        (error: any) => {
+          alert('Error on registration: ' + JSON.stringify(error));
+        }
+      );
+    
+      // Show us the notification payload if the app is open on our device
+      PushNotifications.addListener('pushNotificationReceived',
+        (notification: PushNotificationSchema) => {
+          alert('Push received: ' + JSON.stringify(notification));
+        }
+      );
+    
+      // Method called when tapping on a notification
+      PushNotifications.addListener('pushNotificationActionPerformed',
+        (notification: ActionPerformed) => {
+          alert('Push action performed: ' + JSON.stringify(notification));
+        }
+      );
+    }
+    
     // this.fcm.getToken().then(token => {debugger;
     //   this.devicetoken = token;
     // });
@@ -254,4 +303,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.getToken();
   }
+  // push notifications
+  
 }
