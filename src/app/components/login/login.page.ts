@@ -358,4 +358,7 @@ export class LoginPage implements OnInit {
       debugger;
     }
   }
+  showPassword(input: any): any {
+    input.type = input.type === 'password' ?  'text' : 'password';
+   }
 }

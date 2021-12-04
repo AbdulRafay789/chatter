@@ -38,12 +38,16 @@
           <ion-input
             [(ngModel)]="password"
             required="true"
+            #input
             clearInput
             type="password"
             name="password"
             class="password"
             placeholder="Enter Password"
           ></ion-input>
+          <ion-label for="checkbox" *ngIf="!passwordCheckbox">show password</ion-label>
+          <ion-label for="checkbox" *ngIf="passwordCheckbox">hide password</ion-label>
+          <ion-checkbox  class="marginTop" id="checkbox" style="border-style: none;" [(ngModel)]="passwordCheckbox" (click)="showPassword(input)"></ion-checkbox>
         </div>
 
         <p id="forgot" (click)="presentModal()" class="forgot mb-0">
