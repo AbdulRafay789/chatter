@@ -69,7 +69,6 @@ export class LoginPage implements OnInit {
     // this.fcm.subscribeToTopic('enappd');
   }
   getToken() {
-    debugger;
     let platform = Capacitor.getPlatform();
     if (platform == "android" || platform == "ios") {
       PushNotifications.requestPermissions().then(result => {
@@ -84,7 +83,7 @@ export class LoginPage implements OnInit {
       // On success, we should be able to receive notifications
       PushNotifications.addListener('registration',
         (token: Token) => {
-          alert('Push registration success, token: ' + token.value);
+          console.log('Push registration success, token: ' + token.value);
           this.devicetoken = token.value;
         }
       );
@@ -92,21 +91,21 @@ export class LoginPage implements OnInit {
       // Some issue with our setup and push will not work
       PushNotifications.addListener('registrationError',
         (error: any) => {
-          alert('Error on registration: ' + JSON.stringify(error));
+          console.log('Error on registration: ' + JSON.stringify(error));
         }
       );
     
       // Show us the notification payload if the app is open on our device
       PushNotifications.addListener('pushNotificationReceived',
         (notification: PushNotificationSchema) => {
-          alert('Push received: ' + JSON.stringify(notification));
+          console.log('Push received: ' + JSON.stringify(notification));
         }
       );
     
       // Method called when tapping on a notification
       PushNotifications.addListener('pushNotificationActionPerformed',
         (notification: ActionPerformed) => {
-          alert('Push action performed: ' + JSON.stringify(notification));
+          console.log('Push action performed: ' + JSON.stringify(notification));
         }
       );
     }
