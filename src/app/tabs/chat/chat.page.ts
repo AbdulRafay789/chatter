@@ -19,7 +19,9 @@ export class ChatPage implements OnInit {
     public generalService: GeneralService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.getUsers();
+  }
 
   messages() {
     this.router.navigate(['/tabs/chat/messages']);
@@ -61,7 +63,7 @@ export class ChatPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsers();
+    // this.getUsers();
   }
   Search() {
     debugger;
