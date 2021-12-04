@@ -47,10 +47,10 @@ export class SignupPage implements OnInit {
       this.generalService.generalToast('Last Name Is Required', 2000);
       return false;
     }
-    if (this.mobile == '') {
-      this.generalService.generalToast('Mobile# Is Required', 2000);
-      return false;
-    }
+    // if (this.mobile == '') {
+    //   this.generalService.generalToast('Mobile# Is Required', 2000);
+    //   return false;
+    // }
     if (this.email == '') {
       this.generalService.generalToast('Email Is Required', 2000);
       return false;
@@ -63,13 +63,13 @@ export class SignupPage implements OnInit {
       this.generalService.generalToast('Password Is Required', 2000);
       return false;
     }
-    if (this.bio == '') {
-      this.generalService.generalToast('Bio Is Required', 2000);
-      return false;
-    }
-    if (this.location == '') {
-      this.generalService.generalToast('Location Is Required', 2000);
-      return false;
+    // if (this.bio == '') {
+    //   this.generalService.generalToast('Bio Is Required', 2000);
+    //   return false;
+    // }
+    // if (this.location == '') {
+    //   this.generalService.generalToast('Location Is Required', 2000);
+    //   return false;
     }
     this.generalService.showLoader();
     this.data.username = this.username;
