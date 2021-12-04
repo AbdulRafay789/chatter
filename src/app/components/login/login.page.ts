@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   pisci: any;
   isRemember = false;
   currentDisplayDepartment: number = null;
-  devicetoken = '';
+  devicetoken = ' 31 23 3123 3 23 2 131  2 2  21 3';
   constructor(
     public router: Router,
     // public modalController: ModalController, public service: HttpConfigService, public auth: UserService,
