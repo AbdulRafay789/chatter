@@ -14,7 +14,7 @@ import { TabsPage } from './tabs/tabs.page';
 })
 export class AppComponent {
   rootPage: any = LoginPage;
-  username: any;
+  username = '';
   public appPages = [
     { title: 'Home', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Create Post', url: '/folder/Outbox', icon: 'paper-plane' },
@@ -23,10 +23,17 @@ export class AppComponent {
     { title: 'Profile', url: '/folder/Trash', icon: 'trash' },
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(public router: Router, public menu: MenuController, public nav: NavController, private injector: Injector,
-    public platform: Platform, public service: HttpConfigService, public generalService: GeneralService,) {
+  constructor(
+    public router: Router,
+    public menu: MenuController,
+    public nav: NavController,
+    private injector: Injector,
+    public platform: Platform,
+    public service: HttpConfigService,
+    public generalService: GeneralService
+  ) {
     globalConfig.injector = injector;
-    this.getusername();
+    this.username = this.service.getuser()['user']['user'];
     this.initializeApp();
     const token = localStorage.getItem('token');
     if (token && token.indexOf('bearer ') > -1) {
@@ -93,8 +100,7 @@ export class AppComponent {
         this.menu.close();
       }, 100);
       this.generalService.generalToast(data1.msg, 2000);
-    }
-    else {
+    } else {
       if (data1.status === false) {
         this.generalService.generalToast(data1.msg, 2000);
       }
@@ -103,15 +109,10 @@ export class AppComponent {
     }
   }
 
-  getusername() {
-    this.username = this.service.user.user;
-  }
-
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
       // this.splashScreen.hide();
     });
   }
-
 }

@@ -1,34 +1,32 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="secondary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
-        </ion-buttons>
-        <!-- <ion-buttons slot="end">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
         </ion-buttons> -->
-        <ion-buttons slot="end">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Search Results</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center title" color="primary"
+      >Search Results</ion-title
+    >
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-    <div class="background-picture">
-
-        <div class="login-details pr-1 pl-1 custom-textarea custom-searchbar">
-
-            <ion-searchbar
-                [(ngModel)]="search"
-                class="img-click"
-                mode="ios"
-                placeholder="Search Here"
-                inputmode="text"
-                (ionChange)="searchall()"
-
-            ></ion-searchbar>
-            <!-- <ion-item class="mb-2 p-custom" lines="none">
+  <div class="background-picture">
+    <div class="login-details pr-1 pl-1 custom-textarea custom-searchbar">
+      <ion-searchbar
+        [(ngModel)]="search"
+        class="img-click"
+        mode="ios"
+        placeholder="Search Here"
+        inputmode="text"
+        (ionChange)="searchall()"
+      ></ion-searchbar>
+      <!-- <ion-item class="mb-2 p-custom" lines="none">
                 <img src="../../../assets/images/Rectangle 26.png" class="w-25">
                 <ion-label>
                     <div class="d-flex ion-justify-content-between ion-align-items-center">
@@ -37,87 +35,107 @@
                     <p class="ml-3 f-s-12">Stacy Doe</p>
                 </ion-label>
             </ion-item> -->
-            <ion-segment [(ngModel)]="galleryType" color="primary" style="position: relative;z-index:1111;">
-                <ion-segment-button value="videos"  class="img-click" (click)="UpdateSegment('videos')">
-                  Videos
-                </ion-segment-button>
-                <ion-segment-button value="users" class="img-click" (click)="UpdateSegment('users')">
-                  Users
-                </ion-segment-button>
-              </ion-segment>
-             
-              <div [ngSwitch]="galleryType">
-                <ion-grid *ngSwitchCase="'videos'">
-                    <!-- <ion-row style="position: relative;z-index: 1111;overflow: auto;">
+      <ion-segment
+        [(ngModel)]="galleryType"
+        color="primary"
+        style="position: relative; z-index: 1111"
+      >
+        <ion-segment-button
+          value="videos"
+          class="img-click"
+          (click)="UpdateSegment('videos')"
+        >
+          Videos
+        </ion-segment-button>
+        <ion-segment-button
+          value="users"
+          class="img-click"
+          (click)="UpdateSegment('users')"
+        >
+          Users
+        </ion-segment-button>
+      </ion-segment>
+
+      <div [ngSwitch]="galleryType">
+        <ion-grid *ngSwitchCase="'videos'">
+          <!-- <ion-row style="position: relative;z-index: 1111;overflow: auto;">
                         <ion-col (click)="viewVideo(video, i)" size="12" *ngFor="let video of videosUsers.videos;let i = index;" [style.display]="video.videos.length > 0 ? 'block':'none'">
                           <div class="image-container" *ngFor="let videos of video.videos" [style.background-image]="'url(' + videos.path + ')'"></div>
                         </ion-col>
                     </ion-row> -->
-                    <ion-row style="position: relative;z-index: 1111;overflow: auto;">
-                        <ion-col (click)="viewVideo(video)" size="6" *ngFor="let video of videos;" [style.display]="video.path ? 'block':'none'">
-                          <div *ngIf="!video.isvideo && video.path" class="image-container" [style.background-image]="'url(' + video.path + ')'"></div>
-                          <div *ngIf="video.isvideo && video.path" class="image-container-video">
-                            <video width="100%" height="200" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
-                                <source [src]="video.path" type="video/mp4" />
-                              </video>
-                          </div>
-                        </ion-col>
-                    </ion-row>
-                        
-                  
-                </ion-grid>
-                <div *ngSwitchCase="'users'">
-                    <ion-item
-                        lines="none"
-                        button
-                        md="md"
-                        class="img-click"
-                        (click)="gotoUser(user)"
-                        *ngFor="let user of videosUsers.users"
-                    >
-                        <ion-thumbnail slot="start">
-                        <img src="{{user.user_dp.path}}" style="border-radius: 50%;" />
-                        </ion-thumbnail>
-                        <ion-label >
-                        <h3>{{user.fname + " " +user.lname}}</h3>
-                        <p>{{user.username }}</p>
-                        </ion-label>
-                    </ion-item>
-                </div>
-                  
+          <ion-row style="position: relative; z-index: 1111; overflow: auto">
+            <ion-col
+              (click)="viewVideo(video)"
+              size="6"
+              *ngFor="let video of videos;"
+              [style.display]="video.path ? 'block':'none'"
+            >
+              <div
+                *ngIf="!video.isvideo && video.path"
+                class="image-container"
+                [style.background-image]="'url(' + video.path + ')'"
+              ></div>
+              <div
+                *ngIf="video.isvideo && video.path"
+                class="image-container-video"
+              >
+                <video
+                  width="100%"
+                  height="200"
+                  controls
+                  poster="../../../assets/images/Icon ionic-ios-play-circle.png"
+                >
+                  <source [src]="video.path" type="video/mp4" />
+                </video>
               </div>
-
-            
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div *ngSwitchCase="'users'">
+          <ion-item
+            lines="none"
+            button
+            md="md"
+            class="img-click"
+            (click)="gotoUser(user)"
+            *ngFor="let user of videosUsers.users"
+          >
+            <ion-thumbnail slot="start">
+              <img src="{{user.user_dp.path}}" style="border-radius: 50%" />
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{user.fname + " " +user.lname}}</h3>
+              <p>{{user.username }}</p>
+            </ion-label>
+          </ion-item>
         </div>
-
+      </div>
     </div>
+  </div>
 
-
-
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
-            <ion-tab-button tab="home">
-                <ion-icon class="appname-customicon1"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
+      <ion-tab-button tab="home">
+        <ion-icon class="appname-customicon1"></ion-icon>
+        <!-- <ion-label>Schedule</ion-label>
             <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
+      </ion-tab-button>
 
-            <ion-tab-button tab="post">
-                <ion-icon class="appname-customicon2"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button routerLink="/tabs/post">
+        <ion-icon class="appname-customicon2"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="video">
-                <ion-icon class="appname-customicon3"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button routerLink="/tabs/video">
+        <ion-icon class="appname-customicon3"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="chat">
-                <ion-icon class="appname-customicon4"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button routerLink="/tabs/chat">
+        <ion-icon class="appname-customicon4"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="profile">
-                <ion-icon class="appname-customicon5"></ion-icon>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
-
+      <ion-tab-button routerLink="/tabs/profile">
+        <ion-icon class="appname-customicon5"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
