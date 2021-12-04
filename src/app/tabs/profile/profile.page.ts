@@ -127,10 +127,19 @@ export class ProfilePage implements OnInit {
     this.profileData.dob = this.age;
     this.profileData.bio = this.bio;
     this.profileData.location = this.location;
+    let param = {
+      "username":this.username,
+      "fname":this.fname,  
+      "lname":this.lname,  
+      "bio":this.bio,  
+      "mobile":this.mobile,  
+      "location":this.location,  
+      "dob":this.age
+  }
 
     this.generalService.showLoader();
-    const url = 'users/me';
-    const data1: any = await this.service.putApi(url, this.profileData);
+    const url = 'users/update';
+    const data1: any = await this.service.postApi(url, param);
     if (data1.status && data1.data) {
       this.profileData = data1.data;
       this.generalService.stopLoader();

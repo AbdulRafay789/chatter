@@ -162,19 +162,19 @@
           class="mb-2"
         >
           <ion-segment-button value="Posts" layout="icon-top">
-            <p class="mb-0">11</p>
+            <p class="mb-0">{{profileData.total_posts ? profileData.total_posts : 0}}</p>
             <ion-label>Posts</ion-label>
           </ion-segment-button>
           <ion-segment-button value="Like" layout="icon-top">
-            <p class="mb-0">22</p>
+            <p class="mb-0">{{profileData.total_likes ? profileData.total_likes : 0}}</p>
             <ion-label>Like</ion-label>
           </ion-segment-button>
           <ion-segment-button value="Connect" layout="icon-top">
-            <p class="mb-0">33</p>
+            <p class="mb-0">{{profileData.connect ? profileData.connect.length : 0}}</p>
             <ion-label>Connect</ion-label>
           </ion-segment-button>
           <ion-segment-button value="Connected" layout="icon-top">
-            <p class="mb-0">33</p>
+            <p class="mb-0">{{profileData.connect ? profileData.connected.length : 0}}</p>
             <ion-label>Connected</ion-label>
           </ion-segment-button>
         </ion-segment>
@@ -208,7 +208,7 @@
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Age</p>
-          <p class="heading-color-1">{{profileData.dob}}</p>
+          <p class="heading-color-1">{{profileData.dob | date}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Bio</p>
