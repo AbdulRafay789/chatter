@@ -12,7 +12,9 @@ import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 
-import { Chooser } from '@ionic-native/chooser/ngx';
+// import { Chooser } from '@ionic-native/chooser/ngx';
+
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
 @Component({
   selector: 'app-video',
@@ -27,7 +29,7 @@ export class VideoPage implements OnInit {
     public service: HttpConfigService,
     public plt: Platform,
     public generalService: GeneralService,
-    private chooser: Chooser
+    private chooser: FileChooser
   ) {}
 
   // notifications() {
@@ -188,29 +190,30 @@ export class VideoPage implements OnInit {
     // }
   }
   async getVideo() {
-    // if (this.images.length == 10) {
-    //   this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
-    // }
-    // try {
-    //   const file = await this.chooser.getFile({ mime: 'video/mp4' });
-    //   const fileread = await Filesystem.readFile({
-    //     path: file,
-    //   });
-    //   var fileUrl = 'data:video/mp4;base64,' + fileread.data;
-    //   const response = await fetch(fileUrl);
-    //   const blob = await response.blob();
-    //   var imageUrl = blob;
-    //   var imagenew = {};
-    //   imagenew['path'] = new Date().getTime() + '.mp4';
-    //   this.images.push({
-    //     url: (await this.convertBlobToBase64(blob)) as string,
-    //     video: true,
-    //     imageUrl: imageUrl,
-    //     name: imagenew['path'],
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    if (this.images.length == 10) {
+      this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
+    }
+    try {
+      const file = await this.chooser.open({mime:'video/mp4'});
+      debugger;
+      const fileread = await Filesystem.readFile({
+        path: file,
+      });
+      var fileUrl = 'data:video/mp4;base64,' + fileread.data;
+      const response = await fetch(fileUrl);
+      const blob = await response.blob();
+      var imageUrl = blob;
+      var imagenew = {};
+      imagenew['path'] = new Date().getTime() + '.mp4';
+      this.images.push({
+        url: (await this.convertBlobToBase64(blob)) as string,
+        video: true,
+        imageUrl: imageUrl,
+        name: imagenew['path'],
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
   async SavePost() {
     this.generalService.showLoader();

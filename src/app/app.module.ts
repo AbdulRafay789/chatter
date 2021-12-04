@@ -11,7 +11,8 @@ import { HttpHelper } from './services/http.helper';
 import { CoreModule } from './services/core.module';
 import { ConfigurationProvider } from './services/configuration';
 import { GeneralService } from './services/general.service';
-import { Chooser } from '@ionic-native/chooser/ngx';
+// import { Chooser } from '@ionic-native/chooser/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
 // @NgModule({
 //   declarations: [AppComponent],
@@ -36,7 +37,7 @@ import { Chooser } from '@ionic-native/chooser/ngx';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GeneralService,
-    Chooser,
+    FileChooser,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
