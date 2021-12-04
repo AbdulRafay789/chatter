@@ -16,8 +16,11 @@ export class VerifyIdPage implements OnInit {
   images1 = { imageUrl: null, name: '', url: '' };
   title = 'test';
   description = 'desc';
-  front: '../../../assets/images/Icon awesome-image.png';
-  back: '../../../assets/images/Icon awesome-image.png';
+  user = {
+    user_dp: { path: '../../assets/images/Group 8262-1.png' },
+    front: { path: '../../assets/images/Group 8262-1.png', created_at: '' },
+    back: { path: '../../assets/images/Group 8262-1.png' },
+  };
   constructor(
     public generalService: GeneralService,
     private router: Router,
@@ -146,17 +149,23 @@ export class VerifyIdPage implements OnInit {
     formData.append('title', this.title);
     formData.append('description', this.description);
     formData.append('uploadedImages', this.images.imageUrl, this.images.name);
+    formData.append('uploadedImages', this.images1.imageUrl, this.images1.name);
     const data1: any = await this.service.postAttachmentApi(
       'users/verify',
       formData
     );
     if (data1.status && data1.data) {
       debugger;
-      this.user_dp = data1.data.user_dp;
-      this.front = data1.data.front;
-      this.back = data1.data.back;
+      this.service.setuser(data1.data);
+      // this.user_dp = data1.data.user_dp;
+      // this.front = data1.data.front.path;
+      // this.back = data1.data.back.path;
+      // this.generalService.generalToast(
+      //   'Your Verification Is Under Process & will Take 2-3 Business Days To Take Effect',
+      //   2000
+      // );
       this.generalService.generalToast(
-        'Profile Picture Is Updated SuccessFully',
+        'Your Verification Is Under Process',
         2000
       );
     } else {
@@ -168,5 +177,7 @@ export class VerifyIdPage implements OnInit {
     // this.password = data1.password;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = this.service.getuser()['user'];
+  }
 }
