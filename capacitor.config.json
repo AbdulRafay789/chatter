@@ -8,6 +8,9 @@
       "resize": "none",
       "style": "dark",
       "resizeOnFullScreen": false
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
     }
   }
 }
