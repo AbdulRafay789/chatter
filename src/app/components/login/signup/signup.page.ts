@@ -70,7 +70,7 @@ export class SignupPage implements OnInit {
     // if (this.location == '') {
     //   this.generalService.generalToast('Location Is Required', 2000);
     //   return false;
-    }
+    // }
     this.generalService.showLoader();
     this.data.username = this.username;
     this.data.fname = this.fname;
