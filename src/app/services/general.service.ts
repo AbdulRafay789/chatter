@@ -172,7 +172,6 @@ export class GeneralService {
     // return this.post('SaveSignUpData', signupData);
   }
 
-
   async getLogin(login: string) {
     const params: any[] = [
       {
@@ -182,7 +181,6 @@ export class GeneralService {
     ];
     // return await this.get('GetUserLogin', params);
   }
-
 
   async getCitiesbyCountryCode(countryCode: string, cityName: string) {
     const params: any[] = [
@@ -263,9 +261,8 @@ export class GeneralService {
   }
   async stopLoader() {
     // setTimeout(() => {
-      await dialogLoader.dismiss();
-      
-    
+    await dialogLoader.dismiss();
+
     // }, 200);
   }
   async presentLoading(fn?) {

@@ -12,15 +12,22 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
 export class ForgotpasswordComponent implements OnInit {
   email = '';
   data: any = {};
-  constructor(public modalController: ModalController, public service: HttpConfigService,
-    public generalService: GeneralService, public router: Router,) { }
+  constructor(
+    public modalController: ModalController,
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    public router: Router
+  ) {}
 
   dismiss() {
-    this.modalController.dismiss({
-    });
+    this.modalController.dismiss({});
   }
 
   async forgotPassword() {
+    if (this.email == '') {
+      this.generalService.generalToast('Email Is Required', 2000);
+      return false;
+    }
     this.data.email = this.email;
 
     const data1: any = await this.service.postApi('users/forget', this.data);
@@ -31,13 +38,11 @@ export class ForgotpasswordComponent implements OnInit {
       this.generalService.generalToast(data1.msg);
       this.generalService.stopLoader();
       this.dismiss();
-    }
-    else {
+    } else {
       // this.generalService.generalToast(data1.msg.message);
       console.log(data1.msg);
     }
   }
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

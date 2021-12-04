@@ -212,6 +212,41 @@ export class HttpConfigService {
     return result;
   }
 
+  async putApi(url, params, headerson?) {
+    const headerObj = {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers':
+        'Origin, X-Requested-With, Content-Type, Accept',
+      Authorization: '',
+    };
+    if (token !== '') {
+      headerObj.Authorization = 'Bearer ' + token;
+    }
+    const obj = Object.assign({}, headerObj);
+    const httpHeaders = new HttpHeaders(obj);
+    const options = { headers: httpHeaders };
+
+    // const result = this.http.post(environment.baseUrl + url, params, options);
+    // return result;
+    let result: any;
+
+    await this.http
+      .post(environment.baseUrl + url, params, options)
+      .toPromise()
+      .then(async (resp: any) => {
+        console.log(resp);
+        result = await resp;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    return result;
+  }
+
   async patchApi(url, params, headerson?) {
     const headerObj = {
       'Content-Type': 'application/json',

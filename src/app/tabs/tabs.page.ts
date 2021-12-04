@@ -9,7 +9,6 @@ import { HttpConfigService } from '../services/http-config.service';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-
 export class TabsPage implements OnInit, OnChanges {
   videos = [];
   items = [];
@@ -21,8 +20,12 @@ export class TabsPage implements OnInit, OnChanges {
   showdetails: any;
   likeconnect: any;
   interval: number;
-  constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService,
-    private loadingController: LoadingController) {
+  constructor(
+    private router: Router,
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    private loadingController: LoadingController
+  ) {
     this.addMoreItems();
   }
 
@@ -45,7 +48,10 @@ export class TabsPage implements OnInit, OnChanges {
   // }
 
   detail(param) {
-    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
+    this.router.navigate([
+      '/tabs/home/detail',
+      { data: JSON.stringify(param) },
+    ]);
   }
 
   search() {
@@ -71,12 +77,11 @@ export class TabsPage implements OnInit, OnChanges {
       // this.detailedsource = data1.data[0].videos;
       // let fieldValues
       // this.detailedsource = data1.data.videos.Object.keys(fieldValues).map(key => fieldValues[key]);
-    }
-    else {
+    } else {
       if (data1.status === false) {
-        this.generalService.generalErrorMessage('No Record Found');
+        this.generalService.generalToast('No Record Found');
       }
-      this.generalService.generalErrorMessage(data1.msg);
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
@@ -88,9 +93,8 @@ export class TabsPage implements OnInit, OnChanges {
     const data1: any = await this.service.postAttachmentApi('videos', {});
     if (data1.status && data1.data) {
       this.videos = data1.data;
-    }
-    else {
-      this.generalService.generalErrorMessage(data1.msg);
+    } else {
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
 
@@ -105,7 +109,7 @@ export class TabsPage implements OnInit, OnChanges {
       message: 'Click the backdrop to dismiss early...',
       translucent: true,
       cssClass: 'custom-class custom-loading',
-      backdropDismiss: true
+      backdropDismiss: true,
     });
     await loading.present();
 
@@ -123,16 +127,14 @@ export class TabsPage implements OnInit, OnChanges {
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
         debugger;
-        this.videos[indx]["total_likes"] = this.videos[indx]["total_likes"] - 1;
+        this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
         // this.router.navigate(['/tabs']);
-      }
-      else {
-        this.generalService.generalErrorMessage(data1.msg);
+      } else {
+        this.generalService.generalToast(data1.msg);
         console.log(data1.msg);
       }
       this.generalService.stopLoader();
-    }
-    else {
+    } else {
       this.generalService.showLoader();
       const url = 'videos/' + param['_id'] + '/like';
       const data1: any = await this.service.postApi(url, {});
@@ -142,9 +144,8 @@ export class TabsPage implements OnInit, OnChanges {
         this.videos.splice(indx, 1, data1.data);
         // this.generalService.generalToast('Logged In SuccessFully', 2000);
         // this.router.navigate(['/tabs']);
-      }
-      else {
-        this.generalService.generalErrorMessage(data1.msg);
+      } else {
+        this.generalService.generalToast(data1.msg);
         console.log(data1.msg);
       }
       this.generalService.stopLoader();
@@ -160,11 +161,10 @@ export class TabsPage implements OnInit, OnChanges {
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       debugger;
-      this.videos[indx]["total_likes"] = this.videos[indx]["total_likes"] - 1;
+      this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
       // this.router.navigate(['/tabs']);
-    }
-    else {
-      this.generalService.generalErrorMessage(data1.msg);
+    } else {
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
 
@@ -180,21 +180,26 @@ export class TabsPage implements OnInit, OnChanges {
     if (data1.status) {
       debugger;
       // this.showdetails = data1.data;
-      this.videos[indx]["total_views"] = this.videos[indx]["total_views"] + 1;
-    }
-    else {
-      this.generalService.generalErrorMessage(data1.msg);
+      this.videos[indx]['total_views'] = this.videos[indx]['total_views'] + 1;
+    } else {
+      this.generalService.generalToast(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
-    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param), index: indx }]);
+    this.router.navigate([
+      '/tabs/home/detail',
+      { data: JSON.stringify(param), index: indx },
+    ]);
     // this.email = data1.email;
     // this.password = data1.password;
   }
 
   usersDetail(param, indx) {
     // this.generalService.showLoader();
-    this.router.navigate(['/users-detail', { data: JSON.stringify(param), index: indx }]);
+    this.router.navigate([
+      '/users-detail',
+      { data: JSON.stringify(param), index: indx },
+    ]);
     // this.generalService.stopLoader();
   }
 
@@ -205,5 +210,4 @@ export class TabsPage implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.videos = this.service.getVideo();
   }
-
 }

@@ -11,8 +11,7 @@ import { HttpHelper } from './services/http.helper';
 import { CoreModule } from './services/core.module';
 import { ConfigurationProvider } from './services/configuration';
 import { GeneralService } from './services/general.service';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
-import { VideoCapturePlus } from '@ionic-native/video-capture-plus/ngx';
+import { Chooser } from '@ionic-native/chooser/ngx';
 
 // @NgModule({
 //   declarations: [AppComponent],
@@ -37,8 +36,7 @@ import { VideoCapturePlus } from '@ionic-native/video-capture-plus/ngx';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GeneralService,
-    FileChooser,
-    VideoCapturePlus,
+    Chooser,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
