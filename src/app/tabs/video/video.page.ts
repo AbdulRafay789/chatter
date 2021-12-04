@@ -12,7 +12,7 @@ import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 
-// import { Chooser } from '@ionic-native/chooser/ngx';
+import { Chooser } from '@ionic-native/chooser/ngx';
 
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
@@ -29,7 +29,8 @@ export class VideoPage implements OnInit {
     public service: HttpConfigService,
     public plt: Platform,
     public generalService: GeneralService,
-    private chooser: FileChooser
+    private chooser: FileChooser,
+    private chooserMultiple: Chooser,
   ) {}
 
   // notifications() {
@@ -194,10 +195,11 @@ export class VideoPage implements OnInit {
       this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
     }
     try {
-      const file = await this.chooser.open({mime:'video/mp4'});
+      // const file = await this.chooser.open({mime:'video/mp4'});
+      const file = await this.chooserMultiple.getFile('video/mp4');
       debugger;
       const fileread = await Filesystem.readFile({
-        path: file,
+        path: file.uri,
       });
       var fileUrl = 'data:video/mp4;base64,' + fileread.data;
       const response = await fetch(fileUrl);
