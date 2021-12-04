@@ -47,6 +47,7 @@ export class MessagesPage implements OnInit {
       //   this.content.scrollToBottom(1500);
       // }, 500);
       // this.service.setVideo(data1.data);
+      this.scrollToBottom();
       if (flag) {
         this.generalService.stopLoader();
       }
@@ -91,14 +92,15 @@ export class MessagesPage implements OnInit {
     this.generalService.stopLoader();
   }
 
-  ScrollToBottom() {
-    setTimeout(() => {
-      this.content.scrollToBottom(300);
-    }, 1000);
+  getContent() {
+    return document.querySelector('ion-content');
+  }
+
+  scrollToBottom() {
+    this.getContent().scrollToBottom(500);
   }
 
   ngOnInit() {
-    this.ScrollToBottom();
     this.user = this.service.getuser();
     this.user = this.user.user;
     this.route.params.subscribe((params) => {

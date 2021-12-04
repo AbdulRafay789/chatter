@@ -28,8 +28,8 @@ export class ProfilePage implements OnInit {
   profileData: any = [];
   profileDataForPatch: any = [];
   images = { imageUrl: null, name: '', url: '' };
-  title = 'test';
-  description = 'desc';
+  title = '';
+  description = '';
   constructor(
     public generalService: GeneralService,
     private router: Router,

@@ -14,8 +14,8 @@ export class VerifyIdPage implements OnInit {
   user_dp = { path: '../../assets/images/Group 8262-1.png' };
   images = { imageUrl: null, name: '', url: '' };
   images1 = { imageUrl: null, name: '', url: '' };
-  title = 'test';
-  description = 'desc';
+  title = '';
+  description = '';
   user = {
     user_dp: { path: '../../assets/images/Group 8262-1.png' },
     front: { path: '../../assets/images/Group 8262-1.png', created_at: '' },
