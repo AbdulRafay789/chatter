@@ -13,6 +13,7 @@ import { ConfigurationProvider } from './services/configuration';
 import { GeneralService } from './services/general.service';
 import { Chooser } from '@ionic-native/chooser/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 // @NgModule({
 //   declarations: [AppComponent],
@@ -37,7 +38,7 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GeneralService,
-    FileChooser,Chooser
+    FileChooser,Chooser,GooglePlus
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
