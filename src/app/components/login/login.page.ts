@@ -9,7 +9,7 @@ import { globalConfig } from 'src/app/services/global.config';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { Capacitor } from '@capacitor/core'
+import { Capacitor } from '@capacitor/core';
 import {
   ActionPerformed,
   PushNotificationSchema,
@@ -72,8 +72,8 @@ export class LoginPage implements OnInit {
   }
   getToken() {
     let platform = Capacitor.getPlatform();
-    if (platform == "android" || platform == "ios") {
-      PushNotifications.requestPermissions().then(result => {
+    if (platform == 'android' || platform == 'ios') {
+      PushNotifications.requestPermissions().then((result) => {
         if (result.receive === 'granted') {
           // Register with Apple / Google to receive push via APNS/FCM
           PushNotifications.register();
@@ -81,37 +81,35 @@ export class LoginPage implements OnInit {
           // Show some error
         }
       });
-    
+
       // On success, we should be able to receive notifications
-      PushNotifications.addListener('registration',
-        (token: Token) => {
-          console.log('Push registration success, token: ' + token.value);
-          this.devicetoken = token.value;
-        }
-      );
-    
+      PushNotifications.addListener('registration', (token: Token) => {
+        console.log('Push registration success, token: ' + token.value);
+        this.devicetoken = token.value;
+      });
+
       // Some issue with our setup and push will not work
-      PushNotifications.addListener('registrationError',
-        (error: any) => {
-          console.log('Error on registration: ' + JSON.stringify(error));
-        }
-      );
-    
+      PushNotifications.addListener('registrationError', (error: any) => {
+        console.log('Error on registration: ' + JSON.stringify(error));
+      });
+
       // Show us the notification payload if the app is open on our device
-      PushNotifications.addListener('pushNotificationReceived',
+      PushNotifications.addListener(
+        'pushNotificationReceived',
         (notification: PushNotificationSchema) => {
           console.log('Push received: ' + JSON.stringify(notification));
         }
       );
-    
+
       // Method called when tapping on a notification
-      PushNotifications.addListener('pushNotificationActionPerformed',
+      PushNotifications.addListener(
+        'pushNotificationActionPerformed',
         (notification: ActionPerformed) => {
           console.log('Push action performed: ' + JSON.stringify(notification));
         }
       );
     }
-    
+
     // this.fcm.getToken().then(token => {debugger;
     //   this.devicetoken = token;
     // });
@@ -305,50 +303,59 @@ export class LoginPage implements OnInit {
     this.getToken();
   }
   // push notifications
-  async Google(){
-    this.googlePlus.login({
-      'webClientId': '864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
-      })
-    .then(async (res) => {
+  async Google() {
+    try {
+      const res = await this.googlePlus.login({
+        webClientId:
+          '864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com', // haris web
+        // '864775706418-ovmskjl5so0sbamapfqqmibv41493n5c.apps.googleusercontent.com', // haris windows
+        // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
+      });
       debugger;
-      console.log(res);
-      let obj = {
-        "username":"",
-        "fname":"",
-        "lname":"",
-        "mobile":"",
-        "email":"",
-        "dob":"",
-        "password":"",
-        "bio":"",
-        "location":"",
-        
-      }
-      obj.username = res.username;
-      obj.fname = res.displayName.split(' ')[0];
-      obj.lname = res.displayName.split(' ')[1];
-      obj.mobile = "000000000";
-      obj.email = res.email;
-      obj.dob = "1999-01-01";
-      obj.password = res.userId;
-      obj.bio = "bio";
-      obj.location = "location";
+      if (res) {
+        debugger;
+        console.log(res);
+        let obj = {
+          username: '',
+          fname: '',
+          lname: '',
+          mobile: '',
+          email: '',
+          dob: '',
+          password: '',
+          bio: '',
+          location: '',
+        };
+        obj.username = res.givenName + res.familyName;
+        obj.fname = res.displayName.split(' ')[0];
+        obj.lname = res.displayName.split(' ')[1];
+        obj.mobile = '000000000';
+        obj.email = res.email;
+        obj.dob = '1999-01-01';
+        obj.password = res.userId;
+        obj.bio = 'bio';
+        obj.location = 'location';
 
-    const data1: any = await this.service.postApi('users/signup', obj);
-    if (data1.status && data1.data.user) {
-      this.service.settoken(data1.data.token);
-      this.service.setuser(data1.user);
-      this.data = data1.user;
-      this.generalService.stopLoader();
-      // this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
-      this.router.navigate(['/tabs']);
-    } else {
-      // this.generalService.generalToast(data1.msg.message);
-      console.log(data1.msg);
+        const data1: any = await this.service.postApi('users/signup', obj);
+        if (data1.status && data1.data.user) {
+          this.service.settoken(data1.data.token);
+          this.service.setuser(data1.user);
+          this.data = data1.user;
+          this.generalService.stopLoader();
+          // this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
+          this.router.navigate(['/tabs']);
+        } else {
+          // this.generalService.generalToast(data1.msg.message);
+          console.log(data1.msg);
+        }
+      }
+      // .then(async (res) => {
+      // })
+      // .catch(err => {
+      //   console.error(err);
+      // });
+    } catch (error) {
+      debugger;
     }
-    })
-    .catch(err => {
-      console.error(err);
-    });
   }
 }
