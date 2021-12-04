@@ -11,9 +11,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
 })
 export class MessagesPage implements OnInit {
   // @ViewChild('content') private content: any;
-  @ViewChild(IonContent, {
-    static: false
- }) content: IonContent;
+  @ViewChild('content') private content: any;
   toggled: boolean = false;
   emojitext: string;
   messages: any = [];
@@ -45,9 +43,9 @@ export class MessagesPage implements OnInit {
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.messages = data1.data;
-      setTimeout(function(){
-        this.content.scrollToBottom(1500);
-      },500);
+      // setTimeout(function () {
+      //   this.content.scrollToBottom(1500);
+      // }, 500);
       // this.service.setVideo(data1.data);
       if (flag) {
         this.generalService.stopLoader();
@@ -72,6 +70,10 @@ export class MessagesPage implements OnInit {
       userto_id: this.usertoid,
       msg: this.msg,
     };
+    if (params.msg == '') {
+      this.generalService.generalToast('Message Is Required', 2000);
+      return false;
+    }
     const data1: any = await this.service.postApi(url, params);
     if (data1.status) {
       this.messages = data1.data;
@@ -89,7 +91,14 @@ export class MessagesPage implements OnInit {
     this.generalService.stopLoader();
   }
 
+  ScrollToBottom() {
+    setTimeout(() => {
+      this.content.scrollToBottom(300);
+    }, 1000);
+  }
+
   ngOnInit() {
+    this.ScrollToBottom();
     this.user = this.service.getuser();
     this.user = this.user.user;
     this.route.params.subscribe((params) => {

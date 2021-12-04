@@ -42,8 +42,12 @@ export class UsersDetailPage implements OnInit {
   //   }
   // ];
   videoData: any = [];
-  constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
-    private router: Router,) { }
+  constructor(
+    public service: HttpConfigService,
+    public generalService: GeneralService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   toggle() {
     if (this.view === true) {
@@ -56,14 +60,13 @@ export class UsersDetailPage implements OnInit {
 
   async getVideos(param) {
     this.generalService.showLoader();
-    const url = 'videos/' + param['_id'] + '/likesusers';
+    const url = 'videos/' + param['_id'] + '/likeusers';
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.videoData = data1.data;
       this.service.setVideo(data1.data);
       this.generalService.stopLoader();
-    }
-    else {
+    } else {
       if (data1.status === false) {
         this.generalService.generalErrorMessage('No Record Found');
       }
@@ -73,7 +76,10 @@ export class UsersDetailPage implements OnInit {
   }
 
   profileForUsers(param, indx) {
-    this.router.navigate(['/profileforusers', { data: JSON.stringify(param), index: indx }]);
+    this.router.navigate([
+      '/profileforusers',
+      { data: JSON.stringify(param), index: indx },
+    ]);
   }
 
   async getUsers(param) {
@@ -99,5 +105,4 @@ export class UsersDetailPage implements OnInit {
     });
     this.getVideos(this.likeusers);
   }
-
 }

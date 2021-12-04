@@ -5,9 +5,16 @@
 	"bundledWebRuntime": false,
 	"plugins": {
 		"Keyboard": {
-			"resize": "none",
+			"resize": "body",
 			"style": "dark",
 			"resizeOnFullScreen": false
+		},
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
 		}
 	}
 }
