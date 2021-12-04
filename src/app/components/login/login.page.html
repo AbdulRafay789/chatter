@@ -21,7 +21,7 @@
         <div class="input">
           <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
           <ion-input
-          style="padding-left: 25px !important;"
+            style="padding-left: 25px !important"
             autofocus="true"
             [(ngModel)]="email"
             required="true"
@@ -44,10 +44,16 @@
             type="password"
             name="password"
             class="password"
-            placeholder="Enter Password"
+            placeholder="   Enter Password"
           >
-          <ion-icon name="eye" class="img-click" (click)="showPassword(input)" style="color: red;font-size: 23px;padding-left: 3px;"> </ion-icon>
-        </ion-input>
+            <ion-icon
+              name="eye"
+              class="img-click"
+              (click)="showPassword(input)"
+              style="color: red; font-size: 23px; padding-left: 3px"
+            >
+            </ion-icon>
+          </ion-input>
         </div>
 
         <p id="forgot" (click)="presentModal()" class="forgot mb-0">
@@ -64,10 +70,14 @@
                 <p>{{data.password}}</p> -->
         <div class="account-signup">
           <p>Or Login With?</p>
-      </div>
-      <div class="account-signup">
-          <ion-img  class="w-15 img-click" (click)="Google()" src="../../../assets/images/gmail.png"></ion-img>
-      </div>
+        </div>
+        <div class="account-signup">
+          <ion-img
+            class="w-15 img-click"
+            (click)="Google()"
+            src="../../../assets/images/gmail.png"
+          ></ion-img>
+        </div>
         <div class="account-signup">
           <p class="mb-0">Don't have an account?</p>
           <h5 class="mt-0 mr-0 mb-0 ml-5" (click)="signup()">

@@ -14,10 +14,12 @@ export class DetailPage implements OnInit {
   videos = [];
   showdetails: any;
   index: any;
-  constructor(private router: Router, private route: ActivatedRoute, public service: HttpConfigService,
-    public generalService: GeneralService,) {
-
-  }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    public service: HttpConfigService,
+    public generalService: GeneralService
+  ) {}
 
   // notifications() {
   //   this.router.navigate(['/notifications']);
@@ -29,15 +31,14 @@ export class DetailPage implements OnInit {
     const data = { message: this.message };
     const data1: any = await this.service.postApi(url, data);
     if (data1.status) {
-      this.videoData = data1.data;
+      this.videoData = data1.data[0];
       const videos: any = this.service.getVideo();
       videos[this.index] = this.videoData;
       this.service.setVideo(videos);
       this.message = '';
       // this.videoData[indx]["comment"] = this.videoData[indx]["comment"] + 1;
       // this.showdetails = await this.service.getApi('videos', {});
-    }
-    else {
+    } else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
@@ -48,11 +49,10 @@ export class DetailPage implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.videoData = JSON.parse(params.data);
       this.index = params.index;
       // this.id = params['id'];
     });
   }
-
 }
