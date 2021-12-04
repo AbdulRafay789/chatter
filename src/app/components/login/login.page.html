@@ -21,6 +21,7 @@
         <div class="input">
           <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
           <ion-input
+          style="padding-left: 25px !important;"
             autofocus="true"
             [(ngModel)]="email"
             required="true"
@@ -44,10 +45,9 @@
             name="password"
             class="password"
             placeholder="Enter Password"
-          ></ion-input>
-          <ion-label for="checkbox" *ngIf="!passwordCheckbox">show password</ion-label>
-          <ion-label for="checkbox" *ngIf="passwordCheckbox">hide password</ion-label>
-          <ion-checkbox  class="marginTop" id="checkbox" style="border-style: none;" [(ngModel)]="passwordCheckbox" (click)="showPassword(input)"></ion-checkbox>
+          >
+          <ion-icon name="eye" class="img-click" (click)="showPassword(input)" style="color: red;font-size: 23px;padding-left: 3px;"> </ion-icon>
+        </ion-input>
         </div>
 
         <p id="forgot" (click)="presentModal()" class="forgot mb-0">
