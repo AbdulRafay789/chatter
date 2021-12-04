@@ -30,7 +30,7 @@ export class VideoPage implements OnInit {
     public plt: Platform,
     public generalService: GeneralService,
     private chooser: FileChooser,
-    private chooserMultiple: Chooser,
+    private chooserMultiple: Chooser
   ) {}
 
   // notifications() {
@@ -195,11 +195,13 @@ export class VideoPage implements OnInit {
       this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
     }
     try {
-      // const file = await this.chooser.open({mime:'video/mp4'});
-      const file = await this.chooserMultiple.getFile('video/mp4');
+      const file = await this.chooser.open();
+      // const file = await this.chooser.open({ mime: 'video/mp4' });
+      // const file = await this.chooserMultiple.getFile('video/mp4');
       debugger;
       const fileread = await Filesystem.readFile({
-        path: file.uri,
+        path: file,
+        // path: file.uri,
       });
       var fileUrl = 'data:video/mp4;base64,' + fileread.data;
       const response = await fetch(fileUrl);
