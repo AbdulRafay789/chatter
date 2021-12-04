@@ -82,7 +82,8 @@ export class VideoPage implements OnInit {
       ],
     });
     if (result.index == 0) {
-      this.takeVideo();
+      // this.takeVideo();
+      this.getVideo();
     }
     if (result.index == 1) {
       this.getVideo();
