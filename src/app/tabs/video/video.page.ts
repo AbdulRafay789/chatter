@@ -23,8 +23,8 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 })
 export class VideoPage implements OnInit {
   images = [];
-  title = 'test';
-  description = 'desc';
+  title = '';
+  description = '';
   constructor(
     public service: HttpConfigService,
     public plt: Platform,
