@@ -10,8 +10,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./messages.page.scss'],
 })
 export class MessagesPage implements OnInit {
-  // @ViewChild('content') private content: any;
-  @ViewChild('content') private content: any;
+  @ViewChild(IonContent, { static: true }) content: IonContent;
   toggled: boolean = false;
   emojitext: string;
   messages: any = [];
@@ -47,7 +46,7 @@ export class MessagesPage implements OnInit {
       //   this.content.scrollToBottom(1500);
       // }, 500);
       // this.service.setVideo(data1.data);
-      this.scrollToBottom();
+      this.scrollToBottomOnInit();
       if (flag) {
         this.generalService.stopLoader();
       }
@@ -92,15 +91,14 @@ export class MessagesPage implements OnInit {
     this.generalService.stopLoader();
   }
 
-  getContent() {
-    return document.querySelector('ion-content');
-  }
-
-  scrollToBottom() {
-    this.getContent().scrollToBottom(500);
+  scrollToBottomOnInit() {
+    setTimeout(() => {
+      this.content.scrollToBottom(800);
+    }, 2000);
   }
 
   ngOnInit() {
+    this.scrollToBottomOnInit();
     this.user = this.service.getuser();
     this.user = this.user.user;
     this.route.params.subscribe((params) => {
@@ -117,5 +115,8 @@ export class MessagesPage implements OnInit {
   }
   handleSelection(event) {
     this.emojitext = this.emojitext + ' ' + event.char;
+  }
+  ionViewDidEnter() {
+    this.scrollToBottomOnInit;
   }
 }
