@@ -1,8 +1,13 @@
 <ion-app>
-    <ion-split-pane contentId="main-content">
-        <ion-menu contentId="main-content" type="overlay" class="my-custom-menu" side="end">
-            <ion-content>
-                <!-- <ion-list id="inbox-list">
+  <ion-split-pane contentId="main-content">
+    <ion-menu
+      contentId="main-content"
+      type="overlay"
+      class="my-custom-menu"
+      side="end"
+    >
+      <ion-content>
+        <!-- <ion-list id="inbox-list">
           <ion-list-header>Inbox</ion-list-header>
           <ion-note>hi@ionicframework.com</ion-note>
 
@@ -15,59 +20,58 @@
           </ion-menu-toggle>
         </ion-list> -->
 
-                <ion-list lines="none" mode="ios">
-                    <!-- <ion-list-header> -->
-                    <div class="custom-div">
-                        <img class="w-20" src="../assets/images/Oval.png" alt="">
-                        <p class="f-s-18 john">{{username.username}}</p>
-                    </div>
-                    <!-- </ion-list-header> -->
+        <ion-list lines="none" mode="ios">
+          <!-- <ion-list-header> -->
+          <div class="custom-div">
+            <img class="w-20" src="../assets/images/Oval.png" alt="" />
+            <p class="f-s-18 john">
+              {{ username ? username : "John Doe" }}
+            </p>
+          </div>
+          <!-- </ion-list-header> -->
 
-                    <ion-item (click)="home()">
-                        <ion-img class="w-26" src="../assets/images/menu-icon-1.png">
-                        </ion-img>
-                        <h5 class="ml-40">Home</h5>
-                    </ion-item>
+          <ion-item (click)="home()">
+            <ion-img class="w-26" src="../assets/images/menu-icon-1.png">
+            </ion-img>
+            <h5 class="ml-40">Home</h5>
+          </ion-item>
 
-                    <ion-item (click)="createvideo()">
-                        <ion-img class="w-26" src="../assets/images/menu-icon-2.png">
-                        </ion-img>
-                        <h5 class="ml-40">Create Post</h5>
-                    </ion-item>
+          <ion-item (click)="createvideo()">
+            <ion-img class="w-26" src="../assets/images/menu-icon-2.png">
+            </ion-img>
+            <h5 class="ml-40">Create Post</h5>
+          </ion-item>
 
-                    <!-- <ion-item>
+          <!-- <ion-item>
                         <ion-img class="w-26" src="../assets/images/menu-icon-3.png">
                         </ion-img>
                         <h5 class="ml-40">Video</h5>
                     </ion-item> -->
 
-                    <ion-item (click)="chat()">
-                        <ion-img class="w-26" src="../assets/images/menu-icon-4.png">
-                        </ion-img>
-                        <h5 class="ml-40">Chat</h5>
-                    </ion-item>
+          <ion-item (click)="chat()">
+            <ion-img class="w-26" src="../assets/images/menu-icon-4.png">
+            </ion-img>
+            <h5 class="ml-40">Chat</h5>
+          </ion-item>
 
-                    <ion-item (click)="profile()">
-                        <ion-img class="w-26" src="../assets/images/menu-icon-5.png">
-                        </ion-img>
-                        <h5 class="ml-40">Profile</h5>
-                    </ion-item>
+          <ion-item (click)="profile()">
+            <ion-img class="w-26" src="../assets/images/menu-icon-5.png">
+            </ion-img>
+            <h5 class="ml-40">Profile</h5>
+          </ion-item>
 
-                    <ion-item (click)="verifyid()">
-                        <ion-img class="w-29" src="../assets/images/Mark.svg">
-                        </ion-img>
-                        <h5 class="ml-38">Verify ID</h5>
-                    </ion-item>
+          <ion-item (click)="verifyid()">
+            <ion-img class="w-29" src="../assets/images/Mark.svg"> </ion-img>
+            <h5 class="ml-38">Verify ID</h5>
+          </ion-item>
 
-                    <ion-item (click)="connections()">
-                        <ion-img class="w-33" src="../assets/images/Group.svg">
-                        </ion-img>
-                        <h5 class="ml-35">Connections</h5>
-                    </ion-item>
-                </ion-list>
+          <ion-item (click)="connections()">
+            <ion-img class="w-33" src="../assets/images/Group.svg"> </ion-img>
+            <h5 class="ml-35">Connections</h5>
+          </ion-item>
+        </ion-list>
 
-
-                <!-- <ion-tabs>
+        <!-- <ion-tabs>
                     <ion-tab-bar slot="bottom">
                         <ion-tab-button tab="schedule">
                             <ion-icon name="calendar"></ion-icon>
@@ -92,13 +96,15 @@
                     </ion-tab-bar>
                 </ion-tabs> -->
 
-
-                <ion-list id="labels-list" class="cusom-list" (click)="logout()">
-                    <ion-list-header>Logout</ion-list-header>
-                    <ion-icon class="arrow-icon" name="chevron-forward-outline"></ion-icon>
-                </ion-list>
-            </ion-content>
-        </ion-menu>
-        <ion-router-outlet id="main-content"></ion-router-outlet>
-    </ion-split-pane>
+        <ion-list id="labels-list" class="cusom-list" (click)="logout()">
+          <ion-list-header>Logout</ion-list-header>
+          <ion-icon
+            class="arrow-icon"
+            name="chevron-forward-outline"
+          ></ion-icon>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

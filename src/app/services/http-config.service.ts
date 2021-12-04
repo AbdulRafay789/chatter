@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router, UrlTree } from '@angular/router';
 
-let token ='';
+let token = '';
 @Injectable({
   providedIn: 'root',
 })
@@ -64,8 +64,7 @@ export class HttpConfigService {
       updatedAt: '',
       __v: 50,
     },
-    token:
-      '',
+    token: '',
   }; //{}
   // url = 'posts';
   videos = [];
@@ -148,6 +147,7 @@ export class HttpConfigService {
   }
 
   getuser() {
+    debugger;
     return this.user;
   }
 
