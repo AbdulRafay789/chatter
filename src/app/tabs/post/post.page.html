@@ -21,7 +21,7 @@
 
             <ion-item class="mb-2" button *ngFor="let notifi of notifications; let i = index;" (click)="read(notifi,i)" lines="none">
                 <img src="{{notifi.read == false ? '../../assets/images/Ellipse 1.png' : '../../assets/images/Ellipse 2.png'}}" class="w-10-px  mr-8">
-                <img src="{{notifi.userto.user_dp.path}}" class="w-20">
+                <img src="{{notifi.userto.user_dp.path}}"  style="border-radius: 50%;height: 60px;width: 60px;" >
                 <ion-label>
                     <div class="d-flex ion-justify-content-between ion-align-items-center">
                         <h2 class="ml-3 color f-s-14 text-wrap">{{notifi.message}}</h2>

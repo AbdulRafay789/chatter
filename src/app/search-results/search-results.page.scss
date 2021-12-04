@@ -1,6 +1,23 @@
 .title {
     --ion-font-family: AppFont;
 }
+.image-container {
+    min-height: 200px;
+    max-height: 200px;
+    // background-size: cover;
+
+    background-size: 100% 100%;
+    display: block;
+    width: 100%;
+    float: left;
+}
+image-container-video{
+    min-height: 200px;
+    max-height: 200px;
+    display: block;
+    width: 100%;
+    float: left;
+}
 
 ion-header ion-toolbar:first-of-type {
     padding-top: var(--ion-safe-area-top, 0);
@@ -11,6 +28,7 @@ ion-header ion-toolbar:first-of-type {
     background-image: url(../../assets/images/01_Login-1.png);
     height: 100%;
     background-size: cover;
+    // background-size: 100% 100%;
     background-repeat: round;
     width: 100%;
 }
