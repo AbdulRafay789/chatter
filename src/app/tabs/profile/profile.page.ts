@@ -12,6 +12,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 })
 export class ProfilePage implements OnInit {
   user_dp = { path: '../../../assets/images/Oval.png' };
+  max = new Date().toISOString().split('T')[0];
   // user_dp = {};
   username = '';
   fname = '';
@@ -128,14 +129,14 @@ export class ProfilePage implements OnInit {
     this.profileData.bio = this.bio;
     this.profileData.location = this.location;
     let param = {
-      "username":this.username,
-      "fname":this.fname,  
-      "lname":this.lname,  
-      "bio":this.bio,  
-      "mobile":this.mobile,  
-      "location":this.location,  
-      "dob":this.age
-  }
+      username: this.username,
+      fname: this.fname,
+      lname: this.lname,
+      bio: this.bio,
+      mobile: this.mobile,
+      location: this.location,
+      dob: this.age,
+    };
 
     this.generalService.showLoader();
     const url = 'users/update';

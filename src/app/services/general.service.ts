@@ -258,10 +258,17 @@ export class GeneralService {
       message: 'Please wait...',
     });
     await dialogLoader.present();
+    setTimeout(async () => {
+      if (dialogLoader) {
+        await dialogLoader.dismiss();
+      }
+    }, 15000);
   }
   async stopLoader() {
     // setTimeout(() => {
-    await dialogLoader.dismiss();
+    if (dialogLoader) {
+      await dialogLoader.dismiss();
+    }
 
     // }, 200);
   }

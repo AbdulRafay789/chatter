@@ -9,6 +9,17 @@
 			"style": "dark",
 			"resizeOnFullScreen": false
 		},
+		"SplashScreen": {
+			"launchShowDuration": 5000,
+			"launchAutoHide": true,
+			"androidScaleType": "CENTER_CROP",
+			"androidSplashResourceName": "splash",
+			"splashFullScreen": false,
+			"splashImmersive": false
+		},
+		"android": {
+			"allowMixedContent": true
+		},
 		"PushNotifications": {
 			"presentationOptions": [
 				"badge",
@@ -16,5 +27,8 @@
 				"alert"
 			]
 		}
+	},
+	"server": {
+		"url": "http://192.168.8.100:8100"
 	}
 }

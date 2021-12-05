@@ -91,13 +91,22 @@
         <label for="username" class="ml-8">DOB</label>
         <div class="input">
           <!-- <input type="username" name="username" class="username" placeholder="Enter Username"> -->
-          <ion-label class="ml-8" position="floating">Enter Your DOB</ion-label>
-          <ion-datetime
+          <!-- <ion-label class="ml-8" position="floating">Enter Your DOB</ion-label> -->
+          <!-- <ion-input readonly [value]="age" type=""></ion-input> -->
+          <!-- <ion-datetime
             [(ngModel)]="age"
             displayFormat="MM/DD/YYYY"
-          ></ion-datetime>
-          <!-- <ion-input clearInput [(ngModel)]="age" type="username" name="username" class="username" placeholder="Enter Your Age">
-                    </ion-input> -->
+          ></ion-datetime> -->
+          <ion-input
+            clearInput
+            max="{{max}}"
+            [(ngModel)]="age"
+            type="date"
+            name="username"
+            class="username"
+            placeholder="Enter Your DOB"
+          >
+          </ion-input>
         </div>
 
         <label for="password" class="ml-8">Password</label>
@@ -112,7 +121,13 @@
             class="password"
             placeholder="Enter Your Password"
           >
-          <ion-icon name="eye" class="img-click" (click)="showPassword(input)" style="color: red;font-size: 23px;padding-left: 3px;"> </ion-icon>
+            <ion-icon
+              name="eye"
+              class="img-click"
+              (click)="showPassword(input)"
+              style="color: red; font-size: 23px; padding-left: 3px"
+            >
+            </ion-icon>
           </ion-input>
         </div>
 

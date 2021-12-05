@@ -64,7 +64,7 @@ export class MessagesPage implements OnInit {
   async sendMsg() {
     // eslint-disable-next-line no-underscore-dangle
     const url = 'chats/send/';
-    this.generalService.showLoader();
+    // this.generalService.showLoader();
     let params = {
       _id: this.chatid,
       userto_id: this.usertoid,
@@ -88,7 +88,7 @@ export class MessagesPage implements OnInit {
       console.log(data1.msg);
       this.msg = '';
     }
-    this.generalService.stopLoader();
+    // this.generalService.stopLoader();
   }
 
   scrollToBottomOnInit() {

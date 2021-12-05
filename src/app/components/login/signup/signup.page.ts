@@ -11,6 +11,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  max = new Date().toISOString().split('T')[0];
   username = '';
   fname = '';
   lname = '';
@@ -109,10 +110,9 @@ export class SignupPage implements OnInit {
   //   });
   //   return await modal.present();
   // }
-  
 
   ngOnInit() {}
   showPassword(input: any): any {
-    input.type = input.type === 'password' ?  'text' : 'password';
-   }
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 }

@@ -183,7 +183,7 @@ export class LoginPage implements OnInit {
       // this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
@@ -359,6 +359,6 @@ export class LoginPage implements OnInit {
     }
   }
   showPassword(input: any): any {
-    input.type = input.type === 'password' ?  'text' : 'password';
-   }
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 }

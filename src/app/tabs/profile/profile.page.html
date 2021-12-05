@@ -81,20 +81,21 @@
           placeholder="Email"
         >
         </ion-input>
-        <ion-datetime
+        <!-- <ion-datetime
           placeholder="DOB"
           [(ngModel)]="age"
           displayFormat="MM/DD/YYYY"
-        ></ion-datetime>
-        <!-- <ion-input
-          [(ngModel)]="age"
+        ></ion-datetime> -->
+        <ion-input
           clearInput
-          type="username"
+          max="{{max}}"
+          [(ngModel)]="age"
+          type="date"
           name="username"
           class="username"
-          placeholder="Age"
+          placeholder="Enter Your DOB"
         >
-        </ion-input> -->
+        </ion-input>
         <ion-input
           [(ngModel)]="bio"
           clearInput
@@ -106,6 +107,7 @@
         </ion-input>
         <ion-textarea
           [(ngModel)]="location"
+          class="text-left pl-3"
           rows="2"
           cols="5"
           placeholder="Address"
