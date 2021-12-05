@@ -79,9 +79,9 @@ export class TabsPage implements OnInit, OnChanges {
       // this.detailedsource = data1.data.videos.Object.keys(fieldValues).map(key => fieldValues[key]);
     } else {
       if (data1.status === false) {
-        this.generalService.generalToast('No Record Found');
+        this.generalService.generalToast('No Record Found', 2000);
       }
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
@@ -94,7 +94,7 @@ export class TabsPage implements OnInit, OnChanges {
     if (data1.status && data1.data) {
       this.videos = data1.data;
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
 
@@ -121,7 +121,7 @@ export class TabsPage implements OnInit, OnChanges {
     // this.videoLike = this.videos._id
     // param.islike = true;
     if (param.islike) {
-      this.generalService.showLoader();
+      // this.generalService.showLoader();
       this.likeconnect = param.like;
       const url = 'videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
@@ -130,12 +130,12 @@ export class TabsPage implements OnInit, OnChanges {
         this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
         // this.router.navigate(['/tabs']);
       } else {
-        this.generalService.generalToast(data1.msg);
+        this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
       }
-      this.generalService.stopLoader();
+      // this.generalService.stopLoader();
     } else {
-      this.generalService.showLoader();
+      // this.generalService.showLoader();
       const url = 'videos/' + param['_id'] + '/like';
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
@@ -145,10 +145,10 @@ export class TabsPage implements OnInit, OnChanges {
         // this.generalService.generalToast('Logged In SuccessFully', 2000);
         // this.router.navigate(['/tabs']);
       } else {
-        this.generalService.generalToast(data1.msg);
+        this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
       }
-      this.generalService.stopLoader();
+      // this.generalService.stopLoader();
     }
 
     // this.email = data1.email;
@@ -164,7 +164,7 @@ export class TabsPage implements OnInit, OnChanges {
       this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
       // this.router.navigate(['/tabs']);
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
 
@@ -182,7 +182,7 @@ export class TabsPage implements OnInit, OnChanges {
       // this.showdetails = data1.data;
       this.videos[indx]['total_views'] = this.videos[indx]['total_views'] + 1;
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();

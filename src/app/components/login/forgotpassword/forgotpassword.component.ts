@@ -35,7 +35,7 @@ export class ForgotpasswordComponent implements OnInit {
       this.generalService.showLoader();
       // this.service.settoken(data1.data.token);
       // this.service.setuser(data1.user);
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       this.generalService.stopLoader();
       this.dismiss();
     } else {
