@@ -15,14 +15,6 @@
         "sound",
         "alert"
       ]
-    },
-    "SplashScreen": {
-      "launchShowDuration": 5000,
-      "launchAutoHide": true,
-      "androidScaleType": "CENTER_CROP",
-      "androidSplashResourceName": "splash",
-      "splashFullScreen": false,
-      "splashImmersive": false
     }
   }
 }
