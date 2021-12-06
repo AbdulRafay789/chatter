@@ -54,12 +54,28 @@
           >
             <img
               class="w-50 mr-2"
+              *ngIf="!user.front.path"
+              src="../../../assets/images/Icon awesome-image.png"
+              alt=""
+              (click)="takePicture(true)"
+            />
+            <img
+              class="w-50"
+              *ngIf="!user.front.path"
+              src="../../../assets/images/Icon awesome-image.png"
+              alt=""
+              (click)="takePicture(false)"
+            />
+            <img
+              class="w-50 mr-2"
+              *ngIf="user.front.path"
               [src]="user.front.path"
               alt=""
               (click)="takePicture(true)"
             />
             <img
               class="w-50"
+              *ngIf="user.front.path"
               [src]="user.back.path"
               alt=""
               (click)="takePicture(false)"
@@ -71,7 +87,7 @@
             <p class="mb-0 ml-2 primary" (click)="takePicture(true)">
               Front Image
             </p>
-            <p class="mb-0 mr-2 primary" (click)="takePicture(false)">
+            <p class="mb-0 mr-4 primary" (click)="takePicture(false)">
               Back Image
             </p>
           </div>

@@ -314,7 +314,6 @@ export class LoginPage implements OnInit {
   }
   // push notifications
   async Google() {
-    
     try {
       // const res = await this.googlePlus.login({
       //   webClientId:
@@ -336,7 +335,7 @@ export class LoginPage implements OnInit {
           password: '',
           bio: '',
           location: '',
-          image:''
+          image: '',
         };
         obj.username = res.givenName + res.familyName;
         obj.fname = res['givenName'];
@@ -350,10 +349,12 @@ export class LoginPage implements OnInit {
         obj.image = res.imageUrl;
 
         const data1: any = await this.service.postApi('users/signup', obj);
-        if (data1.status && data1.data.user) {
+        if (data1.status && data1.data) {
+          debugger;
           this.service.settoken(data1.data.token);
-          this.service.setuser(data1.user);
+          this.service.setuser(data1.data);
           this.data = data1.user;
+          debugger;
           this.generalService.stopLoader();
           // this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
           this.router.navigate(['/tabs']);
