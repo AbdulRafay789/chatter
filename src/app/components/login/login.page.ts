@@ -26,8 +26,8 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = ''; //mharisferoz@gmail.com
-  password = ''; //m6zfbtfk
+  email = 'harisferoz'; //mharisferoz@gmail.com
+  password = '1234567'; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
