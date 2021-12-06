@@ -9,6 +9,7 @@ import { globalConfig } from './services/global.config';
 import { HttpConfigService } from './services/http-config.service';
 import { SubjectsService } from './services/subjects.service';
 import { TabsPage } from './tabs/tabs.page';
+import { SplashScreen, SplashScreenPlugin } from '@capacitor/splash-screen';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -42,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public platform: Platform,
     public service: HttpConfigService,
     public generalService: GeneralService,
-    private subjectService: SubjectsService
+    private subjectService: SubjectsService // public SplashScreen: SplashScreenPlugin
   ) {
     globalConfig.injector = injector;
     // this.username = this.service.getuser()['user']['user'];
@@ -141,7 +142,9 @@ export class AppComponent implements OnInit, OnDestroy {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
-      // this.SplashScreenOriginal.hide();
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 2000);
     });
   }
 }

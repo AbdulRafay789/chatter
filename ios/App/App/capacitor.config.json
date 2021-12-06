@@ -10,12 +10,19 @@
 			"resizeOnFullScreen": false
 		},
 		"SplashScreen": {
-			"launchShowDuration": 5000,
+			"launchShowDuration": 3000,
 			"launchAutoHide": true,
-			"androidScaleType": "CENTER_CROP",
+			"backgroundColor": "#ffffffff",
 			"androidSplashResourceName": "splash",
-			"splashFullScreen": false,
-			"splashImmersive": false
+			"androidScaleType": "CENTER_CROP",
+			"showSpinner": true,
+			"androidSpinnerStyle": "large",
+			"iosSpinnerStyle": "small",
+			"spinnerColor": "#999999",
+			"splashFullScreen": true,
+			"splashImmersive": true,
+			"layoutName": "launch_screen",
+			"useDialog": true
 		},
 		"android": {
 			"allowMixedContent": true
