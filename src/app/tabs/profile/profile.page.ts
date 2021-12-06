@@ -194,62 +194,64 @@ export class ProfilePage implements OnInit {
     this.presentAlertMultipleButtons();
   }
 
-  // async showActions() {
-  //   const result = await ActionSheet.showActions({
-  //     title: 'Photo Options',
-  //     message: 'Select an option to perform',
-  //     options: [
-  //       {
-  //         title: 'Take Picture',
-  //       },
-  //       {
-  //         title: 'Choose From Gallery',
-  //       },
-  //       {
-  //         title: 'Back',
-  //         style: ActionSheetButtonStyle.Destructive,
-  //       },
-  //     ],
-  //   });
-  //   if (result.index == 0) {
-  //     this.takePicture();
-  //   }
-  //   if (result.index == 1) {
-  //     this.getPicture();
-  //   }
+  async showActions() {
+    const result = await ActionSheet.showActions({
+      title: 'Photo Options',
+      message: 'Select an option to perform',
+      options: [
+        {
+          title: 'Take Picture',
+        },
+        {
+          title: 'Choose From Gallery',
+        },
+        {
+          title: 'Back',
+          style: ActionSheetButtonStyle.Destructive,
+        },
+      ],
+    });
+    if (result.index == 0) {
+      this.takePicture();
+    }
+    if (result.index == 1) {
+      this.getPicture();
+    }
 
-  //   console.log('Action Sheet result:', result);
-  // }
+    console.log('Action Sheet result:', result);
+  }
 
-  // async getPicture() {
-  //   const image = await Camera.pickImages({
-  //     quality: 50,
-  //     width: 1024,
-  //     height: 768,
-  //     limit: 10,
-  //   });
-  //   if (image.photos.length > 1) {
-  //     this.generalService.generalToast('Maximum 1 Photo is allowed', 2000);
-  //   }
-  //   image.photos.forEach(async (element) => {
-  //     const response = await fetch(element.webPath);
-  //     const blob = await response.blob();
-  //     var imageUrl = blob;
-  //     var imagenew = image;
-  //     imagenew['path'] = new Date().getTime() + '.png';
-  //     this.images.push({
-  //       url: (await this.convertBlobToBase64(blob)) as string,
-  //       imageUrl: imageUrl,
-  //       video: false,
-  //       name: imagenew['path'].substring(
-  //         imagenew['path'].lastIndexOf('/') + 1,
-  //         imagenew['path'].length
-  //       ),
-  //     });
-  //   });
+  async getPicture() {
+    const image = await Camera.pickImages({
+      quality: 50,
+      width: 1024,
+      height: 768,
+      limit: 10,
+    });
 
-  //   // console.log(imageUrl);
-  // }
+    
+    if (image.photos.length > 10) {
+      this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
+    }
+    image.photos.forEach(async (element) => {
+      const response = await fetch(element.webPath);
+      const blob = await response.blob();
+      var imageUrl = blob;
+      var imagenew = image;
+      imagenew['path'] = new Date().getTime() + '.png';
+      // this.saveImage(image);
+      this.images = {
+        url: (await this.convertBlobToBase64(blob)) as string,
+        imageUrl: imageUrl,
+        name: imagenew['path'].substring(
+          imagenew['path'].lastIndexOf('/') + 1,
+          imagenew['path'].length
+        ),
+      };
+    });
+
+    // console.log(imageUrl);
+  }
 
   async presentAlertMultipleButtons() {
     const alert = await this.alertCtrl.create({
