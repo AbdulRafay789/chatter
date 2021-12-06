@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   user = {
     username: 'JohnDoe',
     user_dp: {
-      path: '../assets/images/Oval.png',
+      path: '../assets/images/menu-icon-5.png',
     },
     fname: 'John',
     lname: 'Doe',
