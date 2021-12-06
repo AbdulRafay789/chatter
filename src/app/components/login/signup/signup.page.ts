@@ -83,9 +83,9 @@ export class SignupPage implements OnInit {
     this.data.bio = this.bio.toLowerCase();
     this.data.location = this.location.toLowerCase();
     const data1: any = await this.service.postApi('users/signup', this.data);
-    if (data1.status && data1.data.user) {
+    if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
-      this.service.setuser(data1.user);
+      this.service.setuser(data1.data);
       this.data = data1.user;
       this.generalService.stopLoader();
       this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
