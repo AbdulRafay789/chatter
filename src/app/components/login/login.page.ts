@@ -10,13 +10,15 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
 import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { Capacitor } from '@capacitor/core';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+// auth
 import {
   ActionPerformed,
   PushNotificationSchema,
   PushNotifications,
   Token,
 } from '@capacitor/push-notifications';
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
+// import { GooglePlus } from '@ionic-native/google-plus/ngx';
 // import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
@@ -42,7 +44,7 @@ export class LoginPage implements OnInit {
     public service: HttpConfigService,
     public generalService: GeneralService,
     public plt: Platform,
-    private googlePlus: GooglePlus
+    // private googlePlus: GooglePlus
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
@@ -301,16 +303,19 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.getToken();
+    GoogleAuth.init();
   }
   // push notifications
   async Google() {
+    
     try {
-      const res = await this.googlePlus.login({
-        webClientId:
-          '864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com', // haris web
-        // '864775706418-ovmskjl5so0sbamapfqqmibv41493n5c.apps.googleusercontent.com', // haris windows
-        // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
-      });
+      // const res = await this.googlePlus.login({
+      //   webClientId:
+      //     '864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com', // haris web
+      //   // '864775706418-ovmskjl5so0sbamapfqqmibv41493n5c.apps.googleusercontent.com', // haris windows
+      //   // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
+      // });
+      const res = await GoogleAuth.signIn();
       debugger;
       if (res) {
         debugger;
@@ -325,16 +330,18 @@ export class LoginPage implements OnInit {
           password: '',
           bio: '',
           location: '',
+          image:''
         };
         obj.username = res.givenName + res.familyName;
-        obj.fname = res.displayName.split(' ')[0];
-        obj.lname = res.displayName.split(' ')[1];
+        obj.fname = res['givenName'];
+        obj.lname = res['familyName'];
         obj.mobile = '000000000';
         obj.email = res.email;
         obj.dob = '1999-01-01';
-        obj.password = res.userId;
+        obj.password = res['id'];
         obj.bio = 'bio';
         obj.location = 'location';
+        obj.image = res.imageUrl;
 
         const data1: any = await this.service.postApi('users/signup', obj);
         if (data1.status && data1.data.user) {
@@ -349,11 +356,6 @@ export class LoginPage implements OnInit {
           console.log(data1.msg);
         }
       }
-      // .then(async (res) => {
-      // })
-      // .catch(err => {
-      //   console.error(err);
-      // });
     } catch (error) {
       debugger;
     }

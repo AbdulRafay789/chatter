@@ -15,6 +15,14 @@
         "sound",
         "alert"
       ]
+    },
+    "GoogleAuth": {
+      "scopes": [
+        "profile",
+        "email"
+      ],
+      "serverClientId": "864775706418-lkaghiaph6trsa9tm23is91hg3q40vpp.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
     }
   }
 }
