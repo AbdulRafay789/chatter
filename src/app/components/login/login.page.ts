@@ -17,6 +17,7 @@ import {
   Token,
 } from '@capacitor/push-notifications';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { SubjectsService } from 'src/app/services/subjects.service';
 // import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
@@ -42,7 +43,8 @@ export class LoginPage implements OnInit {
     public service: HttpConfigService,
     public generalService: GeneralService,
     public plt: Platform,
-    private googlePlus: GooglePlus
+    private googlePlus: GooglePlus,
+    private subjectService: SubjectsService
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
@@ -179,6 +181,11 @@ export class LoginPage implements OnInit {
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
+
+      // Subscription
+      this.subjectService.userDetails.next(data1.data.user);
+      // Subscription
+
       this.data = data1;
       // this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
@@ -311,9 +318,7 @@ export class LoginPage implements OnInit {
         // '864775706418-ovmskjl5so0sbamapfqqmibv41493n5c.apps.googleusercontent.com', // haris windows
         // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
       });
-      debugger;
       if (res) {
-        debugger;
         console.log(res);
         let obj = {
           username: '',
