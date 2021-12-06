@@ -54,6 +54,13 @@
             {
               "client_id": "864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "864775706418-lkaghiaph6trsa9tm23is91hg3q40vpp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chatterapp.chatter"
+              }
             }
           ]
         }
