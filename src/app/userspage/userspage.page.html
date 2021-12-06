@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center title" color="primary"
+      >{{value}} users</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="background-picture">
+    <div class="login-details pr-1 pl-1 custom-textarea custom-searchbar">
+      <div>
+        <div>
+          <ion-item
+            lines="none"
+            button
+            md="md"
+            class="img-click"
+            (click)="gotoUser(data)"
+            *ngFor="let data of Data"
+          >
+            <ion-thumbnail slot="start">
+              <img src="{{data.user_dp.path}}" style="border-radius: 50%" />
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{data.fname + " " +data.lname}}</h3>
+              <p>{{data.username }}</p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
+      <ion-tab-button tab="home">
+        <ion-icon class="appname-customicon1"></ion-icon>
+        <!-- <ion-label>Schedule</ion-label>
+            <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/tabs/post">
+        <ion-icon class="appname-customicon2"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/tabs/video">
+        <ion-icon class="appname-customicon3"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/tabs/chat">
+        <ion-icon class="appname-customicon4"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/tabs/profile">
+        <ion-icon class="appname-customicon5"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

@@ -157,6 +157,7 @@
         </div> -->
 
         <ion-segment
+          (ionChange)="segmentChanged($event)"
           [(ngModel)]="segment"
           color="primary"
           scrollable

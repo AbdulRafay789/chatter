@@ -56,13 +56,18 @@ export class ProfilePage implements OnInit {
     // }
   }
 
-  // notifications() {
-  //   this.router.navigate(['/notifications']);
+  // usersPage() {
+  //   this.router.navigate(['/userspage', { data: this.value }]);
   // }
 
   segmentChanged(ev: any) {
-    this.value = 'Posts';
+    // this.value = 'Posts';
     this.value = ev.detail.value;
+    if (this.segment === 'Posts') {
+      this.router.navigate(['/uservideos', { data: this.segment }]);
+    } else {
+      this.router.navigate(['/userspage', { data: this.segment }]);
+    }
   }
 
   async getUsers() {

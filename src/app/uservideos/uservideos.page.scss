@@ -1,0 +1,151 @@
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.pisca {
+  color: orange;
+  --ion-font-family: AppFont;
+}
+
+.icon-font {
+  font-size: 20px;
+}
+
+.title {
+  --ion-font-family: AppFont;
+}
+
+ion-header ion-toolbar:first-of-type {
+  padding-top: var(--ion-safe-area-top, 0);
+  --ion-font-family: AppFont;
+}
+
+.background-picture {
+  background-image: url(../../assets/images/01_Login-1.png);
+  height: 100%;
+  background-size: cover;
+  background-repeat: round;
+  width: 100%;
+  position: relative;
+}
+
+.login-details {
+  background-color: var(--ion-color-primary-contrast);
+  position: absolute;
+  border-radius: 20px;
+  top: 3%;
+  left: 4%;
+  width: 92%;
+  // height: 27rem;
+  /* box-shadow: 0px -10px 10px 0px #cbcbcb6b; */
+  height: 85%;
+  overflow: auto;
+  z-index: 999;
+}
+
+h4 {
+  margin-left: 12px;
+  margin-top: 10px;
+}
+
+h5 {
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+video {
+  object-fit: none;
+  border-radius: 20px;
+  /* margin-left: 12
+px
+; */
+  /* margin-right: 12
+px
+; */
+  width: -webkit-fill-available;
+}
+
+.custom-div {
+  box-shadow: 0px 20px 10px 0px #ffffff69;
+  border: 1px solid #e9e9e9;
+  border-radius: 10px;
+  margin: 10px 10px 20px 10px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  padding-bottom: 10px;
+}
+
+ion-tab-bar {
+  position: fixed;
+  /* top: 0; */
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+ion-icon {
+  &[class*="appname-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: #fff306;
+    width: 1em;
+    height: 1em;
+  }
+  // custom icons
+  &[class*="appname-customicon1"] {
+    mask-image: url(../../assets/images/Icon-feather-home-1.svg);
+  }
+  &[class*="appname-customicon2"] {
+    mask-image: url(../../assets/images/Group-6853-1.svg);
+    background: white;
+  }
+  &[class*="appname-customicon3"] {
+    mask-image: url(../../assets/images/Icon-ionic-ios-add-circle-outline.svg);
+    background: white;
+  }
+  &[class*="appname-customicon4"] {
+    mask-image: url(../../assets/images/Icon-material-chat-bubble.svg);
+    background: white;
+  }
+  &[class*="appname-customicon5"] {
+    mask-image: url(../../assets/images/user-1.svg);
+    background: white;
+  }
+}
+
+.custom-skeleton ion-skeleton-text {
+  line-height: 13px;
+}
+
+.custom-skeleton ion-skeleton-text:last-child {
+  margin-bottom: 5px;
+}
