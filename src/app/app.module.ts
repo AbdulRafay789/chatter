@@ -13,8 +13,8 @@ import { ConfigurationProvider } from './services/configuration';
 import { GeneralService } from './services/general.service';
 import { Chooser } from '@ionic-native/chooser/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { CommonModule } from '@angular/common';
+// import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 // @NgModule({
 //   declarations: [AppComponent],
@@ -42,7 +42,7 @@ import { CommonModule } from '@angular/common';
     GeneralService,
     FileChooser,
     Chooser,
-    GooglePlus,
+    // GooglePlus
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
