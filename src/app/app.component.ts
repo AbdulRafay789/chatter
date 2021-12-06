@@ -142,9 +142,11 @@ export class AppComponent implements OnInit, OnDestroy {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
-      setTimeout(() => {
-        SplashScreen.hide();
-      }, 2000);
+      // setTimeout(() => {
+      //   SplashScreen.hide();
+      // }, 2000);
+      SplashScreen.hide();
+
     });
   }
 }
