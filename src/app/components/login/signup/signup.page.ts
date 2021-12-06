@@ -11,6 +11,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  max = new Date().toISOString().split('T')[0];
   username = '';
   fname = '';
   lname = '';
@@ -72,16 +73,15 @@ export class SignupPage implements OnInit {
     //   return false;
     // }
     this.generalService.showLoader();
-    this.data.username = this.username;
-    this.data.fname = this.fname;
-    this.data.lname = this.lname;
+    this.data.username = this.username.toLowerCase();
+    this.data.fname = this.fname.toLowerCase();
+    this.data.lname = this.lname.toLowerCase();
     this.data.mobile = this.mobile;
-    this.data.email = this.email;
+    this.data.email = this.email.toLowerCase();
     this.data.dob = this.age;
     this.data.password = this.password;
-    this.data.bio = this.bio;
-    this.data.location = this.location;
-
+    this.data.bio = this.bio.toLowerCase();
+    this.data.location = this.location.toLowerCase();
     const data1: any = await this.service.postApi('users/signup', this.data);
     if (data1.status && data1.data.user) {
       this.service.settoken(data1.data.token);
@@ -109,10 +109,9 @@ export class SignupPage implements OnInit {
   //   });
   //   return await modal.present();
   // }
-  
 
   ngOnInit() {}
   showPassword(input: any): any {
-    input.type = input.type === 'password' ?  'text' : 'password';
-   }
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 }

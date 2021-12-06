@@ -2,9 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
-import { Camera, CameraResultType, Photo } from '@capacitor/camera';
+import {
+  Camera,
+  CameraResultType,
+  CameraSource,
+  Photo,
+} from '@capacitor/camera';
 import { Platform, AlertController } from '@ionic/angular';
 import { Filesystem, Directory } from '@capacitor/filesystem';
+import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -12,6 +18,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 })
 export class ProfilePage implements OnInit {
   user_dp = { path: '../../../assets/images/Oval.png' };
+  max = new Date().toISOString().split('T')[0];
   // user_dp = {};
   username = '';
   fname = '';
@@ -49,13 +56,18 @@ export class ProfilePage implements OnInit {
     // }
   }
 
-  // notifications() {
-  //   this.router.navigate(['/notifications']);
+  // usersPage() {
+  //   this.router.navigate(['/userspage', { data: this.value }]);
   // }
 
   segmentChanged(ev: any) {
-    this.value = 'Posts';
+    // this.value = 'Posts';
     this.value = ev.detail.value;
+    if (this.segment === 'Posts') {
+      this.router.navigate(['/uservideos', { data: this.segment }]);
+    } else {
+      this.router.navigate(['/userspage', { data: this.segment }]);
+    }
   }
 
   async getUsers() {
@@ -78,7 +90,7 @@ export class ProfilePage implements OnInit {
       // this.router.navigate(['/profileforusers', { data: JSON.stringify(data1.data[0]) }]);
     } else {
       if (data1.status === false) {
-        this.generalService.generalToast('No Record Found');
+        this.generalService.generalToast('No Record Found', 2000);
       }
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
@@ -128,14 +140,14 @@ export class ProfilePage implements OnInit {
     this.profileData.bio = this.bio;
     this.profileData.location = this.location;
     let param = {
-      "username":this.username,
-      "fname":this.fname,  
-      "lname":this.lname,  
-      "bio":this.bio,  
-      "mobile":this.mobile,  
-      "location":this.location,  
-      "dob":this.age
-  }
+      username: this.username,
+      fname: this.fname,
+      lname: this.lname,
+      bio: this.bio,
+      mobile: this.mobile,
+      location: this.location,
+      dob: this.age,
+    };
 
     this.generalService.showLoader();
     const url = 'users/update';
@@ -160,6 +172,8 @@ export class ProfilePage implements OnInit {
       width: 1024,
       height: 768,
       webUseInput: true,
+      source: CameraSource.Camera,
+      saveToGallery: false,
     });
 
     const response = await fetch(image.webPath);
@@ -179,6 +193,63 @@ export class ProfilePage implements OnInit {
     // console.log(imageUrl);
     this.presentAlertMultipleButtons();
   }
+
+  // async showActions() {
+  //   const result = await ActionSheet.showActions({
+  //     title: 'Photo Options',
+  //     message: 'Select an option to perform',
+  //     options: [
+  //       {
+  //         title: 'Take Picture',
+  //       },
+  //       {
+  //         title: 'Choose From Gallery',
+  //       },
+  //       {
+  //         title: 'Back',
+  //         style: ActionSheetButtonStyle.Destructive,
+  //       },
+  //     ],
+  //   });
+  //   if (result.index == 0) {
+  //     this.takePicture();
+  //   }
+  //   if (result.index == 1) {
+  //     this.getPicture();
+  //   }
+
+  //   console.log('Action Sheet result:', result);
+  // }
+
+  // async getPicture() {
+  //   const image = await Camera.pickImages({
+  //     quality: 50,
+  //     width: 1024,
+  //     height: 768,
+  //     limit: 10,
+  //   });
+  //   if (image.photos.length > 1) {
+  //     this.generalService.generalToast('Maximum 1 Photo is allowed', 2000);
+  //   }
+  //   image.photos.forEach(async (element) => {
+  //     const response = await fetch(element.webPath);
+  //     const blob = await response.blob();
+  //     var imageUrl = blob;
+  //     var imagenew = image;
+  //     imagenew['path'] = new Date().getTime() + '.png';
+  //     this.images.push({
+  //       url: (await this.convertBlobToBase64(blob)) as string,
+  //       imageUrl: imageUrl,
+  //       video: false,
+  //       name: imagenew['path'].substring(
+  //         imagenew['path'].lastIndexOf('/') + 1,
+  //         imagenew['path'].length
+  //       ),
+  //     });
+  //   });
+
+  //   // console.log(imageUrl);
+  // }
 
   async presentAlertMultipleButtons() {
     const alert = await this.alertCtrl.create({
@@ -259,7 +330,7 @@ export class ProfilePage implements OnInit {
         2000
       );
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();

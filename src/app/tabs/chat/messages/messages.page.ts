@@ -52,9 +52,9 @@ export class MessagesPage implements OnInit {
       }
     } else {
       if (data1.status === false) {
-        this.generalService.generalToast('No Record Found');
+        this.generalService.generalToast('No Record Found', 2000);
       }
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     if (flag) {
@@ -64,7 +64,7 @@ export class MessagesPage implements OnInit {
   async sendMsg() {
     // eslint-disable-next-line no-underscore-dangle
     const url = 'chats/send/';
-    this.generalService.showLoader();
+    // this.generalService.showLoader();
     let params = {
       _id: this.chatid,
       userto_id: this.usertoid,
@@ -82,13 +82,13 @@ export class MessagesPage implements OnInit {
       this.msg = '';
     } else {
       if (data1.status === false) {
-        this.generalService.generalToast('No Record Found');
+        this.generalService.generalToast('No Record Found', 2000);
       }
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
       this.msg = '';
     }
-    this.generalService.stopLoader();
+    // this.generalService.stopLoader();
   }
 
   scrollToBottomOnInit() {

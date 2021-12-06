@@ -169,7 +169,7 @@ export class VerifyIdPage implements OnInit {
         2000
       );
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();

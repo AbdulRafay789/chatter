@@ -23,9 +23,14 @@
         <ion-list lines="none" mode="ios">
           <!-- <ion-list-header> -->
           <div class="custom-div">
-            <img class="w-20" src="../assets/images/Oval.png" alt="" />
+            <img
+              class="w-20"
+              [src]="user.user_dp.path"
+              alt=""
+              style="border-radius: 50%; height: 50px; width: 50px !important"
+            />
             <p class="f-s-18 john">
-              {{ username ? username : "John Doe" }}
+              {{ user.fname + " " + user.lname }}
             </p>
           </div>
           <!-- </ion-list-header> -->

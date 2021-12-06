@@ -18,6 +18,7 @@ import {
   PushNotifications,
   Token,
 } from '@capacitor/push-notifications';
+import { SubjectsService } from 'src/app/services/subjects.service';
 // import { GooglePlus } from '@ionic-native/google-plus/ngx';
 // import { FCM } from '@ionic-native/fcm/ngx';
 
@@ -28,8 +29,8 @@ import {
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = ''; //mharisferoz@gmail.com
-  password = ''; //m6zfbtfk
+  email = 'harisferoz'; //mharisferoz@gmail.com
+  password = '1234567'; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
@@ -44,7 +45,8 @@ export class LoginPage implements OnInit {
     public service: HttpConfigService,
     public generalService: GeneralService,
     public plt: Platform,
-    // private googlePlus: GooglePlus
+    // private googlePlus: GooglePlus,
+    private subjectService: SubjectsService
   ) {
     this.generalService.setCustomer('');
     this.generalService.setUserLogin('');
@@ -181,11 +183,16 @@ export class LoginPage implements OnInit {
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
+
+      // Subscription
+      this.subjectService.userDetails.next(data1.data.user);
+      // Subscription
+
       this.data = data1;
       // this.generalService.generalToast('Logged In SuccessFully', 2000);
       this.router.navigate(['/tabs']);
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
@@ -318,7 +325,6 @@ export class LoginPage implements OnInit {
       const res = await GoogleAuth.signIn();
       debugger;
       if (res) {
-        debugger;
         console.log(res);
         let obj = {
           username: '',
@@ -361,6 +367,6 @@ export class LoginPage implements OnInit {
     }
   }
   showPassword(input: any): any {
-    input.type = input.type === 'password' ?  'text' : 'password';
-   }
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 }

@@ -1,15 +1,16 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { GeneralService } from '../services/general.service';
 import { HttpConfigService } from '../services/http-config.service';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.page.html',
-  styleUrls: ['./tabs.page.scss'],
+  selector: 'app-uservideos',
+  templateUrl: './uservideos.page.html',
+  styleUrls: ['./uservideos.page.scss'],
 })
-export class TabsPage implements OnInit, OnChanges {
+export class UservideosPage implements OnInit, OnChanges {
+  value: any;
   videos = [];
   items = [];
   items1 = {};
@@ -22,6 +23,7 @@ export class TabsPage implements OnInit, OnChanges {
   interval: number;
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     public service: HttpConfigService,
     public generalService: GeneralService,
     private loadingController: LoadingController
@@ -58,25 +60,12 @@ export class TabsPage implements OnInit, OnChanges {
     this.router.navigate(['/search-results']);
   }
 
-  // pisca() {
-  //   this.httpConfigService.getListItems(this.items).subscribe(response => {
-  //     console.log(response);
-  //     this.items1 = response;
-  //   }, error => { console.log(error); });
-  //   console.log(this.items1);
-  // }
-
   async getVideos() {
     this.generalService.showLoader();
     const data1: any = await this.service.getApi('videos', {});
     if (data1.status && data1.data) {
-      // this.videos = data1.data;
       this.service.setVideo(data1.data);
       this.videos = this.service.getVideo();
-      // this.videoLike = data1.data._id;
-      // this.detailedsource = data1.data[0].videos;
-      // let fieldValues
-      // this.detailedsource = data1.data.videos.Object.keys(fieldValues).map(key => fieldValues[key]);
     } else {
       if (data1.status === false) {
         this.generalService.generalToast('No Record Found', 2000);
@@ -85,8 +74,6 @@ export class TabsPage implements OnInit, OnChanges {
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   async patchVideos() {
@@ -97,9 +84,6 @@ export class TabsPage implements OnInit, OnChanges {
       this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
-
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   async presentLoadingWithOptions() {
@@ -118,68 +102,49 @@ export class TabsPage implements OnInit, OnChanges {
   }
 
   async likeVideo(param, indx) {
-    // this.videoLike = this.videos._id
-    // param.islike = true;
     if (param.islike) {
-      // this.generalService.showLoader();
       this.likeconnect = param.like;
       const url = 'videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
         debugger;
         this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
-        // this.router.navigate(['/tabs']);
       } else {
         this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
       }
-      // this.generalService.stopLoader();
     } else {
-      // this.generalService.showLoader();
       const url = 'videos/' + param['_id'] + '/like';
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
         this.videoLikeData = data1;
         debugger;
         this.videos.splice(indx, 1, data1.data);
-        // this.generalService.generalToast('Logged In SuccessFully', 2000);
-        // this.router.navigate(['/tabs']);
       } else {
         this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
       }
-      // this.generalService.stopLoader();
     }
-
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   async unlikeVideo(param, indx) {
-    // this.videoLike = this.videos._id
     const url = 'videos/' + param['_id'] + '/like';
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       debugger;
       this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
-      // this.router.navigate(['/tabs']);
     } else {
       this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
-
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   async viewVideo(param, indx) {
-    // this.videoLike = this.videos._id
     this.generalService.showLoader();
     const url = 'videos/' + param['_id'] + '/view';
     const data1: any = await this.service.postApi(url, {});
     if (data1.status) {
       debugger;
-      // this.showdetails = data1.data;
       this.videos[indx]['total_views'] = this.videos[indx]['total_views'] + 1;
     } else {
       this.generalService.generalToast(data1.msg, 2000);
@@ -190,20 +155,38 @@ export class TabsPage implements OnInit, OnChanges {
       '/tabs/home/detail',
       { data: JSON.stringify(param), index: indx },
     ]);
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   usersDetail(param, indx) {
-    // this.generalService.showLoader();
     this.router.navigate([
       '/users-detail',
       { data: JSON.stringify(param), index: indx },
     ]);
-    // this.generalService.stopLoader();
+  }
+
+  async getPosts() {
+    const url = 'mine';
+    this.generalService.showLoader();
+    const data1: any = await this.service.getApi(url, {});
+    if (data1.status && data1.data) {
+      this.service.setVideo(data1.data);
+      this.videos = this.service.getVideo();
+      // this.videos = data1.data;
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+    this.generalService.stopLoader();
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.value = params.data;
+    });
+    if (this.value === 'Posts') {
+      this.getPosts();
+      return;
+    }
     this.getVideos();
   }
 

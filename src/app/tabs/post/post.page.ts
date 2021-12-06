@@ -41,7 +41,7 @@ export class PostPage implements OnInit {
         this.generalService.stopLoader();
       }
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     if (flag) {
@@ -56,7 +56,7 @@ export class PostPage implements OnInit {
     if (data1.status && data1.data) {
       this.notifications[indx]['read'] = true;
     } else {
-      this.generalService.generalToast(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
