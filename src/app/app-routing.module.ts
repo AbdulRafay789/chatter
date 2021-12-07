@@ -48,6 +48,14 @@ const routes: Routes = [
     path: 'profileforusers',
     loadChildren: () => import('./profileforusers/profileforusers.module').then( m => m.ProfileforusersPageModule)
   },
+  {
+    path: 'userspage',
+    loadChildren: () => import('./userspage/userspage.module').then( m => m.UserspagePageModule)
+  },
+  {
+    path: 'uservideos',
+    loadChildren: () => import('./uservideos/uservideos.module').then( m => m.UservideosPageModule)
+  },
 
 ];
 

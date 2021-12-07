@@ -10,12 +10,19 @@
 			"resizeOnFullScreen": false
 		},
 		"SplashScreen": {
-			"launchShowDuration": 5000,
-			"launchAutoHide": true,
-			"androidScaleType": "CENTER_CROP",
+			"launchShowDuration": 2000,
+			"launchAutoHide": false,
+			"backgroundColor": "#ffffffff",
 			"androidSplashResourceName": "splash",
-			"splashFullScreen": false,
-			"splashImmersive": false
+			"androidScaleType": "CENTER_CROP",
+			"showSpinner": true,
+			"androidSpinnerStyle": "large",
+			"iosSpinnerStyle": "small",
+			"spinnerColor": "#999999",
+			"splashFullScreen": true,
+			"splashImmersive": true,
+			"layoutName": "launch_screen",
+			"useDialog": true
 		},
 		"android": {
 			"allowMixedContent": true
@@ -26,6 +33,14 @@
 				"sound",
 				"alert"
 			]
+		},
+		"GoogleAuth": {
+			"scopes": [
+				"profile",
+				"email"
+			],
+			"serverClientId": "864775706418-lkaghiaph6trsa9tm23is91hg3q40vpp.apps.googleusercontent.com",
+			"forceCodeForRefreshToken": true
 		}
 	}
 }

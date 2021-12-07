@@ -36,7 +36,7 @@
         <!-- <img src="../../../assets/images/Icon awesome-edit.png" class="h-25-px w-25-px ml-5 img-click" (click)="takePicture()" /> -->
         <ion-icon
           class="h-25-px w-25-px ml-5 img-click"
-          (click)="takePicture()"
+          (click)="showActions()"
           name="camera-outline"
         ></ion-icon>
 
@@ -157,6 +157,7 @@
         </div> -->
 
         <ion-segment
+          (ionChange)="segmentChanged($event)"
           [(ngModel)]="segment"
           color="primary"
           scrollable

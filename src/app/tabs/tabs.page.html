@@ -1,20 +1,19 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="secondary">
-        <!-- <ion-buttons slot="end">
+  <ion-toolbar color="secondary">
+    <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
         </ion-buttons> -->
-        <ion-buttons slot="end">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Home</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center title" color="primary">Home</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <div class="background-picture">
-        <div class="login-details custom-searchbar">
-
-            <!-- <ion-list>
+  <div class="background-picture">
+    <div class="login-details custom-searchbar">
+      <!-- <ion-list>
               <ion-item *ngFor="let item of items"> {{item}} </ion-item>
           </ion-list>
 
@@ -23,62 +22,115 @@
               </ion-infinite-scroll-content>
           </ion-infinite-scroll> -->
 
-            <ion-searchbar showCancelButton="focus" (click)="search()" mode="ios" placeholder="Search Here"></ion-searchbar>
-            <h4>Today</h4>
+      <ion-searchbar
+        showCancelButton="focus"
+        (click)="search()"
+        mode="ios"
+        placeholder="Search Here"
+      ></ion-searchbar>
+      <h4>Today</h4>
 
-            <div *ngIf="videos || videos.length > 0">
-
-                <div class="custom-div" *ngFor="let video of videos;let i =index;">
-                    <ion-slides pager="true">
-
-                        <ion-slide *ngFor="let element of video.videos">
-                            <img *ngIf="!element.isvideo" [src]="element.path" style="height:240px;" alt="">
-                            <video *ngIf="element.isvideo" width="320" height="240" controls poster="../../../assets/images/Icon ionic-ios-play-circle.png">
+      <div *ngIf="videos || videos.length > 0">
+        <div class="custom-div" *ngFor="let video of videos;let i =index;">
+          <ion-slides
+            pager="{{video.videos.length > 1 ? true : false}}"
+            [options]="{allowTouchMove:video.videos.length > 1 ? true : false}"
+          >
+            <ion-slide *ngFor="let element of video.videos">
+              <img
+                *ngIf="!element.isvideo"
+                [src]="element.path"
+                style="height: 240px"
+                alt=""
+              />
+              <video
+                *ngIf="element.isvideo"
+                width="320"
+                height="240"
+                controls
+                poster="../../../assets/images/Icon ionic-ios-play-circle.png"
+              >
                 <source [src]="element.path" type="video/mp4" />
-                <img [src]="detailedsource" alt="" srcset="">
+                <img [src]="detailedsource" alt="" srcset="" />
                 Your browser does not support the video tag.
               </video>
-                        </ion-slide>
-                    </ion-slides>
-                    <h5 (click)="viewVideo(video, i)">{{video.description}}</h5>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center pr-3 pl-3">
-                        <small> {{video.createdAt |date}}</small>
-                        <div class="d-flex ion-align-items-center">
-                            <div class="d-flex ion-align-items-center mr-3" (click)="usersDetail(video,i)">
-                                <ion-icon name="thumbs-up-outline"></ion-icon>
-                                <small class="pl-2"> {{video.total_likes}}</small>
-                            </div>
-                            <div class="d-flex ion-align-items-center">
-                                <ion-icon name="eye-outline"></ion-icon>
-                                <small class="pl-2"> {{video.total_views}}</small>
-                            </div>
-                        </div>
+            </ion-slide>
+          </ion-slides>
+          <!-- <div *ngIf="video?.videos.length == 1">
+            <img
+              *ngIf="video?.videos[0].isvideo == false"
+              [src]="video?.videos[0].path"
+              style="height: 240px; width: -webkit-fill-available"
+              alt=""
+            />
+            <video
+              *ngIf="video?.videos[0].isvideo"
+              width="320"
+              height="240"
+              controls
+              poster="../../../assets/images/Icon ionic-ios-play-circle.png"
+            >
+              <source [src]="video?.videos[0].path" type="video/mp4" />
+            </video>
+          </div> -->
 
-
-                    </div>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center pr-2 pl-2">
-
-                        <ion-chip (click)="likeVideo(video,i)" color="primary" outline="true">
-                            <!-- <ion-icon name="thumbs-up-outline" color="primary"></ion-icon> -->
-                            <ion-label *ngIf="video.islike" class="font-weight-bold">Like </ion-label>
-                            <ion-label *ngIf="!video.islike">Like </ion-label>
-                        </ion-chip>
-
-                        <!-- <ion-chip (click)="detail(video)" color="primary" outline="true">
-                            <ion-icon name="chatbubble-ellipses-outline" color="primary"></ion-icon>
-                            <ion-label>Comment {{video.total_comments}}</ion-label>
-                        </ion-chip> -->
-
-                        <ion-chip (click)="viewVideo(video, i)" color="primary" outline="true">
-                            <ion-label>Comment</ion-label>
-                        </ion-chip>
-
-                    </div>
-                </div>
-
+          <h5 (click)="viewVideo(video, i)">{{video.description}}</h5>
+          <!-- <h5 (click)="viewVideo(video, i)">{{video.title}}</h5> -->
+          <!-- <p>{{video.description}}</p> -->
+          <div
+            class="
+              d-flex
+              ion-justify-content-between ion-align-items-center
+              pr-3
+              pl-3
+            "
+          >
+            <small> {{video.createdAt |date}}</small>
+            <div class="d-flex ion-align-items-center">
+              <div
+                class="d-flex ion-align-items-center mr-3"
+                (click)="usersDetail(video,i)"
+              >
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <small class="pl-2"> {{video.total_likes}}</small>
+              </div>
+              <div class="d-flex ion-align-items-center">
+                <ion-icon name="eye-outline"></ion-icon>
+                <small class="pl-2"> {{video.total_views}}</small>
+              </div>
             </div>
+          </div>
+          <div
+            class="
+              d-flex
+              ion-justify-content-between ion-align-items-center
+              pr-2
+              pl-2
+            "
+          >
+            <ion-chip
+              (click)="likeVideo(video,i)"
+              color="primary"
+              outline="true"
+            >
+              <ion-label *ngIf="video.islike" class="font-weight-bold"
+                >Like
+              </ion-label>
+              <ion-label *ngIf="!video.islike">Like </ion-label>
+            </ion-chip>
 
-            <!-- <div *ngIf="!videos || videos.length < 1" class="custom-skeleton">
+            <ion-chip
+              (click)="viewVideo(video, i)"
+              color="primary"
+              outline="true"
+            >
+              <ion-label>Comment</ion-label>
+            </ion-chip>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="!videos || videos.length < 1" class="custom-skeleton">
 
                 <div class="custom-div">
                     <ion-slides pager="true">
@@ -129,37 +181,33 @@
                 </div>
 
             </div> -->
-
-        </div>
     </div>
+  </div>
 
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
-            <ion-tab-button tab="home">
-                <ion-icon class="appname-customicon1"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
-              <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
+      <ion-tab-button tab="home">
+        <ion-icon class="appname-customicon1"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="post">
+        <ion-icon class="appname-customicon2"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="post">
-                <ion-icon class="appname-customicon2"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="video">
+        <ion-icon class="appname-customicon3"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="video">
-                <ion-icon class="appname-customicon3"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="chat">
+        <ion-icon class="appname-customicon4"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button tab="chat">
-                <ion-icon class="appname-customicon4"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="profile">
+        <ion-icon class="appname-customicon5"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
-            <ion-tab-button tab="profile">
-                <ion-icon class="appname-customicon5"></ion-icon>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
-
-    <!-- <ion-tabs>
+  <!-- <ion-tabs>
   <ion-tab-bar slot="bottom">
       <ion-tab-button tab="schedule">
           <ion-icon name="appname-customicon1" src="../../assets/images/appname-customicon1.svg"></ion-icon>

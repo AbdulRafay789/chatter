@@ -4,4 +4,5 @@
     <string name="title_activity_main">Chatter</string>
     <string name="package_name">com.app.chatter</string>
     <string name="custom_url_scheme">com.app.chatter</string>
+  <string name="server_client_id">864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com</string>
 </resources>

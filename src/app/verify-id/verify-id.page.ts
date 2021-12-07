@@ -20,6 +20,7 @@ export class VerifyIdPage implements OnInit {
     user_dp: { path: '../../assets/images/Group 8262-1.png' },
     front: { path: '../../assets/images/Group 8262-1.png', created_at: '' },
     back: { path: '../../assets/images/Group 8262-1.png' },
+    active_status: false,
   };
   constructor(
     public generalService: GeneralService,
@@ -178,6 +179,8 @@ export class VerifyIdPage implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.service.getuser()['user'];
+    let tempuser = this.service.getuser();
+
+    this.user = tempuser.user;
   }
 }

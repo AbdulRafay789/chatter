@@ -1,20 +1,31 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
 import { MenuController, NavController, Platform } from '@ionic/angular';
+import { Observable, Subscription } from 'rxjs';
 import { LoginPage } from './components/login/login.page';
 import { GeneralService } from './services/general.service';
 import { globalConfig } from './services/global.config';
 import { HttpConfigService } from './services/http-config.service';
+import { SubjectsService } from './services/subjects.service';
 import { TabsPage } from './tabs/tabs.page';
+import { SplashScreen, SplashScreenPlugin } from '@capacitor/splash-screen';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   rootPage: any = LoginPage;
   username = '';
+  user = {
+    username: 'JohnDoe',
+    user_dp: {
+      path: '../assets/images/menu-icon-5.png',
+    },
+    fname: 'John',
+    lname: 'Doe',
+  };
   public appPages = [
     { title: 'Home', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Create Post', url: '/folder/Outbox', icon: 'paper-plane' },
@@ -22,6 +33,7 @@ export class AppComponent {
     { title: 'Chat', url: '/folder/Archived', icon: 'archive' },
     { title: 'Profile', url: '/folder/Trash', icon: 'trash' },
   ];
+  userDetails: Subscription;
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(
     public router: Router,
@@ -30,15 +42,33 @@ export class AppComponent {
     private injector: Injector,
     public platform: Platform,
     public service: HttpConfigService,
-    public generalService: GeneralService
+    public generalService: GeneralService,
+    private subjectService: SubjectsService // public SplashScreen: SplashScreenPlugin
   ) {
     globalConfig.injector = injector;
-    this.username = this.service.getuser()['user']['user'];
+    // this.username = this.service.getuser()['user']['user'];
     this.initializeApp();
     const token = localStorage.getItem('token');
     if (token && token.indexOf('bearer ') > -1) {
       this.rootPage = TabsPage;
     }
+  }
+
+  ngOnInit() {
+    this.userDetails = this.subjectService.userDetails.subscribe(
+      (res) => {
+        console.log(res);
+        this.user = res;
+        debugger;
+      },
+      (err) => {
+        console.log('error : ', err);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.userDetails.unsubscribe();
   }
 
   home() {
@@ -112,7 +142,9 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
-      // this.splashScreen.hide();
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 2000);
     });
   }
 }
