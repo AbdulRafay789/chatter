@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -48,6 +48,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Is required to take Photos for profile</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone Is required to take Video for Posts</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Camera Is required to take Photos for profile</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Camera Is required to take Photos for profile</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.864775706418-lkaghiaph6trsa9tm23is91hg3q40vpp</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

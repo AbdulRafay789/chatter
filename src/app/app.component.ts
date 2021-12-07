@@ -105,7 +105,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   connections() {
     // this.router.navigate(['/tabs/profile']);
-    this.nav.navigateRoot('/followers');
+    this.router.navigate(['/userspage', { data: "Connect" }]);
+    // this.nav.navigateRoot('/followers');
     setTimeout(() => {
       this.menu.close();
     }, 100);

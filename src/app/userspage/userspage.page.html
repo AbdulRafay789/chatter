@@ -33,6 +33,19 @@
               <p>{{data.username }}</p>
             </ion-label>
           </ion-item>
+          <ion-item
+            lines="none"
+            button
+            md="md"
+            class="img-click"
+            (click)="gotoUser(data)"
+            *ngIf="Data.length == 0"
+          >
+            <ion-label>
+              <p style="white-space: pre-wrap;">No Connections Available. Please Connect to you Friends.</p>
+            </ion-label>
+          </ion-item>
+          
         </div>
       </div>
     </div>
