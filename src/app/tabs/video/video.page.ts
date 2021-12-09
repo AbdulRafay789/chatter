@@ -124,7 +124,6 @@ export class VideoPage implements OnInit {
       });
       // console.log(imageUrl);
     } catch (error) {
-      debugger;
     }
   }
   async getPicture() {
@@ -182,13 +181,11 @@ export class VideoPage implements OnInit {
     //     highquality: false,
     //   };
     //   const image = this.videoCapturePlus.captureVideo(options);
-    //   debugger;
     //   if (this.images.length == 10) {
     //     this.generalService.generalToast('Maximum 10 Videos are allowed', 2000);
     //   }
     // } catch (error) {
     //   console.log(error);
-    //   debugger;
     // }
   }
   async getVideo() {
@@ -199,7 +196,6 @@ export class VideoPage implements OnInit {
       // const file = await this.chooser.open();
       const file = await this.chooser.open({ mime: 'video/mp4' });
       // const file = await this.chooserMultiple.getFile('video/mp4');
-      debugger;
       const fileread = await Filesystem.readFile({
         path: file,
         // path: file.uri,
@@ -257,7 +253,6 @@ export class VideoPage implements OnInit {
       directory: Directory.Data,
     });
     this.images.push(savedFile.uri);
-    debugger;
   }
   private async readAsBase64(photo: Photo) {
     if (this.plt.is('hybrid')) {

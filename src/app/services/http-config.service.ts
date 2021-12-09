@@ -239,7 +239,6 @@ export class HttpConfigService {
     const obj = Object.assign({}, headerObj);
     const httpHeaders = new HttpHeaders(obj);
     const options = { headers: httpHeaders };
-    debugger;
     const result = this.http
       .patch(environment.baseUrl + url, params, options)
       .toPromise();

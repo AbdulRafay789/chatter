@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
+import { Keyboard } from '@capacitor/keyboard';
+import { IonContent, ModalController, NavController, Platform } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 
@@ -11,6 +12,8 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+
+  @ViewChild(IonContent) theContent: IonContent;
   max = new Date().toISOString().split('T')[0];
   username = '';
   fname = '';
@@ -22,15 +25,37 @@ export class SignupPage implements OnInit {
   bio = '';
   location = '';
   data: any = {};
+  transformValue = "";
   constructor(
     private router: Router,
     public modalController: ModalController,
     public service: HttpConfigService,
     public generalService: GeneralService,
+    public platform: Platform,
     private navctrl: NavController,
     private loc: Location
   ) {}
 
+  // 
+   inputTrigger(value) {
+    
+      requestAnimationFrame(() => {
+        // let ionSelector = document.querySelector('ion-content');
+        // ionSelector.style.transform = '';
+        // ionSelector.style.transform = 'translateY(-'+(253-value)+'px)';
+        this.transformValue = 'translateY(-'+(253-value)+'px)';
+        document.activeElement.scrollIntoView(true);
+      });
+     
+    // });
+   }
+   inputBlur(){
+    requestAnimationFrame(() => {
+      // let ionSelector = document.querySelector('ion-content');
+      // ionSelector.style.transform = '';
+      this.transformValue = "";
+    });
+   }
   backtologin() {
     this.router.navigate(['/login']);
   }
@@ -110,7 +135,13 @@ export class SignupPage implements OnInit {
   //   return await modal.present();
   // }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.platform.ready().then(() => {
+    Keyboard.addListener("keyboardDidHide", () => {
+        this.transformValue = "";
+      });
+    });
+  }
   showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';
   }

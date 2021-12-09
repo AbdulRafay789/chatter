@@ -24,13 +24,16 @@
               [src]="videoData.user_dp.path"
               class="w-50 mb-3"
               alt=""
+              style="border-radius: 50%;width: 180px !important;height: 180px;"
             />
             <img
               *ngIf="!videoData.user_dp.path"
               src="../../assets/images/Oval.png"
               class="w-50 mb-3"
               alt=""
+              style="border-radius: 50%;width: 180px !important;height: 180px;"
             />
+            <img *ngIf="showverified" [src]="verify ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'" style="width: 25px;margin-top: 100px;position: absolute;margin-left: 135px;" alt="">
           </div>
   
           <div

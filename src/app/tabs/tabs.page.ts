@@ -126,7 +126,6 @@ export class TabsPage implements OnInit, OnChanges {
       const url = 'videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
-        debugger;
         this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
         // this.router.navigate(['/tabs']);
       } else {
@@ -140,7 +139,6 @@ export class TabsPage implements OnInit, OnChanges {
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
         this.videoLikeData = data1;
-        debugger;
         this.videos.splice(indx, 1, data1.data);
         // this.generalService.generalToast('Logged In SuccessFully', 2000);
         // this.router.navigate(['/tabs']);
@@ -160,7 +158,6 @@ export class TabsPage implements OnInit, OnChanges {
     const url = 'videos/' + param['_id'] + '/like';
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
-      debugger;
       this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
       // this.router.navigate(['/tabs']);
     } else {
@@ -178,7 +175,6 @@ export class TabsPage implements OnInit, OnChanges {
     const url = 'videos/' + param['_id'] + '/view';
     const data1: any = await this.service.postApi(url, {});
     if (data1.status) {
-      debugger;
       // this.showdetails = data1.data;
       this.videos[indx]['total_views'] = this.videos[indx]['total_views'] + 1;
     } else {

@@ -29,8 +29,8 @@ import { SubjectsService } from 'src/app/services/subjects.service';
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = ''; //mharisferoz@gmail.com
-  password = ''; //m6zfbtfk
+  email = 'harisferoz'; //mharisferoz@gmail.com
+  password = '1234567'; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
@@ -64,7 +64,6 @@ export class LoginPage implements OnInit {
     //     });
 
     //     this.fcm.onTokenRefresh().subscribe(token => {
-    //       debugger;
     //       this.devicetoken = token;
     //       // Register your new token in your back-end if you want
     //       // backend.registerToken(token);
@@ -114,7 +113,7 @@ export class LoginPage implements OnInit {
       );
     }
 
-    // this.fcm.getToken().then(token => {debugger;
+    // this.fcm.getToken().then(token => {
     //   this.devicetoken = token;
     // });
   }
@@ -322,7 +321,6 @@ export class LoginPage implements OnInit {
       //   // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
       // });
       const res = await GoogleAuth.signIn();
-      debugger;
       if (res) {
         console.log(res);
         let obj = {
@@ -350,11 +348,9 @@ export class LoginPage implements OnInit {
 
         const data1: any = await this.service.postApi('users/signup', obj);
         if (data1.status && data1.data) {
-          debugger;
           this.service.settoken(data1.data.token);
           this.service.setuser(data1.data);
           this.data = data1.user;
-          debugger;
           this.generalService.stopLoader();
           // this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
           this.router.navigate(['/tabs']);
@@ -364,7 +360,6 @@ export class LoginPage implements OnInit {
         }
       }
     } catch (error) {
-      debugger;
     }
   }
   showPassword(input: any): any {

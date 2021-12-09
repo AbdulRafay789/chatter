@@ -325,7 +325,6 @@ export class ProfilePage implements OnInit {
       formData
     );
     if (data1.status && data1.data) {
-      debugger;
       this.user_dp = data1.data.user_dp;
       this.generalService.generalToast(
         'Profile Picture Is Updated SuccessFully',

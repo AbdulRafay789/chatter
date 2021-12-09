@@ -66,6 +66,5 @@ export class ChatPage implements OnInit {
     // this.getUsers();
   }
   Search() {
-    debugger;
   }
 }

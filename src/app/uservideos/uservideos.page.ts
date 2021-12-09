@@ -107,7 +107,6 @@ export class UservideosPage implements OnInit, OnChanges {
       const url = 'videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
-        debugger;
         this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
       } else {
         this.generalService.generalToast(data1.msg, 2000);
@@ -118,7 +117,6 @@ export class UservideosPage implements OnInit, OnChanges {
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
         this.videoLikeData = data1;
-        debugger;
         this.videos.splice(indx, 1, data1.data);
       } else {
         this.generalService.generalToast(data1.msg, 2000);
@@ -131,7 +129,6 @@ export class UservideosPage implements OnInit, OnChanges {
     const url = 'videos/' + param['_id'] + '/like';
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
-      debugger;
       this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
     } else {
       this.generalService.generalToast(data1.msg, 2000);
@@ -144,7 +141,6 @@ export class UservideosPage implements OnInit, OnChanges {
     const url = 'videos/' + param['_id'] + '/view';
     const data1: any = await this.service.postApi(url, {});
     if (data1.status) {
-      debugger;
       this.videos[indx]['total_views'] = this.videos[indx]['total_views'] + 1;
     } else {
       this.generalService.generalToast(data1.msg, 2000);

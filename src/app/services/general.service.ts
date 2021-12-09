@@ -253,7 +253,6 @@ export class GeneralService {
   // }
 
   async showLoader() {
-    // debugger;
     dialogLoader = await this.loadingController.create({
       message: 'Please wait...',
     });

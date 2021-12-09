@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent } from '@ionic/angular';
+import { Keyboard } from '@capacitor/keyboard';
+import { IonContent, Platform } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 
@@ -21,16 +22,26 @@ export class MessagesPage implements OnInit {
   msg: any = '';
   user: any;
   timeinterval: any;
+  transformValue = "";
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     public service: HttpConfigService,
+    public platform: Platform,
     public generalService: GeneralService
   ) {}
 
-  // notifications() {
-  //   this.router.navigate(['/notifications']);
-  // }
+  inputTrigger() {
+    // requestAnimationFrame(() => {
+    //   this.transformValue = 'translateY(-245px)';
+    //   document.activeElement.scrollIntoView(true);
+    // });
+  }
+  inputBlur(){
+    // requestAnimationFrame(() => {
+    //   this.transformValue = "";
+    // });
+  }
 
   async getChats(flag) {
     // eslint-disable-next-line no-underscore-dangle
@@ -78,7 +89,7 @@ export class MessagesPage implements OnInit {
     if (data1.status) {
       this.messages = data1.data;
       // this.service.setVideo(data1.data);
-      this.getChats(true);
+      this.getChats(false);
       this.msg = '';
     } else {
       if (data1.status === false) {
@@ -106,9 +117,22 @@ export class MessagesPage implements OnInit {
       this.usertoid = JSON.parse(params.data)['userto_id'];
     });
     this.getChats(true);
-    // this.timeinterval = setInterval(() => {
-    //   this.getChats(false); // Now the "this" still references the component
-    // }, 10000);
+    this.timeinterval = setInterval(() => {
+      this.getChats(false); // Now the "this" still references the component
+    }, 10000);
+    this.platform.ready().then(() => {
+      Keyboard.addListener("keyboardWillShow", () => {
+        // requestAnimationFrame(() => {
+          this.transformValue = 'translateY(-245px)';
+          document.activeElement.scrollIntoView(true);
+        // });
+      });
+      Keyboard.addListener("keyboardWillHide", () => {
+        // requestAnimationFrame(() => {
+          this.transformValue = "";
+        // });
+      });
+    });
   }
   ngOnDestroy() {
     clearInterval(this.timeinterval);
