@@ -156,7 +156,7 @@ export class VerifyIdPage implements OnInit {
       formData
     );
     if (data1.status && data1.data) {
-      this.service.setuser(data1.data);
+      this.service.setuser({ user: data1.data });
       // this.user_dp = data1.data.user_dp;
       // this.front = data1.data.front.path;
       // this.back = data1.data.back.path;
