@@ -2,7 +2,12 @@ import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Keyboard } from '@capacitor/keyboard';
-import { IonContent, ModalController, NavController, Platform } from '@ionic/angular';
+import {
+  IonContent,
+  ModalController,
+  NavController,
+  Platform,
+} from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 
@@ -12,7 +17,6 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-
   @ViewChild(IonContent) theContent: IonContent;
   max = new Date().toISOString().split('T')[0];
   username = '';
@@ -25,7 +29,7 @@ export class SignupPage implements OnInit {
   bio = '';
   location = '';
   data: any = {};
-  transformValue = "";
+  transformValue = '';
   constructor(
     private router: Router,
     public modalController: ModalController,
@@ -36,26 +40,25 @@ export class SignupPage implements OnInit {
     private loc: Location
   ) {}
 
-  // 
-   inputTrigger(value) {
-    
-      requestAnimationFrame(() => {
-        // let ionSelector = document.querySelector('ion-content');
-        // ionSelector.style.transform = '';
-        // ionSelector.style.transform = 'translateY(-'+(253-value)+'px)';
-        this.transformValue = 'translateY(-'+(253-value)+'px)';
-        document.activeElement.scrollIntoView(true);
-      });
-     
-    // });
-   }
-   inputBlur(){
+  //
+  inputTrigger(value) {
     requestAnimationFrame(() => {
       // let ionSelector = document.querySelector('ion-content');
       // ionSelector.style.transform = '';
-      this.transformValue = "";
+      // ionSelector.style.transform = 'translateY(-'+(253-value)+'px)';
+      this.transformValue = 'translateY(-' + (253 - value) + 'px)';
+      document.activeElement.scrollIntoView(true);
     });
-   }
+
+    // });
+  }
+  inputBlur() {
+    requestAnimationFrame(() => {
+      // let ionSelector = document.querySelector('ion-content');
+      // ionSelector.style.transform = '';
+      this.transformValue = '';
+    });
+  }
   backtologin() {
     this.router.navigate(['/login']);
   }
@@ -102,7 +105,7 @@ export class SignupPage implements OnInit {
     this.data.fname = this.fname.toLowerCase();
     this.data.lname = this.lname.toLowerCase();
     this.data.mobile = this.mobile;
-    this.data.email = this.email.toLowerCase();
+    this.data.email = this.email;
     this.data.dob = this.age;
     this.data.password = this.password;
     this.data.bio = this.bio.toLowerCase();
@@ -137,8 +140,8 @@ export class SignupPage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-    Keyboard.addListener("keyboardDidHide", () => {
-        this.transformValue = "";
+      Keyboard.addListener('keyboardDidHide', () => {
+        this.transformValue = '';
       });
     });
   }

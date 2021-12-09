@@ -27,6 +27,7 @@ export class TabsPage implements OnInit, OnChanges {
     private loadingController: LoadingController
   ) {
     this.addMoreItems();
+    this.getVideos();
   }
 
   loadData(event) {
@@ -199,9 +200,7 @@ export class TabsPage implements OnInit, OnChanges {
     // this.generalService.stopLoader();
   }
 
-  ngOnInit() {
-    this.getVideos();
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.videos = this.service.getVideo();
