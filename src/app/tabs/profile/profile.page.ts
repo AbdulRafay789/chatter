@@ -119,6 +119,10 @@ export class ProfilePage implements OnInit {
       this.generalService.generalToast('Email Is Required', 2000);
       return false;
     }
+    if (this.password == '') {
+      this.generalService.generalToast('Password Is Required', 2000);
+      return false;
+    }
     if (this.age == '') {
       this.generalService.generalToast('Age Is Required', 2000);
       return false;
@@ -147,6 +151,7 @@ export class ProfilePage implements OnInit {
       mobile: this.mobile,
       location: this.location,
       dob: this.age,
+      password: this.password,
     };
 
     this.generalService.showLoader();
@@ -229,7 +234,6 @@ export class ProfilePage implements OnInit {
       limit: 10,
     });
 
-    
     if (image.photos.length > 10) {
       this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
     }

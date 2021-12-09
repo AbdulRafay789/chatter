@@ -52,9 +52,9 @@ ion-input {
   height: 2.7rem;
   border: none;
   margin-bottom: 11px;
-  padding-left: 20px !important;
+  // padding-left: 20px !important;
   border-radius: 5px;
-  background-color: #f6f6f6;
+  // background-color: #f6f6f6;
   text-align: left;
 }
 
@@ -133,4 +133,9 @@ ion-segment-button {
 .custom-img {
   height: 148px;
   border-radius: 100px;
+}
+
+::ng-deep .custom-textarea .native-textarea.sc-ion-textarea-md {
+  padding-left: 0px !important;
+  background-color: #ffffff !important;
 }
