@@ -28,10 +28,17 @@
       "allowMixedContent": true
     },
     "PushNotifications": {
-      "presentationOptions": ["badge", "sound", "alert"]
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
     },
     "GoogleAuth": {
-      "scopes": ["profile", "email"],
+      "scopes": [
+        "profile",
+        "email"
+      ],
       "serverClientId": "864775706418-lkaghiaph6trsa9tm23is91hg3q40vpp.apps.googleusercontent.com",
       "forceCodeForRefreshToken": true
     }
