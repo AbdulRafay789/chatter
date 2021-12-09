@@ -16,7 +16,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content #content>
+<ion-content #content  [style.transform]="transformValue">
   <div class="background-picture">
     <div class="login-details text-center pr-1 pl-1">
       <div>
@@ -80,6 +80,8 @@
             clearOnEdit="true"
             class="password"
             placeholder="Write Message"
+            (ionFocus)="inputTrigger()"
+            (ionBlur)="inputBlur()"
           ></ion-input>
           <img
             (click)="sendMsg()"

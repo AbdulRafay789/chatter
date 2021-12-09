@@ -10,6 +10,7 @@ import { HttpConfigService } from './services/http-config.service';
 import { SubjectsService } from './services/subjects.service';
 import { TabsPage } from './tabs/tabs.page';
 import { SplashScreen, SplashScreenPlugin } from '@capacitor/splash-screen';
+import { Keyboard } from '@capacitor/keyboard';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -59,7 +60,6 @@ export class AppComponent implements OnInit, OnDestroy {
       (res) => {
         console.log(res);
         this.user = res;
-        debugger;
       },
       (err) => {
         console.log('error : ', err);
@@ -145,6 +145,13 @@ export class AppComponent implements OnInit, OnDestroy {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
+      // Keyboard.addListener("keyboardWillShow", ({ keyboardHeight }) => {
+        // alert(keyboardHeight);
+        // requestAnimationFrame(() => {
+        //   document.body.style.transform = `translateY(-${keyboardHeight-value}px)`;
+        //   document.activeElement.scrollIntoView(true);
+        // });
+      // });
       setTimeout(() => {
         SplashScreen.hide();
       }, 2000);

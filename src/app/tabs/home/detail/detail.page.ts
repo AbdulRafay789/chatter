@@ -1,5 +1,7 @@
 import { AbstractType, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Keyboard } from '@capacitor/keyboard';
+import { Platform } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 
@@ -14,9 +16,11 @@ export class DetailPage implements OnInit {
   videos = [];
   showdetails: any;
   index: any;
+  transformValue = "";
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    public platform: Platform,
     public service: HttpConfigService,
     public generalService: GeneralService
   ) {}
@@ -53,6 +57,15 @@ export class DetailPage implements OnInit {
       this.videoData = JSON.parse(params.data);
       this.index = params.index;
       // this.id = params['id'];
+    });
+    this.platform.ready().then(() => {
+      Keyboard.addListener("keyboardWillShow", () => {
+          this.transformValue = 'translateY(-245px)';
+          document.activeElement.scrollIntoView(true);
+      });
+      Keyboard.addListener("keyboardWillHide", () => {
+          this.transformValue = "";
+      });
     });
   }
 }

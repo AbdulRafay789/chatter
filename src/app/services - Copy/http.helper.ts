@@ -26,7 +26,7 @@ export class HttpHelper {
   }
 
   private async request(url, method: string, headers?: Headers, body?): Promise<any> {
-    // debugger;
+
     let options: any;
     // const options: RequestOptionsArgs = RequestOptionsArgs{};
     // if (body) {

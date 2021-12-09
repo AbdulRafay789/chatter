@@ -33,11 +33,9 @@ export class UserService extends BaseService<any> {
 
     const result = await this.post('login', loginEntity, BaseService.headers);
     // eslint-disable-next-line no-debugger
-    debugger;
     this.loginObj = loginEntity;
     if (result.isSuccessful) {
       // eslint-disable-next-line no-debugger
-      debugger;
       this.localStorage.set('token', 'bearer '.concat(result.data.token));
       // BaseService.headers['Authorization'] = 'bearer '.concat(result.Data.token);
       BaseService.headers.Authorization = 'bearer '.concat(result.data.token);

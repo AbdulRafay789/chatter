@@ -16,6 +16,8 @@ export class ProfileforusersPage implements OnInit {
   isdisconnectdata = false;
   isreportdata = false;
   isunreportdata = false;
+  showverified = false;
+  verify = false;
   constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
     private router: Router,) { }
 
@@ -147,6 +149,15 @@ export class ProfileforusersPage implements OnInit {
     this.user = this.service.getuser();
     this.route.params.subscribe((params) => {
       this.videoData = JSON.parse(params.data);
+      if(this.videoData.active_status || this.videoData.hawaii){
+        this.showverified = true;
+        if(this.videoData.active_status){
+          this.verify = false;
+        }
+        if(this.videoData.hawaii){
+          this.verify = true;
+        }
+      }
       this.setValues();
       this.index = params.index;
     });
