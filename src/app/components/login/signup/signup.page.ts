@@ -1,7 +1,14 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Capacitor } from '@capacitor/core';
 import { Keyboard } from '@capacitor/keyboard';
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
 import { IonContent, ModalController, NavController, Platform } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
@@ -26,6 +33,7 @@ export class SignupPage implements OnInit {
   location = '';
   data: any = {};
   transformValue = "";
+  devicetoken = '';
   constructor(
     private router: Router,
     public modalController: ModalController,
@@ -107,6 +115,7 @@ export class SignupPage implements OnInit {
     this.data.password = this.password;
     this.data.bio = this.bio.toLowerCase();
     this.data.location = this.location.toLowerCase();
+    this.data.device_token = this.devicetoken;
     const data1: any = await this.service.postApi('users/signup', this.data);
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
@@ -136,6 +145,7 @@ export class SignupPage implements OnInit {
   // }
 
   ngOnInit() {
+    this.getToken();
     this.platform.ready().then(() => {
     Keyboard.addListener("keyboardDidHide", () => {
         this.transformValue = "";
@@ -145,4 +155,48 @@ export class SignupPage implements OnInit {
   showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';
   }
+  getToken() {
+    let platform = Capacitor.getPlatform();
+    if (platform == 'android' || platform == 'ios') {
+      PushNotifications.requestPermissions().then((result) => {
+        if (result.receive === 'granted') {
+          // Register with Apple / Google to receive push via APNS/FCM
+          PushNotifications.register();
+        } else {
+          // Show some error
+        }
+      });
+
+      // On success, we should be able to receive notifications
+      PushNotifications.addListener('registration', (token: Token) => {
+        console.log('Push registration success, token: ' + token.value);
+        this.devicetoken = token.value;
+      });
+
+      // Some issue with our setup and push will not work
+      PushNotifications.addListener('registrationError', (error: any) => {
+        console.log('Error on registration: ' + JSON.stringify(error));
+      });
+
+      // Show us the notification payload if the app is open on our device
+      PushNotifications.addListener(
+        'pushNotificationReceived',
+        (notification: PushNotificationSchema) => {
+          console.log('Push received: ' + JSON.stringify(notification));
+        }
+      );
+
+      // Method called when tapping on a notification
+      PushNotifications.addListener(
+        'pushNotificationActionPerformed',
+        (notification: ActionPerformed) => {
+          console.log('Push action performed: ' + JSON.stringify(notification));
+        }
+      );
+    }
+  }
+
+    // this.fcm.getToken().then(token => {
+    //   this.devicetoken = token;
+    
 }
