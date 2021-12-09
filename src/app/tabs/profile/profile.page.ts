@@ -11,6 +11,7 @@ import {
 import { Platform, AlertController } from '@ionic/angular';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import { Keyboard } from '@capacitor/keyboard';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -37,6 +38,7 @@ export class ProfilePage implements OnInit {
   images = { imageUrl: null, name: '', url: '' };
   title = '';
   description = '';
+  transformValue = '';
   constructor(
     public generalService: GeneralService,
     private router: Router,
@@ -56,9 +58,17 @@ export class ProfilePage implements OnInit {
     // }
   }
 
-  // usersPage() {
-  //   this.router.navigate(['/userspage', { data: this.value }]);
-  // }
+  inputTrigger(value) {
+    requestAnimationFrame(() => {
+      this.transformValue = 'translateY(-' + (253 - value) + 'px)';
+      document.activeElement.scrollIntoView(true);
+    });
+  }
+  inputBlur() {
+    requestAnimationFrame(() => {
+      this.transformValue = '';
+    });
+  }
 
   segmentChanged(ev: any) {
     // this.value = 'Posts';
@@ -350,5 +360,13 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.view = true;
     this.getUsers();
+    this.plt.ready().then(() => {
+      Keyboard.addListener('keyboardWillHide', () => {
+        this.transformValue = '';
+      });
+      Keyboard.addListener('keyboardDidHide', () => {
+        this.transformValue = '';
+      });
+    });
   }
 }

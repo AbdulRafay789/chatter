@@ -14,7 +14,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [style.transform]="transformValue">
   <div class="background-picture">
     <div
       class="login-details text-center pr-4 pl-4 custom-textarea"
@@ -98,6 +98,8 @@
             name="email"
             class="username"
             placeholder="Email"
+            (ionFocus)="inputTrigger(230)"
+            (ionBlur)="inputBlur()"
           >
           </ion-input>
         </ion-item>
@@ -111,6 +113,8 @@
             name="email"
             class="username"
             placeholder="Password"
+            (ionFocus)="inputTrigger(230)"
+            (ionBlur)="inputBlur()"
           >
           </ion-input>
         </ion-item>
@@ -144,6 +148,8 @@
             name="username"
             class="username"
             placeholder="Bio"
+            (ionFocus)="inputTrigger(230)"
+            (ionBlur)="inputBlur()"
           >
           </ion-input>
         </ion-item>
@@ -156,6 +162,8 @@
             rows="2"
             cols="5"
             placeholder="Address"
+            (ionFocus)="inputTrigger(170)"
+            (ionBlur)="inputBlur()"
           ></ion-textarea>
         </ion-item>
 
