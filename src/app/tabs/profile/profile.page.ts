@@ -119,6 +119,10 @@ export class ProfilePage implements OnInit {
       this.generalService.generalToast('Email Is Required', 2000);
       return false;
     }
+    if (this.password == '') {
+      this.generalService.generalToast('Password Is Required', 2000);
+      return false;
+    }
     if (this.age == '') {
       this.generalService.generalToast('Age Is Required', 2000);
       return false;
@@ -147,6 +151,7 @@ export class ProfilePage implements OnInit {
       mobile: this.mobile,
       location: this.location,
       dob: this.age,
+      password: this.password,
     };
 
     this.generalService.showLoader();
@@ -154,9 +159,13 @@ export class ProfilePage implements OnInit {
     const data1: any = await this.service.postApi(url, param);
     if (data1.status && data1.data) {
       this.profileData = data1.data;
+      this.generalService.generalToast(
+        'Your Profile Has Been Updated Successfully',
+        2000
+      );
       this.generalService.stopLoader();
     } else {
-      this.generalService.generalErrorMessage(data1.msg);
+      this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
 
@@ -229,7 +238,6 @@ export class ProfilePage implements OnInit {
       limit: 10,
     });
 
-    
     if (image.photos.length > 10) {
       this.generalService.generalToast('Maximum 10 Photos are allowed', 2000);
     }
