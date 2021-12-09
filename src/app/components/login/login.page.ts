@@ -29,8 +29,8 @@ import { SubjectsService } from 'src/app/services/subjects.service';
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = 'harisferoz'; //mharisferoz@gmail.com
-  password = '1234567'; //m6zfbtfk
+  email = ''; //mharisferoz@gmail.com
+  password = ''; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
