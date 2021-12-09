@@ -41,7 +41,7 @@ export class SearchResultsPage implements OnInit {
     });
   }
   async searchall() {
-    this.generalService.showLoader();
+    // this.generalService.showLoader();
     const data1: any = await this.service.postApi('searchuserandvideos', {"searchvalue":this.search});
     if (data1.status && data1.data) {
       this.videosUsers = data1.data;
@@ -54,9 +54,7 @@ export class SearchResultsPage implements OnInit {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
-    this.generalService.stopLoader();
-    // this.email = data1.email;
-    // this.password = data1.password;
+    // this.generalService.stopLoader();
   }
   UpdateSegment(segment){
     this.galleryType = segment;
