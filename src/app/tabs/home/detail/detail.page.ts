@@ -66,6 +66,9 @@ export class DetailPage implements OnInit {
       Keyboard.addListener("keyboardWillHide", () => {
           this.transformValue = "";
       });
+      Keyboard.addListener("keyboardDidHide", () => {
+        this.transformValue = "";
+      });
     });
   }
 }

@@ -127,10 +127,11 @@ export class MessagesPage implements OnInit {
           document.activeElement.scrollIntoView(true);
         // });
       });
-      Keyboard.addListener("keyboardWillHide", () => {
-        // requestAnimationFrame(() => {
-          this.transformValue = "";
-        // });
+      Keyboard.addListener('keyboardWillHide', () => {
+        this.transformValue = '';
+      });
+      Keyboard.addListener("keyboardDidHide", () => {
+        this.transformValue = "";
       });
     });
   }

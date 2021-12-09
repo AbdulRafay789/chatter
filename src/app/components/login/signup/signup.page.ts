@@ -150,6 +150,9 @@ export class SignupPage implements OnInit {
   ngOnInit() {
     this.getToken();
     this.platform.ready().then(() => {
+      Keyboard.addListener('keyboardWillHide', () => {
+        this.transformValue = '';
+      });
       Keyboard.addListener('keyboardDidHide', () => {
         this.transformValue = '';
       });
