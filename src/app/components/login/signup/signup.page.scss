@@ -77,6 +77,12 @@ ion-input:focus {
   max-width: 70rem;
 }
 
+.email {
+  ion-input {
+    text-transform: inherit !important;
+  }
+}
+
 ion-input {
   font-family: "calibri", sans-serif;
   font-size: 1rem;

@@ -359,8 +359,7 @@ export class LoginPage implements OnInit {
           console.log(data1.msg);
         }
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   }
   showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';

@@ -102,7 +102,18 @@
           >
             <ion-thumbnail slot="start">
               <img src="{{user.user_dp.path}}" style="border-radius: 50%" />
-              <img *ngIf="user.active_status || user.hawaii" [src]="user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'" style="width: 20px;height: 20px;margin-top: 31px;position: absolute;margin-left: -12px;" alt="">
+              <img
+                *ngIf="user.active_status || user.hawaii"
+                [src]="user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  margin-top: 31px;
+                  position: absolute;
+                  margin-left: -12px;
+                "
+                alt=""
+              />
             </ion-thumbnail>
             <ion-label>
               <h3>{{user.fname + " " +user.lname}}</h3>
@@ -116,7 +127,7 @@
 
   <ion-tabs>
     <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
-      <ion-tab-button tab="home">
+      <ion-tab-button tab="/tabs">
         <ion-icon class="appname-customicon1"></ion-icon>
         <!-- <ion-label>Schedule</ion-label>
             <ion-badge>6</ion-badge> -->
