@@ -78,7 +78,7 @@ export class DetailPage implements OnInit {
     });
     this.platform.ready().then(() => {
       Keyboard.addListener('keyboardWillShow', () => {
-        this.transformValue = 'translateY(-245px)';
+        this.transformValue = 'translateY(-340px)';
         document.activeElement.scrollIntoView(true);
       });
       Keyboard.addListener('keyboardWillHide', () => {
