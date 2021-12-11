@@ -12,11 +12,12 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
 })
 export class DetailPage implements OnInit {
   videoData: any;
+  profileData: any;
   message = '';
   videos = [];
   showdetails: any;
   index: any;
-  transformValue = "";
+  transformValue = '';
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -52,6 +53,23 @@ export class DetailPage implements OnInit {
     // this.password = data1.password;
   }
 
+  async profileForUsers(param, indx) {
+    // users/details/id
+    // user_id
+    const url = 'users/details/' + param['user_id'];
+    this.generalService.showLoader();
+    const data1: any = await this.service.getApi(url, {});
+    if (data1.status && data1.data) {
+      this.profileData = data1.data;
+      this.service.setVideo(data1.data);
+      this.generalService.stopLoader();
+    }
+    this.router.navigate([
+      '/profileforusers',
+      { data: JSON.stringify(this.profileData[0]), index: indx },
+    ]);
+  }
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.videoData = JSON.parse(params.data);
@@ -59,15 +77,15 @@ export class DetailPage implements OnInit {
       // this.id = params['id'];
     });
     this.platform.ready().then(() => {
-      Keyboard.addListener("keyboardWillShow", () => {
-          this.transformValue = 'translateY(-245px)';
-          document.activeElement.scrollIntoView(true);
+      Keyboard.addListener('keyboardWillShow', () => {
+        this.transformValue = 'translateY(-245px)';
+        document.activeElement.scrollIntoView(true);
       });
-      Keyboard.addListener("keyboardWillHide", () => {
-          this.transformValue = "";
+      Keyboard.addListener('keyboardWillHide', () => {
+        this.transformValue = '';
       });
-      Keyboard.addListener("keyboardDidHide", () => {
-        this.transformValue = "";
+      Keyboard.addListener('keyboardDidHide', () => {
+        this.transformValue = '';
       });
     });
   }

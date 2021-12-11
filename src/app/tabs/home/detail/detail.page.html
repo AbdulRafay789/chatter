@@ -57,9 +57,10 @@
       <h6 class="custom-class">{{videoData.description}}</h6>
 
       <ion-item
-        *ngFor="let comment of videoData.comments"
+        *ngFor="let comment of videoData.comments;let i =index;"
         class="mb-2"
         lines="none"
+        (click)="profileForUsers(comment,i)"
       >
         <!-- <ion-avatar slot="start"> -->
         <!-- <img [src]="comment.path" src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2"> -->
