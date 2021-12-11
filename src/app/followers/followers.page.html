@@ -1,271 +1,331 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="secondary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
-        </ion-buttons>
-        <!-- <ion-buttons slot="end">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
             <ion-icon color="primary" class="icon-font" name="notifications-outline" (click)="notifications()"></ion-icon>
         </ion-buttons> -->
-        <ion-buttons slot="end">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary" *ngIf="this.view === true">Connect</ion-title>
-        <ion-title class="ion-text-center title" color="primary" *ngIf="this.view === false">Connected</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title
+      class="ion-text-center title"
+      color="primary"
+      *ngIf="this.view === true"
+      >Connect</ion-title
+    >
+    <ion-title
+      class="ion-text-center title"
+      color="primary"
+      *ngIf="this.view === false"
+      >Connected</ion-title
+    >
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="background-picture">
+    <div
+      class="login-details pr-1 pl-1 custom-textarea z-index-10"
+      *ngIf="this.view === false"
+    >
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 26.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+          </div>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
 
-    <div class="background-picture">
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 27.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 font-weight-bold">Jennifer Dave</h2>
+          </div>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
 
-        <div class="login-details pr-1 pl-1 custom-textarea" *ngIf="this.view === false">
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 26.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                    </div>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 28.png" class="w-25" />
+        <ion-label>
+          <h2 class="ml-3 font-weight-bold">Steve Smith</h2>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
 
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 27.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <h2 class="ml-3 font-weight-bold">Jennifer Dave</h2>
-                    </div>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 28.png" class="w-25">
-                <ion-label>
-                    <h2 class="ml-3 font-weight-bold">Steve Smith</h2>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 29.png" class="w-25">
-                <ion-label>
-                    <h2 class="ml-3 font-weight-bold">Luke</h2>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <h2 class="ml-3 font-weight-bold">Finn</h2>
-                    </div>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <h2 class="ml-3 font-weight-bold">Finn</h2>
-                    </div>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <h2 class="ml-3 font-weight-bold">Finn</h2>
-                    </div>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <h2 class="ml-3 font-weight-bold">Finn</h2>
-                    </div>
-                    <p class="ml-3 f-s-12">Stacy Doe</p>
-                </ion-label>
-            </ion-item>
-        </div>
-
-        <div class="login-details pr-1 pl-1 custom-textarea" *ngIf="this.view === true">
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 26.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 27.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 28.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 29.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-            <ion-item class="mb-2 p-custom" lines="none">
-                <img src="../../../assets/images/Rectangle 30.png" class="w-25">
-                <ion-label>
-                    <div class="d-flex ion-justify-content-between ion-align-items-center">
-                        <div class="d-block">
-                            <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
-                            <p class="ml-3 f-s-12">Stacy Doe</p>
-                        </div>
-                        <ion-chip class="bg-primary img-click" (click)="toggle()">
-                            <img src="../../assets/images/Icon awesome-plus-circle.png" class="w-20" alt="">
-                            <ion-label>Connect</ion-label>
-                        </ion-chip>
-                    </div>
-
-                </ion-label>
-            </ion-item>
-        </div>
-
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 29.png" class="w-25" />
+        <ion-label>
+          <h2 class="ml-3 font-weight-bold">Luke</h2>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 font-weight-bold">Finn</h2>
+          </div>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 font-weight-bold">Finn</h2>
+          </div>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 font-weight-bold">Finn</h2>
+          </div>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 font-weight-bold">Finn</h2>
+          </div>
+          <p class="ml-3 f-s-12">Stacy Doe</p>
+        </ion-label>
+      </ion-item>
     </div>
 
+    <div
+      class="login-details pr-1 pl-1 custom-textarea z-index-10"
+      *ngIf="this.view === true"
+    >
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 26.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
 
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 27.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
 
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="tabs" color="primary">
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 28.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
 
-            <!-- <a routerLink="/tabs/home"> -->
-            <ion-tab-button tab="/tabs">
-                <ion-icon class="appname-customicon1"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 29.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
+      <ion-item class="mb-2 p-custom" lines="none">
+        <img src="../../../assets/images/Rectangle 30.png" class="w-25" />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <div class="d-block">
+              <h2 class="ml-3 font-weight-bold">Stacy Doe</h2>
+              <p class="ml-3 f-s-12">Stacy Doe</p>
+            </div>
+            <ion-chip class="bg-primary img-click" (click)="toggle()">
+              <img
+                src="../../assets/images/Icon awesome-plus-circle.png"
+                class="w-20"
+                alt=""
+              />
+              <ion-label>Connect</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="tabs" color="primary">
+      <!-- <a routerLink="/tabs/home"> -->
+      <ion-tab-button tab="/tabs">
+        <ion-icon class="appname-customicon1"></ion-icon>
+        <!-- <ion-label>Schedule</ion-label>
     <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
-            <!-- </a> -->
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/post"> -->
-            <ion-tab-button routerLink="/tabs/post">
-                <ion-icon class="appname-customicon2"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+      <!-- <a routerLink="/tabs/post"> -->
+      <ion-tab-button routerLink="/tabs/post">
+        <ion-icon class="appname-customicon2"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/video"> -->
-            <ion-tab-button routerLink="/tabs/video">
-                <ion-icon class="appname-customicon3"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+      <!-- <a routerLink="/tabs/video"> -->
+      <ion-tab-button routerLink="/tabs/video">
+        <ion-icon class="appname-customicon3"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/chat"> -->
-            <ion-tab-button routerLink="/tabs/chat">
-                <ion-icon class="appname-customicon4"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
+      <!-- <a routerLink="/tabs/chat"> -->
+      <ion-tab-button routerLink="/tabs/chat">
+        <ion-icon class="appname-customicon4"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
 
-            <!-- <a routerLink="/tabs/profile"> -->
-            <ion-tab-button routerLink="/tabs/profile">
-                <ion-icon class="appname-customicon5"></ion-icon>
-            </ion-tab-button>
-            <!-- </a> -->
-
-        </ion-tab-bar>
-    </ion-tabs>
-
+      <!-- <a routerLink="/tabs/profile"> -->
+      <ion-tab-button routerLink="/tabs/profile">
+        <ion-icon class="appname-customicon5"></ion-icon>
+      </ion-tab-button>
+      <!-- </a> -->
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
