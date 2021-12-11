@@ -15,9 +15,9 @@
 </ion-header>
 
 <ion-content [style.transform]="transformValue">
-  <div class="background-picture">
+  <div class="background-picture"  style="z-index: -1;">
     <div
-      class="login-details text-center pr-4 pl-4 custom-textarea"
+      class="login-details text-center pr-4 pl-4 custom-textarea" style="z-index: 10;"
       *ngIf="this.view === false"
     >
       <div>

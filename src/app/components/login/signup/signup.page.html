@@ -4,13 +4,13 @@
     </ion-toolbar>
 </ion-header> -->
 
-<ion-content [style.transform]="transformValue">
+<ion-content>
   <div class="background-picture">
     <!-- <ion-img src="../../../assets/images/splash-background.png"></ion-img> -->
     <!-- <img src="../../../assets/images/splash-background.png" alt=""> -->
 
-    <div class="login-details">
-      <div class="login-container">
+    <div class="login-details"  style="z-index: 10;">
+      <div class="login-container" [style.transform]="transformValue">
         <div class="font-icon">
           <!-- <i class="fas fa-minus icon"></i> -->
           <ion-icon name="remove-outline" class="icon"></ion-icon>
@@ -70,7 +70,7 @@
             name="username"
             class="username"
             placeholder="Enter Your Mobile Number"
-            (ionFocus)="inputTrigger(250)"
+            (ionFocus)="inputTrigger(-54)"
             (ionBlur)="inputBlur()"
           >
           </ion-input>
@@ -86,7 +86,7 @@
             name="username"
             class="username"
             placeholder="Enter Your Email"
-            (ionFocus)="inputTrigger(230)"
+            (ionFocus)="inputTrigger(155)"
             (ionBlur)="inputBlur()"
           >
           </ion-input>
@@ -125,7 +125,7 @@
             name="password"
             class="password"
             placeholder="Enter Your Password"
-            (ionFocus)="inputTrigger(200)"
+            (ionFocus)="inputTrigger(-18)"
             (ionBlur)="inputBlur()"
           >
             <ion-icon
@@ -148,7 +148,7 @@
             name="password"
             class="password"
             placeholder="Enter Your Bio"
-            (ionFocus)="inputTrigger(170)"
+            (ionFocus)="inputTrigger(-140)"
             (ionBlur)="inputBlur()"
           >
           </ion-input>
@@ -164,7 +164,7 @@
             name="password"
             class="password"
             placeholder="Enter Your Address"
-            (ionFocus)="inputTrigger(100)"
+            (ionFocus)="inputTrigger(-140)"
             (ionBlur)="inputBlur()"
           >
           </ion-input>

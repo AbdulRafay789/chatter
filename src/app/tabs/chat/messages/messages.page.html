@@ -16,9 +16,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content #content  [style.transform]="transformValue">
+<ion-content #content >
   <div class="background-picture">
-    <div class="login-details text-center pr-1 pl-1">
+    <div class="login-details text-center pr-1 pl-1"  style="z-index: 10;">
       <div>
         <h6 class="text-center m-0 font-weight-bold">Today</h6>
 
@@ -72,7 +72,7 @@
                     </div>
                 </div> -->
 
-        <div class="custom-icon">
+        <div class="custom-icon" [style.transform]="transformValue">
           <ion-input
             [(ngModel)]="msg"
             type="username"

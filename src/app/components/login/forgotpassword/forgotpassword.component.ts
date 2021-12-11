@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { ModalController } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
@@ -43,6 +44,13 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(data1.msg);
     }
   }
+  async ShowStausBar(){
+    StatusBar.setOverlaysWebView({ overlay: true });
+    await StatusBar.setStyle({ style: Style.Default });
+    await StatusBar.show();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ShowStausBar();
+  }
 }

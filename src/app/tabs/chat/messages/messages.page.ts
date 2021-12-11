@@ -123,7 +123,7 @@ export class MessagesPage implements OnInit {
     this.platform.ready().then(() => {
       Keyboard.addListener("keyboardWillShow", () => {
         // requestAnimationFrame(() => {
-          this.transformValue = 'translateY(-245px)';
+          this.transformValue = 'translateY(-336px)';
           document.activeElement.scrollIntoView(true);
         // });
       });

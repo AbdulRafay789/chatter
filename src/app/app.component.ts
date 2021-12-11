@@ -1,6 +1,6 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StatusBar } from '@capacitor/status-bar';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { MenuController, NavController, Platform } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { LoginPage } from './components/login/login.page';
@@ -141,9 +141,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     this.generalService.stopLoader();
   }
-
+  async ShowStausBar(){
+    StatusBar.setOverlaysWebView({ overlay: true });
+    await StatusBar.setStyle({ style: Style.Default });
+    await StatusBar.show();
+  }
   initializeApp() {
     this.platform.ready().then(() => {
+      this.ShowStausBar();
       // this.statusBar.styleDefault();
       // Keyboard.addListener("keyboardWillShow", ({ keyboardHeight }) => {
         // alert(keyboardHeight);

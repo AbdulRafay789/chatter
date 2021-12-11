@@ -10,7 +10,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
 import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { Capacitor } from '@capacitor/core';
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+// import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 // auth
 import {
   ActionPerformed,
@@ -19,8 +19,6 @@ import {
   Token,
 } from '@capacitor/push-notifications';
 import { SubjectsService } from 'src/app/services/subjects.service';
-// import { GooglePlus } from '@ionic-native/google-plus/ngx';
-// import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
   selector: 'app-login',
@@ -29,8 +27,8 @@ import { SubjectsService } from 'src/app/services/subjects.service';
 })
 export class LoginPage implements OnInit {
   msg: any;
-  email = ''; //mharisferoz@gmail.com
-  password = ''; //m6zfbtfk
+  email = 'harisferoz'; //mharisferoz@gmail.com
+  password = '1234567'; //m6zfbtfk
   signUp: Form;
   data: any = {};
   isLoading = false;
@@ -138,9 +136,9 @@ export class LoginPage implements OnInit {
     const modal = await this.modalController.create({
       component: ForgotpasswordComponent,
       cssClass: 'my-custom-class',
-      backdropDismiss: true,
-      mode: 'ios',
-      showBackdrop: true,
+      // backdropDismiss: true,
+      // mode: 'ios',
+      // showBackdrop: true,
     });
     return await modal.present();
   }
@@ -226,63 +224,10 @@ export class LoginPage implements OnInit {
   }
 
   async initializeDepartmentList() {
-    // let result
-    // await this.service.presentLoading(async () => {
-    //   result = this.service.getListItems(this.data);
-    // });
-    // if (result.isSuccessful) {
-    //   this.data = result.data;
-    //   return true;
-    // } else {
-    //   return result.errors;
-    // }
-    // if (this.isAuthorize()) {
-    //   this.isLoading = true;
-    //   this.data.email = this.email;
-    //   this.data.password = this.password;
-    //    (await this.service.getListItems(this.data)).subscribe(
-    //     async (data: DepartmentModel[]) => {
-    //       this.pisci = data;
-    //       const values = Object.keys(data).map(key => data[key]);
-    //       const commaJoinedValues = values.join(',');
-    //     }
-    //   );
-    //   this.isLoading = false;
-    // }
+   
   }
 
-  // async initializeDepartmentListt(): Promise<void> {
-  //   // if (this.isAuthorize()) {
-  //     this.data.username = this.email;
-  //   this.data.password = this.password;
-  //     const data = (await this.service.getListItems(this.data)).toPromise();
-  //     this.pisci = data;
-  //     this.router.navigate(['/tabs']);
-  //   // }
-  // }
-
-  // async loginA() {
-  //   this.isLoading = true;
-  //   const loginRes = await this.auth.login(
-  //     this.email,
-  //     this.password,
-  //   );
-  //   if (loginRes.isSuccessful) {
-  //     this.isLoading = false;
-  //     localStorage.setItem('token', ('bearer' + (loginRes).data.token));
-  //     localStorage.setItem('user', JSON.stringify((loginRes).data));
-  //     BaseService.fill('bearer' + (loginRes).data.token);
-  //     this.saveForm();
-  //     this.generalService.setActuallUserLogin((loginRes).data.loginObject.userLogin);
-  //     this.setACustomer(loginRes.data);
-  //   }
-  //   else {
-  //     this.isLoading = false;
-  //     this.generalService.generalErrorMessage(loginRes.errors);
-  //   }
-
-  // }
-
+  
   saveForm() {
     if (this.isRemember === true) {
       localStorage.setItem('email', this.email);
@@ -309,57 +254,51 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.getToken();
-    GoogleAuth.init();
+    // GoogleAuth.init();
   }
   // push notifications
   async Google() {
-    try {
-      // const res = await this.googlePlus.login({
-      //   webClientId:
-      //     '864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com', // haris web
-      //   // '864775706418-ovmskjl5so0sbamapfqqmibv41493n5c.apps.googleusercontent.com', // haris windows
-      //   // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
-      // });
-      const res = await GoogleAuth.signIn();
-      if (res) {
-        console.log(res);
-        let obj = {
-          username: '',
-          fname: '',
-          lname: '',
-          mobile: '',
-          email: '',
-          dob: '',
-          password: '',
-          bio: '',
-          location: '',
-          image: '',
-        };
-        obj.username = res.givenName + res.familyName;
-        obj.fname = res['givenName'];
-        obj.lname = res['familyName'];
-        obj.mobile = '000000000';
-        obj.email = res.email;
-        obj.dob = '1999-01-01';
-        obj.password = res['id'];
-        obj.bio = 'bio';
-        obj.location = 'location';
-        obj.image = res.imageUrl;
+    // try {
+    //   const res = await GoogleAuth.signIn();
+    //   if (res) {
+    //     console.log(res);
+    //     let obj = {
+    //       username: '',
+    //       fname: '',
+    //       lname: '',
+    //       mobile: '',
+    //       email: '',
+    //       dob: '',
+    //       password: '',
+    //       bio: '',
+    //       location: '',
+    //       image: '',
+    //     };
+    //     obj.username = res.givenName + res.familyName;
+    //     obj.fname = res['givenName'];
+    //     obj.lname = res['familyName'];
+    //     obj.mobile = '000000000';
+    //     obj.email = res.email;
+    //     obj.dob = '1999-01-01';
+    //     obj.password = res['id'];
+    //     obj.bio = 'bio';
+    //     obj.location = 'location';
+    //     obj.image = res.imageUrl;
 
-        const data1: any = await this.service.postApi('users/signup', obj);
-        if (data1.status && data1.data) {
-          this.service.settoken(data1.data.token);
-          this.service.setuser(data1.data);
-          this.data = data1.user;
-          this.generalService.stopLoader();
-          // this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
-          this.router.navigate(['/tabs']);
-        } else {
-          // this.generalService.generalToast(data1.msg.message);
-          console.log(data1.msg);
-        }
-      }
-    } catch (error) {}
+    //     const data1: any = await this.service.postApi('users/signup', obj);
+    //     if (data1.status && data1.data) {
+    //       this.service.settoken(data1.data.token);
+    //       this.service.setuser(data1.data);
+    //       this.data = data1.user;
+    //       this.generalService.stopLoader();
+    //       // this.generalService.generalToast('You Have Signed Up SuccessFully', 2000);
+    //       this.router.navigate(['/tabs']);
+    //     } else {
+    //       // this.generalService.generalToast(data1.msg.message);
+    //       console.log(data1.msg);
+    //     }
+    //   }
+    // } catch (error) {}
   }
   showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';
