@@ -1,19 +1,47 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="secondary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
-        </ion-buttons>
-        <!-- <ion-buttons slot="end">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
           <ion-icon color="primary" class="icon-font" name="notifications-outline"></ion-icon>
       </ion-buttons> -->
-        <ion-buttons slot="end">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center title" color="primary">Notification</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center title" color="primary"
+      >Notification</ion-title
+    >
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="background-picture">
+    <div class="login-details text-center pr-1 pl-1 z-index-10">
+      <ion-item
+        class="mb-2"
+        button
+        *ngFor="let notifi of notifications; let i = index;"
+        (click)="read(notifi,i)"
+        lines="none"
+      >
+        <img
+          src="{{notifi.read == false ? '../../assets/images/Ellipse 1.png' : '../../assets/images/Ellipse 2.png'}}"
+          class="w-10-px mr-8"
+        />
+        <img
+          src="{{notifi.userto.user_dp.path}}"
+          style="border-radius: 50%; height: 60px; width: 60px"
+        />
+        <ion-label>
+          <div
+            class="d-flex ion-justify-content-between ion-align-items-center"
+          >
+            <h2 class="ml-3 color f-s-14 text-wrap">{{notifi.message}}</h2>
+          </div>
+          <p class="ml-3 color f-s-12">{{notifi.createdAt | date}}</p>
+        </ion-label>
+      </ion-item>
 
     <div class="background-picture">
 
@@ -34,34 +62,32 @@
                 <ion-button color="primary" size="small">Accept</ion-button>
                 <ion-button color="light" size="small" class=" ml-2">Cancel</ion-button>
             </div> -->
-
-        </div>
     </div>
+  </div>
 
-    <ion-tabs>
-        <ion-tab-bar slot="bottom" selectedTab="post" color="primary">
-            <ion-tab-button routerLink="/tabs">
-                <ion-icon class="appname-customicon1"></ion-icon>
-                <!-- <ion-label>Schedule</ion-label>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="post" color="primary">
+      <ion-tab-button routerLink="/tabs">
+        <ion-icon class="appname-customicon1"></ion-icon>
+        <!-- <ion-label>Schedule</ion-label>
             <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
+      </ion-tab-button>
 
-            <ion-tab-button tab="post">
-                <ion-icon class="appname-customicon2"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button tab="post">
+        <ion-icon class="appname-customicon2"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button routerLink="/tabs/video">
-                <ion-icon class="appname-customicon3"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button routerLink="/tabs/video">
+        <ion-icon class="appname-customicon3"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button routerLink="/tabs/chat">
-                <ion-icon class="appname-customicon4"></ion-icon>
-            </ion-tab-button>
+      <ion-tab-button routerLink="/tabs/chat">
+        <ion-icon class="appname-customicon4"></ion-icon>
+      </ion-tab-button>
 
-            <ion-tab-button routerLink="/tabs/profile">
-                <ion-icon class="appname-customicon5"></ion-icon>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
-
+      <ion-tab-button routerLink="/tabs/profile">
+        <ion-icon class="appname-customicon5"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>

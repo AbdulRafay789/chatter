@@ -12,7 +12,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="background-picture">
-    <div class="login-details custom-searchbar">
+    <div class="login-details custom-searchbar z-index-10">
       <!-- <ion-list>
               <ion-item *ngFor="let item of items"> {{item}} </ion-item>
           </ion-list>
@@ -33,6 +33,7 @@
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
           <ion-slides
+            mode="ios"
             pager="{{video.videos.length > 1 ? true : false}}"
             [options]="{allowTouchMove:video.videos.length > 1 ? true : false}"
           >
@@ -51,8 +52,6 @@
                 poster="../../../assets/images/Icon ionic-ios-play-circle.png"
               >
                 <source [src]="element.path" type="video/mp4" />
-                <img [src]="detailedsource" alt="" srcset="" />
-                Your browser does not support the video tag.
               </video>
             </ion-slide>
           </ion-slides>

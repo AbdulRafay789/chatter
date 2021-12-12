@@ -9,7 +9,6 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
-
 /* Core CSS required for Ionic components to work properly */
 
 @import "~@ionic/angular/css/core.css";
@@ -19,7 +18,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 
@@ -32,152 +31,157 @@
 //     font-family: 'a Attack Graffiti', sans-serif;
 // }
 .mt-0 {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .mr-0 {
-    margin-right: 0px;
+  margin-right: 0px;
 }
 
 .mb-0 {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .ml-0 {
-    margin-left: 0px;
+  margin-left: 0px;
 }
 
 .ml-5 {
-    margin-left: 5px !important;
+  margin-left: 5px !important;
 }
 
 .ml-8 {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 .mr-8 {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .my-custom-class {
-    width: 100%;
-    height: 100%;
-    --backdrop-opacity: var(--ion-backdrop-opacity, 0.7) !important;
-    .modal-wrapper.sc-ion-modal-ios,
-    .modal-shadow.sc-ion-modal-ios {
-        width: 92%;
-        height: 40%;
-        left: 4%;
-        position: absolute;
-        border-radius: 20px;
-        top: 35%;
-    }
+  width: 100%;
+  height: 100%;
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0.7) !important;
+  .modal-wrapper.sc-ion-modal-ios,
+  .modal-shadow.sc-ion-modal-ios {
+    width: 92%;
+    height: 40%;
+    left: 4%;
+    position: absolute;
+    border-radius: 20px;
+    top: 35%;
+  }
 }
 
 .w-15 {
-    width: 15% !important;
+  width: 15% !important;
 }
 
 .w-20 {
-    width: 20% !important;
+  width: 20% !important;
 }
 
 .w-36 {
-    width: 36px !important;
+  width: 36px !important;
 }
 
 .w-30-px {
-    width: 30px !important;
+  width: 30px !important;
 }
 
 .h-30-px {
-    height: 30px !important;
+  height: 30px !important;
 }
 
 .w-25-px {
-    width: 25px !important;
+  width: 25px !important;
 }
 
 .w-40-px {
-    width: 40px !important;
+  width: 40px !important;
 }
 
 .h-25-px {
-    height: 25px !important;
+  height: 25px !important;
 }
 
 .w-26 {
-    width: 26px !important;
+  width: 26px !important;
 }
 
 .w-29 {
-    width: 29px !important;
+  width: 29px !important;
 }
 
 .w-33 {
-    width: 33px !important;
+  width: 33px !important;
 }
 
 .f-s-12 {
-    font-size: 12px !important;
+  font-size: 12px !important;
 }
 
 .f-s-14 {
-    font-size: 14px !important;
+  font-size: 14px !important;
 }
 
 .f-s-15 {
-    font-size: 15px !important;
+  font-size: 15px !important;
 }
 
 .f-s-18 {
-    font-size: 18px !important;
+  font-size: 18px !important;
 }
 
 .ml-27 {
-    margin-left: 27px !important;
+  margin-left: 27px !important;
 }
 
 .ml-38 {
-    margin-left: 38px !important;
+  margin-left: 38px !important;
 }
 
 .ml-35 {
-    margin-left: 35px !important;
+  margin-left: 35px !important;
 }
 
 .ml-40 {
-    margin-left: 40px !important;
+  margin-left: 40px !important;
 }
 
 .my-custom-menu {
-    // width: 270px !important;
-    --width: 270px !important;
+  // width: 270px !important;
+  --width: 270px !important;
 }
 
 .app-font {
-    --ion-font-family: AppFont;
+  --ion-font-family: AppFont;
 }
 
 .custom-searchbar {
-    .searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios {
-        padding-inline-start: 70px !important;
-    }
-    .searchbar-search-icon.sc-ion-searchbar-ios {
-        left: 25px !important;
-    }
+  .searchbar-left-aligned.sc-ion-searchbar-ios-h
+    .searchbar-input.sc-ion-searchbar-ios {
+    padding-inline-start: 70px !important;
+  }
+  .searchbar-search-icon.sc-ion-searchbar-ios {
+    left: 25px !important;
+  }
 }
 
 .custom-textarea {
-    .native-textarea.sc-ion-textarea-md {
-        text-align: left !important;
-        padding-left: 30px !important;
-        background-color: #f6f6f6 !important;
-        margin-bottom: 10px;
-    }
+  .native-textarea.sc-ion-textarea-md {
+    text-align: left !important;
+    padding-left: 30px !important;
+    background-color: #f6f6f6 !important;
+    margin-bottom: 10px;
+  }
 }
 
 .img-click {
-    position: relative;
-    z-index: 999;
+  position: relative;
+  z-index: 999;
+}
+
+.z-index-10 {
+  z-index: 10;
 }
