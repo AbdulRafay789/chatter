@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
@@ -8,7 +8,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   templateUrl: './post.page.html',
   styleUrls: ['./post.page.scss'],
 })
-export class PostPage implements OnInit,OnDestroy {
+export class PostPage implements OnInit {
   notifications: any = [];
   timeinterval: any;
   constructor(
