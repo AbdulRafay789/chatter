@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
@@ -8,7 +8,7 @@ import { HttpConfigService } from 'src/app/services/http-config.service';
   templateUrl: './post.page.html',
   styleUrls: ['./post.page.scss'],
 })
-export class PostPage implements OnInit {
+export class PostPage implements OnInit,OnDestroy {
   notifications: any = [];
   timeinterval: any;
   constructor(
@@ -24,7 +24,8 @@ export class PostPage implements OnInit {
       this.getNotifications(false); // Now the "this" still references the component
     }, 8000);
   }
-  ngOnDestroy() {
+  ionViewWillLeave(){
+    debugger;
     clearInterval(this.timeinterval);
   }
   async getNotifications(flag) {

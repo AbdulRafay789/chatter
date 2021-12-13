@@ -139,7 +139,8 @@ export class MessagesPage implements OnInit {
       });
     });
   }
-  ngOnDestroy() {
+  ionViewWillLeave(){
+    debugger;
     clearInterval(this.timeinterval);
   }
   handleSelection(event) {
