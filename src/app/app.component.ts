@@ -1,6 +1,6 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StatusBar } from '@capacitor/status-bar';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { MenuController, NavController, Platform } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { LoginPage } from './components/login/login.page';

@@ -138,9 +138,9 @@ export class LoginPage implements OnInit {
     const modal = await this.modalController.create({
       component: ForgotpasswordComponent,
       cssClass: 'my-custom-class',
-      backdropDismiss: true,
-      mode: 'ios',
-      showBackdrop: true,
+      // backdropDismiss: true,
+      // mode: 'ios',
+      // showBackdrop: true,
     });
     return await modal.present();
   }
@@ -226,63 +226,10 @@ export class LoginPage implements OnInit {
   }
 
   async initializeDepartmentList() {
-    // let result
-    // await this.service.presentLoading(async () => {
-    //   result = this.service.getListItems(this.data);
-    // });
-    // if (result.isSuccessful) {
-    //   this.data = result.data;
-    //   return true;
-    // } else {
-    //   return result.errors;
-    // }
-    // if (this.isAuthorize()) {
-    //   this.isLoading = true;
-    //   this.data.email = this.email;
-    //   this.data.password = this.password;
-    //    (await this.service.getListItems(this.data)).subscribe(
-    //     async (data: DepartmentModel[]) => {
-    //       this.pisci = data;
-    //       const values = Object.keys(data).map(key => data[key]);
-    //       const commaJoinedValues = values.join(',');
-    //     }
-    //   );
-    //   this.isLoading = false;
-    // }
+   
   }
 
-  // async initializeDepartmentListt(): Promise<void> {
-  //   // if (this.isAuthorize()) {
-  //     this.data.username = this.email;
-  //   this.data.password = this.password;
-  //     const data = (await this.service.getListItems(this.data)).toPromise();
-  //     this.pisci = data;
-  //     this.router.navigate(['/tabs']);
-  //   // }
-  // }
-
-  // async loginA() {
-  //   this.isLoading = true;
-  //   const loginRes = await this.auth.login(
-  //     this.email,
-  //     this.password,
-  //   );
-  //   if (loginRes.isSuccessful) {
-  //     this.isLoading = false;
-  //     localStorage.setItem('token', ('bearer' + (loginRes).data.token));
-  //     localStorage.setItem('user', JSON.stringify((loginRes).data));
-  //     BaseService.fill('bearer' + (loginRes).data.token);
-  //     this.saveForm();
-  //     this.generalService.setActuallUserLogin((loginRes).data.loginObject.userLogin);
-  //     this.setACustomer(loginRes.data);
-  //   }
-  //   else {
-  //     this.isLoading = false;
-  //     this.generalService.generalErrorMessage(loginRes.errors);
-  //   }
-
-  // }
-
+  
   saveForm() {
     if (this.isRemember === true) {
       localStorage.setItem('email', this.email);

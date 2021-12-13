@@ -65,6 +65,26 @@ export class ChatPage implements OnInit {
   ngOnInit() {
     // this.getUsers();
   }
-  Search() {
+  checkInside(item, term) {
+    const toCompare = term.toLowerCase();
+    for (let property in item) {
+        if (item[property] === null || item[property] == undefined) {
+            continue;
+        }
+        if (typeof item[property] === 'object') {
+            if (this.checkInside(item[property], term)) {
+                return true;
+            }
+        }
+        if (item[property].toString().toLowerCase().includes(toCompare)) {
+            return true;
+        }
+    }
+    return false;
+}
+  SearchFilrer() {
+    return this.users.filter(function (item) {
+        return this.checkInside(item, this.filterTerm);
+    });
   }
 }

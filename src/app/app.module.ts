@@ -14,6 +14,7 @@ import { GeneralService } from './services/general.service';
 import { Chooser } from '@ionic-native/chooser/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { CommonModule } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 // import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 // @NgModule({
@@ -35,6 +36,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
+    Ng2SearchPipeModule,
     CoreModule,
   ],
   providers: [
