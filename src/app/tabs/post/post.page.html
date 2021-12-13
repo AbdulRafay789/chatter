@@ -34,10 +34,11 @@
           style="border-radius: 50%; height: 60px; width: 60px"
         />
         <ion-label>
-          <div
-            class="d-flex ion-justify-content-between ion-align-items-center"
-          >
-            <h2 class="ml-3 color f-s-14 text-wrap">{{notifi.message}}</h2>
+          <div class="d-flex ion-justify-content-start ion-align-items-center">
+            <h2 class="ml-3 color f-s-14 text-wrap">
+              {{notifi.userto.fname + ' ' + notifi.userto.lname }}
+            </h2>
+            <h2 class="ml-1 color f-s-14 text-wrap">{{notifi.message}}</h2>
           </div>
           <p class="ml-3 color f-s-12">{{notifi.createdAt | date}}</p>
         </ion-label>
