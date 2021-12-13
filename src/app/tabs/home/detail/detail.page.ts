@@ -78,14 +78,20 @@ export class DetailPage implements OnInit {
     });
     this.platform.ready().then(() => {
       Keyboard.addListener('keyboardWillShow', () => {
-        this.transformValue = 'translateY(-245px)';
-        document.activeElement.scrollIntoView(true);
+        requestAnimationFrame(() => {
+          this.transformValue = 'translateY(-244px)';
+          document.activeElement.scrollIntoView(true);
+        });
       });
       Keyboard.addListener('keyboardWillHide', () => {
-        this.transformValue = '';
+        requestAnimationFrame(() => {
+          this.transformValue = '';
+        });
       });
       Keyboard.addListener('keyboardDidHide', () => {
-        this.transformValue = '';
+        requestAnimationFrame(() => {
+          this.transformValue = '';
+        });
       });
     });
   }

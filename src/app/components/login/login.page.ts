@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { Capacitor } from '@capacitor/core';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { Storage } from '@capacitor/storage';
 // auth
 import {
   ActionPerformed,
@@ -70,6 +71,22 @@ export class LoginPage implements OnInit {
     //     });
     //   })
   }
+  async setcredtials(key,name) {
+    await Storage.set({
+      key: key,
+      value: name,
+    });
+  };
+  
+  async checkName(valu) {
+    const data = await Storage.get({ key: valu });
+  
+    return data;
+  };
+  
+  async removeName(keyname){
+    await Storage.remove({ key: keyname });
+  };
   subscribeToTopic() {
     // this.fcm.subscribeToTopic('enappd');
   }
@@ -144,28 +161,37 @@ export class LoginPage implements OnInit {
     });
     return await modal.present();
   }
-
-  async login() {
-    // this.isLoading = false;
-    // this.service.LoginObj.username = this.username;
-    // this.service.LoginObj.password = this.password;
-    // this.data.username = this.email;
-    // this.data.password = this.password;
-    // this.service.obj.username = this.username;
-    // this.service.obj.username = this.password;
-    // let loginRes = await this.service.getListItems(this.data);
-    // if (loginRes.isSuccessful ) {
-    //   this.isLoading = false;
-    //   this.data = loginRes.Data;
-    //   this.router.navigate(['/tabs']);
-    // }
-    // else {
-    //   this.isLoading = false;
-    //   this.service.generalErrorMessage(this.service.errors);
-    // }
+  async CheckLogin(){
+    let email = await this.checkName('email');
+    let password ;
+      if(email.value){
+        password = await  this.checkName('password');
+        if(password.value){
+          this.data.email = email.value;
+          this.data.password = password.value;
+          this.data.device_token = this.devicetoken;
+          this.generalService.showLoader();
+          const data1: any = await this.service.postApi('users/login', this.data);
+          if (data1.status && data1.data) {
+            this.service.settoken(data1.data.token);
+            this.service.setuser(data1.data);
+      
+            // Subscription
+            this.subjectService.userDetails.next(data1.data.user);
+            // Subscription
+      
+            this.data = data1;
+            this.router.navigate(['/tabs']);
+          } else {
+            this.generalService.generalToast(data1.msg, 2000);
+            console.log(data1.msg);
+          }
+          this.generalService.stopLoader();
+        }
+      }
   }
-
   async getLogin() {
+    
     if (this.email == '') {
       this.generalService.generalToast('Email Is Required', 2000);
       return false;
@@ -182,6 +208,9 @@ export class LoginPage implements OnInit {
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
+      debugger;
+      await this.setcredtials('email',this.email);
+      await this.setcredtials('password',this.password);
 
       // Subscription
       this.subjectService.userDetails.next(data1.data.user);
@@ -200,18 +229,6 @@ export class LoginPage implements OnInit {
   }
 
   isAuthorize() {
-    // const msg = 'email';
-    // const msg1 = 'password';
-    // if (!this.email || this.email === '') {
-    //   this.service.presentToast(msg);
-    // };
-    // if (!this.password || this.password === '') {
-    //   this.service.presentToast(msg1);
-    // };
-    // return true;
-
-    // const errors = [];
-    // let msg = '';
     if (!this.email) {
       this.msg = 'Email is required';
       this.service.presentToast(this.msg);
@@ -257,16 +274,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.getToken();
     GoogleAuth.init();
+    this.CheckLogin();
+    // GoogleAuth.init();
   }
   // push notifications
   async Google() {
     try {
-      // const res = await this.googlePlus.login({
-      //   webClientId:
-      //     '864775706418-0p8ov6ip96clra6lpnahenajdftl15nq.apps.googleusercontent.com', // haris web
-      //   // '864775706418-ovmskjl5so0sbamapfqqmibv41493n5c.apps.googleusercontent.com', // haris windows
-      //   // '864775706418-p9s3ua488on3fgheljhbple4aan9bdmc.apps.googleusercontent.com' // haris mac
-      // });
       const res = await GoogleAuth.signIn();
       if (res) {
         console.log(res);

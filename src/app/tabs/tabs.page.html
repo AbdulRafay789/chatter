@@ -73,7 +73,7 @@
             </video>
           </div> -->
 
-          <h5 (click)="viewVideo(video, i)">{{video.description}}</h5>
+          <h5 (click)="viewVideo(video, i)">{{video.user.fname + ' ' + video.user.lname }}</h5>
           <!-- <h5 (click)="viewVideo(video, i)">{{video.title}}</h5> -->
           <!-- <p>{{video.description}}</p> -->
           <div
@@ -185,22 +185,22 @@
 
   <ion-tabs>
     <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
-      <ion-tab-button tab="home">
+      <ion-tab-button tab="home" class="img-click">
         <ion-icon class="appname-customicon1"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button tab="post">
+      <ion-tab-button tab="post" class="img-click">
         <ion-icon class="appname-customicon2"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="video">
+      <ion-tab-button tab="video" class="img-click">
         <ion-icon class="appname-customicon3"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="chat">
+      <ion-tab-button tab="chat" class="img-click">
         <ion-icon class="appname-customicon4"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="profile">
+      <ion-tab-button tab="profile" class="img-click">
         <ion-icon class="appname-customicon5"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>

@@ -11,6 +11,8 @@ import { SubjectsService } from './services/subjects.service';
 import { TabsPage } from './tabs/tabs.page';
 import { SplashScreen, SplashScreenPlugin } from '@capacitor/splash-screen';
 import { Keyboard } from '@capacitor/keyboard';
+
+import { Storage } from '@capacitor/storage';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -128,9 +130,11 @@ export class AppComponent implements OnInit, OnDestroy {
       // this.videos = data1.data;
       this.service.setVideo(data1.data);
       this.nav.navigateRoot('/login');
+      
       setTimeout(() => {
         this.menu.close();
       }, 100);
+      await Storage.clear();
       this.generalService.generalToast(data1.msg, 2000);
     } else {
       if (data1.status === false) {
@@ -144,6 +148,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      // this.ShowStausBar();
       // this.statusBar.styleDefault();
       // Keyboard.addListener("keyboardWillShow", ({ keyboardHeight }) => {
         // alert(keyboardHeight);

@@ -58,60 +58,73 @@
             size="small"
             >Disconnect</ion-button
           >
-          <ion-button
-            *ngIf="isconnectdata"
-            (click)="connect()"
-            color="success"
-            size="small"
-            >Connect</ion-button
-          >
-          <ion-button
-            *ngIf="isreportdata"
-            color="primary"
-            (click)="report()"
-            size="small"
-            >Report</ion-button
-          >
-          <ion-button
-            *ngIf="isunreportdata"
-            color="success"
-            (click)="unreport()"
-            size="small"
-            >Unreport</ion-button
-          >
-        </div>
-
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Username</p>
-          <p class="heading-color-1">{{videoData.username}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">First Name</p>
-          <p class="heading-color-1">{{videoData.fname}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Last Name</p>
-          <p class="heading-color-1">{{videoData.fname}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Mobile #</p>
-          <p class="heading-color-1">{{videoData.mobile}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Email</p>
-          <p class="heading-color-1">{{videoData.email}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Age</p>
-          <p class="heading-color-1">{{videoData.dob}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Bio</p>
-          <p class="heading-color-1">{{videoData.bio}}</p>
-        </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Location</p>
-          <p class="heading-color-1">{{videoData.location}}</p>
+            <ion-button
+              *ngIf="isdisconnectdata"
+              (click)="disconnect()"
+              class="img-click"
+              color="primary"
+              size="small"
+              >Disconnect</ion-button
+            >
+            <ion-button
+              *ngIf="isconnectdata"
+              (click)="connect()"
+              class="img-click"
+              color="success"
+              size="small"
+              >Connect</ion-button
+            >
+            <ion-icon (click)="GotoChat(videoData)" name="chatbox-ellipses-outline" class="img-click" style="color: #c9c000;font-size: 24px;"></ion-icon>
+            <ion-button
+              *ngIf="isreportdata"
+              color="primary"
+              (click)="report()"
+              class="img-click"
+              size="small"
+              >Report</ion-button
+            >
+            <ion-button
+              *ngIf="isunreportdata"
+              color="success"
+              (click)="unreport()"
+              class="img-click"
+              size="small"
+              >Unreport</ion-button
+            >
+          </div>
+  
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Username</p>
+            <p class="heading-color-1">{{videoData.username}}</p>
+          </div>
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">First Name</p>
+            <p class="heading-color-1">{{videoData.fname}}</p>
+          </div>
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Last Name</p>
+            <p class="heading-color-1">{{videoData.fname}}</p>
+          </div>
+          <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Mobile #</p>
+            <p class="heading-color-1">{{videoData.mobile}}</p>
+          </div> -->
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Email</p>
+            <p class="heading-color-1">{{videoData.email}}</p>
+          </div>
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Age</p>
+            <p class="heading-color-1">{{videoData.dob}}</p>
+          </div>
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Bio</p>
+            <p class="heading-color-1">{{videoData.bio}}</p>
+          </div>
+          <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Location</p>
+            <p class="heading-color-1">{{videoData.location}}</p>
+          </div>
         </div>
       </div>
     </div>
