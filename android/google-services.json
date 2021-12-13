@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "864775706418-pcg437v1krfda69g0dhumhspid2gtfdl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.chatter",
+            "certificate_hash": "7d43cab779942292f8fc60869a2d49b7a9c0fb4a"
+          }
+        },
+        {
           "client_id": "864775706418-vu7lb2htdf7jkjbp321g1nvc07biipmf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

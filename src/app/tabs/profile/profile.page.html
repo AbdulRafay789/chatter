@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content [style.transform]="transformValue">
-  <div class="background-picture">
+  <div class="background-picture"  style="z-index: -1;">
     <div
       class="login-details text-center pr-4 pl-4 custom-textarea z-index-10"
       *ngIf="this.view === false"
@@ -263,10 +263,10 @@
           <p class="heading-color">Last Name</p>
           <p class="heading-color-1">{{profileData.fname}}</p>
         </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
+        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Mobile #</p>
           <p class="heading-color-1">{{profileData.mobile}}</p>
-        </div>
+        </div> -->
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Email</p>
           <p class="heading-color-1">{{profileData.email}}</p>

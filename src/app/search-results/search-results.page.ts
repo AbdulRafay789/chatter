@@ -78,7 +78,7 @@ export class SearchResultsPage implements OnInit {
     if (data1.status && data1.data) {
       this.router.navigate([
         '/profileforusers',
-        { data: JSON.stringify(data1.data[0]) },
+        { data: JSON.stringify(data1.data) },
       ]);
     } else {
       this.generalService.generalErrorMessage(data1.msg);

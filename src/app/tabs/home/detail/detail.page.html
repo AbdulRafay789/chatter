@@ -13,7 +13,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" [style.transform]="transformValue">
+<ion-content [fullscreen]="true">
   <div class="background-picture">
     <div class="login-details z-index-10">
       <div class="custom-div">
@@ -84,7 +84,7 @@
         </ion-label>
       </ion-item>
 
-      <div class="custom-icon">
+    <div class="custom-icon" [style.transform]="transformValue">
         <ion-input
           type="username"
           clearOnEdit="true"

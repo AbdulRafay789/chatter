@@ -54,7 +54,8 @@ export class SignupPage implements OnInit {
       // let ionSelector = document.querySelector('ion-content');
       // ionSelector.style.transform = '';
       // ionSelector.style.transform = 'translateY(-'+(253-value)+'px)';
-      this.transformValue = 'translateY(-' + (253 - value) + 'px)';
+      let valu = (-253 - value);
+      this.transformValue = 'translateY(' + valu + 'px)';
       document.activeElement.scrollIntoView(true);
     });
 
@@ -163,6 +164,16 @@ export class SignupPage implements OnInit {
   }
   getToken() {
     let platform = Capacitor.getPlatform();
+    Keyboard.addListener('keyboardWillHide', () => {
+      requestAnimationFrame(() => {
+        this.transformValue = '';
+      });
+    });
+    Keyboard.addListener('keyboardDidHide', () => {
+      requestAnimationFrame(() => {
+        this.transformValue = '';
+      });
+    });
     if (platform == 'android' || platform == 'ios') {
       PushNotifications.requestPermissions().then((result) => {
         if (result.receive === 'granted') {

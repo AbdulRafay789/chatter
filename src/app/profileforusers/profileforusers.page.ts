@@ -38,6 +38,26 @@ export class ProfileforusersPage implements OnInit {
       console.log(data1.msg);
     }
   }
+  async GotoChat(param) {
+    // eslint-disable-next-line no-underscore-dangle
+    let userto_id = param._id;
+    const url = 'chats/create';
+    this.generalService.showLoader();
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const data1: any = await this.service.postApi(url, {
+      userto_id: userto_id,
+    });
+    if (data1.status && data1.data) {
+      this.router.navigate([
+        '/tabs/chat/messages',
+        { data: JSON.stringify(data1.data) },
+      ]);
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+    this.generalService.stopLoader();
+  }
   async connect(param) {
     const url = 'users/connect/' + this.videoData._id;
     this.generalService.showLoader();
