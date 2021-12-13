@@ -32,11 +32,11 @@
 
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
-          <ion-icon
+          <!-- <ion-icon
             (click)="deletePost(video)"
             name="trash-sharp"
             class="delete-icon"
-          ></ion-icon>
+          ></ion-icon> -->
           <ion-slides
             mode="ios"
             pager="{{video.videos.length > 1 ? true : false}}"
@@ -66,11 +66,11 @@
                 class="ml-5 mr-4"
                 >Delete</ion-button
               > -->
-              <ion-icon
+              <!-- <ion-icon
                 (click)="deleteVideo(element)"
                 name="remove-circle-sharp"
                 class="minus-icon"
-              ></ion-icon>
+              ></ion-icon> -->
             </ion-slide>
           </ion-slides>
           <!-- <div *ngIf="video?.videos.length == 1">
@@ -91,7 +91,9 @@
             </video>
           </div> -->
 
-          <h5 (click)="viewVideo(video, i)">{{video.user.fname + ' ' + video.user.lname }}</h5>
+          <h5 (click)="viewVideo(video, i)">
+            {{video.user.fname + ' ' + video.user.lname }}
+          </h5>
           <!-- <h5 (click)="viewVideo(video, i)">{{video.title}}</h5> -->
           <!-- <p>{{video.description}}</p> -->
           <div

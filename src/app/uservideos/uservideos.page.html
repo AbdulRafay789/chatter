@@ -15,6 +15,11 @@
     <div class="login-details custom-searchbar z-index-10">
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
+          <ion-icon
+            (click)="deletePost(video)"
+            name="trash-sharp"
+            class="delete-icon"
+          ></ion-icon>
           <ion-slides
             pager="{{video.videos.length > 1 ? true : false}}"
             [options]="{allowTouchMove:video.videos.length > 1 ? true : false}"
@@ -37,6 +42,11 @@
                 <img [src]="detailedsource" alt="" srcset="" />
                 Your browser does not support the video tag.
               </video>
+              <ion-icon
+                (click)="deleteVideo(element)"
+                name="remove-circle-sharp"
+                class="minus-icon"
+              ></ion-icon>
             </ion-slide>
           </ion-slides>
 
