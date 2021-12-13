@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { GeneralService } from '../services/general.service';
 import { HttpConfigService } from '../services/http-config.service';
 
@@ -24,6 +24,7 @@ export class TabsPage implements OnInit, OnChanges {
     private router: Router,
     public service: HttpConfigService,
     public generalService: GeneralService,
+    private alertCtrl: AlertController,
     private loadingController: LoadingController
   ) {
     this.addMoreItems();
@@ -198,6 +199,66 @@ export class TabsPage implements OnInit, OnChanges {
       { data: JSON.stringify(param), index: indx },
     ]);
     // this.generalService.stopLoader();
+  }
+
+  async deletePost(param) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Warning',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Delete This Post?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            // this.SavePost();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async deleteVideo(param) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Warning',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Delete This Video?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            // this.SavePost();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   ngOnInit() {}

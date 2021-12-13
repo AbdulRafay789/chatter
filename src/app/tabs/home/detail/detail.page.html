@@ -17,6 +17,11 @@
   <div class="background-picture">
     <div class="login-details z-index-10">
       <div class="custom-div">
+        <ion-icon
+          (click)="deletePost(video)"
+          name="trash-sharp"
+          class="delete-icon"
+        ></ion-icon>
         <ion-slides pager="true" mode="ios">
           <ion-slide *ngFor="let element of videoData.videos">
             <img
@@ -35,6 +40,11 @@
               <source [src]="element.path" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <ion-icon
+              (click)="deleteVideo(element)"
+              name="remove-circle-sharp"
+              class="minus-icon"
+            ></ion-icon>
           </ion-slide>
         </ion-slides>
       </div>

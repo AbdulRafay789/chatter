@@ -166,3 +166,24 @@ ion-input:focus {
   padding-left: 10px;
   border-radius: 5px;
 }
+
+.delete-icon {
+  float: right;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 3px;
+  margin-top: -10px;
+}
+
+.minus-icon {
+  position: absolute;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 3px;
+  bottom: 2px;
+  left: 3px;
+}
