@@ -55,10 +55,30 @@ export class PostPage implements OnInit {
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.notifications[indx]['read'] = true;
+      this.GotoPage(obj);
     } else {
       this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
+  }
+  async GotoPage(obj){
+    if(obj.video){
+      // const url = 'notifications/read/' + obj._id;
+      // this.generalService.showLoader();
+      // const data1: any = await this.service.getApi(url, {});
+      // if (data1.status && data1.data) {
+      //   this.notifications[indx]['read'] = true;
+      //   this.GotoPage(obj);
+      // } else {
+      //   this.generalService.generalToast(data1.msg, 2000);
+      //   console.log(data1.msg);
+      // }
+      // this.generalService.stopLoader();
+      // this.router.navigate([
+      //   '/tabs/home/detail',
+      //   { data: JSON.stringify(param), index: indx },
+      // ]);
+    }
   }
 }

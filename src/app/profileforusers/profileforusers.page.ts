@@ -24,9 +24,11 @@ export class ProfileforusersPage implements OnInit {
       // this.segment = 'Posts';
     }
   segmentChanged(ev: any) {
-    if (this.segment === 'Posts') {
+    this.segment = ev;
+    if (this.segment =="Posts") {
       this.router.navigate(['/uservideos', { data: this.segment,user_id:this.videoData._id }]);
-    } else {
+    } 
+    else {
       this.router.navigate(['/userspage', { data: this.segment,user_id:this.videoData._id }]);
     }
   }

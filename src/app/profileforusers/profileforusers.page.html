@@ -90,7 +90,7 @@
           >
         </div>
 
-        <ion-segment
+        <!-- <ion-segment
           (ionChange)="segmentChanged($event)"
           [(ngModel)]="segment"
           color="primary"
@@ -122,7 +122,34 @@
             </p>
             <ion-label>Connected</ion-label>
           </ion-segment-button>
-        </ion-segment>
+        </ion-segment> -->
+
+        <div style="display: flex;">
+          <div class="segmentBtn img-click" (click)="segmentChanged('Posts')">
+              <p class="mb-0">
+                {{videoData.total_posts ? videoData.total_posts : 0}}
+            </p>
+            <span>Posts</span>
+          </div>
+          <!-- <div class="segmentBtn img-click" (click)="segmentChanged('Like')">
+            <p class="mb-0">
+              {{videoData.total_likes ? videoData.total_likes : 0}}
+            </p>
+            <span>Like</span>
+          </div> -->
+          <div class="segmentBtn img-click" (click)="segmentChanged('Connect')">
+            <p class="mb-0">
+              {{videoData.connect ? videoData.connect.length : 0}}
+            </p>
+            <span>Connect</span>
+          </div>
+          <div class="segmentBtn img-click" (click)="segmentChanged('Connected')">
+            <p class="mb-0">
+              {{videoData.connect ? videoData.connected.length : 0}}
+            </p>
+            <span>Connected</span>
+          </div>
+        </div>
 
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Username</p>
@@ -134,16 +161,16 @@
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Last Name</p>
-          <p class="heading-color-1">{{videoData.fname}}</p>
+          <p class="heading-color-1">{{videoData.lname}}</p>
         </div>
         <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
             <p class="heading-color">Mobile #</p>
             <p class="heading-color-1">{{videoData.mobile}}</p>
           </div> -->
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
+        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Email</p>
           <p class="heading-color-1">{{videoData.email}}</p>
-        </div>
+        </div> -->
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Age</p>
           <p class="heading-color-1">{{videoData.dob}}</p>
@@ -153,7 +180,7 @@
           <p class="heading-color-1">{{videoData.bio}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Location</p>
+          <p class="heading-color">Address</p>
           <p class="heading-color-1">{{videoData.location}}</p>
         </div>
       </div>

@@ -232,13 +232,14 @@
             class="h-25-px w-25-px ml-5 img-click" alt="">
         </div> -->
 
-        <ion-segment
+        <!-- <ion-segment
           (ionChange)="segmentChanged($event)"
           [(ngModel)]="segment"
           color="primary"
           scrollable
           mode="ios"
           class="mb-2"
+          value="{{segment}}"
         >
           <ion-segment-button value="Posts" layout="icon-top">
             <p class="mb-0">
@@ -264,7 +265,33 @@
             </p>
             <ion-label>Connected</ion-label>
           </ion-segment-button>
-        </ion-segment>
+        </ion-segment> -->
+        <div style="display: flex;">
+          <div class="segmentBtn img-click" (click)="segmentChanged('Posts')">
+              <p class="mb-0">
+              {{profileData.total_posts ? profileData.total_posts : 0}}
+            </p>
+            <span>Posts</span>
+          </div>
+          <!-- <div class="segmentBtn img-click" (click)="segmentChanged('Like')">
+            <p class="mb-0">
+              {{profileData.total_likes ? profileData.total_likes : 0}}
+            </p>
+            <span>Like</span>
+          </div> -->
+          <div class="segmentBtn img-click" (click)="segmentChanged('Connect')">
+            <p class="mb-0">
+              {{profileData.connect ? profileData.connect.length : 0}}
+            </p>
+            <span>Connect</span>
+          </div>
+          <div class="segmentBtn img-click" (click)="segmentChanged('Connected')">
+            <p class="mb-0">
+              {{profileData.connect ? profileData.connected.length : 0}}
+            </p>
+            <span>Connected</span>
+          </div>
+        </div>
 
         <!-- <div [ngSwitch]="segment" class="d-flex ion-justify-content-between ion-align-items-center">
                     <p *ngSwitchCase="'Posts'">11</p>
@@ -285,10 +312,10 @@
           <p class="heading-color">Last Name</p>
           <p class="heading-color-1">{{profileData.lname}}</p>
         </div>
-        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
+        <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Mobile #</p>
           <p class="heading-color-1">{{profileData.mobile}}</p>
-        </div> -->
+        </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Email</p>
           <p class="heading-color-1">{{profileData.email}}</p>

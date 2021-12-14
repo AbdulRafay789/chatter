@@ -12,8 +12,9 @@ const routes: Routes = [
     // pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'tabs',
+    // loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    component: TabsPage,
   },
   {
     path: 'post',

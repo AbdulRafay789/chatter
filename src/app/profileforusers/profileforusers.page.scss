@@ -130,3 +130,21 @@ ion-segment-button {
     color: #a07ebb;
     --indicator-box-shadow: 0 0 5px rgb(244 58 3);
 }
+.segmentBtn{
+    width: 32%;
+    float: left;
+    margin-bottom: 10px;
+  }
+  .segmentBtn p{
+    display: block;
+    font-size: 12px !important;
+    text-align: center;
+    color: #a07ebb;
+  }
+  .segmentBtn span{
+    display: block;
+    font-size: 12px !important;
+    text-align: center;
+    color: #a07ebb;
+    font-weight: 700;
+  }
