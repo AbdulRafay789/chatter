@@ -122,20 +122,25 @@ export class MessagesPage implements OnInit {
     }, 10000);
     this.platform.ready().then(() => {
       Keyboard.addListener("keyboardWillShow", () => {
-        // requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
           this.transformValue = 'translateY(-336px)';
           document.activeElement.scrollIntoView(true);
-        // });
+        });
       });
       Keyboard.addListener('keyboardWillHide', () => {
-        this.transformValue = '';
+        requestAnimationFrame(() => {
+          this.transformValue = '';
+        });
       });
       Keyboard.addListener("keyboardDidHide", () => {
-        this.transformValue = "";
+        requestAnimationFrame(() => {
+          this.transformValue = "";
+        });
       });
     });
   }
-  ngOnDestroy() {
+  ionViewWillLeave(){
+    debugger;
     clearInterval(this.timeinterval);
   }
   handleSelection(event) {

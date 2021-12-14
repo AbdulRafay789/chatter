@@ -61,14 +61,22 @@
           <ion-button
             *ngIf="isconnectdata"
             (click)="connect()"
+            class="img-click"
             color="success"
             size="small"
             >Connect</ion-button
           >
+          <ion-icon
+            (click)="GotoChat(videoData)"
+            name="chatbox-ellipses-outline"
+            class="img-click"
+            style="color: #c9c000; font-size: 24px"
+          ></ion-icon>
           <ion-button
             *ngIf="isreportdata"
             color="primary"
             (click)="report()"
+            class="img-click"
             size="small"
             >Report</ion-button
           >
@@ -76,10 +84,45 @@
             *ngIf="isunreportdata"
             color="success"
             (click)="unreport()"
+            class="img-click"
             size="small"
             >Unreport</ion-button
           >
         </div>
+
+        <ion-segment
+          (ionChange)="segmentChanged($event)"
+          [(ngModel)]="segment"
+          color="primary"
+          scrollable
+          mode="ios"
+          class="mb-2"
+        >
+          <ion-segment-button value="Posts" layout="icon-top">
+            <p class="mb-0">
+              {{videoData.total_posts ? videoData.total_posts : 0}}
+            </p>
+            <ion-label>Posts</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Like" layout="icon-top">
+            <p class="mb-0">
+              {{videoData.total_likes ? videoData.total_likes : 0}}
+            </p>
+            <ion-label>Like</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Connect" layout="icon-top">
+            <p class="mb-0">
+              {{videoData.connect ? videoData.connect.length : 0}}
+            </p>
+            <ion-label>Connect</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Connected" layout="icon-top">
+            <p class="mb-0">
+              {{videoData.connect ? videoData.connected.length : 0}}
+            </p>
+            <ion-label>Connected</ion-label>
+          </ion-segment-button>
+        </ion-segment>
 
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Username</p>
@@ -93,10 +136,10 @@
           <p class="heading-color">Last Name</p>
           <p class="heading-color-1">{{videoData.fname}}</p>
         </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
-          <p class="heading-color">Mobile #</p>
-          <p class="heading-color-1">{{videoData.mobile}}</p>
-        </div>
+        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
+            <p class="heading-color">Mobile #</p>
+            <p class="heading-color-1">{{videoData.mobile}}</p>
+          </div> -->
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Email</p>
           <p class="heading-color-1">{{videoData.email}}</p>

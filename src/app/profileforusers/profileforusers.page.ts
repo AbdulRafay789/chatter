@@ -18,8 +18,18 @@ export class ProfileforusersPage implements OnInit {
   isunreportdata = false;
   showverified = false;
   verify = false;
+  segment: any;
   constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router,) { 
+      this.segment = 'Posts';
+    }
+  segmentChanged(ev: any) {
+    if (this.segment === 'Posts') {
+      this.router.navigate(['/uservideos', { data: this.segment,user_id:this.videoData._id }]);
+    } else {
+      this.router.navigate(['/userspage', { data: this.segment,user_id:this.videoData._id }]);
+    }
+  }
 
   async getVideos(param) {
     const url = 'users/details/' + param['_id'];
@@ -37,6 +47,26 @@ export class ProfileforusersPage implements OnInit {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
+  }
+  async GotoChat(param) {
+    // eslint-disable-next-line no-underscore-dangle
+    let userto_id = param._id;
+    const url = 'chats/create';
+    this.generalService.showLoader();
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const data1: any = await this.service.postApi(url, {
+      userto_id: userto_id,
+    });
+    if (data1.status && data1.data) {
+      this.router.navigate([
+        '/tabs/chat/messages',
+        { data: JSON.stringify(data1.data) },
+      ]);
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+    this.generalService.stopLoader();
   }
   async connect(param) {
     const url = 'users/connect/' + this.videoData._id;

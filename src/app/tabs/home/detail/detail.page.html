@@ -16,65 +16,96 @@
 <ion-content [fullscreen]="true">
   <div class="background-picture">
     <div class="login-details z-index-10">
-      <div class="custom-div">
-        <ion-slides pager="true" mode="ios">
-          <ion-slide *ngFor="let element of videoData.videos">
-            <img
-              *ngIf="!element.isvideo"
-              [src]="element.path"
-              style="height: 240px"
-              alt=""
-            />
-            <video
-              *ngIf="element.isvideo"
-              width="320"
-              height="240"
-              controls
-              poster="../../../../assets/images/Icon ionic-ios-play-circle.png"
-            >
-              <source [src]="element.path" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </ion-slide>
-        </ion-slides>
-      </div>
-      <h5>{{videoData.title}}</h5>
-      <div
-        class="
-          d-flex
-          ion-justify-content-between ion-align-items-center
-          pr-4
-          pl-4
-        "
-      >
-        <small>{{videoData.createdAt |date}}</small>
-        <div class="d-flex ion-align-items-center">
-          <ion-icon name="eye-outline"></ion-icon>
-          <small class="pl-2">{{videoData.total_views}}</small>
+      <div  [style.transform]="transformValue">
+        <div class="custom-div">
+          <!-- <ion-icon
+            (click)="deletePost(video)"
+            name="trash-sharp"
+            class="delete-icon"
+          ></ion-icon> -->
+          <ion-slides pager="true" mode="ios">
+            <ion-slide *ngFor="let element of videoData.videos">
+              <img
+                *ngIf="!element.isvideo"
+                [src]="element.path"
+                style="height: 240px"
+                alt=""
+              />
+              <video
+                *ngIf="element.isvideo"
+                width="320"
+                height="240"
+                controls
+                poster="../../../../assets/images/Icon ionic-ios-play-circle.png"
+              >
+                <source [src]="element.path" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <!-- <ion-icon
+                (click)="deleteVideo(element)"
+                name="remove-circle-sharp"
+                class="minus-icon"
+              ></ion-icon> -->
+            </ion-slide>
+          </ion-slides>
         </div>
+        <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;">
+          <img src="{{videoData.user.user_dp.path}}" style="border-radius: 50%;width: 50px;height: 50px;" />
+          <img
+            *ngIf="videoData.user.active_status || videoData.user.hawaii"
+            [src]="videoData.user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+            style="
+              width: 20px;
+              height: 20px;
+              margin-top: 31px;
+              position: absolute;
+              margin-left: -12px;
+            "
+            alt=""
+          />
+        </ion-thumbnail>
+        <h5 style="float: left;
+        width: 84%;
+        margin-top: 5px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 14px;"> {{videoData.user.fname + ' ' + videoData.user.lname }}</h5>
+        <p style="width: 80%;margin-left: 19%;margin-bottom: 5px;">{{videoData.description}}</p>
+        <div
+          class="
+            d-flex
+            ion-justify-content-between ion-align-items-center
+            pr-4
+            pl-4
+          "
+          style="padding-left: 19% !important;"
+        >
+          <small>{{videoData.createdAt |date}}</small>
+          <!-- <div class="d-flex ion-align-items-center">
+            <ion-icon name="eye-outline"></ion-icon>
+            <small class="pl-2">{{videoData.total_views}}</small>
+          </div> -->
+        </div>
+
+        <!-- <h6 class="custom-class">{{videoData.description}}</h6> -->
+
+        <ion-item
+          *ngFor="let comment of videoData.comments;let i =index;"
+          class="mb-2"
+          lines="none"
+          (click)="profileForUsers(comment,i)"
+          style="margin-bottom: 0px !important;"
+        >
+          <img [src]="comment.path" class="w-40-px ml-2" />
+          <ion-label>
+            <h2 class="ml-3 font-weight-bold">
+              {{comment.fname + ' ' + comment.lname}}
+            </h2>
+            <p class="ml-3">{{comment.message}}</p>
+          </ion-label>
+        </ion-item>
       </div>
-
-      <h6 class="custom-class">{{videoData.description}}</h6>
-
-      <ion-item
-        *ngFor="let comment of videoData.comments;let i =index;"
-        class="mb-2"
-        lines="none"
-        (click)="profileForUsers(comment,i)"
-      >
-        <!-- <ion-avatar slot="start"> -->
-        <!-- <img [src]="comment.path" src="../../../assets/images/Rectangle 28.png" class="w-40-px ml-2"> -->
-        <img [src]="comment.path" class="w-40-px ml-2" />
-        <!-- </ion-avatar> -->
-        <ion-label>
-          <h2 class="ml-3 font-weight-bold">
-            {{comment.fname + ' ' + comment.lname}}
-          </h2>
-          <p class="ml-3">{{comment.message}}</p>
-        </ion-label>
-      </ion-item>
-
-    <div class="custom-icon" [style.transform]="transformValue">
+      <div class="custom-icon" [style.transform]="transformValue">
         <ion-input
           type="username"
           clearOnEdit="true"

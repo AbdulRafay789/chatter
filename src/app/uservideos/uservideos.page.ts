@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { GeneralService } from '../services/general.service';
 import { HttpConfigService } from '../services/http-config.service';
 
@@ -21,14 +21,19 @@ export class UservideosPage implements OnInit, OnChanges {
   showdetails: any;
   likeconnect: any;
   interval: number;
+  user_id :any="";
+  user = {};
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     public service: HttpConfigService,
     public generalService: GeneralService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private alertCtrl: AlertController
   ) {
     this.addMoreItems();
+    let tempUser = this.service.getuser();
+    this.user = tempUser.user;
   }
 
   loadData(event) {
@@ -163,7 +168,11 @@ export class UservideosPage implements OnInit, OnChanges {
   async getPosts() {
     const url = 'mine';
     this.generalService.showLoader();
-    const data1: any = await this.service.getApi(url, {});
+    let params={};
+    if(this.user_id != ""){
+      params['user_id']=this.user_id;
+    }
+    const data1: any = await this.service.postApi(url, params);
     if (data1.status && data1.data) {
       this.service.setVideo(data1.data);
       this.videos = this.service.getVideo();
@@ -174,16 +183,101 @@ export class UservideosPage implements OnInit, OnChanges {
     }
     this.generalService.stopLoader();
   }
+  async DeleteAllPost(id) {
+    const url = 'videos/' + id;
+    debugger;
+    const data1: any = await this.service.deleteApi(url, {});
+    if (data1.status) {
+      this.getPosts();
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+  }
+  async DeleteVideoOnly(postid,videoid) {
+    const url = 'videos/' + postid+"/"+videoid;
+    debugger;
+    const data1: any = await this.service.deleteApi(url, {});
+    if (data1.status) {
+      this.getPosts();
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+  }
+  async deletePost(param) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Warning',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Delete This Post?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            this.DeleteAllPost(param);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async deleteVideo(param,video) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Warning',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Delete This Video?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            this.DeleteVideoOnly(param,video);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.value = params.data;
+      if(params.user_id){
+        this.user_id = params.user_id;
+      }
+      if (this.value === 'Posts') {
+        this.getPosts();
+        return;
+      }
     });
-    if (this.value === 'Posts') {
-      this.getPosts();
-      return;
-    }
-    this.getVideos();
+    
+    // this.getVideos();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

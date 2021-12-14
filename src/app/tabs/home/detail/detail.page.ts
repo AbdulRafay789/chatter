@@ -1,7 +1,7 @@
 import { AbstractType, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Keyboard } from '@capacitor/keyboard';
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { GeneralService } from 'src/app/services/general.service';
 import { HttpConfigService } from 'src/app/services/http-config.service';
 
@@ -23,7 +23,8 @@ export class DetailPage implements OnInit {
     private route: ActivatedRoute,
     public platform: Platform,
     public service: HttpConfigService,
-    public generalService: GeneralService
+    public generalService: GeneralService,
+    private alertCtrl: AlertController
   ) {}
 
   // notifications() {
@@ -70,6 +71,66 @@ export class DetailPage implements OnInit {
     ]);
   }
 
+  async deletePost(param) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Warning',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Delete This Post?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            // this.SavePost();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async deleteVideo(param) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Warning',
+      mode: 'ios',
+      // subHeader: 'Subtitle',
+      message: 'Are You Sure You Want To Delete This Video?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Yes',
+          role: 'submit',
+          cssClass: 'primary',
+          handler: (blah) => {
+            // this.SavePost();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.videoData = JSON.parse(params.data);
@@ -78,14 +139,20 @@ export class DetailPage implements OnInit {
     });
     this.platform.ready().then(() => {
       Keyboard.addListener('keyboardWillShow', () => {
-        this.transformValue = 'translateY(-340px)';
-        document.activeElement.scrollIntoView(true);
+        requestAnimationFrame(() => {
+          this.transformValue = 'translateY(-340px)';
+          document.activeElement.scrollIntoView(true);
+        });
       });
       Keyboard.addListener('keyboardWillHide', () => {
-        this.transformValue = '';
+        requestAnimationFrame(() => {
+          this.transformValue = '';
+        });
       });
       Keyboard.addListener('keyboardDidHide', () => {
-        this.transformValue = '';
+        requestAnimationFrame(() => {
+          this.transformValue = '';
+        });
       });
     });
   }

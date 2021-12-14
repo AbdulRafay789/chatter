@@ -18,6 +18,7 @@ export class UserspagePage implements OnInit {
   videos = [];
   Data = [];
   value: any;
+  user_id :any="";
   constructor(
     private router: Router,
     public service: HttpConfigService,
@@ -68,7 +69,7 @@ export class UserspagePage implements OnInit {
     if (data1.status && data1.data) {
       this.router.navigate([
         '/profileforusers',
-        { data: JSON.stringify(data1.data[0]) },
+        { data: JSON.stringify(data1.data) },
       ]);
     } else {
       this.generalService.generalErrorMessage(data1.msg);
@@ -95,7 +96,11 @@ export class UserspagePage implements OnInit {
   async getConnectUsers() {
     const url = 'users/connectUsers';
     this.generalService.showLoader();
-    const data1: any = await this.service.getApi(url, {});
+    let params={};
+    if(this.user_id != ""){
+      params['user_id']=this.user_id;
+    }
+    const data1: any = await this.service.postApi(url, params);
     if (data1.status && data1.data) {
       this.Data = data1.data;
       // this.service.setVideo(data1.data);
@@ -109,7 +114,11 @@ export class UserspagePage implements OnInit {
   async getConnectedUsers() {
     const url = 'users/connectedUsers';
     this.generalService.showLoader();
-    const data1: any = await this.service.getApi(url, {});
+    let params={};
+    if(this.user_id != ""){
+      params['user_id']=this.user_id;
+    }
+    const data1: any = await this.service.postApi(url, params);
     if (data1.status && data1.data) {
       this.Data = data1.data;
       // this.service.setVideo(data1.data);
@@ -121,9 +130,13 @@ export class UserspagePage implements OnInit {
   }
 
   async getLikeUsers() {
-    const url = 'melikeusers';
+    let url = 'melikeusers';
     this.generalService.showLoader();
-    const data1: any = await this.service.getApi(url, {});
+    let params={};
+    if(this.user_id != ""){
+      params['user_id']=this.user_id;
+    }
+    const data1: any = await this.service.postApi(url, params);
     if (data1.status && data1.data) {
       this.Data = data1.data;
       // this.service.setVideo(data1.data);
@@ -137,18 +150,22 @@ export class UserspagePage implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.value = params.data;
+      if(params.user_id){
+        this.user_id = params.user_id;
+      }
+      if (this.value === 'Like') {
+        this.getLikeUsers();
+        return;
+      }
+      if (this.value === 'Connect') {
+        this.getConnectUsers();
+        return;
+      }
+      if (this.value === 'Connected') {
+        this.getConnectedUsers();
+        return;
+      }
     });
-    if (this.value === 'Like') {
-      this.getLikeUsers();
-      return;
-    }
-    if (this.value === 'Connect') {
-      this.getConnectUsers();
-      return;
-    }
-    if (this.value === 'Connected') {
-      this.getConnectedUsers();
-      return;
-    }
+    
   }
 }

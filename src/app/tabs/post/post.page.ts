@@ -24,7 +24,8 @@ export class PostPage implements OnInit {
       this.getNotifications(false); // Now the "this" still references the component
     }, 8000);
   }
-  ngOnDestroy() {
+  ionViewWillLeave(){
+    debugger;
     clearInterval(this.timeinterval);
   }
   async getNotifications(flag) {

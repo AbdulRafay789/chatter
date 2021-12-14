@@ -33,6 +33,17 @@
           class="w-50 mb-3 custom-img"
           alt=""
         />
+        <img
+            *ngIf="profileData.active_status || profileData.hawaii"
+            [src]="profileData.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+             style="
+              width: 25px;
+              margin-top: 120px;
+              position: absolute;
+              margin-left: -40px;
+            "
+            alt=""
+          />
         <!-- <img src="../../../assets/images/Icon awesome-edit.png" class="h-25-px w-25-px ml-5 img-click" (click)="takePicture()" /> -->
         <ion-icon
           class="h-25-px w-25-px ml-5 img-click"
@@ -198,6 +209,17 @@
             alt=""
           />
           <img
+            *ngIf="profileData.active_status || profileData.hawaii"
+            [src]="profileData.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+             style="
+              width: 25px;
+              margin-top: 100px;
+              position: absolute;
+              margin-left: 80px;
+            "
+            alt=""
+          />
+          <img
             src="../../../assets/images/Icon awesome-edit.png"
             class="h-25-px w-25-px ml-5 img-click"
             (click)="toggle()"
@@ -261,12 +283,12 @@
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Last Name</p>
-          <p class="heading-color-1">{{profileData.fname}}</p>
+          <p class="heading-color-1">{{profileData.lname}}</p>
         </div>
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
+        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Mobile #</p>
           <p class="heading-color-1">{{profileData.mobile}}</p>
-        </div>
+        </div> -->
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Email</p>
           <p class="heading-color-1">{{profileData.email}}</p>

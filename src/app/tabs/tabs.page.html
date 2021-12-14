@@ -32,6 +32,11 @@
 
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
+          <!-- <ion-icon
+            (click)="deletePost(video)"
+            name="trash-sharp"
+            class="delete-icon"
+          ></ion-icon> -->
           <ion-slides
             mode="ios"
             pager="{{video.videos.length > 1 ? true : false}}"
@@ -53,6 +58,19 @@
               >
                 <source [src]="element.path" type="video/mp4" />
               </video>
+              <!-- <ion-button
+                expand="block"
+                color="danger"
+                shape="round"
+                fill="outline"
+                class="ml-5 mr-4"
+                >Delete</ion-button
+              > -->
+              <!-- <ion-icon
+                (click)="deleteVideo(element)"
+                name="remove-circle-sharp"
+                class="minus-icon"
+              ></ion-icon> -->
             </ion-slide>
           </ion-slides>
           <!-- <div *ngIf="video?.videos.length == 1">
@@ -72,10 +90,26 @@
               <source [src]="video?.videos[0].path" type="video/mp4" />
             </video>
           </div> -->
+          <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;">
+            <img src="{{video.user.user_dp.path}}" style="border-radius: 50%;width: 50px;height: 50px;" />
+            <img
+              *ngIf="video.user.active_status || video.user.hawaii"
+              [src]="video.user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+              style="
+                width: 20px;
+                height: 20px;
+                margin-top: 31px;
+                position: absolute;
+                margin-left: -12px;
+              "
+              alt=""
+            />
+          </ion-thumbnail>
 
-          <h5 (click)="viewVideo(video, i)">{{video.description}}</h5>
-          <!-- <h5 (click)="viewVideo(video, i)">{{video.title}}</h5> -->
-          <!-- <p>{{video.description}}</p> -->
+          <h5 (click)="viewVideo(video, i)" style="display: inline-block;width: 80%;margin-top: 5px;">
+            {{video.user.fname + ' ' + video.user.lname }}
+          </h5>
+          <p style="width: 80%;margin-left: 20%;margin-bottom: 5px;">{{video.description}}</p>
           <div
             class="
               d-flex
@@ -106,6 +140,7 @@
               pr-2
               pl-2
             "
+            style="width: 100%;margin-top: 0px;"
           >
             <ion-chip
               (click)="likeVideo(video,i)"
@@ -113,7 +148,7 @@
               outline="true"
             >
               <ion-label *ngIf="video.islike" class="font-weight-bold"
-                >Like
+                >Liked
               </ion-label>
               <ion-label *ngIf="!video.islike">Like </ion-label>
             </ion-chip>
@@ -185,22 +220,22 @@
 
   <ion-tabs>
     <ion-tab-bar slot="bottom" selectedTab="home" color="primary">
-      <ion-tab-button tab="home">
+      <ion-tab-button tab="home" class="img-click">
         <ion-icon class="appname-customicon1"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button tab="post">
+      <ion-tab-button tab="post" class="img-click">
         <ion-icon class="appname-customicon2"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="video">
+      <ion-tab-button tab="video" class="img-click">
         <ion-icon class="appname-customicon3"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="chat">
+      <ion-tab-button tab="chat" class="img-click">
         <ion-icon class="appname-customicon4"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="profile">
+      <ion-tab-button tab="profile" class="img-click">
         <ion-icon class="appname-customicon5"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>

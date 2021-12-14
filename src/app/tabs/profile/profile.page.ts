@@ -47,6 +47,11 @@ export class ProfilePage implements OnInit {
     private alertCtrl: AlertController
   ) {
     this.segment = 'Posts';
+   
+  }
+  ionViewDidEnter(){
+    this.view = true;
+    this.getUsers();
   }
 
   toggle() {
@@ -358,8 +363,6 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.view = true;
-    this.getUsers();
     this.plt.ready().then(() => {
       Keyboard.addListener('keyboardWillHide', () => {
         this.transformValue = '';

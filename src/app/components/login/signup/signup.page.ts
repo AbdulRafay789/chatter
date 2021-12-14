@@ -54,7 +54,8 @@ export class SignupPage implements OnInit {
       // let ionSelector = document.querySelector('ion-content');
       // ionSelector.style.transform = '';
       // ionSelector.style.transform = 'translateY(-'+(253-value)+'px)';
-      this.transformValue = 'translateY(-' + (253 - value) + 'px)';
+      let valu = (-253 - value);
+      this.transformValue = 'translateY(' + valu + 'px)';
       document.activeElement.scrollIntoView(true);
     });
 
