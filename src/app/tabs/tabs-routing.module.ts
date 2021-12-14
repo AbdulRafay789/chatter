@@ -1,5 +1,8 @@
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home/home.page';
 
 import { TabsPage } from './tabs.page';
@@ -13,24 +16,28 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-    // component: TabsPage,
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'post',
-    loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
+    loadChildren: () =>
+      import('./post/post.module').then((m) => m.PostPageModule),
   },
   {
     path: 'video',
-    loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
+    loadChildren: () =>
+      import('./video/video.module').then((m) => m.VideoPageModule),
   },
   {
     path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+    loadChildren: () =>
+      import('./chat/chat.module').then((m) => m.ChatPageModule),
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
   // {
   //   path: 'tabs/post/home',
@@ -114,7 +121,7 @@ const routes: Routes = [
 // ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), CommonModule, IonicModule],
   exports: [RouterModule],
 })
 export class TabsPageRoutingModule {}

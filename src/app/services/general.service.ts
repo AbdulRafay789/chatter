@@ -32,6 +32,7 @@ export class GeneralService {
   commodities: any[] = [];
   packingGroup: any[] = [];
   classType: any[] = [];
+  likeUsers = [];
   // public disabled: Boolean;
   customerCreditInfo: {
     creditLimit: number;
@@ -261,7 +262,7 @@ export class GeneralService {
       if (dialogLoader) {
         await dialogLoader.dismiss();
       }
-    }, 15000);
+    }, 10000);
   }
   async stopLoader() {
     // setTimeout(() => {

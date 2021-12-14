@@ -1,3 +1,4 @@
+import { LikeUsersComponent } from './../like-users/like-users.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,13 +10,9 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 import { TabsPage } from './tabs.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    TabsPageRoutingModule,
-  ],
-  declarations: [TabsPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  imports: [CommonModule, FormsModule, IonicModule, TabsPageRoutingModule],
+  // entryComponents: [LikeUsersComponent],
+  declarations: [TabsPage, LikeUsersComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TabsPageModule {}

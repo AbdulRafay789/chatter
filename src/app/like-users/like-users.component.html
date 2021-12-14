@@ -1,0 +1,33 @@
+<div class="ion-page">
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Likes</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen>
+    <ion-list>
+      <ion-item
+        *ngFor="let item of likeUsers; let i = index"
+        (click)="profileForUsers(item, i)"
+      >
+        <ion-avatar slot="start">
+          <ion-img *ngIf="item.user_dp.path" [src]="item.user_dp.path">
+          </ion-img>
+          <ion-img
+            *ngIf="!item.user_dp.path"
+            [src]="item.user_dp.path"
+            src="../../assets/images/Oval.png"
+          >
+          </ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ item.fname + " " + item.lname }}</h2>
+          <p>{{ item.username }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>
