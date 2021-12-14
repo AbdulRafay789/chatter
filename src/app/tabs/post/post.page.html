@@ -38,9 +38,10 @@
             <h2 class="ml-3 color f-s-14 text-wrap f-l-name">
               {{notifi.userto.fname + ' ' + notifi.userto.lname }}
             </h2>
-            <h2 class="ml-1 color f-s-14 text-wrap">{{notifi.message}}</h2>
+            
           </div>
-          <p class="ml-3 color f-s-12">{{notifi.createdAt | date}}</p>
+          <h3 class="ml-1 color f-s-14 text-wrap" style="padding-left: 12px;">{{notifi.message}}</h3>
+          <p class="ml-3 color f-s-12" style="font-size: 9px !important;padding-left: 1px;">{{notifi.createdAt | date}}</p>
         </ion-label>
       </ion-item>
     </div>
