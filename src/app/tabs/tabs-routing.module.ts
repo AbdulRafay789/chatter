@@ -12,9 +12,9 @@ const routes: Routes = [
     // pathMatch: 'full'
   },
   {
-    path: 'tabs',
-    // loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-    component: TabsPage,
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    // component: TabsPage,
   },
   {
     path: 'post',

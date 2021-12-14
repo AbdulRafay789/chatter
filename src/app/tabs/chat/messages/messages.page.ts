@@ -113,8 +113,9 @@ export class MessagesPage implements OnInit {
     this.user = this.service.getuser();
     this.user = this.user.user;
     this.route.params.subscribe((params) => {
-      this.chatid = JSON.parse(params.data)['_id'];
-      this.usertoid = JSON.parse(params.data)['userto_id'];
+      let chat = JSON.parse(params.data);
+      this.chatid = chat['chat'] ? chat['chat'] : chat['_id'];
+      this.usertoid = this.user._id == JSON.parse(params.data)['userto_id'] ? JSON.parse(params.data)['user_id'] :JSON.parse(params.data)['userto_id'];
     });
     this.getChats(true);
     this.timeinterval = setInterval(() => {
