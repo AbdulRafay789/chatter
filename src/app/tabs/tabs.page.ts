@@ -1,6 +1,11 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  ModalController,
+} from '@ionic/angular';
+import { LikeUsersComponent } from '../like-users/like-users.component';
 import { GeneralService } from '../services/general.service';
 import { HttpConfigService } from '../services/http-config.service';
 
@@ -20,16 +25,17 @@ export class TabsPage implements OnInit, OnChanges {
   showdetails: any;
   likeconnect: any;
   interval: number;
+  currentModal = null;
+  likeUsers = [];
   constructor(
     private router: Router,
     public service: HttpConfigService,
     public generalService: GeneralService,
     private alertCtrl: AlertController,
-    private loadingController: LoadingController
-  ) {
-    
-  }
-  ionViewDidEnter(){
+    private loadingController: LoadingController,
+    private modalController: ModalController
+  ) {}
+  ionViewDidEnter() {
     this.addMoreItems();
     this.getVideos();
   }
@@ -271,6 +277,41 @@ export class TabsPage implements OnInit, OnChanges {
     });
 
     await alert.present();
+  }
+
+  async openModal(opts = {}) {
+    const modal = await this.modalController.create({
+      component: LikeUsersComponent,
+      ...opts,
+      componentProps: {
+        likeUsers: this.likeUsers,
+      },
+    });
+    debugger;
+    // return await modal.present();
+    modal.present();
+    this.currentModal = modal;
+  }
+
+  async openSheetModal(id) {
+    this.generalService.showLoader();
+    const url = 'videos/' + id + '/likeusers';
+    const data1: any = await this.service.getApi(url, {});
+    if (data1.status) {
+      this.likeUsers = data1.data;
+      this.generalService.likeUsers = this.likeUsers;
+      debugger;
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+    this.generalService.stopLoader();
+    this.openModal({
+      breakpoints: [0, 0.2, 0.5, 1],
+      initialBreakpoint: 0.6,
+      // breakpoints: [0, 0.5, 1],
+      // initialBreakpoint: 0.5,
+    });
   }
 
   ngOnInit() {}

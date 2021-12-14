@@ -90,8 +90,14 @@
               <source [src]="video?.videos[0].path" type="video/mp4" />
             </video>
           </div> -->
-          <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;margin-top: 8px;">
-            <img src="{{video.user.user_dp.path}}" style="border-radius: 50%;width: 50px;height: 50px;" />
+          <ion-thumbnail
+            slot="start"
+            style="float: left; margin-left: 5px; width: 14%; margin-top: 8px"
+          >
+            <img
+              src="{{video.user.user_dp.path}}"
+              style="border-radius: 50%; width: 50px; height: 50px"
+            />
             <img
               *ngIf="video.user.active_status || video.user.hawaii"
               [src]="video.user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
@@ -106,10 +112,15 @@
             />
           </ion-thumbnail>
 
-          <h5 (click)="viewVideo(video, i)" style="display: inline-block;width: 75%;margin-top: 10px;">
+          <h5
+            (click)="viewVideo(video, i)"
+            style="display: inline-block; width: 75%; margin-top: 10px"
+          >
             {{video.user.fname + ' ' + video.user.lname }}
           </h5>
-          <p style="width: 80%;margin-left: 20%;margin-bottom: 5px;">{{video.description}}</p>
+          <p style="width: 80%; margin-left: 20%; margin-bottom: 5px">
+            {{video.description}}
+          </p>
           <div
             class="
               d-flex
@@ -122,7 +133,7 @@
             <div class="d-flex ion-align-items-center">
               <div
                 class="d-flex ion-align-items-center mr-3"
-                (click)="viewVideo(video, i)"
+                (click)="openSheetModal(video._id)"
               >
                 <ion-icon name="thumbs-up-outline"></ion-icon>
                 <small class="pl-2"> {{video.total_likes}}</small>
@@ -140,7 +151,7 @@
               pr-2
               pl-2
             "
-            style="width: 100%;margin-top: 0px;"
+            style="width: 100%; margin-top: 0px"
           >
             <ion-chip
               (click)="likeVideo(video,i)"
