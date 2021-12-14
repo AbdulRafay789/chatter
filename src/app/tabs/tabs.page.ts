@@ -27,6 +27,9 @@ export class TabsPage implements OnInit, OnChanges {
     private alertCtrl: AlertController,
     private loadingController: LoadingController
   ) {
+    
+  }
+  ionViewDidEnter(){
     this.addMoreItems();
     this.getVideos();
   }
@@ -173,7 +176,6 @@ export class TabsPage implements OnInit, OnChanges {
   }
 
   async viewVideo(param, indx) {
-    // this.videoLike = this.videos._id
     this.generalService.showLoader();
     const url = 'videos/' + param['_id'] + '/view';
     const data1: any = await this.service.postApi(url, {});

@@ -18,8 +18,18 @@ export class ProfileforusersPage implements OnInit {
   isunreportdata = false;
   showverified = false;
   verify = false;
+  segment: any;
   constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router,) { 
+      this.segment = 'Posts';
+    }
+  segmentChanged(ev: any) {
+    if (this.segment === 'Posts') {
+      this.router.navigate(['/uservideos', { data: this.segment,user_id:this.videoData._id }]);
+    } else {
+      this.router.navigate(['/userspage', { data: this.segment,user_id:this.videoData._id }]);
+    }
+  }
 
   async getVideos(param) {
     const url = 'users/details/' + param['_id'];

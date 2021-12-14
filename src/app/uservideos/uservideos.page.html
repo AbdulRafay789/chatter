@@ -16,6 +16,7 @@
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
           <ion-icon
+          *ngIf="user._id==video.user_id"
             (click)="deletePost(video._id)"
             name="trash-sharp"
             class="delete-icon"
@@ -43,14 +44,33 @@
                 Your browser does not support the video tag.
               </video>
               <ion-icon
+                *ngIf="user._id==video.user_id"
                 (click)="deleteVideo(video._id,element._id)"
                 name="remove-circle-sharp"
                 class="minus-icon img-click"
               ></ion-icon>
             </ion-slide>
           </ion-slides>
-
-          <h5 (click)="viewVideo(video, i)">{{video.description}}</h5>
+          <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;margin-top: 5px;">
+            <img src="{{video.user.user_dp.path}}" style="border-radius: 50%;width: 50px;height: 50px;" />
+            <img
+              *ngIf="video.user.active_status || video.user.hawaii"
+              [src]="video.user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+              style="
+                width: 20px;
+                height: 20px;
+                margin-top: 31px;
+                position: absolute;
+                margin-left: -12px;
+              "
+              alt=""
+            />
+          </ion-thumbnail>
+          <h5 (click)="viewVideo(video, i)" style="display: inline-block;width: 80%;margin-top: 10px;">
+            {{video.user.fname + ' ' + video.user.lname }}
+          </h5>
+          <p style="width: 80%;margin-left: 20%;margin-bottom: 5px;">{{video.description}}</p>
+          <!-- <h5 (click)="viewVideo(video, i)">{{video.description}}</h5> -->
           <div
             class="
               d-flex
@@ -58,9 +78,10 @@
               pr-3
               pl-3
             "
+            style="padding-left: 20% !important;"
           >
             <small> {{video.createdAt |date}}</small>
-            <div class="d-flex ion-align-items-center">
+            <!-- <div class="d-flex ion-align-items-center">
               <div
                 class="d-flex ion-align-items-center mr-3"
                 (click)="usersDetail(video,i)"
@@ -72,7 +93,7 @@
                 <ion-icon name="eye-outline"></ion-icon>
                 <small class="pl-2"> {{video.total_views}}</small>
               </div>
-            </div>
+            </div> -->
           </div>
           <div
             class="

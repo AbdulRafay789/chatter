@@ -51,7 +51,7 @@ export class ChatPage implements OnInit {
   async getUsers() {
     const url = 'users/connectUsers';
     this.generalService.showLoader();
-    const data1: any = await this.service.getApi(url, {});
+    const data1: any = await this.service.postApi(url, {});
     if (data1.status && data1.data) {
       this.users = data1.data;
       // this.service.setVideo(data1.data);

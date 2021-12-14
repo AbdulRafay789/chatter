@@ -21,6 +21,8 @@ export class UservideosPage implements OnInit, OnChanges {
   showdetails: any;
   likeconnect: any;
   interval: number;
+  user_id :any="";
+  user = {};
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -30,6 +32,8 @@ export class UservideosPage implements OnInit, OnChanges {
     private alertCtrl: AlertController
   ) {
     this.addMoreItems();
+    let tempUser = this.service.getuser();
+    this.user = tempUser.user;
   }
 
   loadData(event) {
@@ -164,7 +168,11 @@ export class UservideosPage implements OnInit, OnChanges {
   async getPosts() {
     const url = 'mine';
     this.generalService.showLoader();
-    const data1: any = await this.service.getApi(url, {});
+    let params={};
+    if(this.user_id != ""){
+      params['user_id']=this.user_id;
+    }
+    const data1: any = await this.service.postApi(url, params);
     if (data1.status && data1.data) {
       this.service.setVideo(data1.data);
       this.videos = this.service.getVideo();
@@ -228,7 +236,6 @@ export class UservideosPage implements OnInit, OnChanges {
   }
 
   async deleteVideo(param,video) {
-    debugger;
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Warning',
@@ -261,11 +268,15 @@ export class UservideosPage implements OnInit, OnChanges {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.value = params.data;
+      if(params.user_id){
+        this.user_id = params.user_id;
+      }
+      if (this.value === 'Posts') {
+        this.getPosts();
+        return;
+      }
     });
-    if (this.value === 'Posts') {
-      this.getPosts();
-      return;
-    }
+    
     // this.getVideos();
   }
 
