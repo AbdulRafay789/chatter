@@ -125,10 +125,11 @@ export class TabsPage implements OnInit, OnChanges {
     if (param.islike) {
       // this.generalService.showLoader();
       this.likeconnect = param.like;
-      const url = 'videos/' + param['_id'] + '/unlike';
+      const url = 'unlike/videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
         this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
+        this.videos[indx]['islike'] = false;
         // this.router.navigate(['/tabs']);
       } else {
         this.generalService.generalToast(data1.msg, 2000);
@@ -137,13 +138,13 @@ export class TabsPage implements OnInit, OnChanges {
       // this.generalService.stopLoader();
     } else {
       // this.generalService.showLoader();
-      const url = 'videos/' + param['_id'] + '/like';
+      const url = 'like/videos/' + param['_id'] + '/like';
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
-        this.videoLikeData = data1;
-        this.videos.splice(indx, 1, data1.data);
-        // this.generalService.generalToast('Logged In SuccessFully', 2000);
-        // this.router.navigate(['/tabs']);
+        this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] + 1;
+        this.videos[indx]['islike'] = true;
+        // this.videoLikeData = data1;
+        // this.videos.splice(indx, 1, data1.data);
       } else {
         this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
@@ -157,7 +158,7 @@ export class TabsPage implements OnInit, OnChanges {
 
   async unlikeVideo(param, indx) {
     // this.videoLike = this.videos._id
-    const url = 'videos/' + param['_id'] + '/like';
+    const url = 'unlike/videos/' + param['_id'] + '/like';
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
@@ -200,7 +201,16 @@ export class TabsPage implements OnInit, OnChanges {
     ]);
     // this.generalService.stopLoader();
   }
-
+  async DeletePost(param) {
+    const url = 'videos/' + param['_id'] + '/like';
+    const data1: any = await this.service.deleteApi(url, {});
+    if (data1.status) {
+      this.getVideos();
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+  }
   async deletePost(param) {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
@@ -222,7 +232,7 @@ export class TabsPage implements OnInit, OnChanges {
           role: 'submit',
           cssClass: 'primary',
           handler: (blah) => {
-            // this.SavePost();
+            // this.DeletePost(param);
           },
         },
       ],

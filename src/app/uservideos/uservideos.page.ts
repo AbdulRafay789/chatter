@@ -175,7 +175,28 @@ export class UservideosPage implements OnInit, OnChanges {
     }
     this.generalService.stopLoader();
   }
-
+  async DeleteAllPost(id) {
+    const url = 'videos/' + id;
+    debugger;
+    const data1: any = await this.service.deleteApi(url, {});
+    if (data1.status) {
+      this.getPosts();
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+  }
+  async DeleteVideoOnly(postid,videoid) {
+    const url = 'videos/' + postid+"/"+videoid;
+    debugger;
+    const data1: any = await this.service.deleteApi(url, {});
+    if (data1.status) {
+      this.getPosts();
+    } else {
+      this.generalService.generalToast(data1.msg, 2000);
+      console.log(data1.msg);
+    }
+  }
   async deletePost(param) {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
@@ -197,7 +218,7 @@ export class UservideosPage implements OnInit, OnChanges {
           role: 'submit',
           cssClass: 'primary',
           handler: (blah) => {
-            // this.SavePost();
+            this.DeleteAllPost(param);
           },
         },
       ],
@@ -206,7 +227,8 @@ export class UservideosPage implements OnInit, OnChanges {
     await alert.present();
   }
 
-  async deleteVideo(param) {
+  async deleteVideo(param,video) {
+    debugger;
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Warning',
@@ -227,7 +249,7 @@ export class UservideosPage implements OnInit, OnChanges {
           role: 'submit',
           cssClass: 'primary',
           handler: (blah) => {
-            // this.SavePost();
+            this.DeleteVideoOnly(param,video);
           },
         },
       ],
@@ -244,7 +266,7 @@ export class UservideosPage implements OnInit, OnChanges {
       this.getPosts();
       return;
     }
-    this.getVideos();
+    // this.getVideos();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

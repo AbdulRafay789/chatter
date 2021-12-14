@@ -16,7 +16,7 @@
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
           <ion-icon
-            (click)="deletePost(video)"
+            (click)="deletePost(video._id)"
             name="trash-sharp"
             class="delete-icon"
           ></ion-icon>
@@ -43,9 +43,9 @@
                 Your browser does not support the video tag.
               </video>
               <ion-icon
-                (click)="deleteVideo(element)"
+                (click)="deleteVideo(video._id,element._id)"
                 name="remove-circle-sharp"
-                class="minus-icon"
+                class="minus-icon img-click"
               ></ion-icon>
             </ion-slide>
           </ion-slides>
