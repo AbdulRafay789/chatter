@@ -189,7 +189,6 @@ export class UservideosPage implements OnInit, OnChanges {
   }
   async DeleteAllPost(id) {
     const url = 'videos/' + id;
-    debugger;
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.getPosts();
@@ -200,7 +199,6 @@ export class UservideosPage implements OnInit, OnChanges {
   }
   async DeleteVideoOnly(postid,videoid) {
     const url = 'videos/' + postid+"/"+videoid;
-    debugger;
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.getPosts();

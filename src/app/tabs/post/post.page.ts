@@ -25,7 +25,6 @@ export class PostPage implements OnInit {
     }, 8000);
   }
   ionViewWillLeave(){
-    debugger;
     clearInterval(this.timeinterval);
   }
   async getNotifications(flag) {
