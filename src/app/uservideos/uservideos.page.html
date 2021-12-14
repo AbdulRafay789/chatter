@@ -44,8 +44,8 @@
                 Your browser does not support the video tag.
               </video>
               <ion-icon
-                *ngIf="user._id==video.user_id"
-                (click)="deleteVideo(video._id,element._id)"
+                *ngIf="user._id==video.user_id && video.videos.length > 1"
+                (click)="deleteVideo(video._id,element)"
                 name="remove-circle-sharp"
                 class="minus-icon img-click"
               ></ion-icon>
@@ -124,6 +124,19 @@
           </div>
         </div>
       </div>
+      <ion-item
+            lines="none"
+            button
+            md="md"
+            class="img-click"
+            *ngIf="videos.length == 0"
+          >
+            <ion-label>
+              <p style="white-space: pre-wrap">
+                No Posts Available.
+              </p>
+            </ion-label>
+          </ion-item>
     </div>
   </div>
 

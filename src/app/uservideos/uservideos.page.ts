@@ -189,7 +189,6 @@ export class UservideosPage implements OnInit, OnChanges {
   }
   async DeleteAllPost(id) {
     const url = 'videos/' + id;
-    debugger;
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.getPosts();
@@ -199,8 +198,7 @@ export class UservideosPage implements OnInit, OnChanges {
     }
   }
   async DeleteVideoOnly(postid,videoid) {
-    const url = 'videos/' + postid+"/"+videoid;
-    debugger;
+    const url = 'videos/' + postid+"/"+videoid._id;
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.getPosts();
@@ -240,12 +238,14 @@ export class UservideosPage implements OnInit, OnChanges {
   }
 
   async deleteVideo(param,video) {
+    debugger;
+    let text = video.isvideo ? "Video" : "Image";
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Warning',
       mode: 'ios',
       // subHeader: 'Subtitle',
-      message: 'Are You Sure You Want To Delete This Video?',
+      message: 'Are You Sure You Want To Delete This '+text+'?',
       buttons: [
         {
           text: 'Cancel',

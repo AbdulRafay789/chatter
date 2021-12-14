@@ -208,7 +208,6 @@ export class LoginPage implements OnInit {
     if (data1.status && data1.data) {
       this.service.settoken(data1.data.token);
       this.service.setuser(data1.data);
-      debugger;
       await this.setcredtials('email',this.email);
       await this.setcredtials('password',this.password);
 

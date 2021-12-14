@@ -140,7 +140,6 @@ export class MessagesPage implements OnInit {
     });
   }
   ionViewWillLeave(){
-    debugger;
     clearInterval(this.timeinterval);
   }
   handleSelection(event) {

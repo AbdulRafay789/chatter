@@ -46,10 +46,11 @@ export class ProfilePage implements OnInit {
     public plt: Platform,
     private alertCtrl: AlertController
   ) {
-    this.segment = 'Posts';
+    // this.segment = 'Posts';
    
   }
   ionViewDidEnter(){
+    this.segment = "";
     this.view = true;
     this.getUsers();
   }
@@ -76,11 +77,13 @@ export class ProfilePage implements OnInit {
   }
 
   segmentChanged(ev: any) {
+    this.segment =ev;
     // this.value = 'Posts';
-    this.value = ev.detail.value;
-    if (this.segment === 'Posts') {
+    // this.value = ev.detail.value;
+    if (this.segment == "Posts") {
       this.router.navigate(['/uservideos', { data: this.segment }]);
-    } else {
+    } 
+    else {
       this.router.navigate(['/userspage', { data: this.segment }]);
     }
   }
