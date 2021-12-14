@@ -67,7 +67,6 @@ export class UserspagePage implements OnInit {
     const url = 'users/details/' + param['_id'];
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
-      debugger;
       this.router.navigate([
         '/profileforusers',
         { data: JSON.stringify(data1.data) },

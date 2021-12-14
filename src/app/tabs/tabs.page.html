@@ -90,7 +90,7 @@
               <source [src]="video?.videos[0].path" type="video/mp4" />
             </video>
           </div> -->
-          <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;">
+          <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;margin-top: 8px;">
             <img src="{{video.user.user_dp.path}}" style="border-radius: 50%;width: 50px;height: 50px;" />
             <img
               *ngIf="video.user.active_status || video.user.hawaii"
@@ -106,7 +106,7 @@
             />
           </ion-thumbnail>
 
-          <h5 (click)="viewVideo(video, i)" style="display: inline-block;width: 80%;margin-top: 5px;">
+          <h5 (click)="viewVideo(video, i)" style="display: inline-block;width: 75%;margin-top: 10px;">
             {{video.user.fname + ' ' + video.user.lname }}
           </h5>
           <p style="width: 80%;margin-left: 20%;margin-bottom: 5px;">{{video.description}}</p>
