@@ -21,7 +21,7 @@ export class ProfileforusersPage implements OnInit {
   segment: any;
   constructor(public service: HttpConfigService, public generalService: GeneralService, private route: ActivatedRoute,
     private router: Router,) { 
-      this.segment = 'Posts';
+      // this.segment = 'Posts';
     }
   segmentChanged(ev: any) {
     if (this.segment === 'Posts') {

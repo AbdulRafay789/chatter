@@ -46,7 +46,7 @@ export class ProfilePage implements OnInit {
     public plt: Platform,
     private alertCtrl: AlertController
   ) {
-    this.segment = 'Posts';
+    // this.segment = 'Posts';
    
   }
   ionViewDidEnter(){
