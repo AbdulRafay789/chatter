@@ -107,6 +107,7 @@
             class="img-click"
             (click)="gotoUser(user)"
             *ngFor="let user of videosUsers.users"
+            [style.display]="userData._id != user._id ? 'block':'none'"
           >
             <ion-thumbnail slot="start">
               <img src="{{user.user_dp.path}}" style="border-radius: 50%" />

@@ -39,19 +39,16 @@ export class DetailPage implements OnInit {
     if (data1.status) {
       this.videoData = data1.data[0];
       const videos: any = this.service.getVideo();
-      videos[this.index] = this.videoData;
-      this.service.setVideo(videos);
-      this.message = '';
-      // this.videoData[indx]["comment"] = this.videoData[indx]["comment"] + 1;
-      // this.showdetails = await this.service.getApi('videos', {});
+      if(this.index != -1){
+        videos[this.index] = this.videoData;
+        this.service.setVideo(videos);
+        this.message = '';
+      }
     } else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
-    // this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   async profileForUsers(param, indx) {
