@@ -19,12 +19,16 @@ export class UserspagePage implements OnInit {
   Data = [];
   value: any;
   user_id :any="";
+  userData: any = {};
   constructor(
     private router: Router,
     public service: HttpConfigService,
     public generalService: GeneralService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    let tempuser = this.service.getuser();
+    this.userData = tempuser.user;
+  }
 
   notifications() {
     this.router.navigate(['/notifications']);

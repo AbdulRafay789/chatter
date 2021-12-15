@@ -32,6 +32,7 @@
             class="img-click"
             (click)="gotoUser(data)"
             *ngFor="let data of Data"
+            [style.display]="userData._id != data._id ? 'block':'none'"
           >
             <ion-thumbnail slot="start">
               <img src="{{data.user_dp.path}}" style="border-radius: 50%" />

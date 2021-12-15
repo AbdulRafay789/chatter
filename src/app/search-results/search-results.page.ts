@@ -16,7 +16,11 @@ export class SearchResultsPage implements OnInit {
   };
   search ="";
   videos = [];
-  constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService) { }
+  userData: any = {};
+  constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService) {
+    let tempuser = this.service.getuser();
+    this.userData = tempuser.user;
+   }
 
   notifications() {
     this.router.navigate(['/notifications']);

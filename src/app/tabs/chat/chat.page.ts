@@ -14,12 +14,15 @@ export class ChatPage implements OnInit {
   users: any = [];
   // eslint-disable-next-line @typescript-eslint/naming-convention
   userto_id: any;
+  user: any = {};
   constructor(
     public service: HttpConfigService,
     public generalService: GeneralService,
     private route: ActivatedRoute,
     private router: Router
   ) {
+    let tempuser = this.service.getuser();
+    this.user = tempuser.user;
     this.getUsers();
   }
 
@@ -29,7 +32,7 @@ export class ChatPage implements OnInit {
 
   async getVideos(param, index) {
     // eslint-disable-next-line no-underscore-dangle
-    this.userto_id = param._id;
+    this.userto_id = param["userto"]["_id"];
     const url = 'chats/create';
     this.generalService.showLoader();
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -49,12 +52,28 @@ export class ChatPage implements OnInit {
   }
 
   async getUsers() {
-    const url = 'users/connectUsers';
+    // const url = 'users/connectUsers';
+    const url = 'getchatsonly';
     this.generalService.showLoader();
-    const data1: any = await this.service.postApi(url, {});
+    const data1: any = await this.service.getApi(url, {});
+    // const data1: any = await this.service.postApi(url, {});
     if (data1.status && data1.data) {
-      this.users = data1.data;
-      // this.service.setVideo(data1.data);
+      let tempchats = [];
+      data1.data.forEach(el => {
+        let obj = el;
+        if(el["user"] && el["user"]["_id"] && this.user["_id"].toString() != el["user"]["_id"].toString()){
+            obj["userto"] = el["user"];
+        }
+        if(el["userto"] && el["userto"]["_id"] && this.user["_id"].toString() != el["userto"]["_id"].toString()){
+            obj["userto"] = el["userto"];
+        }
+        if(obj["userto"] && obj["userto"]["_id"] && obj["userto"]["_id"].toString() != this.user["_id"].toString()){
+          tempchats.push(obj);
+        }
+        
+      });
+      debugger;
+      this.users = tempchats;
     } else {
       this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
@@ -63,7 +82,9 @@ export class ChatPage implements OnInit {
   }
 
   ngOnInit() {
+    
     // this.getUsers();
+   
   }
   checkInside(item, term) {
     const toCompare = term.toLowerCase();
