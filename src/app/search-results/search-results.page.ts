@@ -16,7 +16,11 @@ export class SearchResultsPage implements OnInit {
   };
   search ="";
   videos = [];
-  constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService) { }
+  userData: any = {};
+  constructor(private router: Router, public service: HttpConfigService, public generalService: GeneralService) {
+    let tempuser = this.service.getuser();
+    this.userData = tempuser.user;
+   }
 
   notifications() {
     this.router.navigate(['/notifications']);
@@ -95,7 +99,8 @@ export class SearchResultsPage implements OnInit {
         indx = i;
       }
     });
-    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(obj), index: indx }]);
+    // obj['user']= obj['user'];
+    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(obj), index: -1 }]);
   }
   ngOnInit() {
     this.searchall();

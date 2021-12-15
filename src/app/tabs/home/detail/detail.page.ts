@@ -18,6 +18,7 @@ export class DetailPage implements OnInit {
   showdetails: any;
   index: any;
   transformValue = '';
+  user: any = {};
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -25,7 +26,10 @@ export class DetailPage implements OnInit {
     public service: HttpConfigService,
     public generalService: GeneralService,
     private alertCtrl: AlertController
-  ) {}
+  ) {
+    let tempuser = this.service.getuser();
+    this.user = tempuser.user;
+  }
 
   // notifications() {
   //   this.router.navigate(['/notifications']);
@@ -39,19 +43,16 @@ export class DetailPage implements OnInit {
     if (data1.status) {
       this.videoData = data1.data[0];
       const videos: any = this.service.getVideo();
-      videos[this.index] = this.videoData;
-      this.service.setVideo(videos);
-      this.message = '';
-      // this.videoData[indx]["comment"] = this.videoData[indx]["comment"] + 1;
-      // this.showdetails = await this.service.getApi('videos', {});
+      if(this.index != -1){
+        videos[this.index] = this.videoData;
+        this.service.setVideo(videos);
+        this.message = '';
+      }
     } else {
       this.generalService.generalErrorMessage(data1.msg);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
-    // this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(param) }]);
-    // this.email = data1.email;
-    // this.password = data1.password;
   }
 
   async profileForUsers(param, indx) {
@@ -65,10 +66,19 @@ export class DetailPage implements OnInit {
       this.service.setVideo(data1.data);
       this.generalService.stopLoader();
     }
-    this.router.navigate([
-      '/profileforusers',
-      { data: JSON.stringify(this.profileData[0]), index: indx },
-    ]);
+    debugger;
+    if(this.user._id.toString() == this.profileData._id.toString()){
+      this.router.navigate([
+        '/tabs/profile'
+      ]);
+    }
+    else{
+      this.router.navigate([
+        '/profileforusers',
+        { data: JSON.stringify(this.profileData), index: indx },
+      ]);
+    }
+   
   }
 
   async deletePost(param) {

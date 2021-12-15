@@ -86,6 +86,7 @@ ion-input:focus {
 .heading-color-1 {
   color: #c8c8c9;
   font-size: 14px;
+  text-align: right;
 }
 
 ion-icon {
@@ -138,4 +139,29 @@ ion-segment-button {
 ::ng-deep .custom-textarea .native-textarea.sc-ion-textarea-md {
   padding-left: 0px !important;
   background-color: #ffffff !important;
+}
+.segmentBtn {
+  // width: 32%;
+  // float: left;
+  margin-bottom: 10px;
+}
+.segmentBtn p {
+  display: block;
+  font-size: 12px !important;
+  text-align: center;
+  color: #a07ebb;
+}
+.segmentBtn span {
+  display: block;
+  font-size: 12px !important;
+  text-align: center;
+  color: #a07ebb;
+  font-weight: 700;
+}
+
+ion-grid {
+  padding: 0 !important;
+  ion-col {
+    padding: 0 !important;
+  }
 }

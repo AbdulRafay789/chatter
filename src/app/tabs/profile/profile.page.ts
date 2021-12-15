@@ -12,6 +12,7 @@ import { Platform, AlertController } from '@ionic/angular';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { Keyboard } from '@capacitor/keyboard';
+import { Storage } from '@capacitor/storage';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -46,13 +47,19 @@ export class ProfilePage implements OnInit {
     public plt: Platform,
     private alertCtrl: AlertController
   ) {
-    this.segment = 'Posts';
-   
+    // this.segment = 'Posts';
   }
-  ionViewDidEnter(){
+  ionViewDidEnter() {
+    this.segment = '';
     this.view = true;
     this.getUsers();
+
+    this.checkName('password');
   }
+  async checkName(valu) {
+    const data = await Storage.get({ key: valu });
+    this.password = data.value;
+  };
 
   toggle() {
     if (this.view === true) {
@@ -76,9 +83,10 @@ export class ProfilePage implements OnInit {
   }
 
   segmentChanged(ev: any) {
+    this.segment = ev;
     // this.value = 'Posts';
-    this.value = ev.detail.value;
-    if (this.segment === 'Posts') {
+    // this.value = ev.detail.value;
+    if (this.segment == 'Posts') {
       this.router.navigate(['/uservideos', { data: this.segment }]);
     } else {
       this.router.navigate(['/userspage', { data: this.segment }]);
@@ -134,10 +142,10 @@ export class ProfilePage implements OnInit {
       this.generalService.generalToast('Email Is Required', 2000);
       return false;
     }
-    if (this.password == '') {
-      this.generalService.generalToast('Password Is Required', 2000);
-      return false;
-    }
+    // if (this.password == '') {
+    //   this.generalService.generalToast('Password Is Required', 2000);
+    //   return false;
+    // }
     if (this.age == '') {
       this.generalService.generalToast('Age Is Required', 2000);
       return false;
@@ -178,6 +186,7 @@ export class ProfilePage implements OnInit {
         'Your Profile Has Been Updated Successfully',
         2000
       );
+      this.view = true;
       this.generalService.stopLoader();
     } else {
       this.generalService.generalToast(data1.msg, 2000);

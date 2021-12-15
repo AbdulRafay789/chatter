@@ -25,7 +25,6 @@ export class PostPage implements OnInit {
     }, 8000);
   }
   ionViewWillLeave(){
-    debugger;
     clearInterval(this.timeinterval);
   }
   async getNotifications(flag) {
@@ -56,10 +55,51 @@ export class PostPage implements OnInit {
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
       this.notifications[indx]['read'] = true;
+      this.GotoPage(obj);
     } else {
       this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
     }
     this.generalService.stopLoader();
+  }
+  async GotoPage(obj){
+    if(obj.video){
+      const url = 'videos/details/' + obj.video;
+      this.generalService.showLoader();
+      let param={};
+      const data1: any = await this.service.getApi(url, {});
+      if (data1.status && data1.data) {
+        param = data1.data;
+      } else {
+        this.generalService.generalToast(data1.msg, 2000);
+        console.log(data1.msg);
+      }
+      this.generalService.stopLoader();
+      this.router.navigate([
+        '/tabs/home/detail',
+        { data: JSON.stringify(param), index: -1 },
+      ]);
+    }
+    if(obj.chat){
+      this.router.navigate([
+        '/tabs/chat/messages',
+        { data: JSON.stringify(obj) },
+      ]);
+    }
+    if(obj.user){
+      this.generalService.showLoader();
+      const url = 'users/details/' + obj.user;
+      const data1: any = await this.service.getApi(url, {});
+      if (data1.status && data1.data) {
+        this.router.navigate([
+          '/profileforusers',
+          { data: JSON.stringify(data1.data) },
+        ]);
+      } else {
+        this.generalService.generalErrorMessage(data1.msg);
+        console.log(data1.msg);
+      }
+      this.generalService.stopLoader();
+    }
   }
 }

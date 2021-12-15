@@ -32,6 +32,7 @@
             class="img-click"
             (click)="gotoUser(data)"
             *ngFor="let data of Data"
+            [style.display]="userData._id != data._id ? 'block':'none'"
           >
             <ion-thumbnail slot="start">
               <img src="{{data.user_dp.path}}" style="border-radius: 50%" />
@@ -58,12 +59,11 @@
             button
             md="md"
             class="img-click"
-            (click)="gotoUser(data)"
             *ngIf="Data.length == 0"
           >
             <ion-label>
               <p style="white-space: pre-wrap">
-                No Connections Available. Please Connect to you Friends.
+                No Connections Available.
               </p>
             </ion-label>
           </ion-item>

@@ -109,20 +109,23 @@ export class UservideosPage implements OnInit, OnChanges {
   async likeVideo(param, indx) {
     if (param.islike) {
       this.likeconnect = param.like;
-      const url = 'videos/' + param['_id'] + '/unlike';
+      const url = 'unlike/videos/' + param['_id'] + '/unlike';
       const data1: any = await this.service.deleteApi(url, {});
       if (data1.status) {
         this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
+        this.videos[indx]['islike'] = false;
       } else {
         this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
       }
     } else {
-      const url = 'videos/' + param['_id'] + '/like';
+      const url = 'like/videos/' + param['_id'] + '/like';
       const data1: any = await this.service.postApi(url, {});
       if (data1.status && data1.data) {
-        this.videoLikeData = data1;
-        this.videos.splice(indx, 1, data1.data);
+        this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] + 1;
+        this.videos[indx]['islike'] = true;
+        // this.videoLikeData = data1;
+        // this.videos.splice(indx, 1, data1.data);
       } else {
         this.generalService.generalToast(data1.msg, 2000);
         console.log(data1.msg);
@@ -131,7 +134,8 @@ export class UservideosPage implements OnInit, OnChanges {
   }
 
   async unlikeVideo(param, indx) {
-    const url = 'videos/' + param['_id'] + '/like';
+    // this.videoLike = this.videos._id
+    const url = 'unlike/videos/' + param['_id'] + '/like';
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.videos[indx]['total_likes'] = this.videos[indx]['total_likes'] - 1;
@@ -185,7 +189,6 @@ export class UservideosPage implements OnInit, OnChanges {
   }
   async DeleteAllPost(id) {
     const url = 'videos/' + id;
-    debugger;
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.getPosts();
@@ -195,8 +198,7 @@ export class UservideosPage implements OnInit, OnChanges {
     }
   }
   async DeleteVideoOnly(postid,videoid) {
-    const url = 'videos/' + postid+"/"+videoid;
-    debugger;
+    const url = 'videos/' + postid+"/"+videoid._id;
     const data1: any = await this.service.deleteApi(url, {});
     if (data1.status) {
       this.getPosts();
@@ -236,12 +238,14 @@ export class UservideosPage implements OnInit, OnChanges {
   }
 
   async deleteVideo(param,video) {
+    debugger;
+    let text = video.isvideo ? "Video" : "Image";
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Warning',
       mode: 'ios',
       // subHeader: 'Subtitle',
-      message: 'Are You Sure You Want To Delete This Video?',
+      message: 'Are You Sure You Want To Delete This '+text+'?',
       buttons: [
         {
           text: 'Cancel',

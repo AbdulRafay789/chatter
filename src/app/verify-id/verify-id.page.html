@@ -94,9 +94,10 @@
         </ion-card-content>
       </ion-card>
 
-      <p class="text-center">Upload ID to get verified</p>
+      <p class="text-center" *ngIf="!user.active_status">Upload ID to get verified</p>
 
       <ion-button
+        *ngIf="!user.active_status"
         (click)="SavePost()"
         expand="full"
         class="btn1"

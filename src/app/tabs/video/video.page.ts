@@ -28,6 +28,7 @@ export class VideoPage implements OnInit {
   constructor(
     public service: HttpConfigService,
     public plt: Platform,
+    public router: Router,
     public generalService: GeneralService,
     private chooser: FileChooser,
     private chooserMultiple: Chooser
@@ -235,6 +236,10 @@ export class VideoPage implements OnInit {
         'Your Post Is Uploaded SuccessFully',
         2000
       );
+      this.title = "";
+      this.description = "";
+      this.images = [];
+      this.router.navigate(['/tabs']);
     } else {
       this.generalService.generalToast(data1.msg, 2000);
       console.log(data1.msg);
