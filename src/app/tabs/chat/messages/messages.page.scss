@@ -156,3 +156,17 @@ ion-input:focus {
 [type="button"]:not(:disabled) {
   visibility: hidden !important;
 }
+
+.container .d-block.text-left {
+  border-top-left-radius: 30px !important;
+  background-color: #fff40f;
+  padding: 15px 15px 15px 15px;
+  border-bottom-right-radius: 30px !important;
+}
+
+.container-right .d-block.text-right {
+  border-top-right-radius: 30px !important;
+  background-color: #f55104;
+  padding: 15px 15px 15px 15px;
+  border-bottom-left-radius: 30px !important;
+}

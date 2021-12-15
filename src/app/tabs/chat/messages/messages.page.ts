@@ -22,7 +22,7 @@ export class MessagesPage implements OnInit {
   msg: any = '';
   user: any;
   timeinterval: any;
-  transformValue = "";
+  transformValue = '';
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class MessagesPage implements OnInit {
     //   document.activeElement.scrollIntoView(true);
     // });
   }
-  inputBlur(){
+  inputBlur() {
     // requestAnimationFrame(() => {
     //   this.transformValue = "";
     // });
@@ -117,11 +117,11 @@ export class MessagesPage implements OnInit {
       this.usertoid = JSON.parse(params.data)['userto_id'];
     });
     this.getChats(true);
-    this.timeinterval = setInterval(() => {
-      this.getChats(false); // Now the "this" still references the component
-    }, 10000);
+    // this.timeinterval = setInterval(() => {
+    //   this.getChats(false); // Now the "this" still references the component
+    // }, 10000);
     this.platform.ready().then(() => {
-      Keyboard.addListener("keyboardWillShow", () => {
+      Keyboard.addListener('keyboardWillShow', () => {
         requestAnimationFrame(() => {
           this.transformValue = 'translateY(-250px)';
           document.activeElement.scrollIntoView(true);
@@ -132,14 +132,14 @@ export class MessagesPage implements OnInit {
           this.transformValue = '';
         });
       });
-      Keyboard.addListener("keyboardDidHide", () => {
+      Keyboard.addListener('keyboardDidHide', () => {
         requestAnimationFrame(() => {
-          this.transformValue = "";
+          this.transformValue = '';
         });
       });
     });
   }
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     clearInterval(this.timeinterval);
   }
   handleSelection(event) {

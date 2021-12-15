@@ -6,7 +6,9 @@
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title class="ion-text-center title" color="primary">Mine</ion-title>
+    <ion-title class="ion-text-center title" color="primary"
+      >My Posts</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +18,7 @@
       <div *ngIf="videos || videos.length > 0">
         <div class="custom-div" *ngFor="let video of videos;let i =index;">
           <ion-icon
-          *ngIf="user._id==video.user_id"
+            *ngIf="user._id==video.user_id"
             (click)="deletePost(video._id)"
             name="trash-sharp"
             class="delete-icon"
@@ -51,8 +53,14 @@
               ></ion-icon>
             </ion-slide>
           </ion-slides>
-          <ion-thumbnail slot="start" style="float: left;margin-left: 5px;width: 14%;margin-top: 5px;">
-            <img src="{{video.user.user_dp.path}}" style="border-radius: 50%;width: 50px;height: 50px;" />
+          <ion-thumbnail
+            slot="start"
+            style="float: left; margin-left: 5px; width: 14%; margin-top: 5px"
+          >
+            <img
+              src="{{video.user.user_dp.path}}"
+              style="border-radius: 50%; width: 50px; height: 50px"
+            />
             <img
               *ngIf="video.user.active_status || video.user.hawaii"
               [src]="video.user.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
@@ -66,10 +74,15 @@
               alt=""
             />
           </ion-thumbnail>
-          <h5 (click)="viewVideo(video, i)" style="display: inline-block;width: 80%;margin-top: 10px;">
+          <h5
+            (click)="viewVideo(video, i)"
+            style="display: inline-block; width: 80%; margin-top: 10px"
+          >
             {{video.user.fname + ' ' + video.user.lname }}
           </h5>
-          <p style="width: 80%;margin-left: 20%;margin-bottom: 5px;">{{video.description}}</p>
+          <p style="width: 80%; margin-left: 20%; margin-bottom: 5px">
+            {{video.description}}
+          </p>
           <!-- <h5 (click)="viewVideo(video, i)">{{video.description}}</h5> -->
           <div
             class="
@@ -78,7 +91,7 @@
               pr-3
               pl-3
             "
-            style="padding-left: 20% !important;"
+            style="padding-left: 20% !important"
           >
             <small> {{video.createdAt |date}}</small>
             <!-- <div class="d-flex ion-align-items-center">
@@ -125,18 +138,16 @@
         </div>
       </div>
       <ion-item
-            lines="none"
-            button
-            md="md"
-            class="img-click"
-            *ngIf="videos.length == 0"
-          >
-            <ion-label>
-              <p style="white-space: pre-wrap">
-                No Posts Available.
-              </p>
-            </ion-label>
-          </ion-item>
+        lines="none"
+        button
+        md="md"
+        class="img-click"
+        *ngIf="videos.length == 0"
+      >
+        <ion-label>
+          <p style="white-space: pre-wrap">No Posts Available.</p>
+        </ion-label>
+      </ion-item>
     </div>
   </div>
 

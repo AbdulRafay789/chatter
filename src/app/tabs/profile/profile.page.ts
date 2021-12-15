@@ -47,10 +47,9 @@ export class ProfilePage implements OnInit {
     private alertCtrl: AlertController
   ) {
     // this.segment = 'Posts';
-   
   }
-  ionViewDidEnter(){
-    this.segment = "";
+  ionViewDidEnter() {
+    this.segment = '';
     this.view = true;
     this.getUsers();
   }
@@ -77,13 +76,12 @@ export class ProfilePage implements OnInit {
   }
 
   segmentChanged(ev: any) {
-    this.segment =ev;
+    this.segment = ev;
     // this.value = 'Posts';
     // this.value = ev.detail.value;
-    if (this.segment == "Posts") {
+    if (this.segment == 'Posts') {
       this.router.navigate(['/uservideos', { data: this.segment }]);
-    } 
-    else {
+    } else {
       this.router.navigate(['/userspage', { data: this.segment }]);
     }
   }
@@ -137,10 +135,10 @@ export class ProfilePage implements OnInit {
       this.generalService.generalToast('Email Is Required', 2000);
       return false;
     }
-    if (this.password == '') {
-      this.generalService.generalToast('Password Is Required', 2000);
-      return false;
-    }
+    // if (this.password == '') {
+    //   this.generalService.generalToast('Password Is Required', 2000);
+    //   return false;
+    // }
     if (this.age == '') {
       this.generalService.generalToast('Age Is Required', 2000);
       return false;
@@ -181,6 +179,7 @@ export class ProfilePage implements OnInit {
         'Your Profile Has Been Updated Successfully',
         2000
       );
+      this.view = true;
       this.generalService.stopLoader();
     } else {
       this.generalService.generalToast(data1.msg, 2000);

@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content [style.transform]="transformValue">
-  <div class="background-picture"  style="z-index: -1;">
+  <div class="background-picture" style="z-index: -1">
     <div
       class="login-details text-center pr-4 pl-4 custom-textarea z-index-10"
       *ngIf="this.view === false"
@@ -34,16 +34,16 @@
           alt=""
         />
         <img
-            *ngIf="profileData.active_status || profileData.hawaii"
-            [src]="profileData.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
-             style="
-              width: 25px;
-              margin-top: 120px;
-              position: absolute;
-              margin-left: -40px;
-            "
-            alt=""
-          />
+          *ngIf="profileData.active_status || profileData.hawaii"
+          [src]="profileData.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
+          style="
+            width: 25px;
+            margin-top: 120px;
+            position: absolute;
+            margin-left: -40px;
+          "
+          alt=""
+        />
         <!-- <img src="../../../assets/images/Icon awesome-edit.png" class="h-25-px w-25-px ml-5 img-click" (click)="takePicture()" /> -->
         <ion-icon
           class="h-25-px w-25-px ml-5 img-click"
@@ -211,7 +211,7 @@
           <img
             *ngIf="profileData.active_status || profileData.hawaii"
             [src]="profileData.hawaii ? '../../assets/images/chk-icon.png' : '../../assets/images/verify.png'"
-             style="
+            style="
               width: 25px;
               margin-top: 100px;
               position: absolute;
@@ -266,9 +266,9 @@
             <ion-label>Connected</ion-label>
           </ion-segment-button>
         </ion-segment> -->
-        <div style="display: flex;">
+        <div class="d-flex justify-content-between">
           <div class="segmentBtn img-click" (click)="segmentChanged('Posts')">
-              <p class="mb-0">
+            <p class="mb-0">
               {{profileData.total_posts ? profileData.total_posts : 0}}
             </p>
             <span>Posts</span>
@@ -283,9 +283,12 @@
             <p class="mb-0">
               {{profileData.connect ? profileData.connect.length : 0}}
             </p>
-            <span>Connect</span>
+            <span>Connections</span>
           </div>
-          <div class="segmentBtn img-click" (click)="segmentChanged('Connected')">
+          <div
+            class="segmentBtn img-click"
+            (click)="segmentChanged('Connected')"
+          >
             <p class="mb-0">
               {{profileData.connect ? profileData.connected.length : 0}}
             </p>
@@ -300,38 +303,89 @@
                     <p *ngSwitchCase="'Connected'">44</p>
                 </div> -->
 
-        <div class="d-flex ion-justify-content-between ion-align-items-center">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="5"><p class="heading-color">Username</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.username}}
+              </p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">First Name</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.fname}}
+              </p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">Last Name</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.lname}}
+              </p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">Mobile #</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.mobile}}
+              </p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">Email</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.email}}
+              </p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">DOB</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.dob | date}}
+              </p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">Bio</p></ion-col>
+            <ion-col size="7">
+              <p class="heading-color-1 ml-4">{{profileData.bio}}</p></ion-col
+            >
+            <ion-col size="5"><p class="heading-color">Address</p></ion-col>
+            <ion-col size="7"
+              ><p class="heading-color-1 ml-4">
+                {{profileData.location}}
+              </p></ion-col
+            >
+          </ion-row>
+        </ion-grid>
+
+        <!-- <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Username</p>
-          <p class="heading-color-1">{{profileData.username}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.username}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">First Name</p>
-          <p class="heading-color-1">{{profileData.fname}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.fname}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Last Name</p>
-          <p class="heading-color-1">{{profileData.lname}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.lname}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Mobile #</p>
-          <p class="heading-color-1">{{profileData.mobile}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.mobile}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Email</p>
-          <p class="heading-color-1">{{profileData.email}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.email}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">DOB</p>
-          <p class="heading-color-1">{{profileData.dob | date}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.dob | date}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Bio</p>
-          <p class="heading-color-1">{{profileData.bio}}</p>
+          <p class="heading-color-1 ml-4">{{profileData.bio}}</p>
         </div>
         <div class="d-flex ion-justify-content-between ion-align-items-center">
           <p class="heading-color">Address</p>
-          <p class="heading-color-1">{{profileData.location}}</p>
-        </div>
+          <p class="heading-color-1 ml-4">{{profileData.location}}</p>
+        </div> -->
 
         <!-- <div class="d-flex ion-justify-content-between ion-align-items-center ml-4 mr-4">
                     <p class="mb-0">11</p>

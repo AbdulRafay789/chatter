@@ -67,7 +67,7 @@ export class DetailPage implements OnInit {
     }
     this.router.navigate([
       '/profileforusers',
-      { data: JSON.stringify(this.profileData[0]), index: indx },
+      { data: JSON.stringify(this.profileData), index: indx },
     ]);
   }
 
