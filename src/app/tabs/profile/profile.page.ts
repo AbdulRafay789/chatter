@@ -12,6 +12,7 @@ import { Platform, AlertController } from '@ionic/angular';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { Keyboard } from '@capacitor/keyboard';
+import { Storage } from '@capacitor/storage';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -52,7 +53,13 @@ export class ProfilePage implements OnInit {
     this.segment = '';
     this.view = true;
     this.getUsers();
+
+    this.checkName('password');
   }
+  async checkName(valu) {
+    const data = await Storage.get({ key: valu });
+    this.password = data.value;
+  };
 
   toggle() {
     if (this.view === true) {

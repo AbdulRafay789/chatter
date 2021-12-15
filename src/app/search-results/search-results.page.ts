@@ -99,7 +99,8 @@ export class SearchResultsPage implements OnInit {
         indx = i;
       }
     });
-    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(obj), index: indx }]);
+    // obj['user']= obj['user'];
+    this.router.navigate(['/tabs/home/detail', { data: JSON.stringify(obj), index: -1 }]);
   }
   ngOnInit() {
     this.searchall();

@@ -12,12 +12,16 @@ import { HttpConfigService } from '../services/http-config.service';
 export class LikeUsersComponent implements OnInit {
   currentModal = null;
   likeUsers = [];
+  user:any={};
   constructor(
     private modalController: ModalController,
     private general: GeneralService,
     private router: Router,
     public service: HttpConfigService
-  ) {}
+  ) {
+    let tempuser = this.service.getuser();
+    this.user = tempuser.user;
+  }
 
   getUsers() {
     debugger;
@@ -41,10 +45,19 @@ export class LikeUsersComponent implements OnInit {
     const url = 'users/details/' + param['_id'];
     const data1: any = await this.service.getApi(url, {});
     if (data1.status && data1.data) {
-      this.router.navigate([
-        '/profileforusers',
-        { data: JSON.stringify(data1.data) },
-      ]);
+      debugger;
+      if(this.user._id.toString() == data1.data._id.toString()){
+        this.router.navigate([
+          '/tabs/profile'
+        ]);
+      }
+      else{
+        this.router.navigate([
+          '/profileforusers',
+          { data: JSON.stringify(data1.data) },
+        ]);
+      }
+     
     } else {
       this.general.generalErrorMessage(data1.msg);
       console.log(data1.msg);

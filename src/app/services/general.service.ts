@@ -32,7 +32,7 @@ export class GeneralService {
   commodities: any[] = [];
   packingGroup: any[] = [];
   classType: any[] = [];
-  likeUsers = [];
+  likeUsers:any = [];
   // public disabled: Boolean;
   customerCreditInfo: {
     creditLimit: number;

@@ -18,6 +18,7 @@ export class DetailPage implements OnInit {
   showdetails: any;
   index: any;
   transformValue = '';
+  user: any = {};
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -25,7 +26,10 @@ export class DetailPage implements OnInit {
     public service: HttpConfigService,
     public generalService: GeneralService,
     private alertCtrl: AlertController
-  ) {}
+  ) {
+    let tempuser = this.service.getuser();
+    this.user = tempuser.user;
+  }
 
   // notifications() {
   //   this.router.navigate(['/notifications']);
@@ -62,10 +66,19 @@ export class DetailPage implements OnInit {
       this.service.setVideo(data1.data);
       this.generalService.stopLoader();
     }
-    this.router.navigate([
-      '/profileforusers',
-      { data: JSON.stringify(this.profileData), index: indx },
-    ]);
+    debugger;
+    if(this.user._id.toString() == this.profileData._id.toString()){
+      this.router.navigate([
+        '/tabs/profile'
+      ]);
+    }
+    else{
+      this.router.navigate([
+        '/profileforusers',
+        { data: JSON.stringify(this.profileData), index: indx },
+      ]);
+    }
+   
   }
 
   async deletePost(param) {

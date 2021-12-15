@@ -118,9 +118,9 @@ export class MessagesPage implements OnInit {
       this.usertoid = this.user._id == JSON.parse(params.data)['userto_id'] ? JSON.parse(params.data)['user_id'] :JSON.parse(params.data)['userto_id'];
     });
     this.getChats(true);
-    // this.timeinterval = setInterval(() => {
-    //   this.getChats(false); // Now the "this" still references the component
-    // }, 10000);
+    this.timeinterval = setInterval(() => {
+      this.getChats(false); // Now the "this" still references the component
+    }, 10000);
     this.platform.ready().then(() => {
       Keyboard.addListener('keyboardWillShow', () => {
         requestAnimationFrame(() => {
